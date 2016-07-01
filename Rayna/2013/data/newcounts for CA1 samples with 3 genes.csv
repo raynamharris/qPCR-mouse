@@ -1,0 +1,375 @@
+count,gene,sample,ind,time,region,APA,strained,group,year,dilution factor,no wells,newcounts
+8,pkmz,38,BL16,AM,CA1,control,B6,3,2013,5,18,720
+9,pkmz,38,BL16,AM,CA1,control,B6,3,2013,5,18,810
+8,pkmz,38,BL16,AM,CA1,control,B6,3,2013,5,18,720
+2,pkmz,42,BL4,AM,CA1,control,B6,3,2013,5,18,180
+1,pkmz,42,BL4,AM,CA1,control,B6,3,2013,5,18,90
+1,pkmz,42,BL4,AM,CA1,control,B6,3,2013,5,18,90
+2,pkmz,43,BL12,AM,CA1,control,B6,3,2013,5,18,180
+1,pkmz,43,BL12,AM,CA1,control,B6,3,2013,5,18,90
+3,pkmz,43,BL12,AM,CA1,control,B6,3,2013,5,18,270
+1,pkmz,44,BL10,PM,CA1,control,B6,3,2013,5,18,90
+0,pkmz,44,BL10,PM,CA1,control,B6,3,2013,5,18,0
+2,pkmz,44,BL10,PM,CA1,control,B6,3,2013,5,18,180
+3,pkmz,50,BL18,AM,CA1,control,B6,3,2013,5,18,270
+3,pkmz,50,BL18,AM,CA1,control,B6,3,2013,5,18,270
+3,pkmz,50,BL18,AM,CA1,control,B6,3,2013,5,18,270
+2,pkmz,51,BL14,AM,CA1,control,B6,3,2013,5,18,180
+2,pkmz,51,BL14,AM,CA1,control,B6,3,2013,5,18,180
+2,pkmz,51,BL14,AM,CA1,control,B6,3,2013,5,18,180
+4,pkmz,53,BL6,AM,CA1,control,B6,3,2013,5,18,360
+1,pkmz,53,BL6,AM,CA1,control,B6,3,2013,5,18,90
+2,pkmz,53,BL6,AM,CA1,control,B6,3,2013,5,18,180
+2,pkmz,35,BL11,AM,CA1,trained,B6,5,2013,5,18,180
+3,pkmz,35,BL11,AM,CA1,trained,B6,5,2013,5,18,270
+3,pkmz,35,BL11,AM,CA1,trained,B6,5,2013,5,18,270
+6,pkmz,36,BL7,AM,CA1,trained,B6,5,2013,5,18,540
+3,pkmz,36,BL7,AM,CA1,trained,B6,5,2013,5,18,270
+5,pkmz,36,BL7,AM,CA1,trained,B6,5,2013,5,18,450
+5,pkmz,37,BL2,AM,CA1,trained,B6,5,2013,5,18,450
+4,pkmz,37,BL2,AM,CA1,trained,B6,5,2013,5,18,360
+5,pkmz,37,BL2,AM,CA1,trained,B6,5,2013,5,18,450
+0,pkmz,39,BL19,PM,CA1,trained,B6,5,2013,5,18,0
+0,pkmz,39,BL19,PM,CA1,trained,B6,5,2013,5,18,0
+1,pkmz,39,BL19,PM,CA1,trained,B6,5,2013,5,18,90
+1,pkmz,40,BL3,AM,CA1,trained,B6,5,2013,5,18,90
+1,pkmz,40,BL3,AM,CA1,trained,B6,5,2013,5,18,90
+2,pkmz,40,BL3,AM,CA1,trained,B6,5,2013,5,18,180
+3,pkmz,41,BL13,PM,CA1,trained,B6,5,2013,5,18,270
+2,pkmz,41,BL13,PM,CA1,trained,B6,5,2013,5,18,180
+5,pkmz,41,BL13,PM,CA1,trained,B6,5,2013,5,18,450
+0,pkmz,46,BL1,AM,CA1,trained,B6,5,2013,5,18,0
+0,pkmz,46,BL1,AM,CA1,trained,B6,5,2013,5,18,0
+0,pkmz,46,BL1,AM,CA1,trained,B6,5,2013,5,18,0
+13,pkmz,47,BL15,PM,CA1,trained,B6,5,2013,5,18,1170
+13,pkmz,47,BL15,PM,CA1,trained,B6,5,2013,5,18,1170
+14,pkmz,47,BL15,PM,CA1,trained,B6,5,2013,5,18,1260
+5,pkmz,48,BL9,AM,CA1,trained,B6,5,2013,5,18,450
+4,pkmz,48,BL9,AM,CA1,trained,B6,5,2013,5,18,360
+7,pkmz,48,BL9,AM,CA1,trained,B6,5,2013,5,18,630
+1,pkmz,49,BL5,AM,CA1,trained,B6,5,2013,5,18,90
+0,pkmz,49,BL5,AM,CA1,trained,B6,5,2013,5,18,0
+1,pkmz,49,BL5,AM,CA1,trained,B6,5,2013,5,18,90
+13,pkmz,52,BL17,AM,CA1,trained,B6,5,2013,5,18,1170
+17,pkmz,52,BL17,AM,CA1,trained,B6,5,2013,5,18,1530
+11,pkmz,52,BL17,AM,CA1,trained,B6,5,2013,5,18,990
+4,grim,38,BL16,AM,CA1,control,B6,3,2013,5,18,360
+8,grim,38,BL16,AM,CA1,control,B6,3,2013,5,18,720
+3,grim,38,BL16,AM,CA1,control,B6,3,2013,5,18,270
+0,grim,42,BL4,AM,CA1,control,B6,3,2013,5,18,0
+3,grim,42,BL4,AM,CA1,control,B6,3,2013,5,18,270
+1,grim,42,BL4,AM,CA1,control,B6,3,2013,5,18,90
+1,grim,43,BL12,AM,CA1,control,B6,3,2013,5,18,90
+3,grim,43,BL12,AM,CA1,control,B6,3,2013,5,18,270
+2,grim,43,BL12,AM,CA1,control,B6,3,2013,5,18,180
+1,grim,44,BL10,PM,CA1,control,B6,3,2013,5,18,90
+0,grim,44,BL10,PM,CA1,control,B6,3,2013,5,18,0
+0,grim,44,BL10,PM,CA1,control,B6,3,2013,5,18,0
+1,grim,45,BL8,AM,CA1,control,B6,3,2013,5,18,90
+0,grim,45,BL8,AM,CA1,control,B6,3,2013,5,18,0
+2,grim,45,BL8,AM,CA1,control,B6,3,2013,5,18,180
+1,grim,50,BL18,AM,CA1,control,B6,3,2013,5,18,90
+1,grim,50,BL18,AM,CA1,control,B6,3,2013,5,18,90
+3,grim,50,BL18,AM,CA1,control,B6,3,2013,5,18,270
+3,grim,51,BL14,AM,CA1,control,B6,3,2013,5,18,270
+2,grim,51,BL14,AM,CA1,control,B6,3,2013,5,18,180
+6,grim,51,BL14,AM,CA1,control,B6,3,2013,5,18,540
+4,grim,53,BL6,AM,CA1,control,B6,3,2013,5,18,360
+6,grim,53,BL6,AM,CA1,control,B6,3,2013,5,18,540
+2,grim,53,BL6,AM,CA1,control,B6,3,2013,5,18,180
+7,grim,35,BL11,AM,CA1,trained,B6,5,2013,5,18,630
+0,grim,35,BL11,AM,CA1,trained,B6,5,2013,5,18,0
+3,grim,35,BL11,AM,CA1,trained,B6,5,2013,5,18,270
+10,grim,36,BL7,AM,CA1,trained,B6,5,2013,5,18,900
+11,grim,36,BL7,AM,CA1,trained,B6,5,2013,5,18,990
+12,grim,36,BL7,AM,CA1,trained,B6,5,2013,5,18,1080
+0,grim,37,BL2,AM,CA1,trained,B6,5,2013,5,18,0
+0,grim,37,BL2,AM,CA1,trained,B6,5,2013,5,18,0
+0,grim,37,BL2,AM,CA1,trained,B6,5,2013,5,18,0
+2,grim,39,BL19,PM,CA1,trained,B6,5,2013,5,18,180
+1,grim,39,BL19,PM,CA1,trained,B6,5,2013,5,18,90
+2,grim,39,BL19,PM,CA1,trained,B6,5,2013,5,18,180
+0,grim,40,BL3,AM,CA1,trained,B6,5,2013,5,18,0
+2,grim,40,BL3,AM,CA1,trained,B6,5,2013,5,18,180
+0,grim,40,BL3,AM,CA1,trained,B6,5,2013,5,18,0
+7,grim,41,BL13,PM,CA1,trained,B6,5,2013,5,18,630
+10,grim,41,BL13,PM,CA1,trained,B6,5,2013,5,18,900
+3,grim,41,BL13,PM,CA1,trained,B6,5,2013,5,18,270
+1,grim,46,BL1,AM,CA1,trained,B6,5,2013,5,18,90
+3,grim,46,BL1,AM,CA1,trained,B6,5,2013,5,18,270
+2,grim,46,BL1,AM,CA1,trained,B6,5,2013,5,18,180
+44,grim,47,BL15,PM,CA1,trained,B6,5,2013,5,18,3960
+51,grim,47,BL15,PM,CA1,trained,B6,5,2013,5,18,4590
+46,grim,47,BL15,PM,CA1,trained,B6,5,2013,5,18,4140
+18,grim,48,BL9,AM,CA1,trained,B6,5,2013,5,18,1620
+16,grim,48,BL9,AM,CA1,trained,B6,5,2013,5,18,1440
+15,grim,48,BL9,AM,CA1,trained,B6,5,2013,5,18,1350
+0,grim,49,BL5,AM,CA1,trained,B6,5,2013,5,18,0
+1,grim,49,BL5,AM,CA1,trained,B6,5,2013,5,18,90
+1,grim,49,BL5,AM,CA1,trained,B6,5,2013,5,18,90
+18,grim,52,BL17,AM,CA1,trained,B6,5,2013,5,18,1620
+17,grim,52,BL17,AM,CA1,trained,B6,5,2013,5,18,1530
+14,grim,52,BL17,AM,CA1,trained,B6,5,2013,5,18,1260
+259,rpl19,38,BL16,AM,CA1,control,B6,3,2013,5,18,23310
+262,rpl19,38,BL16,AM,CA1,control,B6,3,2013,5,18,23580
+315,rpl19,38,BL16,AM,CA1,control,B6,3,2013,5,18,28350
+137,rpl19,42,BL4,AM,CA1,control,B6,3,2013,5,18,12330
+150,rpl19,42,BL4,AM,CA1,control,B6,3,2013,5,18,13500
+78,rpl19,43,BL12,AM,CA1,control,B6,3,2013,5,18,7020
+79,rpl19,43,BL12,AM,CA1,control,B6,3,2013,5,18,7110
+41,rpl19,44,BL10,PM,CA1,control,B6,3,2013,5,18,3690
+50,rpl19,44,BL10,PM,CA1,control,B6,3,2013,5,18,4500
+43,rpl19,44,BL10,PM,CA1,control,B6,3,2013,5,18,3870
+5,rpl19,45,BL8,AM,CA1,control,B6,3,2013,5,18,450
+13,rpl19,45,BL8,AM,CA1,control,B6,3,2013,5,18,1170
+14,rpl19,45,BL8,AM,CA1,control,B6,3,2013,5,18,1260
+81,rpl19,50,BL18,AM,CA1,control,B6,3,2013,5,18,7290
+103,rpl19,50,BL18,AM,CA1,control,B6,3,2013,5,18,9270
+77,rpl19,50,BL18,AM,CA1,control,B6,3,2013,5,18,6930
+170,rpl19,51,BL14,AM,CA1,control,B6,3,2013,5,18,15300
+150,rpl19,51,BL14,AM,CA1,control,B6,3,2013,5,18,13500
+209,rpl19,51,BL14,AM,CA1,control,B6,3,2013,5,18,18810
+244,rpl19,53,BL6,AM,CA1,control,B6,3,2013,5,18,21960
+221,rpl19,53,BL6,AM,CA1,control,B6,3,2013,5,18,19890
+188,rpl19,53,BL6,AM,CA1,control,B6,3,2013,5,18,16920
+214,rpl19,35,BL11,AM,CA1,trained,B6,5,2013,5,18,19260
+191,rpl19,35,BL11,AM,CA1,trained,B6,5,2013,5,18,17190
+194,rpl19,35,BL11,AM,CA1,trained,B6,5,2013,5,18,17460
+330,rpl19,36,BL7,AM,CA1,trained,B6,5,2013,5,18,29700
+326,rpl19,36,BL7,AM,CA1,trained,B6,5,2013,5,18,29340
+262,rpl19,36,BL7,AM,CA1,trained,B6,5,2013,5,18,23580
+57,rpl19,37,BL2,AM,CA1,trained,B6,5,2013,5,18,5130
+43,rpl19,37,BL2,AM,CA1,trained,B6,5,2013,5,18,3870
+70,rpl19,37,BL2,AM,CA1,trained,B6,5,2013,5,18,6300
+211,rpl19,39,BL19,PM,CA1,trained,B6,5,2013,5,18,18990
+116,rpl19,39,BL19,PM,CA1,trained,B6,5,2013,5,18,10440
+118,rpl19,39,BL19,PM,CA1,trained,B6,5,2013,5,18,10620
+105,rpl19,40,BL3,AM,CA1,trained,B6,5,2013,5,18,9450
+97,rpl19,40,BL3,AM,CA1,trained,B6,5,2013,5,18,8730
+96,rpl19,40,BL3,AM,CA1,trained,B6,5,2013,5,18,8640
+186,rpl19,41,BL13,PM,CA1,trained,B6,5,2013,5,18,16740
+238,rpl19,41,BL13,PM,CA1,trained,B6,5,2013,5,18,21420
+188,rpl19,41,BL13,PM,CA1,trained,B6,5,2013,5,18,16920
+83,rpl19,46,BL1,AM,CA1,trained,B6,5,2013,5,18,7470
+105,rpl19,46,BL1,AM,CA1,trained,B6,5,2013,5,18,9450
+105,rpl19,46,BL1,AM,CA1,trained,B6,5,2013,5,18,9450
+1368,rpl19,47,BL15,PM,CA1,trained,B6,5,2013,5,18,123120
+1119,rpl19,47,BL15,PM,CA1,trained,B6,5,2013,5,18,100710
+1208,rpl19,47,BL15,PM,CA1,trained,B6,5,2013,5,18,108720
+726,rpl19,48,BL9,AM,CA1,trained,B6,5,2013,5,18,65340
+701,rpl19,48,BL9,AM,CA1,trained,B6,5,2013,5,18,63090
+633,rpl19,48,BL9,AM,CA1,trained,B6,5,2013,5,18,56970
+43,rpl19,49,BL5,AM,CA1,trained,B6,5,2013,5,18,3870
+59,rpl19,49,BL5,AM,CA1,trained,B6,5,2013,5,18,5310
+41,rpl19,49,BL5,AM,CA1,trained,B6,5,2013,5,18,3690
+453,rpl19,52,BL17,AM,CA1,trained,B6,5,2013,5,18,40770
+469,rpl19,52,BL17,AM,CA1,trained,B6,5,2013,5,18,42210
+459,rpl19,52,BL17,AM,CA1,trained,B6,5,2013,5,18,41310
+5,pkmz,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,225
+3,pkmz,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,135
+4,pkmz,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+6,pkmz,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+8,pkmz,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,360
+14,pkmz,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,630
+0,pkmz,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,pkmz,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,pkmz,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+10,pkmz,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,450
+9,pkmz,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,405
+12,pkmz,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,540
+6,pkmz,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+6,pkmz,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+5,pkmz,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,225
+3,pkmz,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,135
+4,pkmz,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+6,pkmz,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+8,pkmz,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,360
+14,pkmz,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,630
+0,pkmz,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,pkmz,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,pkmz,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+10,pkmz,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,450
+9,pkmz,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,405
+12,pkmz,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,540
+6,pkmz,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+6,pkmz,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+3,pkmz,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+5,pkmz,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+1,pkmz,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,45
+26,pkmz,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1170
+25,pkmz,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1125
+24,pkmz,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1080
+7,pkmz,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,315
+5,pkmz,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+2,pkmz,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+3,pkmz,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+4,pkmz,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,180
+3,pkmz,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+0,pkmz,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+2,pkmz,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+0,pkmz,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+3,pkmz,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+5,pkmz,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+1,pkmz,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,45
+26,pkmz,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1170
+25,pkmz,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1125
+24,pkmz,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1080
+7,pkmz,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,315
+5,pkmz,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+2,pkmz,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+3,pkmz,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+4,pkmz,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,180
+3,pkmz,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+0,pkmz,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+2,pkmz,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+0,pkmz,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+2,pkmz,4,ab,AM,CA1,control,B6,2,2014,2.5,18,90
+2,pkmz,4,ab,AM,CA1,control,B6,2,2014,2.5,18,90
+1,pkmz,4,ab,AM,CA1,control,B6,2,2014,2.5,18,45
+2,pkmz,54,ab,AM,CA1,control,B6,2,2014,2.5,18,90
+2,pkmz,54,ab,AM,CA1,control,B6,2,2014,2.5,18,90
+1,pkmz,54,ab,AM,CA1,control,B6,2,2014,2.5,18,45
+3,pkmz,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+3,pkmz,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+4,pkmz,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,180
+3,pkmz,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+3,pkmz,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+4,pkmz,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,180
+4,grim,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+4,grim,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+6,grim,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+9,grim,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,405
+6,grim,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+0,grim,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,grim,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+6,grim,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,270
+10,grim,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,450
+5,grim,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,225
+3,grim,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,135
+9,grim,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,405
+6,grim,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+4,grim,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+4,grim,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,180
+6,grim,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+9,grim,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,405
+6,grim,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,270
+0,grim,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+0,grim,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,0
+6,grim,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,270
+10,grim,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,450
+5,grim,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,225
+3,grim,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,135
+9,grim,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,405
+6,grim,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,270
+12,grim,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,540
+15,grim,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,675
+10,grim,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,450
+23,grim,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1035
+26,grim,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1170
+24,grim,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1080
+4,grim,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,180
+6,grim,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,270
+6,grim,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,270
+2,grim,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+5,grim,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+3,grim,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+0,grim,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+2,grim,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+0,grim,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+12,grim,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,540
+15,grim,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,675
+10,grim,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,450
+23,grim,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1035
+26,grim,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1170
+24,grim,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,1080
+4,grim,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,180
+6,grim,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,270
+6,grim,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,270
+2,grim,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+5,grim,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,225
+3,grim,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,135
+0,grim,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+2,grim,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,90
+0,grim,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,0
+4,grim,4,ab,AM,CA1,control,B6,2,2014,2.5,18,180
+4,grim,4,ab,AM,CA1,control,B6,2,2014,2.5,18,180
+5,grim,4,ab,AM,CA1,control,B6,2,2014,2.5,18,225
+4,grim,54,ab,AM,CA1,control,B6,2,2014,2.5,18,180
+4,grim,54,ab,AM,CA1,control,B6,2,2014,2.5,18,180
+5,grim,54,ab,AM,CA1,control,B6,2,2014,2.5,18,225
+3,grim,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+9,grim,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,405
+8,grim,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,360
+3,grim,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,135
+9,grim,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,405
+8,grim,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,360
+2082,rpl19,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,93690
+1987,rpl19,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,89415
+1968,rpl19,1,a,AM,CA1,control,fmr1,1,2014,2.5,18,88560
+5690,rpl19,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,256050
+5404,rpl19,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,243180
+5391,rpl19,8,e,AM,CA1,control,fmr1,1,2014,2.5,18,242595
+182,rpl19,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,8190
+180,rpl19,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,8100
+162,rpl19,10,g,AM,CA1,control,fmr1,1,2014,2.5,18,7290
+1988,rpl19,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,89460
+1944,rpl19,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,87480
+1898,rpl19,12,i,AM,CA1,control,fmr1,1,2014,2.5,18,85410
+3018,rpl19,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,135810
+3018,rpl19,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,135810
+2677,rpl19,14,k,AM,CA1,control,fmr1,1,2014,2.5,18,120465
+2082,rpl19,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,93690
+1987,rpl19,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,89415
+1968,rpl19,55,a,AM,CA1,control,fmr1,1,2014,2.5,18,88560
+5690,rpl19,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,256050
+5404,rpl19,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,243180
+5391,rpl19,56,e,AM,CA1,control,fmr1,1,2014,2.5,18,242595
+182,rpl19,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,8190
+180,rpl19,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,8100
+162,rpl19,57,g,AM,CA1,control,fmr1,1,2014,2.5,18,7290
+1988,rpl19,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,89460
+1944,rpl19,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,87480
+1898,rpl19,58,i,AM,CA1,control,fmr1,1,2014,2.5,18,85410
+3018,rpl19,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,135810
+3018,rpl19,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,135810
+2677,rpl19,59,k,AM,CA1,control,fmr1,1,2014,2.5,18,120465
+1611,rpl19,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,72495
+1533,rpl19,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,68985
+1380,rpl19,5,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,62100
+21912,rpl19,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,986040
+19612,rpl19,7,c,AM,CA1,trained,fmr1,8,2014,2.5,18,882540
+714,rpl19,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,32130
+696,rpl19,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,31320
+642,rpl19,9,f,AM,CA1,trained,fmr1,8,2014,2.5,18,28890
+2515,rpl19,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,113175
+2488,rpl19,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,111960
+2343,rpl19,11,h,AM,CA1,trained,fmr1,8,2014,2.5,18,105435
+1252,rpl19,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,56340
+1214,rpl19,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,54630
+1196,rpl19,13,j,AM,CA1,trained,fmr1,8,2014,2.5,18,53820
+1611,rpl19,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,72495
+1533,rpl19,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,68985
+1380,rpl19,61,b ,AM,CA1,trained,fmr1,8,2014,2.5,18,62100
+21912,rpl19,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,986040
+19612,rpl19,62,c,AM,CA1,trained,fmr1,8,2014,2.5,18,882540
+714,rpl19,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,32130
+696,rpl19,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,31320
+642,rpl19,63,f,AM,CA1,trained,fmr1,8,2014,2.5,18,28890
+2515,rpl19,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,113175
+2488,rpl19,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,111960
+2343,rpl19,64,h,AM,CA1,trained,fmr1,8,2014,2.5,18,105435
+1252,rpl19,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,56340
+1214,rpl19,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,54630
+1196,rpl19,65,j,AM,CA1,trained,fmr1,8,2014,2.5,18,53820
+1157,rpl19,4,ab,AM,CA1,control,B6,2,2014,2.5,18,52065
+1122,rpl19,4,ab,AM,CA1,control,B6,2,2014,2.5,18,50490
+1107,rpl19,4,ab,AM,CA1,control,B6,2,2014,2.5,18,49815
+1157,rpl19,54,ab,AM,CA1,control,B6,2,2014,2.5,18,52065
+1122,rpl19,54,ab,AM,CA1,control,B6,2,2014,2.5,18,50490
+1107,rpl19,54,ab,AM,CA1,control,B6,2,2014,2.5,18,49815
+1227,rpl19,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,55215
+1209,rpl19,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,54405
+1157,rpl19,2,a wt,AM,CA1,trained,B6,4,2014,2.5,18,52065
+1227,rpl19,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,55215
+1209,rpl19,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,54405
+1157,rpl19,60,a wt,AM,CA1,trained,B6,4,2014,2.5,18,52065

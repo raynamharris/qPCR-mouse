@@ -1,0 +1,375 @@
+,count,gene,sample,ind,time,region,APA,strained,group,conc,
+106,18,pkmz,40,BL3,AM,CA1,trained,wt,5,0.0094,1914.893617
+107,18,pkmz,40,BL3,AM,CA1,trained,wt,5,0.0094,1914.893617
+108,36,pkmz,40,BL3,AM,CA1,trained,wt,5,0.0094,3829.787234
+235,0,grim,40,BL3,AM,CA1,trained,wt,5,0.0094,0
+236,36,grim,40,BL3,AM,CA1,trained,wt,5,0.0094,3829.787234
+237,0,grim,40,BL3,AM,CA1,trained,wt,5,0.0094,0
+364,1890,rpl19,40,BL3,AM,CA1,trained,wt,5,0.0094,201063.8298
+365,1746,rpl19,40,BL3,AM,CA1,trained,wt,5,0.0094,185744.6809
+366,1728,rpl19,40,BL3,AM,CA1,trained,wt,5,0.0094,183829.7872
+118,90,pkmz,48,BL9,AM,CA1,trained,wt,5,0.04,2250
+119,72,pkmz,48,BL9,AM,CA1,trained,wt,5,0.04,1800
+120,126,pkmz,48,BL9,AM,CA1,trained,wt,5,0.04,3150
+247,324,grim,48,BL9,AM,CA1,trained,wt,5,0.04,8100
+248,288,grim,48,BL9,AM,CA1,trained,wt,5,0.04,7200
+249,270,grim,48,BL9,AM,CA1,trained,wt,5,0.04,6750
+376,13068,rpl19,48,BL9,AM,CA1,trained,wt,5,0.04,326700
+377,12618,rpl19,48,BL9,AM,CA1,trained,wt,5,0.04,315450
+378,11394,rpl19,48,BL9,AM,CA1,trained,wt,5,0.04,284850
+103,0,pkmz,39,BL19,PM,CA1,trained,wt,5,0.041,0
+104,0,pkmz,39,BL19,PM,CA1,trained,wt,5,0.041,0
+105,18,pkmz,39,BL19,PM,CA1,trained,wt,5,0.041,439.0243902
+232,36,grim,39,BL19,PM,CA1,trained,wt,5,0.041,878.0487805
+233,18,grim,39,BL19,PM,CA1,trained,wt,5,0.041,439.0243902
+234,36,grim,39,BL19,PM,CA1,trained,wt,5,0.041,878.0487805
+361,3798,rpl19,39,BL19,PM,CA1,trained,wt,5,0.041,92634.14634
+362,2088,rpl19,39,BL19,PM,CA1,trained,wt,5,0.041,50926.82927
+363,2124,rpl19,39,BL19,PM,CA1,trained,wt,5,0.041,51804.87805
+67,36,pkmz,42,BL4,AM,CA1,control,wt,3,0.05,720
+68,18,pkmz,42,BL4,AM,CA1,control,wt,3,0.05,360
+69,18,pkmz,42,BL4,AM,CA1,control,wt,3,0.05,360
+196,0,grim,42,BL4,AM,CA1,control,wt,3,0.05,0
+197,54,grim,42,BL4,AM,CA1,control,wt,3,0.05,1080
+198,18,grim,42,BL4,AM,CA1,control,wt,3,0.05,360
+325,2466,rpl19,42,BL4,AM,CA1,control,wt,3,0.05,49320
+326,2700,rpl19,42,BL4,AM,CA1,control,wt,3,0.05,54000
+97,108,pkmz,36,BL7,AM,CA1,trained,wt,5,0.052,2076.923077
+98,54,pkmz,36,BL7,AM,CA1,trained,wt,5,0.052,1038.461538
+99,90,pkmz,36,BL7,AM,CA1,trained,wt,5,0.052,1730.769231
+226,180,grim,36,BL7,AM,CA1,trained,wt,5,0.052,3461.538462
+227,198,grim,36,BL7,AM,CA1,trained,wt,5,0.052,3807.692308
+228,216,grim,36,BL7,AM,CA1,trained,wt,5,0.052,4153.846154
+355,5940,rpl19,36,BL7,AM,CA1,trained,wt,5,0.052,114230.7692
+356,5868,rpl19,36,BL7,AM,CA1,trained,wt,5,0.052,112846.1538
+357,4716,rpl19,36,BL7,AM,CA1,trained,wt,5,0.052,90692.30769
+73,18,pkmz,44,BL10,PM,CA1,control,wt,3,0.067,268.6567164
+74,0,pkmz,44,BL10,PM,CA1,control,wt,3,0.067,0
+75,36,pkmz,44,BL10,PM,CA1,control,wt,3,0.067,537.3134328
+202,18,grim,44,BL10,PM,CA1,control,wt,3,0.067,268.6567164
+203,0,grim,44,BL10,PM,CA1,control,wt,3,0.067,0
+204,0,grim,44,BL10,PM,CA1,control,wt,3,0.067,0
+331,738,rpl19,44,BL10,PM,CA1,control,wt,3,0.067,11014.92537
+332,900,rpl19,44,BL10,PM,CA1,control,wt,3,0.067,13432.83582
+333,774,rpl19,44,BL10,PM,CA1,control,wt,3,0.067,11552.23881
+375,21744,rpl19,47,BL15,PM,CA1,trained,wt,5,0.087,249931.0345
+64,144,pkmz,38,BL16,AM,CA1,control,wt,3,0.087,1655.172414
+65,162,pkmz,38,BL16,AM,CA1,control,wt,3,0.087,1862.068966
+66,144,pkmz,38,BL16,AM,CA1,control,wt,3,0.087,1655.172414
+193,72,grim,38,BL16,AM,CA1,control,wt,3,0.087,827.5862069
+194,144,grim,38,BL16,AM,CA1,control,wt,3,0.087,1655.172414
+195,54,grim,38,BL16,AM,CA1,control,wt,3,0.087,620.6896552
+322,4662,rpl19,38,BL16,AM,CA1,control,wt,3,0.087,53586.2069
+323,4716,rpl19,38,BL16,AM,CA1,control,wt,3,0.087,54206.89655
+324,5670,rpl19,38,BL16,AM,CA1,control,wt,3,0.087,65172.41379
+124,234,pkmz,52,BL17,AM,CA1,trained,wt,5,0.11,2127.272727
+125,306,pkmz,52,BL17,AM,CA1,trained,wt,5,0.11,2781.818182
+126,198,pkmz,52,BL17,AM,CA1,trained,wt,5,0.11,1800
+253,324,grim,52,BL17,AM,CA1,trained,wt,5,0.11,2945.454545
+254,306,grim,52,BL17,AM,CA1,trained,wt,5,0.11,2781.818182
+255,252,grim,52,BL17,AM,CA1,trained,wt,5,0.11,2290.909091
+382,8154,rpl19,52,BL17,AM,CA1,trained,wt,5,0.11,74127.27273
+383,8442,rpl19,52,BL17,AM,CA1,trained,wt,5,0.11,76745.45455
+85,72,pkmz,53,BL6,AM,CA1,control,wt,3,0.2,360
+86,18,pkmz,53,BL6,AM,CA1,control,wt,3,0.2,90
+87,36,pkmz,53,BL6,AM,CA1,control,wt,3,0.2,180
+214,72,grim,53,BL6,AM,CA1,control,wt,3,0.2,360
+215,108,grim,53,BL6,AM,CA1,control,wt,3,0.2,540
+216,36,grim,53,BL6,AM,CA1,control,wt,3,0.2,180
+343,4392,rpl19,53,BL6,AM,CA1,control,wt,3,0.2,21960
+344,3978,rpl19,53,BL6,AM,CA1,control,wt,3,0.2,19890
+345,3384,rpl19,53,BL6,AM,CA1,control,wt,3,0.2,16920
+384,8262,rpl19,52,BL17,AM,CA1,trained,wt,5,0.25,33048
+79,54,pkmz,50,BL18,AM,CA1,control,wt,3,0.25,216
+80,54,pkmz,50,BL18,AM,CA1,control,wt,3,0.25,216
+81,54,pkmz,50,BL18,AM,CA1,control,wt,3,0.25,216
+208,18,grim,50,BL18,AM,CA1,control,wt,3,0.25,72
+209,18,grim,50,BL18,AM,CA1,control,wt,3,0.25,72
+210,54,grim,50,BL18,AM,CA1,control,wt,3,0.25,216
+337,1458,rpl19,50,BL18,AM,CA1,control,wt,3,0.25,5832
+338,1854,rpl19,50,BL18,AM,CA1,control,wt,3,0.25,7416
+339,1386,rpl19,50,BL18,AM,CA1,control,wt,3,0.25,5544
+121,18,pkmz,49,BL5,AM,CA1,trained,wt,5,0.29,62.06896552
+122,0,pkmz,49,BL5,AM,CA1,trained,wt,5,0.29,0
+123,18,pkmz,49,BL5,AM,CA1,trained,wt,5,0.29,62.06896552
+250,0,grim,49,BL5,AM,CA1,trained,wt,5,0.29,0
+251,18,grim,49,BL5,AM,CA1,trained,wt,5,0.29,62.06896552
+252,18,grim,49,BL5,AM,CA1,trained,wt,5,0.29,62.06896552
+379,774,rpl19,49,BL5,AM,CA1,trained,wt,5,0.29,2668.965517
+380,1062,rpl19,49,BL5,AM,CA1,trained,wt,5,0.29,3662.068966
+381,738,rpl19,49,BL5,AM,CA1,trained,wt,5,0.29,2544.827586
+70,36,pkmz,43,BL12,AM,CA1,control,wt,3,0.32,112.5
+71,18,pkmz,43,BL12,AM,CA1,control,wt,3,0.32,56.25
+72,54,pkmz,43,BL12,AM,CA1,control,wt,3,0.32,168.75
+199,18,grim,43,BL12,AM,CA1,control,wt,3,0.32,56.25
+200,54,grim,43,BL12,AM,CA1,control,wt,3,0.32,168.75
+201,36,grim,43,BL12,AM,CA1,control,wt,3,0.32,112.5
+329,1404,rpl19,43,BL12,AM,CA1,control,wt,3,0.32,4387.5
+330,1422,rpl19,43,BL12,AM,CA1,control,wt,3,0.32,4443.75
+109,54,pkmz,41,BL13,PM,CA1,trained,wt,5,0.35,154.2857143
+110,36,pkmz,41,BL13,PM,CA1,trained,wt,5,0.35,102.8571429
+111,90,pkmz,41,BL13,PM,CA1,trained,wt,5,0.35,257.1428571
+238,126,grim,41,BL13,PM,CA1,trained,wt,5,0.35,360
+239,180,grim,41,BL13,PM,CA1,trained,wt,5,0.35,514.2857143
+240,54,grim,41,BL13,PM,CA1,trained,wt,5,0.35,154.2857143
+367,3348,rpl19,41,BL13,PM,CA1,trained,wt,5,0.35,9565.714286
+368,4284,rpl19,41,BL13,PM,CA1,trained,wt,5,0.35,12240
+369,3384,rpl19,41,BL13,PM,CA1,trained,wt,5,0.35,9668.571429
+115,234,pkmz,47,BL15,PM,CA1,trained,wt,5,0.35,668.5714286
+116,234,pkmz,47,BL15,PM,CA1,trained,wt,5,0.35,668.5714286
+117,252,pkmz,47,BL15,PM,CA1,trained,wt,5,0.35,720
+244,792,grim,47,BL15,PM,CA1,trained,wt,5,0.35,2262.857143
+245,918,grim,47,BL15,PM,CA1,trained,wt,5,0.35,2622.857143
+246,828,grim,47,BL15,PM,CA1,trained,wt,5,0.35,2365.714286
+373,24624,rpl19,47,BL15,PM,CA1,trained,wt,5,0.35,70354.28571
+374,20142,rpl19,47,BL15,PM,CA1,trained,wt,5,0.35,57548.57143
+82,36,pkmz,51,BL14,AM,CA1,control,wt,3,0.41,87.80487805
+83,36,pkmz,51,BL14,AM,CA1,control,wt,3,0.41,87.80487805
+84,36,pkmz,51,BL14,AM,CA1,control,wt,3,0.41,87.80487805
+211,54,grim,51,BL14,AM,CA1,control,wt,3,0.41,131.7073171
+212,36,grim,51,BL14,AM,CA1,control,wt,3,0.41,87.80487805
+213,108,grim,51,BL14,AM,CA1,control,wt,3,0.41,263.4146341
+340,3060,rpl19,51,BL14,AM,CA1,control,wt,3,0.41,7463.414634
+341,2700,rpl19,51,BL14,AM,CA1,control,wt,3,0.41,6585.365854
+342,3762,rpl19,51,BL14,AM,CA1,control,wt,3,0.41,9175.609756
+61,36,pkmz,4,ab,AM,CA1,control,wt,2,0.51,70.58823529
+62,36,pkmz,4,ab,AM,CA1,control,wt,2,0.51,70.58823529
+63,18,pkmz,4,ab,AM,CA1,control,wt,2,0.51,35.29411765
+88,36,pkmz,54,ab,AM,CA1,control,wt,2,0.51,70.58823529
+89,36,pkmz,54,ab,AM,CA1,control,wt,2,0.51,70.58823529
+90,18,pkmz,54,ab,AM,CA1,control,wt,2,0.51,35.29411765
+190,72,grim,4,ab,AM,CA1,control,wt,2,0.51,141.1764706
+191,72,grim,4,ab,AM,CA1,control,wt,2,0.51,141.1764706
+192,90,grim,4,ab,AM,CA1,control,wt,2,0.51,176.4705882
+217,72,grim,54,ab,AM,CA1,control,wt,2,0.51,141.1764706
+218,72,grim,54,ab,AM,CA1,control,wt,2,0.51,141.1764706
+219,90,grim,54,ab,AM,CA1,control,wt,2,0.51,176.4705882
+319,20826,rpl19,4,ab,AM,CA1,control,wt,2,0.51,40835.29412
+320,20196,rpl19,4,ab,AM,CA1,control,wt,2,0.51,39600
+321,19926,rpl19,4,ab,AM,CA1,control,wt,2,0.51,39070.58824
+346,20826,rpl19,54,ab,AM,CA1,control,wt,2,0.51,40835.29412
+347,20196,rpl19,54,ab,AM,CA1,control,wt,2,0.51,39600
+348,19926,rpl19,54,ab,AM,CA1,control,wt,2,0.51,39070.58824
+1,90,pkmz,1,a,AM,CA1,control,fmr1,1,0.71,126.7605634
+2,54,pkmz,1,a,AM,CA1,control,fmr1,1,0.71,76.05633803
+3,72,pkmz,1,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+16,90,pkmz,55,a,AM,CA1,control,fmr1,1,0.71,126.7605634
+17,54,pkmz,55,a,AM,CA1,control,fmr1,1,0.71,76.05633803
+18,72,pkmz,55,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+130,72,grim,1,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+131,72,grim,1,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+145,72,grim,55,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+146,72,grim,55,a,AM,CA1,control,fmr1,1,0.71,101.4084507
+259,37476,rpl19,1,a,AM,CA1,control,fmr1,1,0.71,52783.09859
+260,35766,rpl19,1,a,AM,CA1,control,fmr1,1,0.71,50374.64789
+261,35424,rpl19,1,a,AM,CA1,control,fmr1,1,0.71,49892.95775
+274,37476,rpl19,55,a,AM,CA1,control,fmr1,1,0.71,52783.09859
+275,35766,rpl19,55,a,AM,CA1,control,fmr1,1,0.71,50374.64789
+276,35424,rpl19,55,a,AM,CA1,control,fmr1,1,0.71,49892.95775
+91,54,pkmz,2,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+92,54,pkmz,2,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+93,72,pkmz,2,a wt,AM,CA1,trained,wt,4,0.73,98.63013699
+127,54,pkmz,60,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+128,54,pkmz,60,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+129,72,pkmz,60,a wt,AM,CA1,trained,wt,4,0.73,98.63013699
+220,54,grim,2,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+221,162,grim,2,a wt,AM,CA1,trained,wt,4,0.73,221.9178082
+222,144,grim,2,a wt,AM,CA1,trained,wt,4,0.73,197.260274
+256,54,grim,60,a wt,AM,CA1,trained,wt,4,0.73,73.97260274
+257,162,grim,60,a wt,AM,CA1,trained,wt,4,0.73,221.9178082
+258,144,grim,60,a wt,AM,CA1,trained,wt,4,0.73,197.260274
+349,22086,rpl19,2,a wt,AM,CA1,trained,wt,4,0.73,30254.79452
+350,21762,rpl19,2,a wt,AM,CA1,trained,wt,4,0.73,29810.9589
+351,20826,rpl19,2,a wt,AM,CA1,trained,wt,4,0.73,28528.76712
+385,22086,rpl19,60,a wt,AM,CA1,trained,wt,4,0.73,30254.79452
+386,21762,rpl19,60,a wt,AM,CA1,trained,wt,4,0.73,29810.9589
+387,20826,rpl19,60,a wt,AM,CA1,trained,wt,4,0.73,28528.76712
+31,54,pkmz,5,b ,AM,CA1,trained,fmr1,8,0.95,56.84210526
+32,90,pkmz,5,b ,AM,CA1,trained,fmr1,8,0.95,94.73684211
+33,18,pkmz,5,b ,AM,CA1,trained,fmr1,8,0.95,18.94736842
+46,54,pkmz,61,b ,AM,CA1,trained,fmr1,8,0.95,56.84210526
+47,90,pkmz,61,b ,AM,CA1,trained,fmr1,8,0.95,94.73684211
+48,18,pkmz,61,b ,AM,CA1,trained,fmr1,8,0.95,18.94736842
+160,216,grim,5,b ,AM,CA1,trained,fmr1,8,0.95,227.3684211
+161,270,grim,5,b ,AM,CA1,trained,fmr1,8,0.95,284.2105263
+162,180,grim,5,b ,AM,CA1,trained,fmr1,8,0.95,189.4736842
+175,216,grim,61,b ,AM,CA1,trained,fmr1,8,0.95,227.3684211
+176,270,grim,61,b ,AM,CA1,trained,fmr1,8,0.95,284.2105263
+177,180,grim,61,b ,AM,CA1,trained,fmr1,8,0.95,189.4736842
+289,28998,rpl19,5,b ,AM,CA1,trained,fmr1,8,0.95,30524.21053
+290,27594,rpl19,5,b ,AM,CA1,trained,fmr1,8,0.95,29046.31579
+291,24840,rpl19,5,b ,AM,CA1,trained,fmr1,8,0.95,26147.36842
+304,28998,rpl19,61,b ,AM,CA1,trained,fmr1,8,0.95,30524.21053
+305,27594,rpl19,61,b ,AM,CA1,trained,fmr1,8,0.95,29046.31579
+306,24840,rpl19,61,b ,AM,CA1,trained,fmr1,8,0.95,26147.36842
+43,0,pkmz,13,j,AM,CA1,trained,fmr1,8,0.98,0
+44,36,pkmz,13,j,AM,CA1,trained,fmr1,8,0.98,36.73469388
+45,0,pkmz,13,j,AM,CA1,trained,fmr1,8,0.98,0
+58,0,pkmz,65,j,AM,CA1,trained,fmr1,8,0.98,0
+59,36,pkmz,65,j,AM,CA1,trained,fmr1,8,0.98,36.73469388
+60,0,pkmz,65,j,AM,CA1,trained,fmr1,8,0.98,0
+172,0,grim,13,j,AM,CA1,trained,fmr1,8,0.98,0
+173,36,grim,13,j,AM,CA1,trained,fmr1,8,0.98,36.73469388
+174,0,grim,13,j,AM,CA1,trained,fmr1,8,0.98,0
+187,0,grim,65,j,AM,CA1,trained,fmr1,8,0.98,0
+188,36,grim,65,j,AM,CA1,trained,fmr1,8,0.98,36.73469388
+189,0,grim,65,j,AM,CA1,trained,fmr1,8,0.98,0
+301,22536,rpl19,13,j,AM,CA1,trained,fmr1,8,0.98,22995.91837
+302,21852,rpl19,13,j,AM,CA1,trained,fmr1,8,0.98,22297.95918
+303,21528,rpl19,13,j,AM,CA1,trained,fmr1,8,0.98,21967.34694
+316,22536,rpl19,65,j,AM,CA1,trained,fmr1,8,0.98,22995.91837
+317,21852,rpl19,65,j,AM,CA1,trained,fmr1,8,0.98,22297.95918
+318,21528,rpl19,65,j,AM,CA1,trained,fmr1,8,0.98,21967.34694
+40,54,pkmz,11,h,AM,CA1,trained,fmr1,8,1,54
+41,72,pkmz,11,h,AM,CA1,trained,fmr1,8,1,72
+42,54,pkmz,11,h,AM,CA1,trained,fmr1,8,1,54
+55,54,pkmz,64,h,AM,CA1,trained,fmr1,8,1,54
+56,72,pkmz,64,h,AM,CA1,trained,fmr1,8,1,72
+57,54,pkmz,64,h,AM,CA1,trained,fmr1,8,1,54
+169,36,grim,11,h,AM,CA1,trained,fmr1,8,1,36
+170,90,grim,11,h,AM,CA1,trained,fmr1,8,1,90
+171,54,grim,11,h,AM,CA1,trained,fmr1,8,1,54
+184,36,grim,64,h,AM,CA1,trained,fmr1,8,1,36
+185,90,grim,64,h,AM,CA1,trained,fmr1,8,1,90
+186,54,grim,64,h,AM,CA1,trained,fmr1,8,1,54
+298,45270,rpl19,11,h,AM,CA1,trained,fmr1,8,1,45270
+299,44784,rpl19,11,h,AM,CA1,trained,fmr1,8,1,44784
+300,42174,rpl19,11,h,AM,CA1,trained,fmr1,8,1,42174
+313,45270,rpl19,64,h,AM,CA1,trained,fmr1,8,1,45270
+314,44784,rpl19,64,h,AM,CA1,trained,fmr1,8,1,44784
+315,42174,rpl19,64,h,AM,CA1,trained,fmr1,8,1,42174
+4,108,pkmz,8,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+5,144,pkmz,8,e,AM,CA1,control,fmr1,1,1.02,141.1764706
+6,252,pkmz,8,e,AM,CA1,control,fmr1,1,1.02,247.0588235
+19,108,pkmz,56,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+20,144,pkmz,56,e,AM,CA1,control,fmr1,1,1.02,141.1764706
+21,252,pkmz,56,e,AM,CA1,control,fmr1,1,1.02,247.0588235
+133,108,grim,8,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+134,162,grim,8,e,AM,CA1,control,fmr1,1,1.02,158.8235294
+135,108,grim,8,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+148,108,grim,56,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+149,162,grim,56,e,AM,CA1,control,fmr1,1,1.02,158.8235294
+150,108,grim,56,e,AM,CA1,control,fmr1,1,1.02,105.8823529
+262,102420,rpl19,8,e,AM,CA1,control,fmr1,1,1.02,100411.7647
+263,97272,rpl19,8,e,AM,CA1,control,fmr1,1,1.02,95364.70588
+264,97038,rpl19,8,e,AM,CA1,control,fmr1,1,1.02,95135.29412
+277,102420,rpl19,56,e,AM,CA1,control,fmr1,1,1.02,100411.7647
+278,97272,rpl19,56,e,AM,CA1,control,fmr1,1,1.02,95364.70588
+279,97038,rpl19,56,e,AM,CA1,control,fmr1,1,1.02,95135.29412
+10,180,pkmz,12,i,AM,CA1,control,fmr1,1,1.07,168.2242991
+11,162,pkmz,12,i,AM,CA1,control,fmr1,1,1.07,151.4018692
+12,216,pkmz,12,i,AM,CA1,control,fmr1,1,1.07,201.8691589
+25,180,pkmz,58,i,AM,CA1,control,fmr1,1,1.07,168.2242991
+26,162,pkmz,58,i,AM,CA1,control,fmr1,1,1.07,151.4018692
+27,216,pkmz,58,i,AM,CA1,control,fmr1,1,1.07,201.8691589
+139,108,grim,12,i,AM,CA1,control,fmr1,1,1.07,100.9345794
+140,180,grim,12,i,AM,CA1,control,fmr1,1,1.07,168.2242991
+141,90,grim,12,i,AM,CA1,control,fmr1,1,1.07,84.11214953
+154,108,grim,58,i,AM,CA1,control,fmr1,1,1.07,100.9345794
+155,180,grim,58,i,AM,CA1,control,fmr1,1,1.07,168.2242991
+156,90,grim,58,i,AM,CA1,control,fmr1,1,1.07,84.11214953
+268,35784,rpl19,12,i,AM,CA1,control,fmr1,1,1.07,33442.99065
+269,34992,rpl19,12,i,AM,CA1,control,fmr1,1,1.07,32702.80374
+270,34164,rpl19,12,i,AM,CA1,control,fmr1,1,1.07,31928.97196
+283,35784,rpl19,58,i,AM,CA1,control,fmr1,1,1.07,33442.99065
+284,34992,rpl19,58,i,AM,CA1,control,fmr1,1,1.07,32702.80374
+285,34164,rpl19,58,i,AM,CA1,control,fmr1,1,1.07,31928.97196
+14,108,pkmz,14,k,AM,CA1,control,fmr1,1,1.44,75
+15,108,pkmz,14,k,AM,CA1,control,fmr1,1,1.44,75
+29,108,pkmz,59,k,AM,CA1,control,fmr1,1,1.44,75
+30,108,pkmz,59,k,AM,CA1,control,fmr1,1,1.44,75
+142,54,grim,14,k,AM,CA1,control,fmr1,1,1.44,37.5
+143,162,grim,14,k,AM,CA1,control,fmr1,1,1.44,112.5
+144,108,grim,14,k,AM,CA1,control,fmr1,1,1.44,75
+157,54,grim,59,k,AM,CA1,control,fmr1,1,1.44,37.5
+158,162,grim,59,k,AM,CA1,control,fmr1,1,1.44,112.5
+159,108,grim,59,k,AM,CA1,control,fmr1,1,1.44,75
+271,54324,rpl19,14,k,AM,CA1,control,fmr1,1,1.44,37725
+272,54324,rpl19,14,k,AM,CA1,control,fmr1,1,1.44,37725
+273,48186,rpl19,14,k,AM,CA1,control,fmr1,1,1.44,33462.5
+286,54324,rpl19,59,k,AM,CA1,control,fmr1,1,1.44,37725
+287,54324,rpl19,59,k,AM,CA1,control,fmr1,1,1.44,37725
+288,48186,rpl19,59,k,AM,CA1,control,fmr1,1,1.44,33462.5
+37,126,pkmz,9,f,AM,CA1,trained,fmr1,8,1.92,65.625
+38,90,pkmz,9,f,AM,CA1,trained,fmr1,8,1.92,46.875
+39,36,pkmz,9,f,AM,CA1,trained,fmr1,8,1.92,18.75
+52,126,pkmz,63,f,AM,CA1,trained,fmr1,8,1.92,65.625
+53,90,pkmz,63,f,AM,CA1,trained,fmr1,8,1.92,46.875
+54,36,pkmz,63,f,AM,CA1,trained,fmr1,8,1.92,18.75
+166,72,grim,9,f,AM,CA1,trained,fmr1,8,1.92,37.5
+167,108,grim,9,f,AM,CA1,trained,fmr1,8,1.92,56.25
+168,108,grim,9,f,AM,CA1,trained,fmr1,8,1.92,56.25
+181,72,grim,63,f,AM,CA1,trained,fmr1,8,1.92,37.5
+182,108,grim,63,f,AM,CA1,trained,fmr1,8,1.92,56.25
+183,108,grim,63,f,AM,CA1,trained,fmr1,8,1.92,56.25
+295,12852,rpl19,9,f,AM,CA1,trained,fmr1,8,1.92,6693.75
+296,12528,rpl19,9,f,AM,CA1,trained,fmr1,8,1.92,6525
+297,11556,rpl19,9,f,AM,CA1,trained,fmr1,8,1.92,6018.75
+310,12852,rpl19,63,f,AM,CA1,trained,fmr1,8,1.92,6693.75
+311,12528,rpl19,63,f,AM,CA1,trained,fmr1,8,1.92,6525
+312,11556,rpl19,63,f,AM,CA1,trained,fmr1,8,1.92,6018.75
+112,0,pkmz,46,BL1,AM,CA1,trained,wt,5,,
+113,0,pkmz,46,BL1,AM,CA1,trained,wt,5,,
+114,0,pkmz,46,BL1,AM,CA1,trained,wt,5,,
+241,18,grim,46,BL1,AM,CA1,trained,wt,5,,
+242,54,grim,46,BL1,AM,CA1,trained,wt,5,,
+243,36,grim,46,BL1,AM,CA1,trained,wt,5,,
+370,1494,rpl19,46,BL1,AM,CA1,trained,wt,5,,
+371,1890,rpl19,46,BL1,AM,CA1,trained,wt,5,,
+372,1890,rpl19,46,BL1,AM,CA1,trained,wt,5,,
+94,36,pkmz,35,BL11,AM,CA1,trained,wt,5,,
+95,54,pkmz,35,BL11,AM,CA1,trained,wt,5,,
+96,54,pkmz,35,BL11,AM,CA1,trained,wt,5,,
+223,126,grim,35,BL11,AM,CA1,trained,wt,5,,
+224,0,grim,35,BL11,AM,CA1,trained,wt,5,,
+225,54,grim,35,BL11,AM,CA1,trained,wt,5,,
+352,3852,rpl19,35,BL11,AM,CA1,trained,wt,5,,
+353,3438,rpl19,35,BL11,AM,CA1,trained,wt,5,,
+354,3492,rpl19,35,BL11,AM,CA1,trained,wt,5,,
+100,90,pkmz,37,BL2,AM,CA1,trained,wt,5,,
+101,72,pkmz,37,BL2,AM,CA1,trained,wt,5,,
+102,90,pkmz,37,BL2,AM,CA1,trained,wt,5,,
+229,0,grim,37,BL2,AM,CA1,trained,wt,5,,
+230,0,grim,37,BL2,AM,CA1,trained,wt,5,,
+231,0,grim,37,BL2,AM,CA1,trained,wt,5,,
+358,1026,rpl19,37,BL2,AM,CA1,trained,wt,5,,
+359,774,rpl19,37,BL2,AM,CA1,trained,wt,5,,
+360,1260,rpl19,37,BL2,AM,CA1,trained,wt,5,,
+205,18,grim,45,BL8,AM,CA1,control,wt,3,,
+206,0,grim,45,BL8,AM,CA1,control,wt,3,,
+207,36,grim,45,BL8,AM,CA1,control,wt,3,,
+334,90,rpl19,45,BL8,AM,CA1,control,wt,3,,
+335,234,rpl19,45,BL8,AM,CA1,control,wt,3,,
+336,252,rpl19,45,BL8,AM,CA1,control,wt,3,,
+34,468,pkmz,7,c,AM,CA1,trained,fmr1,8,,
+35,450,pkmz,7,c,AM,CA1,trained,fmr1,8,,
+36,432,pkmz,7,c,AM,CA1,trained,fmr1,8,,
+49,468,pkmz,62,c,AM,CA1,trained,fmr1,8,,
+50,450,pkmz,62,c,AM,CA1,trained,fmr1,8,,
+51,432,pkmz,62,c,AM,CA1,trained,fmr1,8,,
+163,414,grim,7,c,AM,CA1,trained,fmr1,8,,
+164,468,grim,7,c,AM,CA1,trained,fmr1,8,,
+165,432,grim,7,c,AM,CA1,trained,fmr1,8,,
+178,414,grim,62,c,AM,CA1,trained,fmr1,8,,
+179,468,grim,62,c,AM,CA1,trained,fmr1,8,,
+180,432,grim,62,c,AM,CA1,trained,fmr1,8,,
+292,394416,rpl19,7,c,AM,CA1,trained,fmr1,8,,
+293,353016,rpl19,7,c,AM,CA1,trained,fmr1,8,,
+307,394416,rpl19,62,c,AM,CA1,trained,fmr1,8,,
+308,353016,rpl19,62,c,AM,CA1,trained,fmr1,8,,
+7,0,pkmz,10,g,AM,CA1,control,fmr1,1,,
+8,0,pkmz,10,g,AM,CA1,control,fmr1,1,,
+9,0,pkmz,10,g,AM,CA1,control,fmr1,1,,
+22,0,pkmz,57,g,AM,CA1,control,fmr1,1,,
+23,0,pkmz,57,g,AM,CA1,control,fmr1,1,,
+24,0,pkmz,57,g,AM,CA1,control,fmr1,1,,
+136,0,grim,10,g,AM,CA1,control,fmr1,1,,
+137,0,grim,10,g,AM,CA1,control,fmr1,1,,
+151,0,grim,57,g,AM,CA1,control,fmr1,1,,
+152,0,grim,57,g,AM,CA1,control,fmr1,1,,
+265,3276,rpl19,10,g,AM,CA1,control,fmr1,1,,
+266,3240,rpl19,10,g,AM,CA1,control,fmr1,1,,
+267,2916,rpl19,10,g,AM,CA1,control,fmr1,1,,
+280,3276,rpl19,57,g,AM,CA1,control,fmr1,1,,
+281,3240,rpl19,57,g,AM,CA1,control,fmr1,1,,
+282,2916,rpl19,57,g,AM,CA1,control,fmr1,1,,

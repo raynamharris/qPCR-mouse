@@ -1,0 +1,872 @@
+count,gene,sample,ind,time,region,APA,strain,year
+3,pkmz,2,a wt,AM,CA1,Trained,B6,2014
+3,pkmz,2,a wt,AM,CA1,Trained,B6,2014
+4,pkmz,2,a wt,AM,CA1,Trained,B6,2014
+3,pkmz,5,b ,AM,CA1,Trained,fmr1,2014
+5,pkmz,5,b ,AM,CA1,Trained,fmr1,2014
+1,pkmz,5,b ,AM,CA1,Trained,fmr1,2014
+26,pkmz,7,c,AM,CA1,Trained,fmr1,2014
+25,pkmz,7,c,AM,CA1,Trained,fmr1,2014
+24,pkmz,7,c,AM,CA1,Trained,fmr1,2014
+7,pkmz,9,f,AM,CA1,Trained,fmr1,2014
+5,pkmz,9,f,AM,CA1,Trained,fmr1,2014
+2,pkmz,9,f,AM,CA1,Trained,fmr1,2014
+3,pkmz,11,h,AM,CA1,Trained,fmr1,2014
+4,pkmz,11,h,AM,CA1,Trained,fmr1,2014
+3,pkmz,11,h,AM,CA1,Trained,fmr1,2014
+0,pkmz,13,j,AM,CA1,Trained,fmr1,2014
+2,pkmz,13,j,AM,CA1,Trained,fmr1,2014
+0,pkmz,13,j,AM,CA1,Trained,fmr1,2014
+2,pkmz,18,BL 9,AM,CA3,Trained,B6,2013
+0,pkmz,18,BL 9,AM,CA3,Trained,B6,2013
+2,pkmz,18,BL 9,AM,CA3,Trained,B6,2013
+4,pkmz,22,BL 19,PM,CA3,Trained,B6,2013
+6,pkmz,22,BL 19,PM,CA3,Trained,B6,2013
+10,pkmz,22,BL 19,PM,CA3,Trained,B6,2013
+0,pkmz,25,BL 11,AM,CA3,Trained,B6,2013
+12,pkmz,25,BL 11,AM,CA3,Trained,B6,2013
+3,pkmz,25,BL 11,AM,CA3,Trained,B6,2013
+9,pkmz,26,BL 3,AM,CA3,Trained,B6,2013
+0,pkmz,26,BL 3,AM,CA3,Trained,B6,2013
+11,pkmz,26,BL 3,AM,CA3,Trained,B6,2013
+5,pkmz,27,BL 5,AM,CA3,Trained,B6,2013
+8,pkmz,27,BL 5,AM,CA3,Trained,B6,2013
+3,pkmz,27,BL 5,AM,CA3,Trained,B6,2013
+2,pkmz,28,BL 13,PM,CA3,Trained,B6,2013
+3,pkmz,28,BL 13,PM,CA3,Trained,B6,2013
+11,pkmz,28,BL 13,PM,CA3,Trained,B6,2013
+67,pkmz,31,BL 15,PM,CA3,Trained,B6,2013
+49,pkmz,31,BL 15,PM,CA3,Trained,B6,2013
+67,pkmz,31,BL 15,PM,CA3,Trained,B6,2013
+36,pkmz,32,BL 7,AM,CA3,Trained,B6,2013
+40,pkmz,32,BL 7,AM,CA3,Trained,B6,2013
+52,pkmz,32,BL 7,AM,CA3,Trained,B6,2013
+1,pkmz,33,BL 1,AM,CA3,Trained,B6,2013
+8,pkmz,33,BL 1,AM,CA3,Trained,B6,2013
+2,pkmz,33,BL 1,AM,CA3,Trained,B6,2013
+5,pkmz,34,BL 2,AM,CA3,Trained,B6,2013
+4,pkmz,34,BL 2,AM,CA3,Trained,B6,2013
+4,pkmz,34,BL 2,AM,CA3,Trained,B6,2013
+3,grim,2,a wt,AM,CA1,Trained,B6,2014
+9,grim,2,a wt,AM,CA1,Trained,B6,2014
+8,grim,2,a wt,AM,CA1,Trained,B6,2014
+12,grim,5,b ,AM,CA1,Trained,fmr1,2014
+15,grim,5,b ,AM,CA1,Trained,fmr1,2014
+10,grim,5,b ,AM,CA1,Trained,fmr1,2014
+23,grim,7,c,AM,CA1,Trained,fmr1,2014
+26,grim,7,c,AM,CA1,Trained,fmr1,2014
+24,grim,7,c,AM,CA1,Trained,fmr1,2014
+4,grim,9,f,AM,CA1,Trained,fmr1,2014
+6,grim,9,f,AM,CA1,Trained,fmr1,2014
+6,grim,9,f,AM,CA1,Trained,fmr1,2014
+2,grim,11,h,AM,CA1,Trained,fmr1,2014
+5,grim,11,h,AM,CA1,Trained,fmr1,2014
+3,grim,11,h,AM,CA1,Trained,fmr1,2014
+0,grim,13,j,AM,CA1,Trained,fmr1,2014
+2,grim,13,j,AM,CA1,Trained,fmr1,2014
+0,grim,13,j,AM,CA1,Trained,fmr1,2014
+1,grim,18,BL 9,AM,CA3,Trained,B6,2013
+1,grim,18,BL 9,AM,CA3,Trained,B6,2013
+1,grim,18,BL 9,AM,CA3,Trained,B6,2013
+2,grim,22,BL 19,PM,CA3,Trained,B6,2013
+4,grim,22,BL 19,PM,CA3,Trained,B6,2013
+5,grim,22,BL 19,PM,CA3,Trained,B6,2013
+2,grim,25,BL 11,AM,CA3,Trained,B6,2013
+1,grim,25,BL 11,AM,CA3,Trained,B6,2013
+3,grim,25,BL 11,AM,CA3,Trained,B6,2013
+0,grim,26,BL 3,AM,CA3,Trained,B6,2013
+0,grim,26,BL 3,AM,CA3,Trained,B6,2013
+2,grim,26,BL 3,AM,CA3,Trained,B6,2013
+2,grim,27,BL 5,AM,CA3,Trained,B6,2013
+2,grim,27,BL 5,AM,CA3,Trained,B6,2013
+3,grim,27,BL 5,AM,CA3,Trained,B6,2013
+1,grim,28,BL 13,PM,CA3,Trained,B6,2013
+1,grim,28,BL 13,PM,CA3,Trained,B6,2013
+18,grim,31,BL 15,PM,CA3,Trained,B6,2013
+16,grim,31,BL 15,PM,CA3,Trained,B6,2013
+17,grim,31,BL 15,PM,CA3,Trained,B6,2013
+12,grim,32,BL 7,AM,CA3,Trained,B6,2013
+12,grim,32,BL 7,AM,CA3,Trained,B6,2013
+11,grim,32,BL 7,AM,CA3,Trained,B6,2013
+0,grim,33,BL 1,AM,CA3,Trained,B6,2013
+0,grim,33,BL 1,AM,CA3,Trained,B6,2013
+1,grim,33,BL 1,AM,CA3,Trained,B6,2013
+0,grim,34,BL 2,AM,CA3,Trained,B6,2013
+0,grim,34,BL 2,AM,CA3,Trained,B6,2013
+0,grim,34,BL 2,AM,CA3,Trained,B6,2013
+1227,rpl19,2,a wt,AM,CA1,Trained,B6,2014
+1209,rpl19,2,a wt,AM,CA1,Trained,B6,2014
+1157,rpl19,2,a wt,AM,CA1,Trained,B6,2014
+1611,rpl19,5,b ,AM,CA1,Trained,fmr1,2014
+1533,rpl19,5,b ,AM,CA1,Trained,fmr1,2014
+1380,rpl19,5,b ,AM,CA1,Trained,fmr1,2014
+21912,rpl19,7,c,AM,CA1,Trained,fmr1,2014
+19612,rpl19,7,c,AM,CA1,Trained,fmr1,2014
+714,rpl19,9,f,AM,CA1,Trained,fmr1,2014
+696,rpl19,9,f,AM,CA1,Trained,fmr1,2014
+642,rpl19,9,f,AM,CA1,Trained,fmr1,2014
+2515,rpl19,11,h,AM,CA1,Trained,fmr1,2014
+2488,rpl19,11,h,AM,CA1,Trained,fmr1,2014
+2343,rpl19,11,h,AM,CA1,Trained,fmr1,2014
+1252,rpl19,13,j,AM,CA1,Trained,fmr1,2014
+1214,rpl19,13,j,AM,CA1,Trained,fmr1,2014
+1196,rpl19,13,j,AM,CA1,Trained,fmr1,2014
+6,rpl19,18,BL 9,AM,CA3,Trained,B6,2013
+4,rpl19,18,BL 9,AM,CA3,Trained,B6,2013
+3,rpl19,18,BL 9,AM,CA3,Trained,B6,2013
+15,rpl19,22,BL 19,PM,CA3,Trained,B6,2013
+8,rpl19,22,BL 19,PM,CA3,Trained,B6,2013
+10,rpl19,22,BL 19,PM,CA3,Trained,B6,2013
+17,rpl19,25,BL 11,AM,CA3,Trained,B6,2013
+17,rpl19,25,BL 11,AM,CA3,Trained,B6,2013
+16,rpl19,25,BL 11,AM,CA3,Trained,B6,2013
+3,rpl19,26,BL 3,AM,CA3,Trained,B6,2013
+4,rpl19,26,BL 3,AM,CA3,Trained,B6,2013
+10,rpl19,26,BL 3,AM,CA3,Trained,B6,2013
+6,rpl19,27,BL 5,AM,CA3,Trained,B6,2013
+3,rpl19,27,BL 5,AM,CA3,Trained,B6,2013
+9,rpl19,27,BL 5,AM,CA3,Trained,B6,2013
+2,rpl19,28,BL 13,PM,CA3,Trained,B6,2013
+5,rpl19,28,BL 13,PM,CA3,Trained,B6,2013
+1,rpl19,28,BL 13,PM,CA3,Trained,B6,2013
+39,rpl19,31,BL 15,PM,CA3,Trained,B6,2013
+38,rpl19,31,BL 15,PM,CA3,Trained,B6,2013
+31,rpl19,31,BL 15,PM,CA3,Trained,B6,2013
+20,rpl19,32,BL 7,AM,CA3,Trained,B6,2013
+32,rpl19,32,BL 7,AM,CA3,Trained,B6,2013
+25,rpl19,32,BL 7,AM,CA3,Trained,B6,2013
+14,rpl19,33,BL 1,AM,CA3,Trained,B6,2013
+15,rpl19,33,BL 1,AM,CA3,Trained,B6,2013
+14,rpl19,33,BL 1,AM,CA3,Trained,B6,2013
+16,rpl19,34,BL 2,AM,CA3,Trained,B6,2013
+18,rpl19,34,BL 2,AM,CA3,Trained,B6,2013
+10,rpl19,34,BL 2,AM,CA3,Trained,B6,2013
+140,rRNA18S,2,a wt,AM,CA1,Trained,B6,2014
+119,rRNA18S,2,a wt,AM,CA1,Trained,B6,2014
+106,rRNA18S,2,a wt,AM,CA1,Trained,B6,2014
+120,rRNA18S,5,b ,AM,CA1,Trained,fmr1,2014
+107,rRNA18S,5,b ,AM,CA1,Trained,fmr1,2014
+77,rRNA18S,5,b ,AM,CA1,Trained,fmr1,2014
+382,rRNA18S,7,c,AM,CA1,Trained,fmr1,2014
+302,rRNA18S,7,c,AM,CA1,Trained,fmr1,2014
+258,rRNA18S,7,c,AM,CA1,Trained,fmr1,2014
+120,rRNA18S,9,f,AM,CA1,Trained,fmr1,2014
+111,rRNA18S,9,f,AM,CA1,Trained,fmr1,2014
+92,rRNA18S,9,f,AM,CA1,Trained,fmr1,2014
+74,rRNA18S,11,h,AM,CA1,Trained,fmr1,2014
+68,rRNA18S,11,h,AM,CA1,Trained,fmr1,2014
+61,rRNA18S,11,h,AM,CA1,Trained,fmr1,2014
+42,rRNA18S,13,j,AM,CA1,Trained,fmr1,2014
+36,rRNA18S,13,j,AM,CA1,Trained,fmr1,2014
+35,rRNA18S,13,j,AM,CA1,Trained,fmr1,2014
+419,rRNA18S,18,BL 9,AM,CA3,Trained,B6,2013
+406,rRNA18S,18,BL 9,AM,CA3,Trained,B6,2013
+430,rRNA18S,18,BL 9,AM,CA3,Trained,B6,2013
+1353,rRNA18S,22,BL 19,PM,CA3,Trained,B6,2013
+1169,rRNA18S,22,BL 19,PM,CA3,Trained,B6,2013
+1236,rRNA18S,22,BL 19,PM,CA3,Trained,B6,2013
+1581,rRNA18S,25,BL 11,AM,CA3,Trained,B6,2013
+1558,rRNA18S,25,BL 11,AM,CA3,Trained,B6,2013
+1339,rRNA18S,25,BL 11,AM,CA3,Trained,B6,2013
+661,rRNA18S,26,BL 3,AM,CA3,Trained,B6,2013
+612,rRNA18S,26,BL 3,AM,CA3,Trained,B6,2013
+602,rRNA18S,26,BL 3,AM,CA3,Trained,B6,2013
+1253,rRNA18S,27,BL 5,AM,CA3,Trained,B6,2013
+1164,rRNA18S,27,BL 5,AM,CA3,Trained,B6,2013
+1196,rRNA18S,27,BL 5,AM,CA3,Trained,B6,2013
+547,rRNA18S,28,BL 13,PM,CA3,Trained,B6,2013
+507,rRNA18S,28,BL 13,PM,CA3,Trained,B6,2013
+494,rRNA18S,28,BL 13,PM,CA3,Trained,B6,2013
+6668,rRNA18S,31,BL 15,PM,CA3,Trained,B6,2013
+6658,rRNA18S,31,BL 15,PM,CA3,Trained,B6,2013
+6939,rRNA18S,31,BL 15,PM,CA3,Trained,B6,2013
+3266,rRNA18S,32,BL 7,AM,CA3,Trained,B6,2013
+3140,rRNA18S,32,BL 7,AM,CA3,Trained,B6,2013
+3311,rRNA18S,32,BL 7,AM,CA3,Trained,B6,2013
+10090,rRNA18S,33,BL 1,AM,CA3,Trained,B6,2013
+11751,rRNA18S,33,BL 1,AM,CA3,Trained,B6,2013
+9722,rRNA18S,33,BL 1,AM,CA3,Trained,B6,2013
+9442,rRNA18S,34,BL 2,AM,CA3,Trained,B6,2013
+8769,rRNA18S,34,BL 2,AM,CA3,Trained,B6,2013
+9601,rRNA18S,34,BL 2,AM,CA3,Trained,B6,2013
+23,dlg4,2,a wt,AM,CA1,Trained,B6,2014
+13,dlg4,2,a wt,AM,CA1,Trained,B6,2014
+11,dlg4,2,a wt,AM,CA1,Trained,B6,2014
+24,dlg4,5,b ,AM,CA1,Trained,fmr1,2014
+24,dlg4,5,b ,AM,CA1,Trained,fmr1,2014
+23,dlg4,5,b ,AM,CA1,Trained,fmr1,2014
+62,dlg4,7,c,AM,CA1,Trained,fmr1,2014
+35,dlg4,7,c,AM,CA1,Trained,fmr1,2014
+24,dlg4,7,c,AM,CA1,Trained,fmr1,2014
+22,dlg4,9,f,AM,CA1,Trained,fmr1,2014
+21,dlg4,9,f,AM,CA1,Trained,fmr1,2014
+11,dlg4,9,f,AM,CA1,Trained,fmr1,2014
+10,dlg4,11,h,AM,CA1,Trained,fmr1,2014
+11,dlg4,11,h,AM,CA1,Trained,fmr1,2014
+5,dlg4,11,h,AM,CA1,Trained,fmr1,2014
+6,dlg4,13,j,AM,CA1,Trained,fmr1,2014
+6,dlg4,13,j,AM,CA1,Trained,fmr1,2014
+4,dlg4,18,BL 9,AM,CA3,Trained,B6,2013
+6,dlg4,18,BL 9,AM,CA3,Trained,B6,2013
+2,dlg4,18,BL 9,AM,CA3,Trained,B6,2013
+6,dlg4,22,BL 19,PM,CA3,Trained,B6,2013
+5,dlg4,22,BL 19,PM,CA3,Trained,B6,2013
+7,dlg4,22,BL 19,PM,CA3,Trained,B6,2013
+8,dlg4,25,BL 11,AM,CA3,Trained,B6,2013
+4,dlg4,25,BL 11,AM,CA3,Trained,B6,2013
+4,dlg4,25,BL 11,AM,CA3,Trained,B6,2013
+9,dlg4,26,BL 3,AM,CA3,Trained,B6,2013
+7,dlg4,26,BL 3,AM,CA3,Trained,B6,2013
+8,dlg4,26,BL 3,AM,CA3,Trained,B6,2013
+19,dlg4,27,BL 5,AM,CA3,Trained,B6,2013
+5,dlg4,27,BL 5,AM,CA3,Trained,B6,2013
+7,dlg4,27,BL 5,AM,CA3,Trained,B6,2013
+3,dlg4,28,BL 13,PM,CA3,Trained,B6,2013
+5,dlg4,28,BL 13,PM,CA3,Trained,B6,2013
+4,dlg4,28,BL 13,PM,CA3,Trained,B6,2013
+73,dlg4,31,BL 15,PM,CA3,Trained,B6,2013
+54,dlg4,31,BL 15,PM,CA3,Trained,B6,2013
+71,dlg4,31,BL 15,PM,CA3,Trained,B6,2013
+27,dlg4,32,BL 7,AM,CA3,Trained,B6,2013
+37,dlg4,32,BL 7,AM,CA3,Trained,B6,2013
+38,dlg4,32,BL 7,AM,CA3,Trained,B6,2013
+5,dlg4,33,BL 1,AM,CA3,Trained,B6,2013
+4,dlg4,33,BL 1,AM,CA3,Trained,B6,2013
+1,dlg4,33,BL 1,AM,CA3,Trained,B6,2013
+5,dlg4,34,BL 2,AM,CA3,Trained,B6,2013
+2,dlg4,34,BL 2,AM,CA3,Trained,B6,2013
+3,dlg4,34,BL 2,AM,CA3,Trained,B6,2013
+27,gria,2,a wt,AM,CA1,Trained,B6,2014
+27,gria,2,a wt,AM,CA1,Trained,B6,2014
+24,gria,2,a wt,AM,CA1,Trained,B6,2014
+50,gria,5,b ,AM,CA1,Trained,fmr1,2014
+52,gria,5,b ,AM,CA1,Trained,fmr1,2014
+45,gria,5,b ,AM,CA1,Trained,fmr1,2014
+332,gria,7,c,AM,CA1,Trained,fmr1,2014
+316,gria,7,c,AM,CA1,Trained,fmr1,2014
+234,gria,7,c,AM,CA1,Trained,fmr1,2014
+30,gria,9,f,AM,CA1,Trained,fmr1,2014
+27,gria,9,f,AM,CA1,Trained,fmr1,2014
+34,gria,9,f,AM,CA1,Trained,fmr1,2014
+22,gria,11,h,AM,CA1,Trained,fmr1,2014
+12,gria,11,h,AM,CA1,Trained,fmr1,2014
+17,gria,11,h,AM,CA1,Trained,fmr1,2014
+4,gria,13,j,AM,CA1,Trained,fmr1,2014
+4,gria,13,j,AM,CA1,Trained,fmr1,2014
+0,gria,18,BL 9,AM,CA3,Trained,B6,2013
+0,gria,18,BL 9,AM,CA3,Trained,B6,2013
+4,gria,18,BL 9,AM,CA3,Trained,B6,2013
+11,gria,22,BL 19,PM,CA3,Trained,B6,2013
+8,gria,22,BL 19,PM,CA3,Trained,B6,2013
+13,gria,22,BL 19,PM,CA3,Trained,B6,2013
+13,gria,25,BL 11,AM,CA3,Trained,B6,2013
+17,gria,25,BL 11,AM,CA3,Trained,B6,2013
+11,gria,25,BL 11,AM,CA3,Trained,B6,2013
+5,gria,26,BL 3,AM,CA3,Trained,B6,2013
+3,gria,26,BL 3,AM,CA3,Trained,B6,2013
+6,gria,26,BL 3,AM,CA3,Trained,B6,2013
+2,gria,27,BL 5,AM,CA3,Trained,B6,2013
+4,gria,27,BL 5,AM,CA3,Trained,B6,2013
+5,gria,27,BL 5,AM,CA3,Trained,B6,2013
+9,gria,28,BL 13,PM,CA3,Trained,B6,2013
+11,gria,28,BL 13,PM,CA3,Trained,B6,2013
+16,gria,28,BL 13,PM,CA3,Trained,B6,2013
+37,gria,31,BL 15,PM,CA3,Trained,B6,2013
+37,gria,31,BL 15,PM,CA3,Trained,B6,2013
+26,gria,32,BL 7,AM,CA3,Trained,B6,2013
+31,gria,32,BL 7,AM,CA3,Trained,B6,2013
+35,gria,32,BL 7,AM,CA3,Trained,B6,2013
+20,gria,33,BL 1,AM,CA3,Trained,B6,2013
+20,gria,33,BL 1,AM,CA3,Trained,B6,2013
+16,gria,33,BL 1,AM,CA3,Trained,B6,2013
+25,gria,34,BL 2,AM,CA3,Trained,B6,2013
+20,gria,34,BL 2,AM,CA3,Trained,B6,2013
+23,gria,34,BL 2,AM,CA3,Trained,B6,2013
+9,grin,2,a wt,AM,CA1,Trained,B6,2014
+7,grin,2,a wt,AM,CA1,Trained,B6,2014
+8,grin,2,a wt,AM,CA1,Trained,B6,2014
+17,grin,5,b ,AM,CA1,Trained,fmr1,2014
+14,grin,5,b ,AM,CA1,Trained,fmr1,2014
+14,grin,5,b ,AM,CA1,Trained,fmr1,2014
+62,grin,7,c,AM,CA1,Trained,fmr1,2014
+56,grin,7,c,AM,CA1,Trained,fmr1,2014
+71,grin,7,c,AM,CA1,Trained,fmr1,2014
+16,grin,9,f,AM,CA1,Trained,fmr1,2014
+14,grin,9,f,AM,CA1,Trained,fmr1,2014
+4,grin,11,h,AM,CA1,Trained,fmr1,2014
+6,grin,11,h,AM,CA1,Trained,fmr1,2014
+6,grin,11,h,AM,CA1,Trained,fmr1,2014
+3,grin,13,j,AM,CA1,Trained,fmr1,2014
+1,grin,13,j,AM,CA1,Trained,fmr1,2014
+0,grin,13,j,AM,CA1,Trained,fmr1,2014
+1,grin,18,BL 9,AM,CA3,Trained,B6,
+0,grin,18,BL 9,AM,CA3,Trained,B6,2013
+1,grin,18,BL 9,AM,CA3,Trained,B6,2013
+4,grin,22,BL 19,PM,CA3,Trained,B6,2013
+7,grin,22,BL 19,PM,CA3,Trained,B6,2013
+4,grin,22,BL 19,PM,CA3,Trained,B6,2013
+4,grin,25,BL 11,AM,CA3,Trained,B6,2013
+4,grin,25,BL 11,AM,CA3,Trained,B6,2013
+4,grin,25,BL 11,AM,CA3,Trained,B6,2013
+1,grin,26,BL 3,AM,CA3,Trained,B6,2013
+1,grin,26,BL 3,AM,CA3,Trained,B6,2013
+1,grin,26,BL 3,AM,CA3,Trained,B6,2013
+2,grin,27,BL 5,AM,CA3,Trained,B6,2013
+1,grin,27,BL 5,AM,CA3,Trained,B6,2013
+1,grin,27,BL 5,AM,CA3,Trained,B6,2013
+2,grin,28,BL 13,PM,CA3,Trained,B6,2013
+2,grin,28,BL 13,PM,CA3,Trained,B6,2013
+1,grin,28,BL 13,PM,CA3,Trained,B6,2013
+9,grin,31,BL 15,PM,CA3,Trained,B6,2013
+9,grin,31,BL 15,PM,CA3,Trained,B6,2013
+11,grin,32,BL 7,AM,CA3,Trained,B6,2013
+8,grin,32,BL 7,AM,CA3,Trained,B6,2013
+6,grin,32,BL 7,AM,CA3,Trained,B6,2013
+5,grin,33,BL 1,AM,CA3,Trained,B6,2013
+5,grin,33,BL 1,AM,CA3,Trained,B6,2013
+4,grin,33,BL 1,AM,CA3,Trained,B6,2013
+5,grin,34,BL 2,AM,CA3,Trained,B6,2013
+7,grin,34,BL 2,AM,CA3,Trained,B6,2013
+7,grin,34,BL 2,AM,CA3,Trained,B6,2013
+11,nsf,2,a wt,AM,CA1,Trained,B6,2014
+12,nsf,2,a wt,AM,CA1,Trained,B6,2014
+12,nsf,2,a wt,AM,CA1,Trained,B6,2014
+24,nsf,5,b ,AM,CA1,Trained,fmr1,2014
+28,nsf,5,b ,AM,CA1,Trained,fmr1,2014
+22,nsf,5,b ,AM,CA1,Trained,fmr1,2014
+93,nsf,7,c,AM,CA1,Trained,fmr1,2014
+125,nsf,7,c,AM,CA1,Trained,fmr1,2014
+136,nsf,7,c,AM,CA1,Trained,fmr1,2014
+15,nsf,9,f,AM,CA1,Trained,fmr1,2014
+18,nsf,9,f,AM,CA1,Trained,fmr1,2014
+19,nsf,9,f,AM,CA1,Trained,fmr1,2014
+190,nsf,11,h,AM,CA1,Trained,fmr1,2014
+203,nsf,11,h,AM,CA1,Trained,fmr1,2014
+275,nsf,11,h,AM,CA1,Trained,fmr1,2014
+3,nsf,13,j,AM,CA1,Trained,fmr1,2014
+2,nsf,13,j,AM,CA1,Trained,fmr1,2014
+3,nsf,13,j,AM,CA1,Trained,fmr1,2014
+4,nsf,18,BL 9,AM,CA3,Trained,B6,2013
+3,nsf,18,BL 9,AM,CA3,Trained,B6,2013
+1,nsf,18,BL 9,AM,CA3,Trained,B6,2013
+20,nsf,22,BL 19,PM,CA3,Trained,B6,2013
+20,nsf,22,BL 19,PM,CA3,Trained,B6,2013
+20,nsf,22,BL 19,PM,CA3,Trained,B6,2013
+20,nsf,25,BL 11,AM,CA3,Trained,B6,2013
+16,nsf,25,BL 11,AM,CA3,Trained,B6,2013
+18,nsf,25,BL 11,AM,CA3,Trained,B6,2013
+1,nsf,26,BL 3,AM,CA3,Trained,B6,2013
+1,nsf,26,BL 3,AM,CA3,Trained,B6,2013
+2,nsf,27,BL 5,AM,CA3,Trained,B6,2013
+12,nsf,27,BL 5,AM,CA3,Trained,B6,2013
+5,nsf,27,BL 5,AM,CA3,Trained,B6,2013
+4,nsf,28,BL 13,PM,CA3,Trained,B6,2013
+1,nsf,28,BL 13,PM,CA3,Trained,B6,2013
+9,nsf,28,BL 13,PM,CA3,Trained,B6,2013
+36,nsf,31,BL 15,PM,CA3,Trained,B6,2013
+37,nsf,31,BL 15,PM,CA3,Trained,B6,2013
+36,nsf,31,BL 15,PM,CA3,Trained,B6,2013
+32,nsf,32,BL 7,AM,CA3,Trained,B6,2013
+28,nsf,32,BL 7,AM,CA3,Trained,B6,2013
+38,nsf,32,BL 7,AM,CA3,Trained,B6,2013
+3,nsf,33,BL 1,AM,CA3,Trained,B6,2013
+6,nsf,33,BL 1,AM,CA3,Trained,B6,2013
+8,nsf,33,BL 1,AM,CA3,Trained,B6,2013
+12,nsf,34,BL 2,AM,CA3,Trained,B6,2013
+13,nsf,34,BL 2,AM,CA3,Trained,B6,2013
+12,nsf,34,BL 2,AM,CA3,Trained,B6,2013
+60,cam2kd,2,a wt,AM,CA1,Trained,B6,2014
+59,cam2kd,2,a wt,AM,CA1,Trained,B6,2014
+194,cam2kd,5,b ,AM,CA1,Trained,fmr1,2014
+181,cam2kd,5,b ,AM,CA1,Trained,fmr1,2014
+174,cam2kd,5,b ,AM,CA1,Trained,fmr1,2014
+662,cam2kd,7,c,AM,CA1,Trained,fmr1,2014
+650,cam2kd,7,c,AM,CA1,Trained,fmr1,2014
+637,cam2kd,7,c,AM,CA1,Trained,fmr1,2014
+85,cam2kd,9,f,AM,CA1,Trained,fmr1,2014
+105,cam2kd,9,f,AM,CA1,Trained,fmr1,2014
+41,cam2kd,9,f,AM,CA1,Trained,fmr1,2014
+1062,cam2kd,11,h,AM,CA1,Trained,fmr1,2014
+1114,cam2kd,11,h,AM,CA1,Trained,fmr1,2014
+1109,cam2kd,11,h,AM,CA1,Trained,fmr1,2014
+18,cam2kd,13,j,AM,CA1,Trained,fmr1,2014
+24,cam2kd,13,j,AM,CA1,Trained,fmr1,2014
+29,cam2kd,13,j,AM,CA1,Trained,fmr1,2014
+2,cam2kd,18,BL 9,AM,CA3,Trained,B6,2013
+3,cam2kd,18,BL 9,AM,CA3,Trained,B6,2013
+4,cam2kd,18,BL 9,AM,CA3,Trained,B6,2013
+8,cam2kd,22,BL 19,PM,CA3,Trained,B6,2013
+13,cam2kd,22,BL 19,PM,CA3,Trained,B6,2013
+6,cam2kd,22,BL 19,PM,CA3,Trained,B6,2013
+12,cam2kd,25,BL 11,AM,CA3,Trained,B6,2013
+8,cam2kd,25,BL 11,AM,CA3,Trained,B6,2013
+11,cam2kd,25,BL 11,AM,CA3,Trained,B6,2013
+4,cam2kd,26,BL 3,AM,CA3,Trained,B6,2013
+4,cam2kd,26,BL 3,AM,CA3,Trained,B6,2013
+4,cam2kd,27,BL 5,AM,CA3,Trained,B6,2013
+2,cam2kd,27,BL 5,AM,CA3,Trained,B6,2013
+6,cam2kd,27,BL 5,AM,CA3,Trained,B6,2013
+3,cam2kd,28,BL 13,PM,CA3,Trained,B6,2013
+4,cam2kd,28,BL 13,PM,CA3,Trained,B6,2013
+0,cam2kd,28,BL 13,PM,CA3,Trained,B6,2013
+31,cam2kd,31,BL 15,PM,CA3,Trained,B6,2013
+29,cam2kd,31,BL 15,PM,CA3,Trained,B6,2013
+22,cam2kd,31,BL 15,PM,CA3,Trained,B6,2013
+43,cam2kd,32,BL 7,AM,CA3,Trained,B6,2013
+33,cam2kd,32,BL 7,AM,CA3,Trained,B6,2013
+38,cam2kd,32,BL 7,AM,CA3,Trained,B6,2013
+5,pkmz,1,a,AM,CA1,Control,fmr1,2014
+3,pkmz,1,a,AM,CA1,Control,fmr1,2014
+4,pkmz,1,a,AM,CA1,Control,fmr1,2014
+2,pkmz,4,ab,AM,CA1,Control,B6,2014
+2,pkmz,4,ab,AM,CA1,Control,B6,2014
+1,pkmz,4,ab,AM,CA1,Control,B6,2014
+6,pkmz,8,e,AM,CA1,Control,fmr1,2014
+8,pkmz,8,e,AM,CA1,Control,fmr1,2014
+14,pkmz,8,e,AM,CA1,Control,fmr1,2014
+0,pkmz,10,g,AM,CA1,Control,fmr1,2014
+0,pkmz,10,g,AM,CA1,Control,fmr1,2014
+0,pkmz,10,g,AM,CA1,Control,fmr1,2014
+10,pkmz,12,i,AM,CA1,Control,fmr1,2014
+9,pkmz,12,i,AM,CA1,Control,fmr1,2014
+12,pkmz,12,i,AM,CA1,Control,fmr1,2014
+6,pkmz,14,k,AM,CA1,Control,fmr1,2014
+6,pkmz,14,k,AM,CA1,Control,fmr1,2014
+6,pkmz,19,BL 8,AM,CA3,Control,B6,2013
+5,pkmz,19,BL 8,AM,CA3,Control,B6,2013
+4,pkmz,19,BL 8,AM,CA3,Control,B6,2013
+7,pkmz,20,BL 14,AM,CA3,Control,B6,2013
+8,pkmz,20,BL 14,AM,CA3,Control,B6,2013
+5,pkmz,20,BL 14,AM,CA3,Control,B6,2013
+9,pkmz,21,BL 4,AM,CA3,Control,B6,2013
+10,pkmz,21,BL 4,AM,CA3,Control,B6,2013
+9,pkmz,21,BL 4,AM,CA3,Control,B6,2013
+5,pkmz,23,BL 6,AM,CA3,Control,B6,2013
+6,pkmz,23,BL 6,AM,CA3,Control,B6,2013
+2,pkmz,23,BL 6,AM,CA3,Control,B6,2013
+10,pkmz,24,BL 18,AM,CA3,Control,B6,2013
+3,pkmz,24,BL 18,AM,CA3,Control,B6,2013
+3,pkmz,24,BL 18,AM,CA3,Control,B6,2013
+5,pkmz,29,BL 10,PM,CA3,Control,B6,2013
+8,pkmz,29,BL 10,PM,CA3,Control,B6,2013
+8,pkmz,29,BL 10,PM,CA3,Control,B6,2013
+2,pkmz,30,BL 12,AM,CA3,Control,B6,2013
+2,pkmz,30,BL 12,AM,CA3,Control,B6,2013
+9,pkmz,30,BL 12,AM,CA3,Control,B6,2013
+4,grim,1,a,AM,CA1,Control,fmr1,2014
+4,grim,1,a,AM,CA1,Control,fmr1,2014
+4,grim,4,ab,AM,CA1,Control,B6,2014
+4,grim,4,ab,AM,CA1,Control,B6,2014
+5,grim,4,ab,AM,CA1,Control,B6,2014
+6,grim,8,e,AM,CA1,Control,fmr1,2014
+9,grim,8,e,AM,CA1,Control,fmr1,2014
+6,grim,8,e,AM,CA1,Control,fmr1,2014
+0,grim,10,g,AM,CA1,Control,fmr1,2014
+0,grim,10,g,AM,CA1,Control,fmr1,2014
+6,grim,12,i,AM,CA1,Control,fmr1,2014
+10,grim,12,i,AM,CA1,Control,fmr1,2014
+5,grim,12,i,AM,CA1,Control,fmr1,2014
+3,grim,14,k,AM,CA1,Control,fmr1,2014
+9,grim,14,k,AM,CA1,Control,fmr1,2014
+6,grim,14,k,AM,CA1,Control,fmr1,2014
+5,grim,19,BL 8,AM,CA3,Control,B6,2013
+6,grim,19,BL 8,AM,CA3,Control,B6,2013
+3,grim,19,BL 8,AM,CA3,Control,B6,2013
+5,grim,20,BL 14,AM,CA3,Control,B6,2013
+5,grim,20,BL 14,AM,CA3,Control,B6,2013
+3,grim,20,BL 14,AM,CA3,Control,B6,2013
+1,grim,21,BL 4,AM,CA3,Control,B6,2013
+1,grim,21,BL 4,AM,CA3,Control,B6,2013
+2,grim,21,BL 4,AM,CA3,Control,B6,2013
+3,grim,23,BL 6,AM,CA3,Control,B6,2013
+0,grim,23,BL 6,AM,CA3,Control,B6,2013
+2,grim,23,BL 6,AM,CA3,Control,B6,2013
+2,grim,24,BL 18,AM,CA3,Control,B6,2013
+2,grim,24,BL 18,AM,CA3,Control,B6,2013
+1,grim,24,BL 18,AM,CA3,Control,B6,2013
+2,grim,29,BL 10,PM,CA3,Control,B6,2013
+4,grim,29,BL 10,PM,CA3,Control,B6,2013
+1,grim,29,BL 10,PM,CA3,Control,B6,2013
+0,grim,30,BL 12,AM,CA3,Control,B6,2013
+2,grim,30,BL 12,AM,CA3,Control,B6,2013
+1,grim,30,BL 12,AM,CA3,Control,B6,2013
+2082,rpl19,1,a,AM,CA1,Control,fmr1,2014
+1987,rpl19,1,a,AM,CA1,Control,fmr1,2014
+1968,rpl19,1,a,AM,CA1,Control,fmr1,2014
+1157,rpl19,4,ab,AM,CA1,Control,B6,2014
+1122,rpl19,4,ab,AM,CA1,Control,B6,2014
+1107,rpl19,4,ab,AM,CA1,Control,B6,2014
+5690,rpl19,8,e,AM,CA1,Control,fmr1,2014
+5404,rpl19,8,e,AM,CA1,Control,fmr1,2014
+5391,rpl19,8,e,AM,CA1,Control,fmr1,2014
+182,rpl19,10,g,AM,CA1,Control,fmr1,2014
+180,rpl19,10,g,AM,CA1,Control,fmr1,2014
+162,rpl19,10,g,AM,CA1,Control,fmr1,2014
+1988,rpl19,12,i,AM,CA1,Control,fmr1,2014
+1944,rpl19,12,i,AM,CA1,Control,fmr1,2014
+1898,rpl19,12,i,AM,CA1,Control,fmr1,2014
+3018,rpl19,14,k,AM,CA1,Control,fmr1,2014
+3018,rpl19,14,k,AM,CA1,Control,fmr1,2014
+2677,rpl19,14,k,AM,CA1,Control,fmr1,2014
+16,rpl19,19,BL 8,AM,CA3,Control,B6,2013
+12,rpl19,19,BL 8,AM,CA3,Control,B6,2013
+12,rpl19,19,BL 8,AM,CA3,Control,B6,2013
+17,rpl19,20,BL 14,AM,CA3,Control,B6,2013
+21,rpl19,20,BL 14,AM,CA3,Control,B6,2013
+15,rpl19,20,BL 14,AM,CA3,Control,B6,2013
+15,rpl19,21,BL 4,AM,CA3,Control,B6,2013
+13,rpl19,21,BL 4,AM,CA3,Control,B6,2013
+15,rpl19,21,BL 4,AM,CA3,Control,B6,2013
+7,rpl19,23,BL 6,AM,CA3,Control,B6,2013
+10,rpl19,23,BL 6,AM,CA3,Control,B6,2013
+13,rpl19,23,BL 6,AM,CA3,Control,B6,2013
+6,rpl19,24,BL 18,AM,CA3,Control,B6,2013
+7,rpl19,24,BL 18,AM,CA3,Control,B6,2013
+8,rpl19,24,BL 18,AM,CA3,Control,B6,2013
+8,rpl19,29,BL 10,PM,CA3,Control,B6,2013
+4,rpl19,29,BL 10,PM,CA3,Control,B6,2013
+12,rpl19,29,BL 10,PM,CA3,Control,B6,2013
+4,rpl19,30,BL 12,AM,CA3,Control,B6,2013
+5,rpl19,30,BL 12,AM,CA3,Control,B6,2013
+4,rpl19,30,BL 12,AM,CA3,Control,B6,2013
+83,rRNA18S,1,a,AM,CA1,Control,fmr1,2014
+77,rRNA18S,1,a,AM,CA1,Control,fmr1,2014
+68,rRNA18S,1,a,AM,CA1,Control,fmr1,2014
+55,rRNA18S,4,ab,AM,CA1,Control,B6,2014
+54,rRNA18S,4,ab,AM,CA1,Control,B6,2014
+53,rRNA18S,4,ab,AM,CA1,Control,B6,2014
+134,rRNA18S,8,e,AM,CA1,Control,fmr1,2014
+118,rRNA18S,8,e,AM,CA1,Control,fmr1,2014
+116,rRNA18S,8,e,AM,CA1,Control,fmr1,2014
+18,rRNA18S,10,g,AM,CA1,Control,fmr1,2014
+12,rRNA18S,10,g,AM,CA1,Control,fmr1,2014
+9,rRNA18S,10,g,AM,CA1,Control,fmr1,2014
+564,rRNA18S,12,i,AM,CA1,Control,fmr1,2014
+518,rRNA18S,12,i,AM,CA1,Control,fmr1,2014
+467,rRNA18S,12,i,AM,CA1,Control,fmr1,2014
+168,rRNA18S,14,k,AM,CA1,Control,fmr1,2014
+137,rRNA18S,14,k,AM,CA1,Control,fmr1,2014
+110,rRNA18S,14,k,AM,CA1,Control,fmr1,2014
+968,rRNA18S,19,BL 8,AM,CA3,Control,B6,2013
+947,rRNA18S,19,BL 8,AM,CA3,Control,B6,2013
+1106,rRNA18S,19,BL 8,AM,CA3,Control,B6,2013
+2106,rRNA18S,20,BL 14,AM,CA3,Control,B6,2013
+2591,rRNA18S,20,BL 14,AM,CA3,Control,B6,2013
+2070,rRNA18S,20,BL 14,AM,CA3,Control,B6,2013
+3161,rRNA18S,21,BL 4,AM,CA3,Control,B6,2013
+3043,rRNA18S,21,BL 4,AM,CA3,Control,B6,2013
+3260,rRNA18S,21,BL 4,AM,CA3,Control,B6,2013
+1134,rRNA18S,23,BL 6,AM,CA3,Control,B6,2013
+1204,rRNA18S,23,BL 6,AM,CA3,Control,B6,2013
+1236,rRNA18S,23,BL 6,AM,CA3,Control,B6,2013
+1429,rRNA18S,24,BL 18,AM,CA3,Control,B6,2013
+1380,rRNA18S,24,BL 18,AM,CA3,Control,B6,2013
+1332,rRNA18S,24,BL 18,AM,CA3,Control,B6,2013
+626,rRNA18S,29,BL 10,PM,CA3,Control,B6,2013
+593,rRNA18S,29,BL 10,PM,CA3,Control,B6,2013
+635,rRNA18S,29,BL 10,PM,CA3,Control,B6,2013
+409,rRNA18S,30,BL 12,AM,CA3,Control,B6,2013
+379,rRNA18S,30,BL 12,AM,CA3,Control,B6,2013
+389,rRNA18S,30,BL 12,AM,CA3,Control,B6,2013
+4,fmr1,1,a,AM,CA1,Control,fmr1,2014
+3,fmr1,1,a,AM,CA1,Control,fmr1,2014
+4,fmr1,1,a,AM,CA1,Control,fmr1,2014
+2,fmr1,4,ab,AM,CA1,Control,B6,2014
+1,fmr1,4,ab,AM,CA1,Control,B6,2014
+3,fmr1,4,ab,AM,CA1,Control,B6,2014
+0,fmr1,8,e,AM,CA1,Control,fmr1,2014
+2,fmr1,8,e,AM,CA1,Control,fmr1,2014
+4,fmr1,8,e,AM,CA1,Control,fmr1,2014
+0,fmr1,10,g,AM,CA1,Control,fmr1,2014
+0,fmr1,10,g,AM,CA1,Control,fmr1,2014
+0,fmr1,10,g,AM,CA1,Control,fmr1,2014
+3,fmr1,12,i,AM,CA1,Control,fmr1,2014
+2,fmr1,12,i,AM,CA1,Control,fmr1,2014
+0,fmr1,12,i,AM,CA1,Control,fmr1,2014
+2,fmr1,14,k,AM,CA1,Control,fmr1,2014
+4,fmr1,14,k,AM,CA1,Control,fmr1,2014
+0,fmr1,14,k,AM,CA1,Control,fmr1,2014
+1,fmr1,19,BL 8,AM,CA3,Control,B6,2013
+1,fmr1,19,BL 8,AM,CA3,Control,B6,2013
+0,fmr1,19,BL 8,AM,CA3,Control,B6,2013
+3,fmr1,20,BL 14,AM,CA3,Control,B6,2013
+4,fmr1,20,BL 14,AM,CA3,Control,B6,2013
+0,fmr1,20,BL 14,AM,CA3,Control,B6,2013
+1,fmr1,21,BL 4,AM,CA3,Control,B6,2013
+1,fmr1,21,BL 4,AM,CA3,Control,B6,2013
+0,fmr1,21,BL 4,AM,CA3,Control,B6,2013
+0,fmr1,23,BL 6,AM,CA3,Control,B6,2013
+0,fmr1,23,BL 6,AM,CA3,Control,B6,2013
+0,fmr1,23,BL 6,AM,CA3,Control,B6,2013
+1,fmr1,24,BL 18,AM,CA3,Control,B6,2013
+0,fmr1,24,BL 18,AM,CA3,Control,B6,2013
+0,fmr1,24,BL 18,AM,CA3,Control,B6,2013
+3,fmr1,29,BL 10,PM,CA3,Control,B6,2013
+1,fmr1,29,BL 10,PM,CA3,Control,B6,2013
+0,fmr1,29,BL 10,PM,CA3,Control,B6,2013
+15,dlg4,1,a,AM,CA1,Control,fmr1,2014
+17,dlg4,1,a,AM,CA1,Control,fmr1,2014
+9,dlg4,1,a,AM,CA1,Control,fmr1,2014
+8,dlg4,4,ab,AM,CA1,Control,B6,2014
+7,dlg4,4,ab,AM,CA1,Control,B6,2014
+3,dlg4,4,ab,AM,CA1,Control,B6,2014
+21,dlg4,8,e,AM,CA1,Control,fmr1,2014
+16,dlg4,8,e,AM,CA1,Control,fmr1,2014
+10,dlg4,8,e,AM,CA1,Control,fmr1,2014
+2,dlg4,10,g,AM,CA1,Control,fmr1,2014
+0,dlg4,10,g,AM,CA1,Control,fmr1,2014
+0,dlg4,10,g,AM,CA1,Control,fmr1,2014
+29,dlg4,12,i,AM,CA1,Control,fmr1,2014
+20,dlg4,12,i,AM,CA1,Control,fmr1,2014
+10,dlg4,12,i,AM,CA1,Control,fmr1,2014
+19,dlg4,14,k,AM,CA1,Control,fmr1,2014
+16,dlg4,14,k,AM,CA1,Control,fmr1,2014
+15,dlg4,14,k,AM,CA1,Control,fmr1,2014
+12,dlg4,19,BL 8,AM,CA3,Control,B6,2013
+9,dlg4,19,BL 8,AM,CA3,Control,B6,2013
+9,dlg4,19,BL 8,AM,CA3,Control,B6,2013
+18,dlg4,20,BL 14,AM,CA3,Control,B6,2013
+19,dlg4,20,BL 14,AM,CA3,Control,B6,2013
+8,dlg4,20,BL 14,AM,CA3,Control,B6,2013
+10,dlg4,21,BL 4,AM,CA3,Control,B6,2013
+6,dlg4,21,BL 4,AM,CA3,Control,B6,2013
+7,dlg4,21,BL 4,AM,CA3,Control,B6,2013
+7,dlg4,23,BL 6,AM,CA3,Control,B6,2013
+4,dlg4,23,BL 6,AM,CA3,Control,B6,2013
+9,dlg4,23,BL 6,AM,CA3,Control,B6,2013
+8,dlg4,24,BL 18,AM,CA3,Control,B6,2013
+6,dlg4,24,BL 18,AM,CA3,Control,B6,2013
+10,dlg4,24,BL 18,AM,CA3,Control,B6,2013
+8,dlg4,29,BL 10,PM,CA3,Control,B6,2013
+12,dlg4,29,BL 10,PM,CA3,Control,B6,2013
+12,dlg4,29,BL 10,PM,CA3,Control,B6,2013
+3,dlg4,30,BL 12,AM,CA3,Control,B6,2013
+2,dlg4,30,BL 12,AM,CA3,Control,B6,2013
+4,dlg4,30,BL 12,AM,CA3,Control,B6,2013
+3,fos,1,a,AM,CA1,Control,fmr1,2014
+5,fos,1,a,AM,CA1,Control,fmr1,2014
+4,fos,1,a,AM,CA1,Control,fmr1,2014
+3,fos,4,ab,AM,CA1,Control,B6,2014
+1,fos,4,ab,AM,CA1,Control,B6,2014
+3,fos,4,ab,AM,CA1,Control,B6,2014
+6,fos,8,e,AM,CA1,Control,fmr1,2014
+11,fos,8,e,AM,CA1,Control,fmr1,2014
+8,fos,8,e,AM,CA1,Control,fmr1,2014
+0,fos,10,g,AM,CA1,Control,fmr1,2014
+0,fos,10,g,AM,CA1,Control,fmr1,2014
+2,fos,10,g,AM,CA1,Control,fmr1,2014
+17,fos,12,i,AM,CA1,Control,fmr1,2014
+14,fos,12,i,AM,CA1,Control,fmr1,2014
+16,fos,12,i,AM,CA1,Control,fmr1,2014
+4,fos,14,k,AM,CA1,Control,fmr1,2014
+7,fos,14,k,AM,CA1,Control,fmr1,2014
+3,fos,14,k,AM,CA1,Control,fmr1,2014
+0,fos,19,BL 8,AM,CA3,Control,B6,2013
+0,fos,19,BL 8,AM,CA3,Control,B6,2013
+0,fos,19,BL 8,AM,CA3,Control,B6,2013
+3,fos,20,BL 14,AM,CA3,Control,B6,2013
+1,fos,20,BL 14,AM,CA3,Control,B6,2013
+1,fos,20,BL 14,AM,CA3,Control,B6,2013
+2,fos,21,BL 4,AM,CA3,Control,B6,2013
+0,fos,21,BL 4,AM,CA3,Control,B6,2013
+5,fos,23,BL 6,AM,CA3,Control,B6,2013
+0,fos,23,BL 6,AM,CA3,Control,B6,2013
+1,fos,23,BL 6,AM,CA3,Control,B6,2013
+1,fos,24,BL 18,AM,CA3,Control,B6,2013
+1,fos,24,BL 18,AM,CA3,Control,B6,2013
+0,fos,24,BL 18,AM,CA3,Control,B6,2013
+0,fos,29,BL 10,PM,CA3,Control,B6,2013
+0,fos,29,BL 10,PM,CA3,Control,B6,2013
+0,fos,29,BL 10,PM,CA3,Control,B6,2013
+0,fos,30,BL 12,AM,CA3,Control,B6,2013
+0,fos,30,BL 12,AM,CA3,Control,B6,2013
+0,fos,30,BL 12,AM,CA3,Control,B6,2013
+31,gria,1,a,AM,CA1,Control,fmr1,2014
+38,gria,1,a,AM,CA1,Control,fmr1,2014
+38,gria,1,a,AM,CA1,Control,fmr1,2014
+18,gria,4,ab,AM,CA1,Control,B6,2014
+15,gria,4,ab,AM,CA1,Control,B6,2014
+20,gria,4,ab,AM,CA1,Control,B6,2014
+76,gria,8,e,AM,CA1,Control,fmr1,2014
+85,gria,8,e,AM,CA1,Control,fmr1,2014
+66,gria,8,e,AM,CA1,Control,fmr1,2014
+0,gria,10,g,AM,CA1,Control,fmr1,2014
+1,gria,10,g,AM,CA1,Control,fmr1,2014
+0,gria,10,g,AM,CA1,Control,fmr1,2014
+48,gria,12,i,AM,CA1,Control,fmr1,2014
+49,gria,12,i,AM,CA1,Control,fmr1,2014
+31,gria,12,i,AM,CA1,Control,fmr1,2014
+63,gria,14,k,AM,CA1,Control,fmr1,2014
+63,gria,14,k,AM,CA1,Control,fmr1,2014
+11,gria,19,BL 8,AM,CA3,Control,B6,2013
+10,gria,19,BL 8,AM,CA3,Control,B6,2013
+13,gria,19,BL 8,AM,CA3,Control,B6,2013
+24,gria,20,BL 14,AM,CA3,Control,B6,2013
+24,gria,20,BL 14,AM,CA3,Control,B6,2013
+18,gria,20,BL 14,AM,CA3,Control,B6,2013
+10,gria,21,BL 4,AM,CA3,Control,B6,2013
+6,gria,21,BL 4,AM,CA3,Control,B6,2013
+5,gria,21,BL 4,AM,CA3,Control,B6,2013
+9,gria,23,BL 6,AM,CA3,Control,B6,2013
+15,gria,23,BL 6,AM,CA3,Control,B6,2013
+14,gria,23,BL 6,AM,CA3,Control,B6,2013
+20,gria,24,BL 18,AM,CA3,Control,B6,2013
+19,gria,24,BL 18,AM,CA3,Control,B6,2013
+19,gria,24,BL 18,AM,CA3,Control,B6,2013
+11,gria,29,BL 10,PM,CA3,Control,B6,2013
+8,gria,29,BL 10,PM,CA3,Control,B6,2013
+8,gria,29,BL 10,PM,CA3,Control,B6,2013
+3,gria,30,BL 12,AM,CA3,Control,B6,2013
+3,gria,30,BL 12,AM,CA3,Control,B6,2013
+2,gria,30,BL 12,AM,CA3,Control,B6,2013
+8,grin,1,a,AM,CA1,Control,fmr1,2014
+9,grin,1,a,AM,CA1,Control,fmr1,2014
+11,grin,1,a,AM,CA1,Control,fmr1,2014
+3,grin,4,ab,AM,CA1,Control,B6,2014
+4,grin,4,ab,AM,CA1,Control,B6,2014
+4,grin,4,ab,AM,CA1,Control,B6,2014
+20,grin,8,e,AM,CA1,Control,fmr1,2014
+16,grin,8,e,AM,CA1,Control,fmr1,2014
+28,grin,8,e,AM,CA1,Control,fmr1,2014
+3,grin,10,g,AM,CA1,Control,fmr1,2014
+0,grin,10,g,AM,CA1,Control,fmr1,2014
+0,grin,10,g,AM,CA1,Control,fmr1,2014
+16,grin,12,i,AM,CA1,Control,fmr1,2014
+15,grin,12,i,AM,CA1,Control,fmr1,2014
+17,grin,12,i,AM,CA1,Control,fmr1,2014
+22,grin,14,k,AM,CA1,Control,fmr1,2014
+15,grin,14,k,AM,CA1,Control,fmr1,2014
+4,grin,19,BL 8,AM,CA3,Control,B6,2013
+2,grin,19,BL 8,AM,CA3,Control,B6,2013
+4,grin,19,BL 8,AM,CA3,Control,B6,2013
+5,grin,20,BL 14,AM,CA3,Control,B6,2013
+6,grin,20,BL 14,AM,CA3,Control,B6,2013
+4,grin,20,BL 14,AM,CA3,Control,B6,2013
+3,grin,21,BL 4,AM,CA3,Control,B6,2013
+1,grin,21,BL 4,AM,CA3,Control,B6,2013
+1,grin,21,BL 4,AM,CA3,Control,B6,2013
+4,grin,23,BL 6,AM,CA3,Control,B6,2013
+3,grin,23,BL 6,AM,CA3,Control,B6,2013
+3,grin,23,BL 6,AM,CA3,Control,B6,2013
+3,grin,24,BL 18,AM,CA3,Control,B6,2013
+5,grin,24,BL 18,AM,CA3,Control,B6,2013
+3,grin,24,BL 18,AM,CA3,Control,B6,2013
+2,grin,29,BL 10,PM,CA3,Control,B6,2013
+2,grin,29,BL 10,PM,CA3,Control,B6,2013
+0,grin,29,BL 10,PM,CA3,Control,B6,2013
+0,grin,30,BL 12,AM,CA3,Control,B6,2013
+1,grin,30,BL 12,AM,CA3,Control,B6,2013
+1,grin,30,BL 12,AM,CA3,Control,B6,2013
+24,nsf,1,a,AM,CA1,Control,fmr1,2014
+24,nsf,1,a,AM,CA1,Control,fmr1,2014
+24,nsf,1,a,AM,CA1,Control,fmr1,2014
+14,nsf,4,ab,AM,CA1,Control,B6,2014
+10,nsf,4,ab,AM,CA1,Control,B6,2014
+9,nsf,4,ab,AM,CA1,Control,B6,2014
+38,nsf,8,e,AM,CA1,Control,fmr1,2014
+40,nsf,8,e,AM,CA1,Control,fmr1,2014
+38,nsf,8,e,AM,CA1,Control,fmr1,2014
+2,nsf,10,g,AM,CA1,Control,fmr1,2014
+3,nsf,10,g,AM,CA1,Control,fmr1,2014
+2,nsf,10,g,AM,CA1,Control,fmr1,2014
+33,nsf,12,i,AM,CA1,Control,fmr1,2014
+32,nsf,12,i,AM,CA1,Control,fmr1,2014
+38,nsf,12,i,AM,CA1,Control,fmr1,2014
+30,nsf,14,k,AM,CA1,Control,fmr1,2014
+32,nsf,14,k,AM,CA1,Control,fmr1,2014
+23,nsf,14,k,AM,CA1,Control,fmr1,2014
+9,nsf,19,BL 8,AM,CA3,Control,B6,2013
+5,nsf,19,BL 8,AM,CA3,Control,B6,2013
+11,nsf,19,BL 8,AM,CA3,Control,B6,2013
+14,nsf,20,BL 14,AM,CA3,Control,B6,2013
+15,nsf,20,BL 14,AM,CA3,Control,B6,2013
+10,nsf,21,BL 4,AM,CA3,Control,B6,2013
+4,nsf,21,BL 4,AM,CA3,Control,B6,2013
+5,nsf,21,BL 4,AM,CA3,Control,B6,2013
+10,nsf,23,BL 6,AM,CA3,Control,B6,2013
+9,nsf,23,BL 6,AM,CA3,Control,B6,2013
+14,nsf,23,BL 6,AM,CA3,Control,B6,2013
+10,nsf,24,BL 18,AM,CA3,Control,B6,2013
+7,nsf,24,BL 18,AM,CA3,Control,B6,2013
+8,nsf,24,BL 18,AM,CA3,Control,B6,2013
+4,nsf,29,BL 10,PM,CA3,Control,B6,2013
+5,nsf,29,BL 10,PM,CA3,Control,B6,2013
+8,nsf,29,BL 10,PM,CA3,Control,B6,2013
+3,nsf,30,BL 12,AM,CA3,Control,B6,2013
+4,nsf,30,BL 12,AM,CA3,Control,B6,2013
+2,nsf,30,BL 12,AM,CA3,Control,B6,2013
+134,cam2kd,1,a,AM,CA1,Control,fmr1,2014
+123,cam2kd,1,a,AM,CA1,Control,fmr1,2014
+139,cam2kd,1,a,AM,CA1,Control,fmr1,2014
+41,cam2kd,4,ab,AM,CA1,Control,B6,2014
+32,cam2kd,4,ab,AM,CA1,Control,B6,2014
+42,cam2kd,4,ab,AM,CA1,Control,B6,2014
+301,cam2kd,8,e,AM,CA1,Control,fmr1,2014
+168,cam2kd,8,e,AM,CA1,Control,fmr1,2014
+223,cam2kd,8,e,AM,CA1,Control,fmr1,2014
+1,cam2kd,10,g,AM,CA1,Control,fmr1,2014
+4,cam2kd,10,g,AM,CA1,Control,fmr1,2014
+5,cam2kd,10,g,AM,CA1,Control,fmr1,2014
+177,cam2kd,12,i,AM,CA1,Control,fmr1,2014
+171,cam2kd,12,i,AM,CA1,Control,fmr1,2014
+158,cam2kd,12,i,AM,CA1,Control,fmr1,2014
+14,cam2kd,19,BL 8,AM,CA3,Control,B6,2013
+8,cam2kd,19,BL 8,AM,CA3,Control,B6,2013
+7,cam2kd,19,BL 8,AM,CA3,Control,B6,2013
+13,cam2kd,20,BL 14,AM,CA3,Control,B6,2013
+25,cam2kd,20,BL 14,AM,CA3,Control,B6,2013
+10,cam2kd,20,BL 14,AM,CA3,Control,B6,2013
+3,cam2kd,21,BL 4,AM,CA3,Control,B6,2013
+4,cam2kd,21,BL 4,AM,CA3,Control,B6,2013
+4,cam2kd,21,BL 4,AM,CA3,Control,B6,2013
+9,cam2kd,23,BL 6,AM,CA3,Control,B6,2013
+9,cam2kd,23,BL 6,AM,CA3,Control,B6,2013
+12,cam2kd,23,BL 6,AM,CA3,Control,B6,2013
+9,cam2kd,24,BL 18,AM,CA3,Control,B6,2013
+8,cam2kd,24,BL 18,AM,CA3,Control,B6,2013
+9,cam2kd,24,BL 18,AM,CA3,Control,B6,2013
+7,cam2kd,29,BL 10,PM,CA3,Control,B6,2013
+4,cam2kd,29,BL 10,PM,CA3,Control,B6,2013
+5,cam2kd,29,BL 10,PM,CA3,Control,B6,2013
+1,cam2kd,30,BL 12,AM,CA3,Control,B6,2013
+1,cam2kd,30,BL 12,AM,CA3,Control,B6,2013
+0,cam2kd,30,BL 12,AM,CA3,Control,B6,2013
+6,creb,1,a,AM,CA1,Control,fmr1,2014
+5,creb,1,a,AM,CA1,Control,fmr1,2014
+7,creb,1,a,AM,CA1,Control,fmr1,2014
+2,creb,4,ab,AM,CA1,Control,B6,2014
+4,creb,4,ab,AM,CA1,Control,B6,2014
+3,creb,4,ab,AM,CA1,Control,B6,2014
+3,creb,8,e,AM,CA1,Control,fmr1,2014
+3,creb,8,e,AM,CA1,Control,fmr1,2014
+4,creb,8,e,AM,CA1,Control,fmr1,2014
+0,creb,10,g,AM,CA1,Control,fmr1,2014
+0,creb,10,g,AM,CA1,Control,fmr1,2014
+0,creb,10,g,AM,CA1,Control,fmr1,2014
+4,creb,12,i,AM,CA1,Control,fmr1,2014
+7,creb,12,i,AM,CA1,Control,fmr1,2014
+6,creb,12,i,AM,CA1,Control,fmr1,2014
+3,creb,14,k,AM,CA1,Control,fmr1,2014
+5,creb,14,k,AM,CA1,Control,fmr1,2014
+3,creb,14,k,AM,CA1,Control,fmr1,2014
+1,creb,19,BL 8,AM,CA3,Control,B6,2013
+1,creb,19,BL 8,AM,CA3,Control,B6,2013
+1,creb,19,BL 8,AM,CA3,Control,B6,2013
+1,creb,20,BL 14,AM,CA3,Control,B6,2013
+1,creb,20,BL 14,AM,CA3,Control,B6,2013
+1,creb,20,BL 14,AM,CA3,Control,B6,2013
+0,creb,21,BL 4,AM,CA3,Control,B6,2013
+0,creb,21,BL 4,AM,CA3,Control,B6,2013
+0,creb,21,BL 4,AM,CA3,Control,B6,2013
+0,creb,23,BL 6,AM,CA3,Control,B6,2013
+0,creb,23,BL 6,AM,CA3,Control,B6,2013
+0,creb,23,BL 6,AM,CA3,Control,B6,2013
+0,creb,24,BL 18,AM,CA3,Control,B6,2013
+0,creb,24,BL 18,AM,CA3,Control,B6,2013
+0,creb,24,BL 18,AM,CA3,Control,B6,2013
+0,creb,29,BL 10,PM,CA3,Control,B6,2013
+0,creb,29,BL 10,PM,CA3,Control,B6,2013
+0,creb,29,BL 10,PM,CA3,Control,B6,2013
+0,creb,30,BL 12,AM,CA3,Control,B6,2013
+0,creb,30,BL 12,AM,CA3,Control,B6,2013
+0,creb,30,BL 12,AM,CA3,Control,B6,2013

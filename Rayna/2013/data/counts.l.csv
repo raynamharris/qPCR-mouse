@@ -1,0 +1,256 @@
+"","ind","strain.APA","region","gene","count"
+"1","ab","B6 Control","CA1","cam2kd",38.3333333333333
+"2","a wt","B6 Trained","CA1","cam2kd",59.5
+"3","a","fmr1 Control","CA1","cam2kd",132
+"4","e","fmr1 Control","CA1","cam2kd",230.666666666667
+"5","g","fmr1 Control","CA1","cam2kd",3.33333333333333
+"6","i","fmr1 Control","CA1","cam2kd",168.666666666667
+"7","b ","fmr1 Trained","CA1","cam2kd",183
+"8","c","fmr1 Trained","CA1","cam2kd",649.666666666667
+"9","f","fmr1 Trained","CA1","cam2kd",77
+"10","h","fmr1 Trained","CA1","cam2kd",1095
+"11","j","fmr1 Trained","CA1","cam2kd",23.6666666666667
+"12","BL 10","B6 Control","CA3","cam2kd",5.33333333333333
+"13","BL 12","B6 Control","CA3","cam2kd",0.666666666666667
+"14","BL 14","B6 Control","CA3","cam2kd",16
+"15","BL 18","B6 Control","CA3","cam2kd",8.66666666666667
+"16","BL 4","B6 Control","CA3","cam2kd",3.66666666666667
+"17","BL 6","B6 Control","CA3","cam2kd",10
+"18","BL 8","B6 Control","CA3","cam2kd",9.66666666666667
+"19","BL 11","B6 Trained","CA3","cam2kd",10.3333333333333
+"20","BL 13","B6 Trained","CA3","cam2kd",2.33333333333333
+"21","BL 15","B6 Trained","CA3","cam2kd",27.3333333333333
+"22","BL 19","B6 Trained","CA3","cam2kd",9
+"23","BL 3","B6 Trained","CA3","cam2kd",4
+"24","BL 5","B6 Trained","CA3","cam2kd",4
+"25","BL 7","B6 Trained","CA3","cam2kd",38
+"26","BL 9","B6 Trained","CA3","cam2kd",3
+"27","ab","B6 Control","CA1","dlg4",6
+"28","a","fmr1 Control","CA1","dlg4",13.6666666666667
+"29","e","fmr1 Control","CA1","dlg4",15.6666666666667
+"30","g","fmr1 Control","CA1","dlg4",0.666666666666667
+"31","i","fmr1 Control","CA1","dlg4",19.6666666666667
+"32","k","fmr1 Control","CA1","dlg4",16.6666666666667
+"33","BL 10","B6 Control","CA3","dlg4",10.6666666666667
+"34","BL 12","B6 Control","CA3","dlg4",3
+"35","BL 14","B6 Control","CA3","dlg4",15
+"36","BL 18","B6 Control","CA3","dlg4",8
+"37","BL 4","B6 Control","CA3","dlg4",7.66666666666667
+"38","BL 6","B6 Control","CA3","dlg4",6.66666666666667
+"39","BL 8","B6 Control","CA3","dlg4",10
+"40","ab","B6 Control","CA1","fos",2.33333333333333
+"41","a","fmr1 Control","CA1","fos",4
+"42","e","fmr1 Control","CA1","fos",8.33333333333333
+"43","g","fmr1 Control","CA1","fos",0.666666666666667
+"44","i","fmr1 Control","CA1","fos",15.6666666666667
+"45","k","fmr1 Control","CA1","fos",4.66666666666667
+"46","BL 10","B6 Control","CA3","fos",0
+"47","BL 12","B6 Control","CA3","fos",0
+"48","BL 14","B6 Control","CA3","fos",1.66666666666667
+"49","BL 18","B6 Control","CA3","fos",0.666666666666667
+"50","BL 4","B6 Control","CA3","fos",1
+"51","BL 6","B6 Control","CA3","fos",2
+"52","BL 8","B6 Control","CA3","fos",0
+"53","ab","B6 Control","CA1","gria",17.6666666666667
+"54","a wt","B6 Trained","CA1","gria",26
+"55","a","fmr1 Control","CA1","gria",35.6666666666667
+"56","e","fmr1 Control","CA1","gria",75.6666666666667
+"57","g","fmr1 Control","CA1","gria",0.333333333333333
+"58","i","fmr1 Control","CA1","gria",42.6666666666667
+"59","k","fmr1 Control","CA1","gria",63
+"60","b ","fmr1 Trained","CA1","gria",49
+"61","c","fmr1 Trained","CA1","gria",294
+"62","f","fmr1 Trained","CA1","gria",30.3333333333333
+"63","h","fmr1 Trained","CA1","gria",17
+"64","j","fmr1 Trained","CA1","gria",4
+"65","BL 10","B6 Control","CA3","gria",9
+"66","BL 12","B6 Control","CA3","gria",2.66666666666667
+"67","BL 14","B6 Control","CA3","gria",22
+"68","BL 18","B6 Control","CA3","gria",19.3333333333333
+"69","BL 4","B6 Control","CA3","gria",7
+"70","BL 6","B6 Control","CA3","gria",12.6666666666667
+"71","BL 8","B6 Control","CA3","gria",11.3333333333333
+"72","BL 1","B6 Trained","CA3","gria",18.6666666666667
+"73","BL 11","B6 Trained","CA3","gria",13.6666666666667
+"74","BL 13","B6 Trained","CA3","gria",12
+"75","BL 15","B6 Trained","CA3","gria",37
+"76","BL 19","B6 Trained","CA3","gria",10.6666666666667
+"77","BL 2","B6 Trained","CA3","gria",22.6666666666667
+"78","BL 3","B6 Trained","CA3","gria",4.66666666666667
+"79","BL 5","B6 Trained","CA3","gria",3.66666666666667
+"80","BL 7","B6 Trained","CA3","gria",30.6666666666667
+"81","BL 9","B6 Trained","CA3","gria",1.33333333333333
+"82","ab","B6 Control","CA1","grim",4.33333333333333
+"83","a wt","B6 Trained","CA1","grim",6.66666666666667
+"84","a","fmr1 Control","CA1","grim",4
+"85","e","fmr1 Control","CA1","grim",7
+"86","g","fmr1 Control","CA1","grim",0
+"87","i","fmr1 Control","CA1","grim",7
+"88","k","fmr1 Control","CA1","grim",6
+"89","b ","fmr1 Trained","CA1","grim",12.3333333333333
+"90","c","fmr1 Trained","CA1","grim",24.3333333333333
+"91","f","fmr1 Trained","CA1","grim",5.33333333333333
+"92","h","fmr1 Trained","CA1","grim",3.33333333333333
+"93","j","fmr1 Trained","CA1","grim",0.666666666666667
+"94","BL 10","B6 Control","CA3","grim",2.33333333333333
+"95","BL 12","B6 Control","CA3","grim",1
+"96","BL 14","B6 Control","CA3","grim",4.33333333333333
+"97","BL 18","B6 Control","CA3","grim",1.66666666666667
+"98","BL 4","B6 Control","CA3","grim",1.33333333333333
+"99","BL 6","B6 Control","CA3","grim",1.66666666666667
+"100","BL 8","B6 Control","CA3","grim",4.66666666666667
+"101","BL 1","B6 Trained","CA3","grim",0.333333333333333
+"102","BL 11","B6 Trained","CA3","grim",2
+"103","BL 13","B6 Trained","CA3","grim",1
+"104","BL 15","B6 Trained","CA3","grim",17
+"105","BL 19","B6 Trained","CA3","grim",3.66666666666667
+"106","BL 2","B6 Trained","CA3","grim",0
+"107","BL 3","B6 Trained","CA3","grim",0.666666666666667
+"108","BL 5","B6 Trained","CA3","grim",2.33333333333333
+"109","BL 7","B6 Trained","CA3","grim",11.6666666666667
+"110","BL 9","B6 Trained","CA3","grim",1
+"111","ab","B6 Control","CA1","grin",3.66666666666667
+"112","a wt","B6 Trained","CA1","grin",8
+"113","a","fmr1 Control","CA1","grin",9.33333333333333
+"114","e","fmr1 Control","CA1","grin",21.3333333333333
+"115","g","fmr1 Control","CA1","grin",1
+"116","i","fmr1 Control","CA1","grin",16
+"117","k","fmr1 Control","CA1","grin",18.5
+"118","b ","fmr1 Trained","CA1","grin",15
+"119","c","fmr1 Trained","CA1","grin",63
+"120","f","fmr1 Trained","CA1","grin",15
+"121","h","fmr1 Trained","CA1","grin",5.33333333333333
+"122","j","fmr1 Trained","CA1","grin",1.33333333333333
+"123","BL 10","B6 Control","CA3","grin",1.33333333333333
+"124","BL 12","B6 Control","CA3","grin",0.666666666666667
+"125","BL 14","B6 Control","CA3","grin",5
+"126","BL 18","B6 Control","CA3","grin",3.66666666666667
+"127","BL 4","B6 Control","CA3","grin",1.66666666666667
+"128","BL 6","B6 Control","CA3","grin",3.33333333333333
+"129","BL 8","B6 Control","CA3","grin",3.33333333333333
+"130","BL 1","B6 Trained","CA3","grin",4.66666666666667
+"131","BL 11","B6 Trained","CA3","grin",4
+"132","BL 13","B6 Trained","CA3","grin",1.66666666666667
+"133","BL 15","B6 Trained","CA3","grin",9
+"134","BL 19","B6 Trained","CA3","grin",5
+"135","BL 2","B6 Trained","CA3","grin",6.33333333333333
+"136","BL 3","B6 Trained","CA3","grin",1
+"137","BL 5","B6 Trained","CA3","grin",1.33333333333333
+"138","BL 7","B6 Trained","CA3","grin",8.33333333333333
+"139","BL 9","B6 Trained","CA3","grin",0.666666666666667
+"140","ab","B6 Control","CA1","nsf",11
+"141","a wt","B6 Trained","CA1","nsf",11.6666666666667
+"142","a","fmr1 Control","CA1","nsf",24
+"143","e","fmr1 Control","CA1","nsf",38.6666666666667
+"144","g","fmr1 Control","CA1","nsf",2.33333333333333
+"145","i","fmr1 Control","CA1","nsf",34.3333333333333
+"146","k","fmr1 Control","CA1","nsf",28.3333333333333
+"147","b ","fmr1 Trained","CA1","nsf",24.6666666666667
+"148","c","fmr1 Trained","CA1","nsf",118
+"149","f","fmr1 Trained","CA1","nsf",17.3333333333333
+"150","h","fmr1 Trained","CA1","nsf",222.666666666667
+"151","j","fmr1 Trained","CA1","nsf",2.66666666666667
+"152","BL 10","B6 Control","CA3","nsf",5.66666666666667
+"153","BL 12","B6 Control","CA3","nsf",3
+"154","BL 14","B6 Control","CA3","nsf",14.5
+"155","BL 18","B6 Control","CA3","nsf",8.33333333333333
+"156","BL 4","B6 Control","CA3","nsf",6.33333333333333
+"157","BL 6","B6 Control","CA3","nsf",11
+"158","BL 8","B6 Control","CA3","nsf",8.33333333333333
+"159","BL 1","B6 Trained","CA3","nsf",5.66666666666667
+"160","BL 11","B6 Trained","CA3","nsf",18
+"161","BL 13","B6 Trained","CA3","nsf",4.66666666666667
+"162","BL 15","B6 Trained","CA3","nsf",36.3333333333333
+"163","BL 19","B6 Trained","CA3","nsf",20
+"164","BL 2","B6 Trained","CA3","nsf",12.3333333333333
+"165","BL 3","B6 Trained","CA3","nsf",1
+"166","BL 5","B6 Trained","CA3","nsf",6.33333333333333
+"167","BL 7","B6 Trained","CA3","nsf",32.6666666666667
+"168","BL 9","B6 Trained","CA3","nsf",2.66666666666667
+"169","ab","B6 Control","CA1","pkmz",1.66666666666667
+"170","a wt","B6 Trained","CA1","pkmz",3.33333333333333
+"171","a","fmr1 Control","CA1","pkmz",4
+"172","e","fmr1 Control","CA1","pkmz",9.33333333333333
+"173","g","fmr1 Control","CA1","pkmz",0
+"174","i","fmr1 Control","CA1","pkmz",10.3333333333333
+"175","k","fmr1 Control","CA1","pkmz",6
+"176","b ","fmr1 Trained","CA1","pkmz",3
+"177","c","fmr1 Trained","CA1","pkmz",25
+"178","f","fmr1 Trained","CA1","pkmz",4.66666666666667
+"179","h","fmr1 Trained","CA1","pkmz",3.33333333333333
+"180","j","fmr1 Trained","CA1","pkmz",0.666666666666667
+"181","BL 10","B6 Control","CA3","pkmz",7
+"182","BL 12","B6 Control","CA3","pkmz",4.33333333333333
+"183","BL 14","B6 Control","CA3","pkmz",6.66666666666667
+"184","BL 18","B6 Control","CA3","pkmz",5.33333333333333
+"185","BL 4","B6 Control","CA3","pkmz",9.33333333333333
+"186","BL 6","B6 Control","CA3","pkmz",4.33333333333333
+"187","BL 8","B6 Control","CA3","pkmz",5
+"188","BL 1","B6 Trained","CA3","pkmz",3.66666666666667
+"189","BL 11","B6 Trained","CA3","pkmz",5
+"190","BL 13","B6 Trained","CA3","pkmz",5.33333333333333
+"191","BL 15","B6 Trained","CA3","pkmz",61
+"192","BL 19","B6 Trained","CA3","pkmz",6.66666666666667
+"193","BL 2","B6 Trained","CA3","pkmz",4.33333333333333
+"194","BL 3","B6 Trained","CA3","pkmz",6.66666666666667
+"195","BL 5","B6 Trained","CA3","pkmz",5.33333333333333
+"196","BL 7","B6 Trained","CA3","pkmz",42.6666666666667
+"197","BL 9","B6 Trained","CA3","pkmz",1.33333333333333
+"198","ab","B6 Control","CA1","rpl19",1128.66666666667
+"199","a wt","B6 Trained","CA1","rpl19",1197.66666666667
+"200","a","fmr1 Control","CA1","rpl19",2012.33333333333
+"201","e","fmr1 Control","CA1","rpl19",5495
+"202","g","fmr1 Control","CA1","rpl19",174.666666666667
+"203","i","fmr1 Control","CA1","rpl19",1943.33333333333
+"204","k","fmr1 Control","CA1","rpl19",2904.33333333333
+"205","b ","fmr1 Trained","CA1","rpl19",1508
+"206","c","fmr1 Trained","CA1","rpl19",20762
+"207","f","fmr1 Trained","CA1","rpl19",684
+"208","h","fmr1 Trained","CA1","rpl19",2448.66666666667
+"209","j","fmr1 Trained","CA1","rpl19",1220.66666666667
+"210","BL 10","B6 Control","CA3","rpl19",8
+"211","BL 12","B6 Control","CA3","rpl19",4.33333333333333
+"212","BL 14","B6 Control","CA3","rpl19",17.6666666666667
+"213","BL 18","B6 Control","CA3","rpl19",7
+"214","BL 4","B6 Control","CA3","rpl19",14.3333333333333
+"215","BL 6","B6 Control","CA3","rpl19",10
+"216","BL 8","B6 Control","CA3","rpl19",13.3333333333333
+"217","BL 1","B6 Trained","CA3","rpl19",14.3333333333333
+"218","BL 11","B6 Trained","CA3","rpl19",16.6666666666667
+"219","BL 13","B6 Trained","CA3","rpl19",2.66666666666667
+"220","BL 15","B6 Trained","CA3","rpl19",36
+"221","BL 19","B6 Trained","CA3","rpl19",11
+"222","BL 2","B6 Trained","CA3","rpl19",14.6666666666667
+"223","BL 3","B6 Trained","CA3","rpl19",5.66666666666667
+"224","BL 5","B6 Trained","CA3","rpl19",6
+"225","BL 7","B6 Trained","CA3","rpl19",25.6666666666667
+"226","BL 9","B6 Trained","CA3","rpl19",4.33333333333333
+"227","ab","B6 Control","CA1","rRNA18S",54
+"228","a wt","B6 Trained","CA1","rRNA18S",121.666666666667
+"229","a","fmr1 Control","CA1","rRNA18S",76
+"230","e","fmr1 Control","CA1","rRNA18S",122.666666666667
+"231","g","fmr1 Control","CA1","rRNA18S",13
+"232","i","fmr1 Control","CA1","rRNA18S",516.333333333333
+"233","k","fmr1 Control","CA1","rRNA18S",138.333333333333
+"234","b ","fmr1 Trained","CA1","rRNA18S",101.333333333333
+"235","c","fmr1 Trained","CA1","rRNA18S",314
+"236","f","fmr1 Trained","CA1","rRNA18S",107.666666666667
+"237","h","fmr1 Trained","CA1","rRNA18S",67.6666666666667
+"238","j","fmr1 Trained","CA1","rRNA18S",37.6666666666667
+"239","BL 10","B6 Control","CA3","rRNA18S",618
+"240","BL 12","B6 Control","CA3","rRNA18S",392.333333333333
+"241","BL 14","B6 Control","CA3","rRNA18S",2255.66666666667
+"242","BL 18","B6 Control","CA3","rRNA18S",1380.33333333333
+"243","BL 4","B6 Control","CA3","rRNA18S",3154.66666666667
+"244","BL 6","B6 Control","CA3","rRNA18S",1191.33333333333
+"245","BL 8","B6 Control","CA3","rRNA18S",1007
+"246","BL 1","B6 Trained","CA3","rRNA18S",10521
+"247","BL 11","B6 Trained","CA3","rRNA18S",1492.66666666667
+"248","BL 13","B6 Trained","CA3","rRNA18S",516
+"249","BL 15","B6 Trained","CA3","rRNA18S",6755
+"250","BL 19","B6 Trained","CA3","rRNA18S",1252.66666666667
+"251","BL 2","B6 Trained","CA3","rRNA18S",9270.66666666667
+"252","BL 3","B6 Trained","CA3","rRNA18S",625
+"253","BL 5","B6 Trained","CA3","rRNA18S",1204.33333333333
+"254","BL 7","B6 Trained","CA3","rRNA18S",3239
+"255","BL 9","B6 Trained","CA3","rRNA18S",418.333333333333
