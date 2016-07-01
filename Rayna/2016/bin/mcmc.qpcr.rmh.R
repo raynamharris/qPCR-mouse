@@ -4,9 +4,11 @@
 ## This script is for analyzing data related to the mouse qpcr projects
 ##=============================================================================================================#
 
-##script stored in "Z:/NSB_2016/IntegrativeNeuroscience/qPCR-mouse/Rayna/bin"
+## This github repo is cloned in two places
+## 1. NS&B sever: "Z:/NSB_2016/IntegrativeNeuroscience/qPCR-mouse/"
+## 2. Rayna's computer: "/Users/raynamharris/Github/qPCR-mouse"
 ## set path to data dir
-setwd("Z:/NSB_2016/IntegrativeNeuroscience/qPCR-mouse/Rayna/data_xlxs")
+setwd("/Users/raynamharris/Github/qPCR-mouse/Rayna/2016/data/")
 
 ## The process:
 ## 1. Loop over all experimental prjoect files and create one big "rawdata" dataframe
@@ -87,7 +89,7 @@ counts <- cleandata %>%
 
 
 ## 6. Join count and sample info, sort by sample, order in logical fashion
-samples <- read.csv("Z:/NSB_2016/IntegrativeNeuroscience/qPCR-mouse/Rayna/data_samples/sample_info.csv", header=TRUE, sep="," )
+samples <- read.csv("sample_info.csv", header=TRUE, sep="," )
 
 data <- inner_join(counts, samples) %>%
   arrange(sample) %>%
