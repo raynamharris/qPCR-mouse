@@ -22,11 +22,13 @@ setwd("/Users/raynamharris/Github/qPCR-mouse/Rayna/2016/data/")
 ## 9. Mixed model with diagnostic plots
 ## 10. Plot the data!!
 
+#install.packages("rJava")
 #install.packages("xlsx", dependencies = TRUE) #note, must have Java installed on computer
 #install.packages("plyr")
 #install.packages("dplyr")
 #install.packages("MCMC.qpcr")
 #install.packages("reshape2")
+library(rJava)
 library(xlsx)
 library(dplyr)
 library(plyr)
