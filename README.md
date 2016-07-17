@@ -1,11 +1,15 @@
-# Integrative Molecular Neuroscience
-## Mouse qPCR Projects
+# Integrative Hippocampus Module
+This repo will contain all the data, scripts, and results from NS&B student projects form the Integrative Hippocampus Module.
 
-This repo contains all sorts of stuff that I am some students are working on this summer. 
+## Organization
 
-We will be doing some qPCR experiments on mouse hippocampus tissues. 
+### bin
+All the R scripts and other programs will be stored in bin. Additionally, the accomanying R markdown (.Rmd) and html files for project presentations will be stored here.
+- SampleWrangling.R
+- SampleWrangling.Rmd	
+- SampleWrangling.html
+- mcmc.qpcr.example.rmh
 
-We will be using the MCMC.qPCR package to analyze data.
 
 ## qPCR Data Collection
 qPCR data are collected using the QuantStudio3 from Thermo Fisher/ Applied Biosystems and analyzed using the QuantStudio Design and Analysis Software.
