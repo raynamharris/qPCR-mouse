@@ -1,0 +1,92 @@
+---
+title: "Integrative Hippocampus Module"
+author: "Neural Systems & Behavior 2016"
+date: "July 15, 2016"
+output: html_document
+---
+## Overview
+This document will summarize the samples we have available for gene expression analysis during the Integrative Hippocampus Module. We have three datasets that can be combined or sliced as the students see fit. 
+- Educational Exercise Samples
+- Huntington (Htt) vs Wild Type Samples
+- Fragile X Mental Retardation Protein 1 (FMR1) vs Wild Type Samples
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(reshape2)
+
+setwd("~/Github/qPCR-mouse/data")
+punches <- read.csv("NSBpunches.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
+animals <- read.csv("NSBanimals.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
+punches$mouse <- as.factor(punches$Mouse)
+animals$mouse <- as.factor(animals$Mouse)
+
+## join animals and punches using the mouse id
+alldata <- punches %>% 
+  left_join(animals, by="Mouse")
+
+## 2. clean data 
+alldata$Mouse <- as.factor(alldata$Mouse)
+alldata$Date <- as.Date(alldata$Date, "%m/%d/%y")
+alldata$Slice <- as.factor(alldata$Slice)
+alldata$Punch <- as.factor(alldata$Punch)
+alldata$Tube <- as.factor(alldata$Tube)
+alldata$Slice.collector <- as.factor(alldata$Slice.collector)
+alldata$Group <- as.factor(alldata$Group)
+alldata$APA <- as.factor(alldata$APA)
+alldata$Genotype <- as.factor(alldata$Genotype)
+alldata$storagebox <- as.factor(alldata$storagebox)
+alldata$Conflict <- as.factor(alldata$Conflict)
+alldata$mouse.x <- NULL
+```
+
+## Group Project: FMR1 - conflict - slices
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+FMR1_conflict_slices <- alldata %>%
+  filter(Punch == "slice", Genotype %in% c("WT", "FMR1"), 
+         Conflict == "Conflict", Slice != "5", 
+         Mouse != "16-119C", Mouse != "16-119D", Mouse != "16-118C", Mouse != "16-118D") %>%
+  select(Mouse, Group, Slice,Punch, Tube, storagebox) %>%
+  arrange(Group, Mouse) 
+
+FMR1_conflict_animals <- dcast(FMR1_conflict_slices, Mouse + Group ~ Slice, value.var="Slice")
+```
+
+```{r results = 'asis', echo=FALSE}
+knitr::kable(FMR1_conflict_animals)
+```
+
+
+## Huntington (Htt) vs Wild Type Samples
+The following mice were processed by students in the Hippocampus Modules in 2015 and 2016.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+HttMice <- alldata %>%
+  filter(Punch != "slice", Genotype != "FMR1", Genotype != "WT") %>%
+  distinct(Mouse, Genotype, Group) %>%
+  arrange(Mouse)
+
+HttTissues <- alldata %>%
+  filter(Punch != "slice", Genotype != "FMR1", Genotype != "WT")  %>%
+  select(Mouse, Genotype, Group, Punch) %>%
+  arrange(Group, Genotype, Punch) 
+#HttTissues <- (count(HttTissues, vars=c("Group","Punch")))
+#HttTissues <- spread(HttTissues, Punch, freq)
+```
+
+```{r results = 'asis', echo=FALSE}
+#knitr::kable(HttGroups)
+```
+
+#### Number of Animals Processed
+Genotype | Experience | Sample Size
+---------|------------|------------
+Htt (YAC128) | HomeCage | 5
+Htt (YAC128) | No Shock | 2
+Htt (YAC128) | Trained | 5
+WT (FVB/NJ) | HomeCage | 3
+WT (FVB/NJ) | No Shock | 2
+WT (FVB/NJ) | Trained | 4
+
+
