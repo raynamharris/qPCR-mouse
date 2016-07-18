@@ -4,7 +4,7 @@ This repo will contain all the data, scripts, and results from NS&B student proj
 ## Organization
 
 ### bin
-All the R scripts and other programs will be stored in bin. Additionally, the accomanying R markdown (.Rmd) and html files for project presentations will be stored here.
+All the R scripts and other programs will be stored in bin. Additionally, the accompanying R markdown (.Rmd) and html files for project presentations will be stored here.
 - SampleWrangling.R
 - SampleWrangling.Rmd	
 - SampleWrangling.html
