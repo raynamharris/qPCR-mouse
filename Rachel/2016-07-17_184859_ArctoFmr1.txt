@@ -1,0 +1,117 @@
+* Block Type = 96-Well 0.1-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 04-04-2016
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 04-04-2016
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 04-04-2016
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 04-04-2016
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 04-04-2016
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 04-04-2016
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 04-04-2016
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 04-04-2016
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 04-04-2016
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 04-04-2016
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 04-04-2016
+* Chemistry = SYBR_GREEN
+* Date Created = 2016-07-18 09:00:03 AM EDT
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = G:\rachel\2016-07-17_184859_FostoRpl19.eds
+* Experiment Name = 2016-07-17_184859_ArctoFmr1
+* Experiment Run End Time = 2016-07-18 04:41:13 AM EDT
+* Experiment Type = Standard Curve
+* Instrument Name =       272310148
+* Instrument Serial Number = 272310148
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	AMPNC	PRFLOW	NOISE	HIGHSD	Tm1	Tm2	Tm3	Tm4
+4	A4	false		Dlg41	STANDARD	SYBR	None	19.975	19.778	0.530	64.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	13	Amp		0.995	N	N	N	Y	86.607			
+5	A5	false		Dlg41	STANDARD	SYBR	None	20.181	19.778	0.530	64.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.974	N	N	N	Y	86.885			
+6	A6	false		Dlg41	STANDARD	SYBR	None	19.177	19.778	0.530	64.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	13	Amp		0.972	N	N	N	Y	87.025			
+7	A7	false		CREB1	STANDARD	SYBR	None	21.233	20.599	0.574	64.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	14	Amp		0.987	N	N	N	Y	80.896			
+8	A8	false		CREB1	STANDARD	SYBR	None	20.451	20.599	0.574	64.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	14	Amp		0.976	N	N	N	Y	81.035			
+9	A9	false		CREB1	STANDARD	SYBR	None	20.115	20.599	0.574	64.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	14	Amp		0.973	N	N	N	Y	81.035			
+10	A10	false		Rpl191	STANDARD	SYBR	None	16.969	16.534	0.567	64.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.991	N	N	N	Y	82.567			
+11	A11	false		Rpl191	STANDARD	SYBR	None	16.742	16.534	0.567	64.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.983	N	N	N	Y	82.985			
+12	A12	false		Rpl191	STANDARD	SYBR	None	15.893	16.534	0.567	64.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.889	N	N	N	Y	83.125			
+16	B4	false		Dlg41	STANDARD	SYBR	None	21.373	20.859	0.635	32.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.991	N	N	N	Y	86.607			
+17	B5	false		Dlg41	STANDARD	SYBR	None	21.055	20.859	0.635	32.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.989	N	N	N	Y	86.746			
+18	B6	false		Dlg41	STANDARD	SYBR	None	20.149	20.859	0.635	32.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	13	Amp		0.981	N	N	N	Y	86.885			
+19	B7	false		CREB1	STANDARD	SYBR	None	23.055	21.727	1.202	32.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	15	Amp		0.996	N	N	N	Y	80.896			
+20	B8	false		CREB1	STANDARD	SYBR	None	21.413	21.727	1.202	32.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	15	Amp		0.992	N	N	N	Y	80.896			
+21	B9	false		CREB1	STANDARD	SYBR	None	20.713	21.727	1.202	32.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	13	Amp		0.996	N	N	N	Y	81.175			
+22	B10	false		Rpl191	STANDARD	SYBR	None	17.768	17.292	0.527	32.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.884	N	N	N	Y	82.567			
+23	B11	false		Rpl191	STANDARD	SYBR	None	17.384	17.292	0.527	32.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	10	Amp		0.994	N	N	N	Y	82.846			
+24	B12	false		Rpl191	STANDARD	SYBR	None	16.725	17.292	0.527	32.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	10	Amp		0.984	N	Y	N	Y	82.985			
+28	C4	false		Dlg41	STANDARD	SYBR	None	22.944	21.968	1.030	16.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	15	Amp		0.996	N	N	N	Y	86.467			
+29	C5	false		Dlg41	STANDARD	SYBR	None	22.070	21.968	1.030	16.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.993	N	N	N	Y	86.746			
+30	C6	false		Dlg41	STANDARD	SYBR	None	20.891	21.968	1.030	16.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.988	N	N	N	Y	86.885			
+31	C7	false		CREB1	STANDARD	SYBR	None	22.945	22.446	0.458	16.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	16	Amp		0.998	N	N	N	N	80.896			
+32	C8	false		CREB1	STANDARD	SYBR	None	22.347	22.446	0.458	16.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	15	Amp		0.997	N	N	N	N	80.896			
+33	C9	false		CREB1	STANDARD	SYBR	None	22.046	22.446	0.458	16.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	14	Amp		0.996	N	N	N	N	81.035			
+34	C10	false		Rpl191	STANDARD	SYBR	None	19.125	18.455	0.668	16.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.993	N	N	N	Y	82.428			
+35	C11	false		Rpl191	STANDARD	SYBR	None	18.451	18.455	0.668	16.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	12	Amp		0.993	N	N	N	Y	82.707			
+36	C12	false		Rpl191	STANDARD	SYBR	None	17.788	18.455	0.668	16.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	11	Amp		0.994	N	N	N	Y	82.846			
+40	D4	false		Dlg41	STANDARD	SYBR	None	25.490	23.431	1.998	8.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	18	Amp		0.995	N	N	N	Y	86.328			
+41	D5	false		Dlg41	STANDARD	SYBR	None	23.301	23.431	1.998	8.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	15	Amp		0.995	N	N	N	Y	86.746			
+42	D6	false		Dlg41	STANDARD	SYBR	None	21.501	23.431	1.998	8.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	14	Amp		0.990	N	N	N	Y	86.746			
+43	D7	false		CREB1	STANDARD	SYBR	None	24.769	23.651	0.995	8.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	18	Amp		0.998	N	N	N	Y	80.757			
+44	D8	false		CREB1	STANDARD	SYBR	None	23.321	23.651	0.995	8.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	17	Amp		0.996	N	N	N	Y	80.896			
+45	D9	false		CREB1	STANDARD	SYBR	None	22.863	23.651	0.995	8.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	15	Amp		0.997	N	N	N	Y	81.035			
+46	D10	false		Rpl191	STANDARD	SYBR	None	20.101	19.434	0.664	8.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	13	Amp		0.995	N	N	N	Y	82.428			
+47	D11	false		Rpl191	STANDARD	SYBR	None	19.427	19.434	0.664	8.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	12	Amp		0.994	N	N	N	Y	82.707			
+48	D12	false		Rpl191	STANDARD	SYBR	None	18.773	19.434	0.664	8.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	12	Amp		0.994	N	N	N	Y	82.846			
+52	E4	false		Dlg41	STANDARD	SYBR	None	25.876	21.334	6.308	4.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	18	Amp		0.996	N	N	N	Y	86.328			
+53	E5	false		Dlg41	STANDARD	SYBR	None	23.994	21.334	6.308	4.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	16	Amp		0.996	N	N	N	Y	86.746			
+54	E6	false		Dlg41	STANDARD	SYBR	None	14.132	21.334	6.308	4.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	12	No Amp		0.140	N	N	Y	Y	86.607			
+55	E7	false		CREB1	STANDARD	SYBR	None	25.519	24.487	0.944	4.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	18	Amp		0.997	N	N	N	Y	80.757			
+56	E8	false		CREB1	STANDARD	SYBR	None	24.272	24.487	0.944	4.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	17	Amp		0.996	N	N	N	Y	80.896			
+57	E9	false		CREB1	STANDARD	SYBR	None	23.668	24.487	0.944	4.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	15	Amp		0.993	N	N	N	Y	81.175			
+58	E10	false		Rpl191	STANDARD	SYBR	None	20.813	20.380	0.472	4.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	13	Amp		0.995	N	N	N	N	82.567			
+59	E11	false		Rpl191	STANDARD	SYBR	None	20.451	20.380	0.472	4.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	14	Amp		0.996	N	N	N	N	82.707			
+60	E12	false		Rpl191	STANDARD	SYBR	None	19.877	20.380	0.472	4.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	13	Amp		0.995	N	N	N	N	82.846			
+64	F4	false		Dlg41	STANDARD	SYBR	None	26.320	25.144	1.097	2.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	19	Amp		0.995	N	N	N	Y	86.328			
+65	F5	false		Dlg41	STANDARD	SYBR	None	24.963	25.144	1.097	2.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	17	Amp		0.996	N	N	N	Y	86.746			
+66	F6	false		Dlg41	STANDARD	SYBR	None	24.148	25.144	1.097	2.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	17	Amp		0.993	N	N	N	Y	86.746			
+67	F7	false		CREB1	STANDARD	SYBR	None	27.556	25.814	1.557	2.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	21	Amp		0.986	N	N	N	Y	80.757			
+68	F8	false		CREB1	STANDARD	SYBR	None	25.330	25.814	1.557	2.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	19	Amp		0.995	N	N	N	Y	81.035			
+69	F9	false		CREB1	STANDARD	SYBR	None	24.557	25.814	1.557	2.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	16	Amp		0.995	N	N	N	Y	81.314			
+70	F10	false		Rpl191	STANDARD	SYBR	None	21.699	21.381	0.320	2.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	14	Amp		0.995	N	N	N	N	82.567			
+71	F11	false		Rpl191	STANDARD	SYBR	None	21.385	21.381	0.320	2.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	14	Amp		0.995	N	N	N	N	82.707			
+72	F12	false		Rpl191	STANDARD	SYBR	None	21.058	21.381	0.320	2.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	14	Amp		0.975	N	N	N	N	82.846			
+74	G2	false		Fos1	STANDARD	SYBR	None	33.950	33.950		1.000			0.000	0.000	0.000	-100.000	true	0.936	true	3	26	Amp		0.994	N	N	N	N	86.607			
+76	G4	false		Dlg41	STANDARD	SYBR	None	28.462	26.257	1.936	1.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	20	Amp		0.995	N	N	N	Y	86.328			
+77	G5	false		Dlg41	STANDARD	SYBR	None	25.469	26.257	1.936	1.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	17	Amp		0.992	N	N	N	Y	86.885			
+78	G6	false		Dlg41	STANDARD	SYBR	None	24.839	26.257	1.936	1.000			25.614	0.398	-3.247	103.207	true	1.170	true	3	16	Amp		0.995	N	N	N	Y	86.885			
+79	G7	false		CREB1	STANDARD	SYBR	None	28.144	26.899	1.111	1.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	21	Amp		0.996	N	N	N	Y	80.896			
+80	G8	false		CREB1	STANDARD	SYBR	None	26.542	26.899	1.111	1.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	19	Amp		0.997	N	N	N	Y	81.035			
+81	G9	false		CREB1	STANDARD	SYBR	None	26.010	26.899	1.111	1.000			26.780	0.855	-3.454	94.769	true	0.733	true	3	18	Amp		0.993	N	N	N	Y	81.453			
+82	G10	false		Rpl191	STANDARD	SYBR	None	22.638	22.429	0.220	1.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	14	Amp		0.993	N	N	N	N	82.428			
+83	G11	false		Rpl191	STANDARD	SYBR	None	22.451	22.429	0.220	1.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	15	Amp		0.995	N	N	N	N	82.846			
+84	G12	false		Rpl191	STANDARD	SYBR	None	22.200	22.429	0.220	1.000			22.392	0.956	-3.297	101.068	true	0.579	true	3	15	Amp		0.993	N	N	N	N	82.846			
+85	H1	false		Fos1	NTC	SYBR	None	Undetermined						0.000	0.000	0.000	-100.000	true	0.936	true	3	39	No Amp		0.000	N	N	N	N	82.846			
+87	H3	false		Fos1	NTC	SYBR	None	Undetermined						0.000	0.000	0.000	-100.000	true	0.936	true	3	39	No Amp		0.000	N	N	N	N	87.443			
+88	H4	false		Dlg41	UNKNOWN	SYBR	None	39.916	39.924	0.011	0.000	0.000	0.000	25.614	0.398	-3.247	103.207	true	1.170	true	3	28	Inconclusive		0.000	N	N	N	N	78.667			
+89	H5	false		Dlg41	UNKNOWN	SYBR	None	39.932	39.924	0.011	0.000	0.000	0.000	25.614	0.398	-3.247	103.207	true	1.170	true	3	31	Inconclusive		0.000	N	N	N	N	81.035			
+91	H7	false		CREB1	NTC	SYBR	None	34.877						26.780	0.855	-3.454	94.769	true	0.733	true	3	28	Amp		0.995	Y	N	N	N	81.175			
+93	H9	false		CREB1	NTC	SYBR	None	38.288						26.780	0.855	-3.454	94.769	true	0.733	true	3	31	Inconclusive		0.971	N	N	N	N	74.767			
+94	H10	false		Rpl191	NTC	SYBR	None	Undetermined						22.392	0.956	-3.297	101.068	true	0.579	true	3	34	No Amp		0.000	N	N	N	N	75.324			
+95	H11	false		Rpl191	NTC	SYBR	None	39.293						22.392	0.956	-3.297	101.068	true	0.579	true	3	31	No Amp		0.000	N	N	N	N	75.603			
