@@ -1,0 +1,134 @@
+* Block Type = 96-Well 0.1-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 04-03-2016
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 04-03-2016
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 04-03-2016
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 04-03-2016
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 04-03-2016
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 04-03-2016
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 04-03-2016
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 04-03-2016
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 04-03-2016
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 04-03-2016
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 04-03-2016
+* Chemistry = TAQMAN
+* Date Created = 2016-07-20 13:59:22 PM EDT
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = E:\molecularGroup\2016-07-20_112033_AR.eds
+* Experiment Name = 2016-07-20_112033
+* Experiment Run End Time = 2016-07-20 21:33:32 PM EDT
+* Experiment Type = Standard Curve
+* Instrument Name =       272310147
+* Instrument Serial Number = 272310147
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	AMPNC	PRFLOW	NOISE	SPIKE	DRNMIN	PRFDROP	HIGHSD
+1	A1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	6.982	7.055	0.063	1,024.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	3	Amp		0.906	N	N	N	N	N	N	N
+2	A2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	7.095	7.055	0.063	1,024.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	3	Amp		0.886	N	N	N	N	N	N	N
+3	A3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	7.088	7.055	0.063	1,024.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	3	Amp		0.891	N	N	N	N	N	N	N
+4	A4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	22.192	22.064	0.116	1,024.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	16	Amp		0.966	N	N	N	N	N	N	N
+5	A5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	22.035	22.064	0.116	1,024.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	14	Amp		0.975	N	N	N	N	N	N	N
+6	A6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	21.965	22.064	0.116	1,024.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	13	Amp		0.979	N	N	N	N	N	N	N
+7	A7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	6.712	6.954	0.213	1,024.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	3	Amp		0.907	N	N	N	N	N	N	N
+8	A8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	7.111	6.954	0.213	1,024.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	3	Amp		0.928	N	N	N	N	N	N	N
+9	A9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	7.039	6.954	0.213	1,024.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	3	Amp		0.943	N	N	N	N	N	N	N
+10	A10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	22.385	21.923	0.486	1,024.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	18	Amp		0.989	N	N	N	N	N	N	N
+11	A11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	21.968	21.923	0.486	1,024.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	17	Amp		0.995	N	N	N	N	N	N	N
+12	A12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	21.417	21.923	0.486	1,024.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	16	Amp		0.989	N	N	N	N	N	N	N
+13	B1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	9.104	9.115	0.034	256.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	5	Amp		0.935	N	N	N	N	N	N	N
+14	B2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	9.089	9.115	0.034	256.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	5	Amp		0.888	N	N	N	N	N	N	N
+15	B3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	9.153	9.115	0.034	256.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	5	Amp		0.862	N	N	N	N	N	N	N
+16	B4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	24.294	24.244	0.046	256.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	17	Amp		0.954	N	N	N	N	N	N	N
+17	B5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	24.204	24.244	0.046	256.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	17	Amp		0.953	N	N	N	N	N	N	N
+18	B6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	24.234	24.244	0.046	256.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	17	Amp		0.950	N	N	N	N	N	N	N
+19	B7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	9.476	9.404	0.087	256.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.975	N	N	N	N	N	N	N
+20	B8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	9.307	9.404	0.087	256.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.986	N	N	N	N	N	N	N
+21	B9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	9.429	9.404	0.087	256.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.975	N	N	N	N	N	N	N
+22	B10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	24.820	24.430	1.021	256.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	20	Amp		0.991	N	N	N	N	N	N	Y
+23	B11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	25.198	24.430	1.021	256.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	20	Amp		0.986	N	N	N	N	N	N	Y
+24	B12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	23.271	24.430	1.021	256.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	17	Amp		0.842	N	N	N	N	N	N	Y
+25	C1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	11.003	11.145	0.146	64.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	6	Amp		0.982	N	N	N	N	N	N	N
+26	C2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	11.139	11.145	0.146	64.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	7	Amp		0.927	N	N	N	N	N	N	N
+27	C3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	11.295	11.145	0.146	64.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	7	Amp		0.915	N	N	N	N	N	N	N
+28	C4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	26.170	26.146	0.049	64.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	18	Amp		0.990	N	N	N	N	N	N	N
+29	C5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	26.178	26.146	0.049	64.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	19	Amp		0.961	N	N	N	N	N	N	N
+30	C6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	26.089	26.146	0.049	64.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	18	Amp		0.978	N	N	N	N	N	N	N
+31	C7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	9.963	10.002	0.066	64.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.986	N	N	N	N	N	N	N
+32	C8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	9.964	10.002	0.066	64.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	6	Amp		0.979	N	N	N	N	N	N	N
+33	C9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	10.077	10.002	0.066	64.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.981	N	N	N	N	N	N	N
+34	C10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	24.472	25.064	0.518	64.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	19	Amp		0.983	N	N	N	N	N	N	Y
+35	C11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	25.288	25.064	0.518	64.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	20	Amp		0.990	N	N	N	N	N	N	Y
+36	C12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	25.433	25.064	0.518	64.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	20	Amp		0.991	N	N	N	N	N	N	Y
+37	D1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	12.883	12.889	0.033	16.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	7	Amp		0.989	N	N	N	N	N	N	N
+38	D2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	12.924	12.889	0.033	16.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	8	Amp		0.970	N	N	N	N	N	N	N
+39	D3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	12.859	12.889	0.033	16.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	7	Amp		0.970	N	N	N	N	N	N	N
+40	D4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	28.348	28.341	0.084	16.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	21	Amp		0.963	N	N	N	N	N	N	N
+41	D5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	28.253	28.341	0.084	16.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	21	Amp		0.963	N	N	N	N	N	N	N
+42	D6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	28.421	28.341	0.084	16.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	22	Amp		0.991	N	N	N	N	N	N	N
+43	D7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	10.586	10.757	0.205	16.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	6	Amp		0.987	N	N	N	N	N	N	N
+44	D8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	10.703	10.757	0.205	16.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	5	Amp		0.989	N	N	N	N	N	N	N
+45	D9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	10.984	10.757	0.205	16.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	6	Amp		0.985	N	N	N	N	N	N	N
+46	D10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	24.869	24.529	1.361	16.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	21	Amp		0.983	N	N	N	N	N	N	Y
+47	D11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	25.688	24.529	1.361	16.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	21	Amp		0.993	N	N	N	N	N	N	Y
+48	D12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	23.030	24.529	1.361	16.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	19	Amp		0.738	N	Y	N	N	N	N	Y
+49	E1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	14.974	14.951	0.021	4.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	9	Amp		0.990	N	N	N	N	N	N	N
+50	E2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	14.944	14.951	0.021	4.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	9	Amp		0.992	N	N	N	N	N	N	N
+51	E3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	14.935	14.951	0.021	4.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	9	Amp		0.991	N	N	N	N	N	N	N
+52	E4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	30.386	30.418	0.053	4.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	23	Amp		0.978	N	N	N	N	N	N	N
+53	E5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	30.390	30.418	0.053	4.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	23	Amp		0.977	N	N	N	N	N	N	N
+54	E6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	30.479	30.418	0.053	4.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	24	Amp		0.991	N	N	N	N	N	N	N
+55	E7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	12.071	12.132	0.084	4.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	7	Amp		0.993	N	N	N	N	N	N	N
+56	E8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	12.228	12.132	0.084	4.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	7	Amp		0.990	N	N	N	N	N	N	N
+57	E9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	12.097	12.132	0.084	4.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	7	Amp		0.990	N	N	N	N	N	N	N
+58	E10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	28.415	28.173	0.239	4.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	23	Amp		0.974	N	N	N	N	N	N	N
+59	E11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	28.166	28.173	0.239	4.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	24	Amp		0.981	N	N	N	N	N	N	N
+60	E12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	27.937	28.173	0.239	4.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	23	Amp		0.988	N	N	N	N	N	N	N
+61	F1	false		Raina_18S	STANDARD	FAM	NFQ-MGB	30.136	29.824	0.667	1.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	23	Amp		0.987	N	N	N	N	N	N	Y
+62	F2	false		Raina_18S	STANDARD	FAM	NFQ-MGB	30.277	29.824	0.667	1.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	24	Amp		0.988	N	N	N	N	N	N	Y
+63	F3	false		Raina_18S	STANDARD	FAM	NFQ-MGB	29.057	29.824	0.667	1.000			23.670	0.760	-6.316	43.989	true	0.371	true	3	23	Amp		0.983	N	N	N	N	N	N	Y
+64	F4	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	Undetermined			1.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	35	No Amp		0.000	N	N	N	N	N	N	N
+65	F5	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	Undetermined			1.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	30	No Amp		0.000	N	N	N	N	N	N	N
+66	F6	false		Raina_Fmr1	STANDARD	FAM	NFQ-MGB	Undetermined			1.000			32.484	0.999	-3.455	94.716	true	0.599	true	3	35	No Amp		0.000	N	N	N	N	N	N	N
+67	F7	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	13.767	13.794	0.033	1.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	8	Amp		0.992	N	N	N	N	N	N	N
+68	F8	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	13.784	13.794	0.033	1.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	8	Amp		0.991	N	N	N	N	N	N	N
+69	F9	false		Ariane_18S	STANDARD	FAM	NFQ-MGB	13.832	13.794	0.033	1.000			13.589	0.961	-2.047	207.927	true	0.341	true	3	8	Amp		0.994	N	N	N	N	N	N	N
+70	F10	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	29.957	29.975	0.129	1.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	25	Amp		0.988	N	N	N	N	N	N	N
+71	F11	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	30.112	29.975	0.129	1.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	25	Amp		0.981	N	N	N	N	N	N	N
+72	F12	false		Ariane_Piota	STANDARD	FAM	NFQ-MGB	29.856	29.975	0.129	1.000			29.322	0.836	-2.418	159.168	true	0.114	true	3	25	Amp		0.984	N	N	N	N	N	N	N
+73	G1	false		Raina_18S	NTC	FAM	NFQ-MGB	31.428						23.670	0.760	-6.316	43.989	true	0.371	true	3	24	Amp		0.983	Y	N	N	N	N	N	N
+74	G2	false		Raina_18S	NTC	FAM	NFQ-MGB	31.827						23.670	0.760	-6.316	43.989	true	0.371	true	3	26	Amp		0.986	Y	N	N	N	N	N	N
+75	G3	false		Raina_18S	NTC	FAM	NFQ-MGB	21.827						23.670	0.760	-6.316	43.989	true	0.371	true	3	18	No Amp		0.000	Y	N	Y	Y	N	N	N
+76	G4	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	Undetermined						32.484	0.999	-3.455	94.716	true	0.599	true	3	34	No Amp		0.000	N	N	N	N	N	N	N
+77	G5	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	Undetermined						32.484	0.999	-3.455	94.716	true	0.599	true	3	13	No Amp		0.000	N	N	N	N	N	N	N
+78	G6	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	Undetermined						32.484	0.999	-3.455	94.716	true	0.599	true	3	35	No Amp		0.000	N	N	N	N	N	N	N
+79	G7	false		Ariane_18S	NTC	FAM	NFQ-MGB	31.935						13.589	0.961	-2.047	207.927	true	0.341	true	3	24	Amp		0.985	Y	N	N	N	N	N	N
+80	G8	false		Ariane_18S	NTC	FAM	NFQ-MGB	31.708						13.589	0.961	-2.047	207.927	true	0.341	true	3	24	Amp		0.985	Y	N	N	N	N	N	N
+81	G9	false		Ariane_18S	NTC	FAM	NFQ-MGB	31.960						13.589	0.961	-2.047	207.927	true	0.341	true	3	24	Amp		0.987	Y	N	N	N	N	N	N
+82	G10	false		Ariane_Piota	NTC	FAM	NFQ-MGB	Undetermined						29.322	0.836	-2.418	159.168	true	0.114	true	3	39	No Amp		0.000	N	N	N	N	N	N	N
+83	G11	false		Ariane_Piota	NTC	FAM	NFQ-MGB	Undetermined						29.322	0.836	-2.418	159.168	true	0.114	true	3	17	No Amp		0.000	N	N	N	N	N	N	N
+84	G12	false		Ariane_Piota	NTC	FAM	NFQ-MGB	Undetermined						29.322	0.836	-2.418	159.168	true	0.114	true	3	29	No Amp		0.000	N	N	N	N	N	N	N
+85	H1	false		Raina_18S	NTC	FAM	NFQ-MGB	Undetermined						23.670	0.760	-6.316	43.989	true	0.371	true	3	39	No Amp		0.000	N	Y	N	N	N	N	N
+86	H2	false		Raina_18S	NTC	FAM	NFQ-MGB	Undetermined						23.670	0.760	-6.316	43.989	true	0.371	true	3	4	No Amp		0.000	N	Y	N	N	N	N	N
+87	H3	false		Raina_18S	NTC	FAM	NFQ-MGB	Undetermined						23.670	0.760	-6.316	43.989	true	0.371	true	3	10	No Amp		0.000	N	Y	N	N	N	N	N
+88	H4	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	Undetermined						32.484	0.999	-3.455	94.716	true	0.599	true	3	39	No Amp		0.000	N	Y	N	N	N	N	N
+89	H5	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	Undetermined						32.484	0.999	-3.455	94.716	true	0.599	true	3	15	No Amp		0.000	N	Y	Y	N	N	N	N
+90	H6	false		Raina_Fmr1	NTC	FAM	NFQ-MGB	7.015						32.484	0.999	-3.455	94.716	true	0.599	true	3	4	No Amp		0.609	Y	Y	N	N	Y	Y	N
