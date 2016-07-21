@@ -6,7 +6,7 @@
 
 ##script stored in "Z:/NSB_2016/IntegrativeNeuroscience/STGsingleneuron2015/bin"
 ## set path to data dir
-setwd("~/Github/qPCR-mouse/example")
+setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/molecularGroup")
 
 ## The process:
 ## 1. Loop over all experimental prjoect files and create one big "rawdata" dataframe
@@ -20,12 +20,11 @@ setwd("~/Github/qPCR-mouse/example")
 ## 9. Mixed model with diagnostic plots
 ## 10. Plot the data!!
 
-#install.packages("xlsx", dependencies = TRUE) #note, must have Java installed on computer
-#install.packages("plyr")
+
 #install.packages("dplyr")
+#install.packages("plyr")
 #install.packages("MCMC.qpcr")
 #install.packages("reshape2")
-library(xlsx)
 library(dplyr)
 library(plyr)
 library(MCMC.qpcr)
