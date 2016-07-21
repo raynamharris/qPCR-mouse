@@ -1,0 +1,129 @@
+* Block Type = 96-Well 0.1-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 04-04-2016
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 04-04-2016
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 04-04-2016
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 04-04-2016
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 04-04-2016
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 04-04-2016
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 04-04-2016
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 04-04-2016
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 04-04-2016
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 04-04-2016
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 04-04-2016
+* Chemistry = SYBR_GREEN
+* Date Created = 2016-07-20 13:59:46 PM EDT
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = E:\molecularGroup\2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt.eds
+* Experiment Name = 2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt
+* Experiment Run End Time = 2016-07-20 21:42:08 PM EDT
+* Experiment Type = Standard Curve
+* Instrument Name =       272310148
+* Instrument Serial Number = 272310148
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	MTP	HIGHSD	Tm1	Tm2	Tm3	Tm4
+1	A1	false		NicoleCREB	STANDARD	SYBR	None	20.251	20.156	0.118	1,024.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	15	Amp		0.835	N	N	81.027			
+2	A2	false		NicoleCREB	STANDARD	SYBR	None	20.193	20.156	0.118	1,024.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	14	Amp		0.862	N	N	81.027			
+3	A3	false		NicoleCREB	STANDARD	SYBR	None	20.024	20.156	0.118	1,024.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	14	Amp		0.930	N	N	81.027			
+4	A4	false		NicolePkcZ	STANDARD	SYBR	None	20.625	20.713	0.106	1,024.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	15	Amp		0.888	N	N	86.737			
+5	A5	false		NicolePkcZ	STANDARD	SYBR	None	20.831	20.713	0.106	1,024.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	16	Amp		0.922	N	N	86.737			
+6	A6	false		NicolePkcZ	STANDARD	SYBR	None	20.682	20.713	0.106	1,024.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	15	Amp		0.892	N	N	86.737			
+7	A7	false		ShaynCREB	STANDARD	SYBR	None	19.991	20.114	0.124	1,024.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	14	Amp		0.907	N	N	80.888			
+8	A8	false		ShaynCREB	STANDARD	SYBR	None	20.110	20.114	0.124	1,024.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	14	Amp		0.915	N	N	80.888			
+9	A9	false		ShaynCREB	STANDARD	SYBR	None	20.240	20.114	0.124	1,024.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	14	Amp		0.923	N	N	80.888			
+10	A10	false		ShaynHtt	STANDARD	SYBR	None	20.742	20.654	0.099	1,024.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	14	Amp		0.924	N	N	85.066			
+11	A11	false		ShaynHtt	STANDARD	SYBR	None	20.546	20.654	0.099	1,024.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	14	Amp		0.914	N	N	85.623			
+12	A12	false		ShaynHtt	STANDARD	SYBR	None	20.673	20.654	0.099	1,024.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	14	Amp		0.910	N	N	85.484			
+13	B1	false		NicoleCREB	STANDARD	SYBR	None	21.792	21.906	0.126	256.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	15	Amp		0.960	N	N	81.027			
+14	B2	false		NicoleCREB	STANDARD	SYBR	None	22.041	21.906	0.126	256.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	15	Amp		0.973	N	N	80.888			
+15	B3	false		NicoleCREB	STANDARD	SYBR	None	21.887	21.906	0.126	256.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	14	Amp		0.971	N	N	80.888			
+16	B4	false		NicolePkcZ	STANDARD	SYBR	None	22.562	22.579	0.015	256.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	16	Amp		0.971	N	N	86.598			
+17	B5	false		NicolePkcZ	STANDARD	SYBR	None	22.584	22.579	0.015	256.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	17	Amp		0.966	N	N	86.737			
+18	B6	false		NicolePkcZ	STANDARD	SYBR	None	22.590	22.579	0.015	256.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	17	Amp		0.968	N	N	86.737			
+19	B7	false		ShaynCREB	STANDARD	SYBR	None	21.684	21.665	0.017	256.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	15	Amp		0.968	N	N	80.749			
+20	B8	false		ShaynCREB	STANDARD	SYBR	None	21.656	21.665	0.017	256.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	15	Amp		0.968	N	N	80.749			
+21	B9	false		ShaynCREB	STANDARD	SYBR	None	21.654	21.665	0.017	256.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	14	Amp		0.972	N	N	80.888			
+22	B10	false		ShaynHtt	STANDARD	SYBR	None	22.960	23.133	0.151	256.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	16	Amp		0.972	N	N	85.066			
+23	B11	false		ShaynHtt	STANDARD	SYBR	None	23.239	23.133	0.151	256.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	16	Amp		0.970	N	N	85.484			
+24	B12	false		ShaynHtt	STANDARD	SYBR	None	23.199	23.133	0.151	256.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	17	Amp		0.968	N	N	85.484			
+25	C1	false		NicoleCREB	STANDARD	SYBR	None	23.839	23.796	0.066	64.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	17	Amp		0.983	N	N	80.888			
+26	C2	false		NicoleCREB	STANDARD	SYBR	None	23.720	23.796	0.066	64.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	16	Amp		0.988	N	N	80.888			
+27	C3	false		NicoleCREB	STANDARD	SYBR	None	23.829	23.796	0.066	64.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	16	Amp		0.986	N	N	80.888			
+28	C4	false		NicolePkcZ	STANDARD	SYBR	None	24.606	24.536	0.071	64.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	18	Amp		0.991	N	N	86.598			
+29	C5	false		NicolePkcZ	STANDARD	SYBR	None	24.538	24.536	0.071	64.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	19	Amp		0.994	N	N	86.598			
+30	C6	false		NicolePkcZ	STANDARD	SYBR	None	24.464	24.536	0.071	64.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	18	Amp		0.990	N	N	86.598			
+31	C7	false		ShaynCREB	STANDARD	SYBR	None	23.595	23.678	0.088	64.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	16	Amp		0.987	N	N	80.749			
+32	C8	false		ShaynCREB	STANDARD	SYBR	None	23.669	23.678	0.088	64.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	16	Amp		0.988	N	N	80.749			
+33	C9	false		ShaynCREB	STANDARD	SYBR	None	23.770	23.678	0.088	64.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	16	Amp		0.988	N	N	80.888			
+34	C10	false		ShaynHtt	STANDARD	SYBR	None	25.831	25.844	0.100	64.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	18	Amp		0.986	N	N	85.205			
+35	C11	false		ShaynHtt	STANDARD	SYBR	None	25.950	25.844	0.100	64.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	18	Amp		0.989	N	N	85.344			
+36	C12	false		ShaynHtt	STANDARD	SYBR	None	25.752	25.844	0.100	64.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	18	Amp		0.985	N	N	85.344			
+37	D1	false		NicoleCREB	STANDARD	SYBR	None	25.882	25.802	0.075	16.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	19	Amp		0.990	N	N	80.888			
+38	D2	false		NicoleCREB	STANDARD	SYBR	None	25.735	25.802	0.075	16.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	18	Amp		0.993	N	N	80.888			
+39	D3	false		NicoleCREB	STANDARD	SYBR	None	25.788	25.802	0.075	16.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	18	Amp		0.993	N	N	80.749			
+40	D4	false		NicolePkcZ	STANDARD	SYBR	None	26.310	26.430	0.115	16.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	20	Amp		0.996	N	N	86.458			
+41	D5	false		NicolePkcZ	STANDARD	SYBR	None	26.540	26.430	0.115	16.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	20	Amp		0.995	N	N	86.598			
+42	D6	false		NicolePkcZ	STANDARD	SYBR	None	26.439	26.430	0.115	16.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	20	Amp		0.995	N	N	86.598			
+43	D7	false		ShaynCREB	STANDARD	SYBR	None	25.558	25.601	0.038	16.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	18	Amp		0.991	N	N	80.888			
+44	D8	false		ShaynCREB	STANDARD	SYBR	None	25.632	25.601	0.038	16.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	18	Amp		0.992	N	N	80.888			
+45	D9	false		ShaynCREB	STANDARD	SYBR	None	25.612	25.601	0.038	16.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	17	Amp		0.995	N	N	80.888			
+46	D10	false		ShaynHtt	STANDARD	SYBR	None	28.192	28.252	0.060	16.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	20	Amp		0.989	N	N	85.205			
+47	D11	false		ShaynHtt	STANDARD	SYBR	None	28.251	28.252	0.060	16.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	20	Amp		0.988	N	N	85.344			
+48	D12	false		ShaynHtt	STANDARD	SYBR	None	28.313	28.252	0.060	16.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	20	Amp		0.987	N	N	85.344			
+49	E1	false		NicoleCREB	STANDARD	SYBR	None	27.874	27.985	0.097	4.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	21	Amp		0.993	N	N	81.027			
+50	E2	false		NicoleCREB	STANDARD	SYBR	None	28.027	27.985	0.097	4.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	19	Amp		0.993	N	N	80.888			
+51	E3	false		NicoleCREB	STANDARD	SYBR	None	28.054	27.985	0.097	4.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	20	Amp		0.991	N	N	80.888			
+52	E4	false		NicolePkcZ	STANDARD	SYBR	None	28.845	28.767	0.363	4.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	22	Amp		0.996	N	N	86.458			
+53	E5	false		NicolePkcZ	STANDARD	SYBR	None	28.372	28.767	0.363	4.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	21	Amp		0.997	N	N	86.598			
+54	E6	false		NicolePkcZ	STANDARD	SYBR	None	29.085	28.767	0.363	4.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	22	Amp		0.995	N	N	86.737			
+55	E7	false		ShaynCREB	STANDARD	SYBR	None	27.818	27.829	0.064	4.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	20	Amp		0.994	N	N	80.888			
+56	E8	false		ShaynCREB	STANDARD	SYBR	None	27.897	27.829	0.064	4.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	20	Amp		0.994	N	N	80.888			
+57	E9	false		ShaynCREB	STANDARD	SYBR	None	27.770	27.829	0.064	4.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	20	Amp		0.994	N	N	81.027			
+58	E10	false		ShaynHtt	STANDARD	SYBR	None	30.590	30.952	0.323	4.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	22	Amp		0.989	N	N	85.344			
+59	E11	false		ShaynHtt	STANDARD	SYBR	None	31.211	30.952	0.323	4.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	23	Amp		0.987	N	N	85.344			
+60	E12	false		ShaynHtt	STANDARD	SYBR	None	31.054	30.952	0.323	4.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	22	Amp		0.984	N	N	85.344			
+61	F1	false		NicoleCREB	STANDARD	SYBR	None	31.733	31.096	0.611	1.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	24	Amp		0.991	N	Y	81.027			
+62	F2	false		NicoleCREB	STANDARD	SYBR	None	30.516	31.096	0.611	1.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	22	Amp		0.989	N	Y	80.888			
+63	F3	false		NicoleCREB	STANDARD	SYBR	None	31.040	31.096	0.611	1.000			30.476	0.986	-3.556	91.066	true	1.317	true	3	23	Amp		0.990	N	Y	80.888			
+64	F4	false		NicolePkcZ	STANDARD	SYBR	None	32.690	32.453	0.810	1.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	26	Amp		0.994	N	Y	86.737			
+65	F5	false		NicolePkcZ	STANDARD	SYBR	None	31.551	32.453	0.810	1.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	24	Amp		0.995	N	Y	86.876			
+66	F6	false		NicolePkcZ	STANDARD	SYBR	None	33.118	32.453	0.810	1.000			31.567	0.975	-3.757	84.589	true	0.630	true	3	26	Amp		0.993	N	Y	87.015			
+67	F7	false		ShaynCREB	STANDARD	SYBR	None	31.166	31.526	0.423	1.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	23	Amp		0.992	N	N	80.888			
+68	F8	false		ShaynCREB	STANDARD	SYBR	None	31.422	31.526	0.423	1.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	23	Amp		0.992	N	N	81.027			
+69	F9	false		ShaynCREB	STANDARD	SYBR	None	31.992	31.526	0.423	1.000			30.603	0.976	-3.677	87.061	true	1.319	true	3	24	Amp		0.995	N	N	81.027			
+70	F10	false		ShaynHtt	STANDARD	SYBR	None	34.163	34.079	0.087	1.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	25	Amp		0.978	N	N	85.484			
+71	F11	false		ShaynHtt	STANDARD	SYBR	None	34.085	34.079	0.087	1.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	25	Amp		0.982	N	N	85.484			
+72	F12	false		ShaynHtt	STANDARD	SYBR	None	33.990	34.079	0.087	1.000			33.794	0.998	-4.413	68.501	true	0.939	true	3	26	Amp		0.984	N	N	85.484			
+73	G1	false		NicoleCREB	NTC	SYBR	None	Undetermined						30.476	0.986	-3.556	91.066	true	1.317	true	3	39	No Amp		0.000	Y	N	91.750	80.749		
+74	G2	false		NicoleCREB	NTC	SYBR	None	Undetermined						30.476	0.986	-3.556	91.066	true	1.317	true	3	39	No Amp		0.000	Y	N	92.585	88.826	79.635	84.787
+75	G3	false		NicoleCREB	NTC	SYBR	None	Undetermined						30.476	0.986	-3.556	91.066	true	1.317	true	3	39	No Amp		0.000	Y	N	80.192	94.117		
+76	G4	false		NicolePkcZ	NTC	SYBR	None	Undetermined						31.567	0.975	-3.757	84.589	true	0.630	true	3	39	No Amp		0.000	Y	N	80.192	90.775	88.269	93.699
+77	G5	false		NicolePkcZ	NTC	SYBR	None	Undetermined						31.567	0.975	-3.757	84.589	true	0.630	true	3	39	No Amp		0.000	Y	N	80.749	90.914	88.129	
+78	G6	false		NicolePkcZ	NTC	SYBR	None	Undetermined						31.567	0.975	-3.757	84.589	true	0.630	true	3	39	No Amp		0.000	Y	N	80.331	94.117		
+79	G7	false		ShaynCREB	NTC	SYBR	None	Undetermined						30.603	0.976	-3.677	87.061	true	1.319	true	3	39	No Amp		0.000	Y	N	86.737	93.978	90.497	
+80	G8	false		ShaynCREB	NTC	SYBR	None	Undetermined						30.603	0.976	-3.677	87.061	true	1.319	true	3	39	No Amp		0.000	Y	N	87.015	84.369	92.446	
+81	G9	false		ShaynCREB	NTC	SYBR	None	Undetermined						30.603	0.976	-3.677	87.061	true	1.319	true	3	39	No Amp		0.000	Y	N	85.344	93.282	79.356	
+82	G10	false		ShaynHtt	NTC	SYBR	None	Undetermined						33.794	0.998	-4.413	68.501	true	0.939	true	3	39	No Amp		0.000	Y	N	80.610	89.800		
+83	G11	false		ShaynHtt	NTC	SYBR	None	Undetermined						33.794	0.998	-4.413	68.501	true	0.939	true	3	39	No Amp		0.000	Y	N	90.497	93.421	87.433	84.648
+84	G12	false		ShaynHtt	NTC	SYBR	None	Undetermined						33.794	0.998	-4.413	68.501	true	0.939	true	3	39	No Amp		0.000	Y	N	93.560	89.661	85.205	73.508
