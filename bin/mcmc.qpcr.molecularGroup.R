@@ -9,7 +9,7 @@
 setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/molecularGroup")
 
 ## The process:
-## 1. Loop over all experimental prjoect files and create one big "rawdata" dataframe
+## 1. Readin experimental prjoect files and create one big "rawdata" dataframe
 ## 2. Clean the data to make numbers numbers and rename important columns
 ## 3. Create dilutions dataframe with quantiry, target name, and ct.
 ## 4. Calculate primer efficiences with MCMC.qpcr PrimEFF function
@@ -30,38 +30,23 @@ library(plyr)
 library(MCMC.qpcr)
 library(reshape2)
 
-## 1. Loop over all experimental prjoect files and create one big "rawdata" dataframe
-## uses read.xlsx function to read 1 sheet, sharting at row 8, only first 20 columns, nothing imported as a factor
 
-file_list <- list.files(pattern = ".xls") #creates a string will all the .xls in a diretory for us to loop through
+## Read data files
+## for taqman, skip first 43 lines, 
+## for sybr, skip first 44 lines
 
-rm(rawdata) # first removed any dataframe called rawdata, if any
-rm(temp_dataset) # first removed any dataframe called rawdata, if any
+RA <- read.delim("2016-07-20_112033_RA.txt", skip=43, header = TRUE, sep = "\t", stringsAsFactors = FALSE )[ ,1:24]
+SN <- read.delim("2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt.txt", skip=44, header = TRUE, sep = "\t" , stringsAsFactors = FALSE)[ ,1:24]
 
-for (file in file_list){
-  
-  # if the merged dataset doesn't exist, create it
-  if (!exists("rawdata")){
-    rawdata <- read.xlsx(file, sheetIndex = 1, startRow=8, colIndex = (1:20), stringsAsFactors=FALSE)
-  }
-  
-  # if the merged dataset does exist, append to it
-  if (exists("rawdata")){
-    temp_dataset <-read.xlsx(file, sheetIndex = 1, startRow=8, colIndex = (1:20), stringsAsFactors=FALSE)
-    rawdata<-rbind(rawdata, temp_dataset)
-    rm(temp_dataset)
-  }
-  
-}
-
-
+## use rbind to bind data into a fill "raw data" dataframe
+rawdata <- rbind(RA, SN)
 names(rawdata)
 str(rawdata)
 
 ## 2. Clean data
 
 cleandata <- rawdata
-cleandata <- rename(cleandata, c("Sample.Name"="sample", "Target.Name"="gene",  "C?."="cq", "Quantity"="dna")) 
+cleandata <- rename(cleandata, c("Sample.Name"="sample", "Target.Name"="gene",  "CT"="cq", "Quantity"="dna")) 
 names(cleandata)
 str(cleandata)
 cleandata$dna <- as.numeric(cleandata$dna, na.rm = TRUE)
@@ -81,7 +66,6 @@ str(dilutions)
 PrimEff(dilutions) # makes a plot with the primer efficiencies
 amp.eff <- PrimEff(dilutions) #creates a table with the primer efficiencies
 
-
 ## 5. create counts dataframe 
 counts <- cleandata %>%
   filter(Task == "UNKNOWN") %>%
@@ -89,11 +73,17 @@ counts <- cleandata %>%
   dcast(Well + sample ~ gene )
 
 ## 6. Join count and sample info, sort by sample, order in logical fashion
-samples <- read.csv("sample_info_2015.csv", header=TRUE, sep="," )
+# read sample info, rename "Tube" to "sample", just read fir 16 fmr1 samples
+samples <- read.csv("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/data/FMR1_conflict_slices.csv", header=TRUE, sep="," )
+head(samples)
+colnames(samples)[1] <- "sample"
+samples <- samples[1:16,]
 
+#use inner join to merge count sample dataframes
 data <- inner_join(counts, samples) %>%
   arrange(sample) %>%
-  select(sample, condition, CbNaV, IH, inx1, inx2)
+  select(sample, Mouse, Group, Slice, Atlas.location, Processor, 
+         Ariane_Piota, NicolePkcZ, Raina_Fmr1, ShayneHtt, Raina_18S)
 
 ## 7. Turn cq into counts
 
