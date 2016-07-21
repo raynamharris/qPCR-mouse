@@ -4,8 +4,10 @@
 ## are described in the same csv file in BehavPhysRNAseq repo
 ## I'll use this script to create a file for the students and save it in the qPCR-mouse repo
 
-library(plyr)
+
 library(dplyr)
+library(plyr)
+#install.packages("tidyr")
 library(tidyr)
 library(reshape2)
 
@@ -21,6 +23,11 @@ punches <- read.csv("NSBpunches.csv", header=TRUE, sep=",", stringsAsFactors = F
 animals <- read.csv("NSBanimals.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
 punches$mouse <- as.factor(punches$Mouse)
 animals$mouse <- as.factor(animals$Mouse)
+str(punches)
+
+animals_melt <- melt(animals, id=c("Mouse", "Genotype", "Conflict", "APA", "Group"))
+str(alldata)
+alldata_melt <- melt(alldata, id=c("Mouse", "Punch", "Genotype", "Conflict", "APA", "Group"), value.name="Slice")
 
 
 ## join animals and punches using the mouse id
@@ -70,6 +77,8 @@ HttGroups <- alldata %>%
   arrange(Group, Genotype) %>%
   summarise(count(Group))
 str(HttGroups)
+View(HttGroups)
+
 
 HttTissues <- alldata %>%
   filter(Punch != "slice", Genotype != "FMR1", Genotype != "WT")  %>%
@@ -77,5 +86,5 @@ HttTissues <- alldata %>%
   arrange(Group, Genotype, Punch) 
 HttTissues <- (count(HttTissues, vars=c("Group","Punch")))
 HttTissues <- spread(HttTissues, Punch, freq)
-
+View(HttTissues)
 
