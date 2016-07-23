@@ -9,7 +9,6 @@
 setwd("~/Desktop/Rachel/")
 setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/molecularGroup")
 
-
 ## The process:
 ## 1. Readin experimental prjoect files and create one big "rawdata" dataframe
 ## 2. Clean the data to make numbers numbers and rename important columns
@@ -59,10 +58,9 @@ str(rawdata)
 clean.eff1 <- rename(eff1, c("Sample.Name"="sample", "Target.Name"="gene",  "CT"="cq", "Quantity"="dna")) 
 clean.eff2 <- rename(eff2, c("Sample.Name"="sample", "Target.Name"="gene",  "CT"="cq", "Quantity"="dna")) 
 
-<<<<<<< HEAD:bin/mcmc.qpcr.molecularGroup.R
+
 ## 3. Create dilutions dataframe with quantity, target name, and ct. 
-=======
-  cleandata <- rawdata
+cleandata <- rawdata
 cleandata <- rename(cleandata, c("Sample.Name"="sample", "Target.Name"="gene",  "CT"="cq", "Quantity"="dna")) 
 names(cleandata)
 str(cleandata)
@@ -70,7 +68,6 @@ cleandata$dna <- as.numeric(cleandata$dna, na.rm = TRUE)
 cleandata$cq <- as.numeric(cleandata$cq, na.rm = TRUE)
 cleandata$gene <- as.factor(cleandata$gene)
 str(cleandata)
->>>>>>> 09de634e82fe8d7ceaf84d44d5fde8000ab5efdf:bin/mcmc.qpcr.molecularGroup.R
 
 dilutions.eff1 <- clean.eff1 %>%
   filter(Task == "STANDARD") %>%
@@ -89,11 +86,8 @@ quartz()
 PrimEff(dilutions) # makes a plot with the primer efficiencies
 amp.eff <- PrimEff(dilutions) #creates a table with the primer efficiencies
 
-<<<<<<< HEAD:bin/mcmc.qpcr.molecularGroup.R
 ##### STOP HERE #####
 
-=======
-  >>>>>>> 09de634e82fe8d7ceaf84d44d5fde8000ab5efdf:bin/mcmc.qpcr.molecularGroup.R
 ## 5. create counts dataframe 
 counts <- cleandata %>%
   filter(Task == "UNKNOWN") %>%
