@@ -39,14 +39,14 @@ summary(eff1) # For primer efficiencies, we care about Target.Name, CT, and Quan
 
 eff2  <- read.csv("2016-07-17_184859_FostoRpl19.csv")
 head(eff2)
-summary(eff1)
+summary(eff2)
 
-  
-  ## Read data files
-  ## for taqman, skip first 43 lines, 
-  ## for sybr, skip first 44 lines
-  
-  RA <- read.delim("2016-07-20_112033_RA.txt", skip=43, header = TRUE, sep = "\t", stringsAsFactors = FALSE )[ ,1:24]
+
+## Read data files
+## for taqman, skip first 43 lines, 
+## for sybr, skip first 44 lines
+
+RA <- read.delim("2016-07-20_112033_RA.txt", skip=43, header = TRUE, sep = "\t", stringsAsFactors = FALSE )[ ,1:24]
 SN <- read.delim("2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt.txt", skip=44, header = TRUE, sep = "\t" , stringsAsFactors = FALSE)[ ,1:24]
 
 ## use rbind to bind data into a fill "raw data" dataframe
@@ -246,3 +246,4 @@ S1=HPDsummary(model=mm,data=dd)
 #dev.off()
 
 #s0=HPDsummary(model=mm,data=dd,relative=TRUE)
+

@@ -1,0 +1,116 @@
+* Block Type = 96-Well 0.1-mL Block
+* Calibration Background is expired  = No
+* Calibration Background performed on = 04-03-2016
+* Calibration Pure Dye ABY is expired = No
+* Calibration Pure Dye ABY performed on = 04-03-2016
+* Calibration Pure Dye FAM is expired = No
+* Calibration Pure Dye FAM performed on = 04-03-2016
+* Calibration Pure Dye JUN is expired = No
+* Calibration Pure Dye JUN performed on = 04-03-2016
+* Calibration Pure Dye NED is expired = No
+* Calibration Pure Dye NED performed on = 04-03-2016
+* Calibration Pure Dye ROX is expired = No
+* Calibration Pure Dye ROX performed on = 04-03-2016
+* Calibration Pure Dye SYBR is expired = No
+* Calibration Pure Dye SYBR performed on = 04-03-2016
+* Calibration Pure Dye TAMRA is expired = No
+* Calibration Pure Dye TAMRA performed on = 04-03-2016
+* Calibration Pure Dye VIC is expired = No
+* Calibration Pure Dye VIC performed on = 04-03-2016
+* Calibration ROI is expired  = No
+* Calibration ROI performed on = 04-03-2016
+* Calibration Uniformity is expired  = No
+* Calibration Uniformity performed on = 04-03-2016
+* Chemistry = SYBR_GREEN
+* Date Created = 2016-07-21 20:37:33 PM EDT
+* Experiment Barcode = NA
+* Experiment Comment = NA
+* Experiment File Name = Z:\NSB_2016\4_MouseMolecular\qPCR-mouse\molecularGroup\2016-07-17_184859_ArctoFmr1.eds
+* Experiment Name = 2016-07-17_184859_ArctoFmr1
+* Experiment Run End Time = 2016-07-18 04:36:05 AM EDT
+* Experiment Type = Standard Curve
+* Instrument Name =       272310147
+* Instrument Serial Number = 272310147
+* Instrument Type = QuantStudio™ 3 System
+* Passive Reference = ROX
+* Post-read Stage/Step = 
+* Pre-read Stage/Step = 
+* Quantification Cycle Method = Ct
+* Signal Smoothing On = true
+* Stage where Melt Analysis is performed = Stage3
+* Stage/ Cycle where Ct Analysis is performed = Stage2, Step2
+* User Name = NA
+
+[Results]
+Well	Well Position	Omit	Sample Name	Target Name	Task	Reporter	Quencher	CT	Ct Mean	Ct SD	Quantity	Quantity Mean	Quantity SD	Y-Intercept	R(superscript 2)	Slope	Efficiency	Automatic Ct Threshold	Ct Threshold	Automatic Baseline	Baseline Start	Baseline End	Amp Status	Comments	Cq Conf	EXPFAIL	HIGHSD	CQCONF	Tm1	Tm2	Tm3	Tm4
+1	A1	false		Arc	STANDARD	SYBR	None	32.339	31.882	0.646	64.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	26	Amp			N	Y	N	81.412			
+3	A3	false		Arc	STANDARD	SYBR	None	31.425	31.882	0.646	64.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	25	Amp			N	Y	N	81.551			
+4	A4	false		Bdnf1	STANDARD	SYBR	None	20.575	20.010	0.585	64.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.139			
+5	A5	false		Bdnf1	STANDARD	SYBR	None	20.047	20.010	0.585	64.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.696			
+6	A6	false		Bdnf1	STANDARD	SYBR	None	19.407	20.010	0.585	64.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.696			
+7	A7	false		Cam2a1	STANDARD	SYBR	None	19.765	19.332	0.470	64.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	14	Amp			N	N	N	84.332			
+8	A8	false		Cam2a1	STANDARD	SYBR	None	19.400	19.332	0.470	64.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	14	Amp			N	N	N	84.332			
+9	A9	false		Cam2a1	STANDARD	SYBR	None	18.832	19.332	0.470	64.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	13	Amp			N	N	N	84.332			
+10	A10	false		Fmr1	STANDARD	SYBR	None	29.998	28.522	1.326	64.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	25	Amp			N	Y	N	86.557			
+11	A11	false		Fmr1	STANDARD	SYBR	None	28.139	28.522	1.326	64.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	24	Amp			N	Y	N	86.696			
+12	A12	false		Fmr1	STANDARD	SYBR	None	27.429	28.522	1.326	64.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	24	Amp			N	Y	N	86.835			
+14	B2	false		Arc	STANDARD	SYBR	None	33.224	32.685	0.762	32.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	26	Amp			N	Y	N	81.690			
+15	B3	false		Arc	STANDARD	SYBR	None	32.147	32.685	0.762	32.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	25	Amp			N	Y	N	81.690			
+16	B4	false		Bdnf1	STANDARD	SYBR	None	22.175	20.988	1.080	32.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	18	Amp			N	Y	Y	86.418			
+17	B5	false		Bdnf1	STANDARD	SYBR	None	20.725	20.988	1.080	32.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.696			
+18	B6	false		Bdnf1	STANDARD	SYBR	None	20.064	20.988	1.080	32.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.696			
+19	B7	false		Cam2a1	STANDARD	SYBR	None	23.145	20.941	2.019	32.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	16	Amp			N	Y	N	84.193			
+20	B8	false		Cam2a1	STANDARD	SYBR	None	20.499	20.941	2.019	32.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	14	Amp			N	Y	N	84.332			
+21	B9	false		Cam2a1	STANDARD	SYBR	None	19.180	20.941	2.019	32.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	13	Amp			N	Y	N	84.332			
+22	B10	false		Fmr1	STANDARD	SYBR	None	30.433	29.194	1.148	32.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	25	Amp			N	Y	N	86.557			
+23	B11	false		Fmr1	STANDARD	SYBR	None	28.984	29.194	1.148	32.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	24	Amp			N	Y	N	86.696			
+24	B12	false		Fmr1	STANDARD	SYBR	None	28.166	29.194	1.148	32.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	24	Amp			N	Y	N	86.557			
+25	C1	false		Arc	STANDARD	SYBR	None	34.982	33.863	1.114	16.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	28	Amp			N	Y	N	81.551			
+26	C2	false		Arc	STANDARD	SYBR	None	33.850	33.863	1.114	16.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	27	Amp			N	Y	N	81.551			
+27	C3	false		Arc	STANDARD	SYBR	None	32.755	33.863	1.114	16.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	26	Amp			N	Y	N	81.690			
+28	C4	false		Bdnf1	STANDARD	SYBR	None	24.325	22.339	1.877	16.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	20	Amp			N	Y	Y	86.279			
+29	C5	false		Bdnf1	STANDARD	SYBR	None	22.095	22.339	1.877	16.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	18	Amp			N	Y	Y	86.557			
+30	C6	false		Bdnf1	STANDARD	SYBR	None	20.595	22.339	1.877	16.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	16	Amp			N	Y	Y	86.696			
+31	C7	false		Cam2a1	STANDARD	SYBR	None	24.373	22.066	2.119	16.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	18	Amp			N	Y	N	84.193			
+32	C8	false		Cam2a1	STANDARD	SYBR	None	21.619	22.066	2.119	16.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	16	Amp			N	Y	N	84.471			
+33	C9	false		Cam2a1	STANDARD	SYBR	None	20.206	22.066	2.119	16.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	15	Amp			N	Y	N	84.332			
+35	C11	false		Fmr1	STANDARD	SYBR	None	31.113	30.035	1.525	16.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	26	Amp			N	Y	N	86.696			
+36	C12	false		Fmr1	STANDARD	SYBR	None	28.957	30.035	1.525	16.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	24	Amp			N	Y	N	86.696			
+38	D2	false		Arc	STANDARD	SYBR	None	32.918	32.918		8.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	25	Amp			N	N	N	81.551			
+40	D4	false		Bdnf1	STANDARD	SYBR	None	24.645	23.007	1.541	8.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	20	Amp			N	Y	Y	86.279			
+41	D5	false		Bdnf1	STANDARD	SYBR	None	22.791	23.007	1.541	8.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	18	Amp			N	Y	Y	86.557			
+42	D6	false		Bdnf1	STANDARD	SYBR	None	21.585	23.007	1.541	8.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	17	Amp			N	Y	Y	86.557			
+43	D7	false		Cam2a1	STANDARD	SYBR	None	25.086	22.979	1.925	8.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	19	Amp			N	Y	N	84.193			
+44	D8	false		Cam2a1	STANDARD	SYBR	None	22.538	22.979	1.925	8.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	16	Amp			N	Y	N	84.332			
+45	D9	false		Cam2a1	STANDARD	SYBR	None	21.312	22.979	1.925	8.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	15	Amp			N	Y	N	84.193			
+46	D10	false		Fmr1	STANDARD	SYBR	None	31.843	31.342	0.570	8.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	27	Amp			N	Y	N	86.418			
+47	D11	false		Fmr1	STANDARD	SYBR	None	31.462	31.342	0.570	8.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	26	Amp			N	Y	N	86.835			
+48	D12	false		Fmr1	STANDARD	SYBR	None	30.722	31.342	0.570	8.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	26	Amp			N	Y	N	86.696			
+51	E3	false		Arc	STANDARD	SYBR	None	33.874	33.874		4.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	26	Amp			N	N	N	81.690			
+52	E4	false		Bdnf1	STANDARD	SYBR	None	25.952	24.123	1.671	4.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	21	Amp			N	Y	Y	86.279			
+53	E5	false		Bdnf1	STANDARD	SYBR	None	23.743	24.123	1.671	4.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	19	Amp			N	Y	Y	86.557			
+54	E6	false		Bdnf1	STANDARD	SYBR	None	22.675	24.123	1.671	4.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	19	Amp			N	Y	Y	86.557			
+55	E7	false		Cam2a1	STANDARD	SYBR	None	26.122	24.071	1.823	4.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	20	Amp			N	Y	N	84.332			
+56	E8	false		Cam2a1	STANDARD	SYBR	None	23.457	24.071	1.823	4.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	17	Amp			N	Y	N	84.471			
+57	E9	false		Cam2a1	STANDARD	SYBR	None	22.635	24.071	1.823	4.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	16	Amp			N	Y	Y	84.471			
+59	E11	false		Fmr1	STANDARD	SYBR	None	32.558	35.805	4.591	4.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	27	Amp			N	Y	N	86.835			
+60	E12	false		Fmr1	STANDARD	SYBR	None	39.052	35.805	4.591	4.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	34	No Amp			N	Y	Y	75.990			
+61	F1	false		Arc	STANDARD	SYBR	None	33.977	33.977		2.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	27	Amp			N	N	N	81.412			
+64	F4	false		Bdnf1	STANDARD	SYBR	None	26.968	25.370	1.828	2.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	22	Amp			N	Y	N	86.139			
+65	F5	false		Bdnf1	STANDARD	SYBR	None	25.764	25.370	1.828	2.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	22	Amp			N	Y	N	86.279			
+66	F6	false		Bdnf1	STANDARD	SYBR	None	23.376	25.370	1.828	2.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	19	Amp			N	Y	Y	86.835			
+67	F7	false		Cam2a1	STANDARD	SYBR	None	26.531	24.776	1.575	2.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	20	Amp			N	Y	N	84.332			
+68	F8	false		Cam2a1	STANDARD	SYBR	None	24.312	24.776	1.575	2.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	18	Amp			N	Y	N	84.471			
+69	F9	false		Cam2a1	STANDARD	SYBR	None	23.486	24.776	1.575	2.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	16	Amp			N	Y	N	84.332			
+70	F10	false		Fmr1	STANDARD	SYBR	None	Undetermined			2.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	39	No Amp			Y	N	Y	76.268			
+73	G1	false		Arc	STANDARD	SYBR	None	Undetermined	34.450		1.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	33	No Amp			N	N	Y	82.803			
+74	G2	false		Arc	STANDARD	SYBR	None	Undetermined	34.450		1.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	35	No Amp			N	N	Y	83.359			
+75	G3	false		Arc	STANDARD	SYBR	None	34.450	34.450		1.000			34.629	0.472	-1.243	537.157	true	0.863	true	3	27	Amp			N	N	N	81.690			
+76	G4	false		Bdnf1	STANDARD	SYBR	None	28.446	26.959	1.319	1.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	24	Amp			N	Y	N	86.279			
+77	G5	false		Bdnf1	STANDARD	SYBR	None	25.931	26.959	1.319	1.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	22	Amp			N	Y	Y	86.696			
+78	G6	false		Bdnf1	STANDARD	SYBR	None	26.499	26.959	1.319	1.000			26.620	0.770	-3.725	85.557	true	0.118	true	3	21	Amp			N	Y	Y	86.557			
+79	G7	false		Cam2a1	STANDARD	SYBR	None	29.174	26.443	2.398	1.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	21	Amp			N	Y	N	84.471			
+80	G8	false		Cam2a1	STANDARD	SYBR	None	25.469	26.443	2.398	1.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	18	Amp			N	Y	N	84.610			
+81	G9	false		Cam2a1	STANDARD	SYBR	None	24.685	26.443	2.398	1.000			26.266	0.677	-3.678	87.004	true	0.448	true	3	17	Amp			N	Y	N	84.471			
+84	G12	false		Fmr1	STANDARD	SYBR	None	38.053	38.053		1.000			37.526	0.718	-5.442	52.677	true	0.162	true	3	34	Inconclusive			N	N	N	87.113			
+93	H9	false		Cam2a1	NTC	SYBR	None	Undetermined						26.266	0.677	-3.678	87.004	true	0.448	true	3	39	No Amp			N	N	Y	89.893			
