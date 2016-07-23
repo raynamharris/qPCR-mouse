@@ -6,55 +6,9 @@
 
 ##script stored in "Z:/NSB_2016/IntegrativeNeuroscience/STGsingleneuron2015/bin"
 ## set path to data dir
+setwd("~/Desktop/Rachel/")
 setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/molecularGroup")
 
-## The process:
-## 1. Readin experimental prjoect files and create one big "rawdata" dataframe
-## 2. Clean the data to make numbers numbers and rename important columns
-## 3. Create dilutions dataframe with quantiry, target name, and ct.
-## 4. Calculate primer efficiences with MCMC.qpcr PrimEFF function
-## 5. create counts dataframe 
-## 6. Join count and sample info, sort by sample, order in logical fashion
-## 7. Turn cq into counts
-## 8. Mixed model
-## 9. Mixed model with diagnostic plots
-## 10. Plot the data!!
-
-
-#install.packages("dplyr")
-#install.packages("plyr")
-#install.packages("MCMC.qpcr")
-#install.packages("reshape2")
-library(dplyr)
-library(plyr)
-library(MCMC.qpcr)
-library(reshape2)
-
-
-## Read data files
-## for taqman, skip first 43 lines, 
-## for sybr, skip first 44 lines
-
-RA <- read.delim("2016-07-20_112033_RA.txt", skip=43, header = TRUE, sep = "\t", stringsAsFactors = FALSE )[ ,1:24]
-SN <- read.delim("2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt.txt", skip=44, header = TRUE, sep = "\t" , stringsAsFactors = FALSE)[ ,1:24]
-
-## use rbind to bind data into a fill "raw data" dataframe
-rawdata <- rbind(RA, SN)
-names(rawdata)
-str(rawdata)
-##=============================================================================================================#
-## Script created by Rayna Harris, rayna.harris@utexas.edu
-## Script created in version R 3.3.1 
-## This script is for analyzing data related to the STG qpcr projects
-##=============================================================================================================#
-
-##script stored in "Z:/NSB_2016/IntegrativeNeuroscience/STGsingleneuron2015/bin"
-## set path to data dir
-<<<<<<< HEAD:bin/mcmc.qpcr.molecularGroup.R
-setwd("~/Desktop/Rachel/")
-=======
-  setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/molecularGroup")
->>>>>>> 09de634e82fe8d7ceaf84d44d5fde8000ab5efdf:bin/mcmc.qpcr.molecularGroup.R
 
 ## The process:
 ## 1. Readin experimental prjoect files and create one big "rawdata" dataframe
@@ -78,7 +32,6 @@ library(plyr)
 library(MCMC.qpcr)
 library(reshape2)
 
-<<<<<<< HEAD:bin/mcmc.qpcr.molecularGroup.R
 # Load data -------------------
 
 eff1  <- read.csv("2016-07-17_184859_ArctoFmr1.csv")
@@ -88,7 +41,7 @@ summary(eff1) # For primer efficiencies, we care about Target.Name, CT, and Quan
 eff2  <- read.csv("2016-07-17_184859_FostoRpl19.csv")
 head(eff2)
 summary(eff1)
-=======
+
   
   ## Read data files
   ## for taqman, skip first 43 lines, 
@@ -101,7 +54,6 @@ SN <- read.delim("2016-07-20_115248_ShaynNicole_CREB_PkcZ_Htt.txt", skip=44, hea
 rawdata <- rbind(RA, SN)
 names(rawdata)
 str(rawdata)
->>>>>>> 09de634e82fe8d7ceaf84d44d5fde8000ab5efdf:bin/mcmc.qpcr.molecularGroup.R
 
 ## 2. Clean data
 clean.eff1 <- rename(eff1, c("Sample.Name"="sample", "Target.Name"="gene",  "CT"="cq", "Quantity"="dna")) 
