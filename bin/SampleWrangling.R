@@ -18,6 +18,8 @@ library(reshape2)
 ## 1. read data
 setwd("~/Github/qPCR-mouse/data")
 setwd("Z:/NSB_2016/4_MouseMolecular/qPCR-mouse/data")
+setwd("/Volumes/nsb/NSB_2016/4_MouseMolecular/qPCR-mouse/data")
+
 punches <- read.csv("NSBpunches.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
 animals <- read.csv("NSBanimals.csv", header=TRUE, sep=",", stringsAsFactors = FALSE)
 punches$mouse <- as.factor(punches$Mouse)
@@ -25,7 +27,7 @@ animals$mouse <- as.factor(animals$Mouse)
 
 
 # 2. melt slice data with atlas reference
-animalsmelt<- melt(animals,id.vars=c("mouse2","Genotype","Conflict","APA","Group"), measure.vars=c("Slice1","Slice2","Slice3","Slice4","Slice5","Slice6","Slice7","Slice8"),variable.name="Slice2",value.name="Atlas.location",na.rm=FALSE)
+animalsmelt<- melt(animals,id.vars=c("mouse","Genotype","Conflict","APA","Group"), measure.vars=c("Slice1","Slice2","Slice3","Slice4","Slice5","Slice6","Slice7","Slice8"),variable.name="Slice2",value.name="Atlas.location",na.rm=FALSE)
 animalsmelt$Slice2 <- gsub("Slice","",animalsmelt$Slice2)
 animalsmelt$Slice2 <- as.integer(animalsmelt$Slice2)
 
@@ -55,6 +57,21 @@ str(alldata)
 FMR1_mice <- alldata %>%
   filter(Genotype %in% c("FMR1", "WT"))   %>%
   distinct(Mouse, Genotype, Group, Punch)
+
+WT_Htt_H_Tr_Un <- alldata %>%
+  filter(Genotype != "FMR1", 
+         Genotype != "WT", 
+         Punch %in% c("CA1", "CA2", "DG"))%>%
+  distinct(Mouse, Genotype, Group, Punch) %>%
+  arrange(Group)
+
+WT_H_Tr_Un <- alldata %>%
+  filter(Genotype != "FMR1", 
+         Genotype != "WT", Genotype != "Htt (YAC128)", 
+         Punch %in% c("CA1", "CA2", "DG"))%>%
+  distinct(Mouse, Genotype, Group, Punch) %>%
+  arrange(Group)
+
 
 ##
 ARmice <- alldata %>%
