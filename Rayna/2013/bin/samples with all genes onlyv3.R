@@ -21,6 +21,8 @@ eff=PrimEff(dil)
 genecolumns=c(7:18) 
 conditions=c(1:6)
 counts=cq2counts(data=ct, genecols=c(7:18),condcols=c(1:6),effic=eff)
+
+
 head(counts)
 write.table(counts, "counts for samples with all genes only.csv", col.names = NA, sep = ",")
 

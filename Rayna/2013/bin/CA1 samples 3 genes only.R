@@ -33,17 +33,29 @@ counts$logcount=NULL
 head(counts) 
 
 ###uninformed linear mixed model 1 
-model1=mcmc.qpcr(data=counts, fixed="strained+APA+strained:APA",random=c("ind","time","year"),pr=TRUE,pl=TRUE)
+model1=mcmc.qpcr(data=counts, fixed="strained+APA+strained:APA",pr=TRUE,pl=TRUE)
 summary(model1)
 diagnostic.mcmc(model1)
 plota=HPDsummary(model=model1,data=counts)
 poltb=HPDsummary(model=model1,data=counts,relative=TRUE)
 
-model2=mcmc.qpcr(data=counts, fixed="APA+strained+APA:strained",random=c("ind","time","year"),pr=TRUE,pl=TRUE)
+model2=mcmc.qpcr(data=counts, fixed="APA+strained+APA:strained",pr=TRUE,pl=TRUE)
 summary(model2)
 diagnostic.mcmc(model2)
 plota=HPDsummary(model=model2,data=counts)
 poltb=HPDsummary(model=model2,data=counts,relative=TRUE)
+
+model3=mcmc.qpcr(data=counts, fixed="APA+strained+APA:strained",pr=TRUE,pl=TRUE, controls = c("rpl19"), normalize=TRUE)
+summary(model3)
+diagnostic.mcmc(model3)
+plota=HPDsummary(model=model3,data=counts)
+poltb=HPDsummary(model=model3,data=counts,relative=TRUE)
+
+model4=mcmc.qpcr(data=counts, fixed="strained+APA+strained:APA",pr=TRUE,pl=TRUE, controls = c("rpl19"), normalize=TRUE)
+summary(model4)
+diagnostic.mcmc(model4)
+plota=HPDsummary(model=model4,data=counts)
+poltb=HPDsummary(model=model4,data=counts,relative=TRUE)
 
 print1=getNormalizedData(model1,counts)
 data<-data.frame(cbind(print1$normData,print1$conditions))
