@@ -1,15 +1,24 @@
-##install MCMCglmm and MCMC.qpcr
-library("MCMCglmm", lib.loc="C:/Program Files/R/R-3.0.1/library")
-library("MCMC.qpcr", lib.loc="C:/Program Files/R/R-3.0.1/library")
+## Want one script to wrangle and anlayze all the wt frm1 data for the qpcr project
 
-setwd("Z:/Shared/NSB/Research/MouseMolBioData/Data Analysis")
+# Parts
+## Part 1 : behavior and physiology data
+## Part 2 : qpcr data
+## Part 3 : integraive analysis
 
-##########Determine counts for Ca1 samples
+
+
+# Reading and analyzing qPCR data
+
+
+library(MCMC.qpcr) # for qpcr data analysis
+
+## read qcpr data -----
+setwd("~/Github/qPCR-mouse/Rayna/2013/data")
+
+## read in the effecincies for the genes
 eff1=read.table("effeciencies_ca1.txt",header=T,sep="\t") 
-head(eff1)
 PrimEff(eff1)
-#add effeciency values to a table caleed cq1.txt then read the file with this command
-amp.eff1=read.table("cq1_ca1.txt",header=T,sep="\t")
+
 #########read in Ca1 data
 ct1=read.table("ct_ca1.txt",header=T,sep="\t") 
 head(ct1)
