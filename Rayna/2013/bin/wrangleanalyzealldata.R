@@ -24,36 +24,25 @@ str(qpcr)
 summary(qpcr)
 head(qpcr)
 
-## rename headers with rename() and factors with revalue() ----
-# install.packages("dplyr")
+## rename some columsn and factors
+
+# install.packages("dplyr") #note, this function masked when plyr installed. have to restart to rerun command
 library(dplyr)
-qpcr <- rename(qpcr, genotype = strained) #note, this function masked when plyr installed. have to restart to rerun command
+qpcr <- rename(qpcr, genotype = strained) 
 
 library(plyr)
 qpcr$genotype <- revalue(qpcr$genotype, c("fmr1" = "FMR1-KO")) 
 qpcr$genotype <- revalue(qpcr$genotype, c("wt" = "WT"))
 head(qpcr)
 
-## subset the data and droplevels! to have FMR1 and WT in separate files ----
+qpcr$region.genotype <- as.factor(paste(qpcr$region, qpcr$genotype, sep="_"))
+qpcr <- qpcr[c(1:7,20,8:19)]
+head(qpcr)
 
-## just FRM1 trained and untrained
-FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
-FMR1KO <- droplevels(FMR1KO)
-str(FMR1KO)
-
-## just WT CA3
-WT <- filter(qpcr, genotype == "WT", region == "CA3")
-WT <- droplevels(WT)
-str(WT)
-
-## just WT and FRM1 CA1
-CA1_3genes <- qpcr[c(1:10)]
-
-## gene expression analysis with mcmc.qpcr ----
+## calculating gene efficiencies & rename genes ----
 #install.packages("MCMC.qpcr")
 library(MCMC.qpcr)
 
-## read in dilution series, drop & renmae things and calculate gene effeciencies
 dilutions <- read.csv("02_dilutions_CA1CA3.csv", header = TRUE)
 head(dilutions)
 
@@ -66,40 +55,96 @@ dilutions$gene <- revalue(dilutions$gene, c("rRNA18s" = "rRNA18S"))
 
 PrimEff(dilutions) -> eff
 
-## Analyze FMR1 data with cq2counts function and naive model ----
-dd <- cq2counts(data=FMR1KO, genecols=c(8:19), condcols=c(1:7), effic=eff)
-head(dd)
+## Create "all but homecage" dataframe, anlayze with cq2counts function and naive model ----
+nohome <- filter(qpcr, APA != "homecage")
+nohome <- droplevels(nohome)
 
-## use soft norm model to fit
-soft <- mcmc.qpcr(
+ddnohome <- cq2counts(data=nohome, genecols=c(9:20), condcols=c(1:8), effic=eff)
+head(ddnohome)
+
+naive_nohome <- mcmc.qpcr(
+  data=ddnohome,
+  fixed="APA+region.genotype+APA:region.genotype",
+  pr=T,pl=T, singular.ok=TRUE)
+diagnostic.mcmc(model=naive_nohome, col="grey50", cex=0.8)
+HPDsummary(naive_nohome, nohome) -> summarynohome
+trellisByGene(summarynohome,xFactor="region.genotype",groupFactor="APA")+xlab("group")
+
+## Create "all CA1 but homecage" dataframe, anlayze with cq2counts function and naive model ----
+nohomeCA1 <- filter(qpcr, APA != "homecage", region != "CA3")
+nohomeCA1 <- droplevels(nohomeCA1)
+
+ddnohomeCA1 <- cq2counts(data=nohomeCA1, genecols=c(9:20), condcols=c(1:8), effic=eff)
+head(ddnohome)
+
+naive_nohomeCA1 <- mcmc.qpcr(
+  data=ddnohomeCA1,
+  fixed="APA+region.genotype+APA:region.genotype",
+  pr=T,pl=T, singular.ok=TRUE)
+diagnostic.mcmc(model=naive_nohomeCA1, col="grey50", cex=0.8)
+HPDsummary(naive_nohomeCA1, ddnohomeCA1) -> summarynohomeCA1
+trellisByGene(summarynohomeCA1,xFactor="region.genotype",groupFactor="APA")+xlab("group")
+
+
+## Subset FMR1 data then anlyze with cq2counts function and naive model ----
+FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
+FMR1KO <- droplevels(FMR1KO)
+str(FMR1KO)
+
+dd_FMR1KO <- cq2counts(data=FMR1KO, genecols=c(9:20), condcols=c(1:8), effic=eff)
+head(dd_FMR1KO)
+
+naive_FMR1 <- mcmc.qpcr(
   data=dd,
   fixed="APA",
-  controls=c("rRNA18S"),
-  normalize = TRUE,
   pr=T,pl=T)
+diagnostic.mcmc(model=naive_FMR1, col="grey50", cex=0.8)
+HPDsummary(naive_FMR1, dd_FMR1KO) -> summaryFMR1  
 
-diagnostic.mcmc(model=soft, col="grey50", cex=0.8)
-HPDsummary(soft, dd, relative=TRUE)
-HPDsummary(soft, dd) 
-dumm
+## Subset WT-CA3 data with cq2counts function and naive model ----
+WT <- filter(qpcr, genotype == "WT", region == "CA3")
+WT <- droplevels(WT)
 
-## Analyze WT data with cq2counts function and naive model ----
-ddwt <- cq2counts(data=WT, genecols=c(8:19), condcols=c(1:7), effic=eff)
-head(ddwt)
+ddwt <- cq2counts(data=WT, genecols=c(9:20), condcols=c(1:8), effic=eff)
 
-## use soft norm model to fit
 soft_wt <- mcmc.qpcr(
   data=ddwt,
   fixed="APA",random="sample",
   controls=c("rRNA18S"),
   normalize = TRUE,
   pr=T,pl=T)
-
 diagnostic.mcmc(model=soft, col="grey50", cex=0.8)
-HPDsummary(soft_wt, ddwt, relative=TRUE)
 HPDsummary(soft_wt, ddwt)
 
+## subset WT-CA1-only then analyze data with cq2counts function and naive model ----
+CA1_year <- qpcr[c(1:11)] %>% 
+  filter(APA != "homecage") %>% 
+  filter(genotype != "FMR1-KO") %>% 
+  filter(region == "CA1") 
+CA1_year <- droplevels(CA1_year)
+str(CA1_year)
 
-## Analyze 3 gene data with cq2counts function and naive model ----
-dd3genes <- cq2counts(data=CA1_3genes, genecols=c(8:10), condcols=c(1:7), effic=eff)
-head(dd3genes)
+ddCA1year <- cq2counts(data=CA1_year, genecols=c(9:11), condcols=c(1:8), effic=eff)
+
+naive_ddCA1year <- mcmc.qpcr(
+  data=ddCA1year,
+  fixed="year+APA+APA:year",random="sample",
+  pr=T,pl=T)
+diagnostic.mcmc(model=naive_ddCA1year, col="grey50", cex=0.8)
+HPDsummary(naive_ddCA1year, ddCA1year)
+
+## Suset 3 gene data then anlyzewith cq2counts function and naive model ----
+CA1_3genes <- qpcr[c(1:11)] %>% filter( APA != "homecage")
+CA1_3genes <- droplevels(CA1_3genes)
+str(CA1_3genes)
+
+dd3genes <- cq2counts(data=CA1_3genes, genecols=c(9:11), condcols=c(1:8), effic=eff)
+
+naive_3genes <- mcmc.qpcr(
+  data=dd3genes,
+  fixed="region.genotype+APA+APA:region.genotype",
+  pr=T,pl=T, singular.ok=TRUE)
+diagnostic.mcmc(model=naive_3genes, col="grey50", cex=0.8)
+HPDsummary(naive_3genes, dd3genes) -> sumary3genes
+trellisByGene(sumary3genes,xFactor="region.genotype",groupFactor="APA")+xlab("group")
+
