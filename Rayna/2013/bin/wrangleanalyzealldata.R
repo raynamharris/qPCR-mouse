@@ -5,12 +5,10 @@
 ## Part 2 : qpcr data
 ## Part 3 : integraive analysis
 
-
-
-# Reading and analyzing qPCR data
-
+# Part 2: Reading and analyzing qPCR data ----
 
 ## wrangle the gene expression qpcr data ----
+setwd("~/Github/qPCR-mouse/Rayna/2013/data")
 qpcr <- read.csv("02_qpcrdata.csv", header = TRUE, na.strings = "NA", stringsAsFactors = FALSE)
 str(qpcr)
 summary(qpcr)
@@ -29,8 +27,7 @@ head(qpcr)
 ## rename headers with rename() and factors with revalue() ----
 # install.packages("dplyr")
 library(dplyr)
-qpcr <- rename(qpcr, genotype = strained)
-
+qpcr <- rename(qpcr, genotype = strained) #note, this function masked when plyr installed. have to restart to rerun command
 library(plyr)
 qpcr$genotype <- revalue(qpcr$genotype, c("fmr1" = "FMR1-KO")) 
 qpcr$genotype <- revalue(qpcr$genotype, c("wt" = "WT"))
@@ -50,58 +47,112 @@ str(WT)
 #install.packages("MCMC.qpcr")
 library(MCMC.qpcr)
 
-## read in dilution series and calculate gene effeciencies
+## read in dilution series, drop & renmae things and calculate gene effeciencies
 dilutions <- read.csv("02_dilutions_CA1CA3.csv", header = TRUE)
-str(dilutions)
 head(dilutions)
-PrimEff(dilutions)
 
-## dropping the poorer std curves and renameing genes. redo primeff()
 dilutions <- filter(dilutions, gene != "dlg4", gene != "pkmz.conc", gene != "rpl19.conc", gene != "grim")
 dilutions <- droplevels(dilutions)
 dilutions$gene <- revalue(dilutions$gene, c("dlg4.conc" = "dlg4")) 
 dilutions$gene <- revalue(dilutions$gene, c("grim.conc" = "grim"))
 dilutions$gene <- revalue(dilutions$gene, c("fmr1.conc" = "fmr1"))
 dilutions$gene <- revalue(dilutions$gene, c("rRNA18s" = "rRNA18S"))
+
 PrimEff(dilutions) -> eff
 
-
-## Analyze FMR1 data with cq2counts function
+## Analyze FMR1 data with cq2counts function and naive model ----
 dd <- cq2counts(data=FMR1KO, genecols=c(7:18), condcols=c(1:6), effic=eff)
 head(dd)
 
 ## use naive model to fit
 naive <- mcmc.qpcr(
-  fixed="APA",
-  random="ind",
   data=dd,
-  pr=T,
-  pl=T
-)
+  fixed="APA",random="ind",
+  pr=T, pl=T)
 
-diagnostic.mcmc(
-  model=naive,
-  col="grey50",
-  cex=0.8
-)
-
+diagnostic.mcmc(model=naive, col="grey50", cex=0.8)
 HPDsummary(naive, dd, relative=TRUE)
 
 ## use soft norm model to fit
 soft <- mcmc.qpcr(
-  fixed="APA",
-  random="ind",
   data=dd,
-  controls=c("rRNA18S","rpl19"),
+  fixed="APA",random="ind",
+  controls=c("rRNA18S"),
   normalize = TRUE,
-  pr=T,
-  pl=T
-)
+  pr=T,pl=T)
 
-diagnostic.mcmc(
-  model=soft,
-  col="grey50",
-  cex=0.8
-)
-
+diagnostic.mcmc(model=soft, col="grey50", cex=0.8)
 HPDsummary(soft, dd, relative=TRUE)
+HPDsummary(soft, dd)
+
+
+## Analyze WT data with cq2counts function and naive model ----
+ddwt <- cq2counts(data=WT, genecols=c(7:18), condcols=c(1:6), effic=eff)
+head(ddwt)
+
+## use naive model to fit
+naive_wt <- mcmc.qpcr(
+  data=ddwt,
+  fixed="APA",random="sample",
+  pr=T, pl=T)
+
+diagnostic.mcmc(model=naive_wt, col="grey50", cex=0.8)
+HPDsummary(naive_wt, ddwt, relative=TRUE)
+HPDsummary(naive_wt, ddwt)
+
+## use soft norm model to fit
+soft_wt <- mcmc.qpcr(
+  data=ddwt,
+  fixed="APA",random="sample",
+  controls=c("rRNA18S"),
+  normalize = TRUE,
+  pr=T,pl=T)
+
+diagnostic.mcmc(model=soft, col="grey50", cex=0.8)
+HPDsummary(soft_wt, ddwt, relative=TRUE)
+HPDsummary(soft_wt, ddwt)
+
+
+## Analyze All data (minus that one CA1 WT sample) with cq2counts function and naive model ----
+## combine the WT and FRM1 dataset because some very tiny groups have been removed from qpcr dataframe
+FMR1KO_WT <- rbind(FMR1KO, WT)
+FMR1KO_WT$genotype <- factor(FMR1KO_WT$genotype, levels = c("WT", "FMR1-KO"))
+
+## cq to counds and 
+fmr1ko_wt <- cq2counts(data=FMR1KO_WT, genecols=c(7:18), condcols=c(1:6), effic=eff)
+head(fmr1ko_wt)
+fmr1ko_wt$genotype <- factor(fmr1ko_wt$genotype, levels = c("WT", "FMR1-KO"))
+levels(fmr1ko_wt$genotype)
+
+## use naive model to fit
+naive_fmr1ko_wt <- mcmc.qpcr(
+  data=fmr1ko_wt,
+  fixed="APA+genotype+APA:genotype",
+  pr=T, pl=T)
+
+diagnostic.mcmc(model=naive_fmr1ko_wt, col="grey50", cex=0.8)
+HPDsummary(naive_fmr1ko_wt, fmr1ko_wt, relative=TRUE)
+HPDsummary(naive_fmr1ko_wt, fmr1ko_wt)
+
+
+## use soft norm model to fit
+soft_fmr1ko_wt <- mcmc.qpcr(
+  data=fmr1ko_wt,
+  fixed="APA+genotype+APA:genotype",
+  controls = c("rRNA18S"),
+  pr=T, pl=T)
+
+diagnostic.mcmc(model=soft_fmr1ko_wt, col="grey50", cex=0.8)
+HPDsummary(soft_fmr1ko_wt, fmr1ko_wt, relative=TRUE)
+HPDsummary(soft_fmr1ko_wt, fmr1ko_wt)
+
+## use soft norm model to fit
+soft_fmr1ko_wt <- mcmc.qpcr(
+  data=fmr1ko_wt,
+  fixed="region+APA+region:APA",
+  controls = c("rRNA18S"),
+  pr=T, pl=T)
+
+diagnostic.mcmc(model=soft_fmr1ko_wt, col="grey50", cex=0.8)
+HPDsummary(soft_fmr1ko_wt, fmr1ko_wt, relative=TRUE)
+sHPDsummary(soft_fmr1ko_wt, fmr1ko_wt)
