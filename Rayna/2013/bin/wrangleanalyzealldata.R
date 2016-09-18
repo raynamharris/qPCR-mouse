@@ -65,12 +65,18 @@ head(ddnohome)
 naive_nohome <- mcmc.qpcr(
   data=ddnohome,
   fixed="APA+region.genotype+APA:region.genotype",
-  pr=T,pl=T, singular.ok=TRUE)
+  pr=T,pl=T, singular.ok=TRUE,  geneSpecRes=FALSE)
 diagnostic.mcmc(model=naive_nohome, col="grey50", cex=0.8)
 HPDsummary(naive_nohome, nohome) -> summarynohome
-trellisByGene(summarynohome,xFactor="region.genotype",groupFactor="APA")+xlab("group")
+trellisByGene(summarynohome,xFactor="region.genotype",groupFactor="APA", nrow=4)+xlab("Group") 
+#printed and saved as 12genes-3x4.png
 
-## Create "all CA1 but homecage" dataframe, anlayze with cq2counts function and naive model ----
+## some extra analyzes
+nd <- getNormalizedData(naive_nohome,data=ddnohome) #export results
+nd_normData <- as.data.frame(nd$normData)
+nd_conditions <- as.data.frame(nd$conditions)
+
+## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
 nohomeCA1 <- filter(qpcr, APA != "homecage", region != "CA3")
 nohomeCA1 <- droplevels(nohomeCA1)
 
@@ -85,7 +91,6 @@ diagnostic.mcmc(model=naive_nohomeCA1, col="grey50", cex=0.8)
 HPDsummary(naive_nohomeCA1, ddnohomeCA1) -> summarynohomeCA1
 trellisByGene(summarynohomeCA1,xFactor="region.genotype",groupFactor="APA")+xlab("group")
 
-
 ## Subset FMR1 data then anlyze with cq2counts function and naive model ----
 FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
 FMR1KO <- droplevels(FMR1KO)
@@ -97,9 +102,28 @@ head(dd_FMR1KO)
 naive_FMR1 <- mcmc.qpcr(
   data=dd,
   fixed="APA",
-  pr=T,pl=T)
+  pr=T,pl=T, geneSpecRes=FALSE
+  )
 diagnostic.mcmc(model=naive_FMR1, col="grey50", cex=0.8)
 HPDsummary(naive_FMR1, dd_FMR1KO) -> summaryFMR1  
+
+nd_FMR1 <- getNormalizedData(naive_FMR1,data=dd_FMR1KO) #export results
+head(nd_FMR1$normData)
+tail(nd_FMR1$conditions)
+
+par(mfrow=c(3,4))
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$cam2kd)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$creb)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$dlg4)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$fmr1)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$fos)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$gria)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$grim)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$grin)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$nsf)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$pkmz)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$rpl19)
+plot(nd_FMR1$conditions$APA, nd_FMR1$normData$rRNA18S)
 
 ## Subset WT-CA3 data with cq2counts function and naive model ----
 WT <- filter(qpcr, genotype == "WT", region == "CA3")
