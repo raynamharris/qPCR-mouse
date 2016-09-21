@@ -5,6 +5,7 @@ setwd("~/Github/qPCR-mouse/Rayna/2013/data")
 qpcr <- read.csv("02_qpcrdata.csv", header = TRUE, na.strings = "NA", stringsAsFactors = FALSE)
 str(qpcr)
 summary(qpcr)
+head(qpcr)
 
 ## setting the factors
 qpcr$sample <- as.factor(qpcr$sample)
