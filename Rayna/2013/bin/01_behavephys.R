@@ -36,13 +36,11 @@ wt$ind
 
 fmr1$ind <- fmr1$filename
 fmr1$ind <- gsub("RoomTrack_", "", fmr1$ind) ##remove RommTrack_"
-fmr1$ind <- gsub("fmr1", "FMR1 ", fmr1$ind) ## changes to FMR1 
+fmr1$ind <- gsub("fmr1", "FMR1 ", fmr1$ind) ## changes to FMR1
+fmr1$ind <- gsub("frm1", "FMR1 ", fmr1$ind) ## because one was typed wrong
 fmr1$ind <- gsub("wildtype", "BL ", fmr1$ind) ## that one wildtype sample name
 fmr1$ind <- gsub("_[ptr][[:print:]]*", "", fmr1$ind) ##deletes the rest of the filename
 fmr1$ind
-## has one error, must correct
-fmr1$ind <- as.factor(fmr1$ind)
-fmr1$ind <- revalue(fmr1$ind, c("frm1H" = "FMR1 H")) 
 
 ## rename columns
 names(wt)[3] <- "TotalTime"
@@ -161,9 +159,10 @@ names(fmr1)[57] <- "IO_Max"
 names(fmr1)[58] <- "LTP_Baseline"
 names(fmr1)[59] <- "LTP_Baseline_SD"
 
-## add columns genotype
+## add columns genotype (easier for wt df than for fmr1 df)
 wt$genotype <- as.factor("WT")
-fmr1$genotype <- as.factor("FMR1-KO")
+fmr1$genotype <- ifelse(grepl("fmr1|frm1",fmr1$filename),'FMR1-KO','WT')
+fmr1$genotype <- as.factor(fmr1$genotype)
 
 ## binding, clearning, filtering, renaming, adding conditions ----
 
@@ -189,6 +188,7 @@ wtfmr1$session <- ifelse(grepl("pretraining|pretrain|Hab", wtfmr1$filename), "pr
                                           ifelse(grepl("retention|reten|Retest", wtfmr1$filename), "retention", "NA")))))
 wtfmr1$session  ## check that all names good with no NAs                                 
 wtfmr1$session <- as.factor(wtfmr1$session)  
+wtfmr1$session <- factor(wtfmr1$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
 
 
 ## separate out the summary columns and clean up / wrangle ----
@@ -199,6 +199,8 @@ str(summary)
 
 ## rename APA to match qpcr data
 summary$APA <- revalue(summary$APA, c("untrained" = "control")) 
+summary$APA <- factor(summary$APA, levels = c("control", "trained"))
+
 
 ## making a bunch of columns numeric
 summary$IO_Max <- gsub("%", "", summary$IO_Max) #remove the percent sign
@@ -213,9 +215,27 @@ wtfmr1 <- wtfmr1[c(60:61,62,1:45)]  # removes summary columns
 APA <-  summary[c(1:3)] 
 wtfmr1 <- left_join(wtfmr1,APA) 
 wtfmr1 <- wtfmr1[c(1:2,49,3:48)]  # removes summary columns
+wtfmr1$APA <- factor(wtfmr1$APA, levels = c("control", "trained"))
+
+## create one level column
+wtfmr1$genoAPA <- wtfmr1$genoAPA <- as.factor(paste(wtfmr1$genotype,wtfmr1$APA, sep="_"))
+wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"))
+wtfmr1$genoAPA
 
 head(wtfmr1)
 head(summary)
 
-###  graphs!!! -----
 
+###  graphs!!! -----
+cbPalette <- c("00000", "FF0000", "666666", "FF9933") # black red grey orange
+
+## time to first enter
+ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
+  geom_violin() + facet_grid(~ genotype+APA) 
+ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
+  geom_boxplot() + facet_grid(~ genotype+APA) 
+ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
+  geom_bar(stat = "identity") + facet_grid(~ genotype+APA) 
+
+ggplot(wtfmr1, aes(x=session, y=TimeToFirstEntrance)) + facet_grid(~ genotype+APA) 
+  geom_line() + geom_point() 
