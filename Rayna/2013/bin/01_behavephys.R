@@ -230,12 +230,22 @@ head(summary)
 cbPalette <- c("00000", "FF0000", "666666", "FF9933") # black red grey orange
 
 ## time to first enter
-ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
+ggplot(wtfmr1, aes(session,TimeToFirstEntrance, fill=genoAPA)) + 
   geom_violin() + facet_grid(~ genotype+APA) 
-ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
+ggplot(wtfmr1, aes(session,TimeToFirstEntrance, fill=genoAPA)) + 
   geom_boxplot() + facet_grid(~ genotype+APA) 
 ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
   geom_bar(stat = "identity") + facet_grid(~ genotype+APA) 
+wtfmr1 %>% filter(genoAPA == "WT_trained") %>% 
+  ggplot(aes(x=session, y=TimeToFirstEntrance)) + facet_grid(~ ind) + geom_point() 
 
-ggplot(wtfmr1, aes(x=session, y=TimeToFirstEntrance)) + facet_grid(~ genotype+APA) 
-  geom_line() + geom_point() 
+## time to 2nd enter
+ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
+  geom_violin() + facet_grid(~ genotype+APA) 
+ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
+  geom_boxplot() + facet_grid(~ genotype+APA) 
+ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
+  geom_bar(stat = "identity") + facet_grid(~ genotype+APA) 
+
+ggplot(wtfmr1, aes(genoAPA,TimeToSecondEntrance, fill=genoAPA)) + 
+  geom_boxplot() + facet_grid(~ session) 
