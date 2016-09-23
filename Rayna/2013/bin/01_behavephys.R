@@ -339,7 +339,7 @@ summary_long %>%
 wtfmr1_matrix <- wtfmr1    #create new dataframe
 wtfmr1_matrix$genoAPAsessionInd <- as.factor(paste(wtfmr1_matrix$genoAPA, wtfmr1_matrix$session, wtfmr1_matrix$ind, sep="_")) #create genoAPAsessionInd column
 rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
-wtfmr1_matrix <- wtfmr1_matrix[-c(1:2,4:6,50:51)] #delete all non-numeric columns
+wtfmr1_matrix <- wtfmr1_matrix[-c(1:2,4:6,8,50:51)] #delete all non-numeric columns
 head(wtfmr1_matrix)
 str(wtfmr1_matrix)
 
@@ -356,10 +356,16 @@ ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) +
                        name="Pearson\nCorrelation") +
   theme_minimal()+ # minimal theme
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                   size = 12, hjust = 1))+
-  coord_fixed()
+                                   size = 10, hjust = 1))+
+  coord_fixed() +
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="") 
+
+##  
 
 
+
+## matrix of summary data ----
 summary_matrix <- summary
 summary_matrix$genoAPAsessionInd <- as.factor(paste(summary_matrix$genoAPA, summary_matrix$session, summary_matrix$ind, sep="_")) #create genoAPAsessionInd column
 rownames(summary_matrix) <- summary_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
