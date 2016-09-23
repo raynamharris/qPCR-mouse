@@ -237,33 +237,86 @@ head(summary)
 
 
 ###  graphs!!! -----
-cbPalette <- c("00000", "FF0000", "666666", "FF9933") # black red grey orange
+FentonPalette <- c('black','grey50','red','darkorange')
 
-## time to first enter
+## FAVORITE!!
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=PathToSecondEntrance, color=genoAPA)) +
+  stat_smooth() 
+
+## FAVORITE!! Time to 2nd entrance
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, color=genoAPA)) +
+  stat_smooth() +
+  scale_y_continuous(name="Time to 2nd Entrance (s)") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=MaxAvoidTime, color=genoAPA)) +
+  stat_smooth() +
+  scale_y_continuous(name="Maximum Time Avoiding Shock Zone (s)") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+  
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=Entrances, color=genoAPA)) +
+  stat_smooth() +
+  scale_y_continuous(name="Shock Zone Entrances") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TotalShocks, color=genoAPA)) +
+  stat_smooth() +
+  scale_y_continuous(name="Total Number of Shocks") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TotalPath, color=genoAPA)) +
+  stat_smooth() +
+  scale_y_continuous(name="Total Path (m)") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+
+
+
+## simple box plot faceted by genotype colored by genotype
 ggplot(data = wtfmr1, aes(x = session, y = TimeToFirstEntrance, fill=genoAPA)) +
   geom_boxplot() + facet_wrap( ~ genoAPA)
-ggplot(data = wtfmr1, aes(x = session, y = TimeToFirstEntrance, by=genoAPA, fill=genoAPA)) +
-  geom_boxplot()
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToFirstEntrance, by=ind, color=genoAPA)) +
-  geom_line() + facet_wrap( ~ ind)
-
-## time to 2nd enter
-ggplot(data = wtfmr1, aes(x = session, y = TimeToSecondEntrance, fill=genoAPA)) +
-  geom_boxplot() + facet_wrap( ~ genoAPA)
+## simple box plot colored by genotype
 ggplot(data = wtfmr1, aes(x = session, y = TimeToSecondEntrance, by=genoAPA, fill=genoAPA)) +
-  geom_boxplot()  
+  geom_boxplot()
+## line plots for every individual shown individually
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=PathToSecondEntrance, by=ind, color=genoAPA)) +
+  geom_line() + facet_wrap( ~ ind)
+## line plots for every individual shown by group
 ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, by=ind, color=genoAPA)) +
   geom_line() + facet_wrap( ~ genoAPA)
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, by=ind, color=genoAPA)) +
-  geom_line() + facet_wrap(~ ind)
-
-## path to 2nd enter
-ggplot(data = wtfmr1, aes(x = session, y = PathToSecondEntrance, fill=genoAPA)) +
-  geom_boxplot() + facet_wrap( ~ genoAPA)
+## line plots for every individual shown by group colored by individual
 ggplot(data=wtfmr1, aes(as.numeric(x=session), y=PathToSecondEntrance, by=ind, color=ind)) +
-  geom_line() + facet_wrap(~ genoAPA)
+  geom_line() + facet_wrap(~ genoAPA) 
 
 ## some modeling
 lm1 = lm(data=wtfmr1, TimeToSecondEntrance~genoAPA+session+genoAPA:session)
 summary(lm1)
 xtabs(data=wtfmr1, ~genoAPA+session)
+anova(lm1)
+
+
