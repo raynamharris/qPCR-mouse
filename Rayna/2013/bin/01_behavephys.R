@@ -333,7 +333,7 @@ summary_long %>%
         axis.text.x = element_blank(), 
         axis.ticks = element_blank())
 
-### Correlation plots!!! ----
+### Correlation plot 1 : all data for individuals ----
 
 ## first, make the data a matrix with genoAPAsessionInd as the row names
 wtfmr1_matrix <- wtfmr1    #create new dataframe
@@ -348,7 +348,7 @@ wtfmrt_cormat <- round(cor(wtfmr1_matrix),2) # compute correlations
 wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
 head(wtfmrt_cormatlong)
 
-## heatmap NOT clustered!!! # Saved as 1-beahvheatmap
+## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
 ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
@@ -360,6 +360,62 @@ ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
+### Correlation plot 2 : data averaged first by group ----
+
+## create matrix with genoAPAsession average values
+wtfmr1_matrix_avg <- wtfmr1    #create new dataframe
+wtfmr1_matrix_avg$genoAPAsession <- as.factor(paste(wtfmr1_matrix_avg$genoAPA, wtfmr1_matrix_avg$session, sep="_")) #create genoAPAsession column
+wtfmr1_matrix_avg <- wtfmr1_matrix_avg[-c(1:2,4:6,8,50)] #delete all non-numeric columns
+
+wtfmr1_matrix_avg <- wtfmr1_matrix_avg %>% 
+  group_by(genoAPAsession) %>%
+  dplyr::summarise_each(funs(mean))
+wtfmr1_matrix_avg <- as.data.frame(wtfmr1_matrix_avg)
+rownames(wtfmr1_matrix_avg) <- wtfmr1_matrix_avg$genoAPAsession     # set $genoAPAsession as rownames
+wtfmr1_matrix_avg[1] <- NULL
+
+## next, compute a correlation matrix and melt
+wtfmr1_matrix_avg_cormat <- round(cor(wtfmr1_matrix_avg),2) # compute correlations
+wtfmr1_matrix_avg_cormatlong <- melt(wtfmr1_matrix_avg_cormat) # melt
+head(wtfmr1_matrix_avg_cormat)
+
+## heatmap clustered!!! # Saved as 1-heatmap-group
+ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 10, hjust = 1)) +
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="") 
+
+
+### Heatmap plot 3 : beahvior group aves grouped by gropu?----
+## scale columns
+head(wtfmr1_matrix_avg)
+wtfmr1_matrix_avg_scaled <- scale(wtfmr1_matrix_avg)
+head(wtfmr1_matrix_avg_scaled)
+
+## convert bact to df, add rownames back
+wtfmr1_matrix_avg_scaled <- as.data.frame(wtfmr1_matrix_avg_scaled)
+wtfmr1_matrix_avg_scaled$genoAPAsession<-rownames(wtfmr1_matrix_avg_scaled)
+
+## melt data matrix
+wtfmr1_matrix_avg_scaled_long <- melt(wtfmr1_matrix_avg_scaled, id=c("genoAPAsession")) # melt
+head(wtfmr1_matrix_avg_scaled_long)
+
+## heatmap NOT clustered!!! # Saved as 1-beahvheatmap
+ggplot(data = wtfmr1_matrix_avg_scaled_long, aes(x=genoAPAsession, y=variable, fill=value)) + 
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
+                       midpoint = 0, space = "Lab") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 10, hjust = 1)) +
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="")
 
 ## matrix of summary data ----
 summary_matrix <- summary
