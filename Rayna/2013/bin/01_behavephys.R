@@ -3,7 +3,8 @@
 ## load libraries -----
 library(dplyr) ## for filtering and selecting rows
 library(plyr) ## for renmaing factors
-library(ggplot2)
+library(ggplot2) ## for awesome plots!
+library(reshape2) #@ for melting dataframe
 
 ## wrangle the raw wt and fmr1 dataframes ----
 
@@ -235,6 +236,26 @@ wtfmr1$genoAPAnum <- as.numeric(wtfmr1$genoAPAnum)
 head(wtfmr1)
 head(summary)
 
+## melting all the data make a shit ton of ggplots ----
+
+wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "filename", "genoAPA", "genoAPAnum"))
+str(wtfmr1_long)
+wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
+
+wtfmr1_slim <- wtfmr1_long %>% 
+  filter(!grepl("p.miss|TotalTime", variable))
+str(wtfmr1_time)
+wtfmr1_time$value <- as.numeric(wtfmr1_slim$value)
+
+wtfmr1_time <- wtfmr1_long %>% 
+  filter(variable %in% c("TimeToSecondEntrance", "TimeToFirstEntrance", "TimeToFirstShock", "MaxAvoidTime"))
+str(wtfmr1_time)
+wtfmr1_time$value <- as.numeric(wtfmr1_time$value)
+
+wtfmr1_favs <- wtfmr1_long %>% 
+  filter(variable %in% c("TimeToSecondEntrance", "TimeToFirstEntrance", "TimeToFirstShock", "MaxAvoidTime", "TotalShocks", "Entrances","PathToSecondEntrance"))
+str(wtfmr1_favs)
+wtfmr1_favs$value <- as.numeric(wtfmr1_favs$value)
 
 ###  graphs!!! -----
 FentonPalette <- c('black','grey50','red','darkorange')
@@ -254,15 +275,6 @@ ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, color=gen
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw()
 
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=MaxAvoidTime, color=genoAPA)) +
-  stat_smooth() +
-  scale_y_continuous(name="Maximum Time Avoiding Shock Zone (s)") + 
-  scale_x_continuous(name =NULL, 
-                     labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
-  scale_colour_manual(values=FentonPalette, name="Treatment Group",
-                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
-  theme_bw()
   
 ggplot(data=wtfmr1, aes(as.numeric(x=session), y=Entrances, color=genoAPA)) +
   stat_smooth() +
@@ -274,15 +286,6 @@ ggplot(data=wtfmr1, aes(as.numeric(x=session), y=Entrances, color=genoAPA)) +
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw()
 
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TotalShocks, color=genoAPA)) +
-  stat_smooth() +
-  scale_y_continuous(name="Total Number of Shocks") + 
-  scale_x_continuous(name =NULL, 
-                     labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
-  scale_colour_manual(values=FentonPalette, name="Treatment Group",
-                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
-  theme_bw()
 
 ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TotalPath, color=genoAPA)) +
   stat_smooth() +
@@ -294,7 +297,36 @@ ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TotalPath, color=genoAPA)) +
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw()
 
+### faceted all data with points on the means
+ggplot(data=wtfmr1_slim, aes(as.numeric(x=session), y=value, color=genoAPA)) +
+  stat_summary(geom="point", fun.y=mean, shape=1) + 
+  stat_smooth() +  facet_wrap(~variable, scales = "free_y") +
+  theme_bw()
 
+## 4 plots about time
+ggplot(data=wtfmr1_time, aes(as.numeric(x=session), y=value, color=genoAPA)) +
+  stat_smooth() + facet_wrap(~variable, scales = "free_y") +
+  scale_y_continuous(name="Total Path (m)") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+## fav plots facetted
+ggplot(data=wtfmr1_favs, aes(as.numeric(x=session), y=value, color=genoAPA)) +
+  stat_smooth() + facet_wrap(~variable, scales = "free_y") +
+  scale_y_continuous(name="Total Path (m)") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw()
+
+
+### Not used but useful ----
 
 
 ## simple box plot faceted by genotype colored by genotype
@@ -318,5 +350,4 @@ lm1 = lm(data=wtfmr1, TimeToSecondEntrance~genoAPA+session+genoAPA:session)
 summary(lm1)
 xtabs(data=wtfmr1, ~genoAPA+session)
 anova(lm1)
-
 
