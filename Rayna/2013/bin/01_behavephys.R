@@ -178,9 +178,8 @@ wtfmr1$APA <- as.factor(wtfmr1$APA)
 
 ## making a bunch of columns numeric
 wtfmr1[, c(3:35)] <- sapply(wtfmr1[, c(3:35)], as.numeric)
+wtfmr1[, c(36:49)] <- sapply(wtfmr1[, c(36:49)], as.numeric)
 str(wtfmr1)
-
-
 
 ## add column session with APA information
 wtfmr1$session <- ifelse(grepl("pretraining|pretrain|Hab", wtfmr1$filename), "pretraining", 
@@ -191,7 +190,6 @@ wtfmr1$session <- ifelse(grepl("pretraining|pretrain|Hab", wtfmr1$filename), "pr
 wtfmr1$session  ## check that all names good with no NAs                                 
 wtfmr1$session <- as.factor(wtfmr1$session)  
 wtfmr1$session <- factor(wtfmr1$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
-
 
 ### separate out the summary columns and clean up / wrangle ----
 summary <- filter(wtfmr1, session == "retention")
@@ -227,19 +225,12 @@ wtfmr1$genoAPA <- wtfmr1$genoAPA <- as.factor(paste(wtfmr1$genotype,wtfmr1$APA, 
 wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "FMR1-KO_control", "WT_trained", "FMR1-KO_trained"))
 wtfmr1$genoAPA
 
-## wrangling the data for plots!!! long for ggplots, matrix for correlations ----
+### Beahvior ggplots!!! -----
 
-### melt the beahvior data to make long
-
+### first, melt the beahvior data to make long for facet wrap with ggplot
 wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
 wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
 str(wtfmr1_long)
-
-summary_long <- melt(summary, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
-summary_long$value <- as.numeric(summary_long$value)
-str(summary_long)
-
-### Beahvior graphs!!! -----
 
 ## create the color palette
 FentonPalette <- c('black','grey50','red','darkorange')
@@ -322,6 +313,11 @@ wtfmr1_long %>%
 
 ### Electrophysiology melting and graphing!!! ---- 
 
+## first, melt the data
+summary_long <- melt(summary, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
+summary_long$value <- as.numeric(summary_long$value)
+str(summary_long)
+
 ## plot all the summary_long data!: saved as 1-SummaryValues
 summary_long %>%
   ggplot(aes(x=genoAPA, y=value, color=genoAPA)) +
@@ -336,6 +332,39 @@ summary_long %>%
         legend.position = c(0.9, 0.15),
         axis.text.x = element_blank(), 
         axis.ticks = element_blank())
+
+### Correlation plots!!! ----
+
+## first, make the data a matrix with genoAPAsessionInd as the row names
+wtfmr1_matrix <- wtfmr1    #create new dataframe
+wtfmr1_matrix$genoAPAsessionInd <- as.factor(paste(wtfmr1_matrix$genoAPA, wtfmr1_matrix$session, wtfmr1_matrix$ind, sep="_")) #create genoAPAsessionInd column
+rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
+wtfmr1_matrix <- wtfmr1_matrix[-c(1:2,4:6,50:51)] #delete all non-numeric columns
+head(wtfmr1_matrix)
+str(wtfmr1_matrix)
+
+## next, compute a correlation matrix and melt
+wtfmrt_cormat <- round(cor(wtfmr1_matrix),2) # compute correlations
+wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
+head(wtfmrt_cormatlong)
+
+## heatmap NOT clustered!!!
+ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 12, hjust = 1))+
+  coord_fixed()
+
+
+summary_matrix <- summary
+summary_matrix$genoAPAsessionInd <- as.factor(paste(summary_matrix$genoAPA, summary_matrix$session, summary_matrix$ind, sep="_")) #create genoAPAsessionInd column
+rownames(summary_matrix) <- summary_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
+summary_matrix <- summary_matrix[-c(1:4,16:18)] #delete all non-numeric columns
+head(summary_matrix)
 
 ### Not used but useful single plots ----
 
