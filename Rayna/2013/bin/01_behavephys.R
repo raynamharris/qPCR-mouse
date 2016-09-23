@@ -348,21 +348,17 @@ wtfmrt_cormat <- round(cor(wtfmr1_matrix),2) # compute correlations
 wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
 head(wtfmrt_cormatlong)
 
-## heatmap NOT clustered!!!
+## heatmap NOT clustered!!! # Saved as 1-beahvheatmap
 ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
   geom_tile(color = "white")+
-  scale_fill_gradient2(low = "blue", high = "red", mid = "white", 
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
                        name="Pearson\nCorrelation") +
   theme_minimal()+ # minimal theme
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                   size = 10, hjust = 1))+
-  coord_fixed() +
+                                   size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
-
-##  
-
 
 
 ## matrix of summary data ----
