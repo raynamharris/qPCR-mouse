@@ -1,8 +1,9 @@
 # Part 1: Reading and analyzing beahvior and physiology data
 
 ## load libraries -----
-library("dplyr") ## for filtering and selecting rows
-library("plyr") ## for renmaing factors
+library(dplyr) ## for filtering and selecting rows
+library(plyr) ## for renmaing factors
+library(ggplot2)
 
 ## wrangle the raw wt and fmr1 dataframes ----
 
@@ -30,15 +31,15 @@ names(fmr1)
 ## create ind column with a animal name that matches qpcr (e.g "FMR1 AB" or "BL 19")
 wt$ind <- wt$filename
 head(wt$ind)
-wt$ind <- gsub("[[:blank:]]*bl", "BL ", wt$ind) ##removed blank space then changes bl1... to BL 1...
+wt$ind <- gsub("[[:blank:]]*bl", "BL", wt$ind) ##removed blank space then changes bl1... to BL 1...
 wt$ind <- gsub("D[[:print:]]*", "", wt$ind) ## deletes the D (for Day) and everythign thereafter
 wt$ind
 
 fmr1$ind <- fmr1$filename
 fmr1$ind <- gsub("RoomTrack_", "", fmr1$ind) ##remove RommTrack_"
-fmr1$ind <- gsub("fmr1", "FMR1 ", fmr1$ind) ## changes to FMR1
-fmr1$ind <- gsub("frm1", "FMR1 ", fmr1$ind) ## because one was typed wrong
-fmr1$ind <- gsub("wildtype", "BL ", fmr1$ind) ## that one wildtype sample name
+fmr1$ind <- gsub("fmr1", "FMR1", fmr1$ind) ## changes to FMR1
+fmr1$ind <- gsub("frm1", "FMR1", fmr1$ind) ## because one was typed wrong
+fmr1$ind <- gsub("wildtype", "BL", fmr1$ind) ## that one wildtype sample name
 fmr1$ind <- gsub("_[ptr][[:print:]]*", "", fmr1$ind) ##deletes the rest of the filename
 fmr1$ind
 
@@ -171,7 +172,6 @@ wtfmr1 <- filter(wtfmr1, grepl("Room", filename)) ## remove non-data rows
 str(wtfmr1)
 
 ## making strings factors
-wtfmr1$ind <- as.factor(wtfmr1$ind)  
 wtfmr1$APA <- as.factor(wtfmr1$APA)  
 
 ## making a bunch of columns numeric
@@ -217,10 +217,20 @@ wtfmr1 <- left_join(wtfmr1,APA)
 wtfmr1 <- wtfmr1[c(1:2,49,3:48)]  # removes summary columns
 wtfmr1$APA <- factor(wtfmr1$APA, levels = c("control", "trained"))
 
-## create one level column
+## create one level column for genotype*APA
 wtfmr1$genoAPA <- wtfmr1$genoAPA <- as.factor(paste(wtfmr1$genotype,wtfmr1$APA, sep="_"))
-wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"))
+wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "FMR1-KO_control", "WT_trained", "FMR1-KO_trained"))
 wtfmr1$genoAPA
+
+## create one level column for genotype*APA but numbered as 1, 2, 3, 4
+wtfmr1$genoAPAnum <- ifelse(grepl("WT_control", wtfmr1$genoAPA), "1", 
+                         ifelse(grepl("WT_trained", wtfmr1$genoAPA), "2",
+                                ifelse(grepl("FMR1-KO_control", wtfmr1$genoAPA), "3",
+                                       ifelse(grepl("FMR1-KO_trained", wtfmr1$genoAPA), "4", "NA"))))
+
+wtfmr1$genoAPAnum  ## check that all names good with no NAs                                 
+wtfmr1$genoAPAnum <- as.numeric(wtfmr1$genoAPAnum) 
+
 
 head(wtfmr1)
 head(summary)
@@ -230,22 +240,30 @@ head(summary)
 cbPalette <- c("00000", "FF0000", "666666", "FF9933") # black red grey orange
 
 ## time to first enter
-ggplot(wtfmr1, aes(session,TimeToFirstEntrance, fill=genoAPA)) + 
-  geom_violin() + facet_grid(~ genotype+APA) 
-ggplot(wtfmr1, aes(session,TimeToFirstEntrance, fill=genoAPA)) + 
-  geom_boxplot() + facet_grid(~ genotype+APA) 
-ggplot(wtfmr1, aes(session,TimeToFirstEntrance)) + 
-  geom_bar(stat = "identity") + facet_grid(~ genotype+APA) 
-wtfmr1 %>% filter(genoAPA == "WT_trained") %>% 
-  ggplot(aes(x=session, y=TimeToFirstEntrance)) + facet_grid(~ ind) + geom_point() 
+ggplot(data = wtfmr1, aes(x = session, y = TimeToFirstEntrance, fill=genoAPA)) +
+  geom_boxplot() + facet_wrap( ~ genoAPA)
+ggplot(data = wtfmr1, aes(x = session, y = TimeToFirstEntrance, by=genoAPA, fill=genoAPA)) +
+  geom_boxplot()
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToFirstEntrance, by=ind, color=genoAPA)) +
+  geom_line() + facet_wrap( ~ ind)
 
 ## time to 2nd enter
-ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
-  geom_violin() + facet_grid(~ genotype+APA) 
-ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
-  geom_boxplot() + facet_grid(~ genotype+APA) 
-ggplot(wtfmr1, aes(session,TimeToSecondEntrance)) + 
-  geom_bar(stat = "identity") + facet_grid(~ genotype+APA) 
+ggplot(data = wtfmr1, aes(x = session, y = TimeToSecondEntrance, fill=genoAPA)) +
+  geom_boxplot() + facet_wrap( ~ genoAPA)
+ggplot(data = wtfmr1, aes(x = session, y = TimeToSecondEntrance, by=genoAPA, fill=genoAPA)) +
+  geom_boxplot()  
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, by=ind, color=genoAPA)) +
+  geom_line() + facet_wrap( ~ genoAPA)
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, by=ind, color=genoAPA)) +
+  geom_line() + facet_wrap(~ ind)
 
-ggplot(wtfmr1, aes(genoAPA,TimeToSecondEntrance, fill=genoAPA)) + 
-  geom_boxplot() + facet_grid(~ session) 
+## path to 2nd enter
+ggplot(data = wtfmr1, aes(x = session, y = PathToSecondEntrance, fill=genoAPA)) +
+  geom_boxplot() + facet_wrap( ~ genoAPA)
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=PathToSecondEntrance, by=ind, color=ind)) +
+  geom_line() + facet_wrap(~ genoAPA)
+
+## some modeling
+lm1 = lm(data=wtfmr1, TimeToSecondEntrance~genoAPA+session+genoAPA:session)
+summary(lm1)
+xtabs(data=wtfmr1, ~genoAPA+session)
