@@ -395,23 +395,41 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) +
 ### Heatmap plot 3 : beahvior group aves grouped by gropu?----
 ## scale columns
 head(wtfmr1_matrix_avg)
-wtfmr1_matrix_avg_scaled <- scale(wtfmr1_matrix_avg)
-head(wtfmr1_matrix_avg_scaled)
 
-## convert bact to df, add rownames back
-wtfmr1_matrix_avg_scaled <- as.data.frame(wtfmr1_matrix_avg_scaled)
-wtfmr1_matrix_avg_scaled$genoAPAsession<-rownames(wtfmr1_matrix_avg_scaled)
+#dendogram data
+x <- as.matrix(scale(wtfmr1_matrix_avg))
+head(x)
+dd.col <- as.dendrogram(hclust(dist(x)))
+dd.row <- as.dendrogram(hclust(dist(t(x))))
+dx <- dendro_data(dd.row)
+dy <- dendro_data(dd.col)
 
-## melt data matrix
-wtfmr1_matrix_avg_scaled_long <- melt(wtfmr1_matrix_avg_scaled, id=c("genoAPAsession")) # melt
-head(wtfmr1_matrix_avg_scaled_long)
+# helper function for creating dendograms
+ggdend <- function(df) {
+  ggplot() +
+    geom_segment(data = df, aes(x=x, y=y, xend=xend, yend=yend)) +
+    labs(x = "", y = "") + theme_minimal() +
+    theme(axis.text = element_blank(), axis.ticks = element_blank(),
+          panel.grid = element_blank())
+}
 
-## heatmap NOT clustered!!! # Saved as 1-beahvheatmap
-ggplot(data = wtfmr1_matrix_avg_scaled_long, aes(x=variable, y=genoAPAsession, fill=value)) + 
-  geom_tile(color = "white")+
-  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
-                       midpoint = 0, space = "Lab") +
-  theme_minimal()+ # minimal theme
+# x/y dendograms
+ggdend(dx$segments) + coord_flip()
+ggdend(dy$segments) 
+
+# heatmap
+col.ord <- order.dendrogram(dd.col)
+row.ord <- order.dendrogram(dd.row)
+xx <- scale(wtfmr1_matrix_avg)[col.ord, row.ord]
+xx_names <- attr(xx, "dimnames")
+df <- as.data.frame(xx)
+colnames(df) <- xx_names[[2]]
+df$genoAPAsession <- xx_names[[1]]
+df$genoAPAsession <- with(df, factor(genoAPAsession, levels=genoAPAsession, ordered=TRUE))
+mdf <- reshape2::melt(df, id.vars="genoAPAsession")
+
+ggplot(mdf, aes(x = genoAPAsession, y = variable)) + geom_tile(aes(fill = value)) +
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white") +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
                                    size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
