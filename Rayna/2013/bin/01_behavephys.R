@@ -397,7 +397,7 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
-### Heatmap plot 3 : beahvior group aves grouped by gropu?----
+### Heatmap plot 3 : beahvior group aves grouped by group ----
 ## scale columns
 head(wtfmr1_matrix_avg)
 
@@ -440,12 +440,29 @@ ggplot(mdf, aes(x = genoAPAsession, y = variable)) + geom_tile(aes(fill = value)
   scale_x_discrete(name="") +
   scale_y_discrete(name="")
 
-## matrix of summary data ----
+## correlation heatmap of of summary data ----
 summary_matrix <- summary
 summary_matrix$genoAPAsessionInd <- as.factor(paste(summary_matrix$genoAPA, summary_matrix$session, summary_matrix$ind, sep="_")) #create genoAPAsessionInd column
 rownames(summary_matrix) <- summary_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
 summary_matrix <- summary_matrix[-c(1:4,16:18)] #delete all non-numeric columns
 head(summary_matrix)
+
+summary_matrix_cormat <- round(cor(summary_matrix),2) # compute correlations
+summary_matrix_cormatlong <- melt(summary_matrix_cormat, na.rm = TRUE) # melt
+head(summary_matrix_cormatlong)
+
+## heatmap clustered!!! # Saved as 1-heatmap-group
+ggplot(data = summary_matrix_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 10, hjust = 1)) +
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="") 
+
 
 ### Not used but useful single plots ----
 
