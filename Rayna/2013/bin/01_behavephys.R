@@ -32,15 +32,15 @@ names(fmr1)
 ## create ind column with a animal name that matches qpcr (e.g "FMR1 AB" or "BL 19")
 wt$ind <- wt$filename
 head(wt$ind)
-wt$ind <- gsub("[[:blank:]]*bl", "BL", wt$ind) ##removed blank space then changes bl1... to BL 1...
+wt$ind <- gsub("[[:blank:]]*bl", "BL ", wt$ind) ##removed blank space then changes bl1... to BL 1...
 wt$ind <- gsub("D[[:print:]]*", "", wt$ind) ## deletes the D (for Day) and everythign thereafter
 wt$ind
 
 fmr1$ind <- fmr1$filename
 fmr1$ind <- gsub("RoomTrack_", "", fmr1$ind) ##remove RommTrack_"
-fmr1$ind <- gsub("fmr1", "FMR1", fmr1$ind) ## changes to FMR1
-fmr1$ind <- gsub("frm1", "FMR1", fmr1$ind) ## because one was typed wrong
-fmr1$ind <- gsub("wildtype", "BL", fmr1$ind) ## that one wildtype sample name
+fmr1$ind <- gsub("fmr1", "FMR1 ", fmr1$ind) ## changes to FMR1
+fmr1$ind <- gsub("frm1", "FMR1 ", fmr1$ind) ## because one was typed wrong
+fmr1$ind <- gsub("wildtype", "BL ", fmr1$ind) ## that one wildtype sample name
 fmr1$ind <- gsub("_[ptr][[:print:]]*", "", fmr1$ind) ##deletes the rest of the filename
 fmr1$ind
 
@@ -174,11 +174,10 @@ str(wtfmr1)
 
 ## making strings factors
 wtfmr1$ind <- as.factor(wtfmr1$ind)  
-wtfmr1$APA <- as.factor(wtfmr1$APA)  
+wtfmr1$APA <- as.factor(wtfmr1$APA) 
 
 ## making a bunch of columns numeric
-wtfmr1[, c(3:35)] <- sapply(wtfmr1[, c(3:35)], as.numeric)
-wtfmr1[, c(36:49)] <- sapply(wtfmr1[, c(36:49)], as.numeric)
+wtfmr1[, c(3:45, 49:56, 58:59)] <- sapply(wtfmr1[, c(3:45, 49:56, 58:59)], as.numeric)
 str(wtfmr1)
 
 ## add column session with APA information
@@ -200,6 +199,7 @@ str(summary)
 ## rename APA to match qpcr data
 summary$APA <- revalue(summary$APA, c("untrained" = "control")) 
 summary$APA <- factor(summary$APA, levels = c("control", "trained"))
+summary$APA
 
 ## making a bunch of columns numeric
 summary$IO_Max <- gsub("%", "", summary$IO_Max) #remove the percent sign
@@ -217,21 +217,25 @@ wtfmr1 <- wtfmr1[c(60:61,62,1:45)]  # removes summary columns
 ##create APA dataframe to add APA to wtfrm1
 APA <-  summary[c(1:3)] 
 wtfmr1 <- left_join(wtfmr1,APA) 
-wtfmr1 <- wtfmr1[c(1:2,49,3:48)]  # removes summary columns
-wtfmr1$APA <- factor(wtfmr1$APA, levels = c("control", "trained"))
+tail(wtfmr1)
 
-## create one level column for genotype*APA
+## create columns for genotype*APA, genotype*APA*session, and genotype*APA*session*IND
 wtfmr1$genoAPA <- wtfmr1$genoAPA <- as.factor(paste(wtfmr1$genotype,wtfmr1$APA, sep="_"))
 wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "FMR1-KO_control", "WT_trained", "FMR1-KO_trained"))
-wtfmr1$genoAPA
+wtfmr1$genoAPAsession <- as.factor(paste(wtfmr1$genoAPA, wtfmr1$session, sep="_")) #create genoAPAsession column
+wtfmr1$genoAPAsessionInd <- as.factor(paste(wtfmr1$genoAPAsession, wtfmr1$ind, sep="_")) #create genoAPAsessionInd column
+head(wtfmr1)
+names(wtfmr1)
 
-### Beahvior ggplots!!! -----
+# reorders dataframe
+wtfmr1 <- wtfmr1[c(1:3,5,4,51:52,6:50)]  
 
-### first, melt the beahvior data to make long for facet wrap with ggplot
-wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
+### melt the wtfmr1 df to make long for graphics
+wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
 wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
 str(wtfmr1_long)
 
+### Beahvior ggplots!!! -----
 ## create the color palette
 FentonPalette <- c('black','grey50','red','darkorange')
 
@@ -337,9 +341,9 @@ summary_long %>%
 
 ## first, make the data a matrix with genoAPAsessionInd as the row names
 wtfmr1_matrix <- wtfmr1    #create new dataframe
-wtfmr1_matrix$genoAPAsessionInd <- as.factor(paste(wtfmr1_matrix$genoAPA, wtfmr1_matrix$session, wtfmr1_matrix$ind, sep="_")) #create genoAPAsessionInd column
 rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
-wtfmr1_matrix <- wtfmr1_matrix[-c(1:2,4:6,8,50:51)] #delete all non-numeric columns
+names(wtfmr1_matrix)
+wtfmr1_matrix <- wtfmr1_matrix[-c(1:8,10)] #delete all non-numeric columns and TotalTime
 head(wtfmr1_matrix)
 str(wtfmr1_matrix)
 
@@ -349,7 +353,7 @@ wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
 head(wtfmrt_cormatlong)
 
 ## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
-ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
