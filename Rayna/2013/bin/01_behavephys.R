@@ -5,6 +5,7 @@ library(dplyr) ## for filtering and selecting rows
 library(plyr) ## for renmaing factors
 library(ggplot2) ## for awesome plots!
 library(reshape2) #@ for melting dataframe
+library(ggdendro) ## for dendrograms!!
 
 ## wrangle the raw wt and fmr1 dataframes ----
 
@@ -368,23 +369,24 @@ ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
 
 ## create matrix with genoAPAsession average values
 wtfmr1_matrix_avg <- wtfmr1    #create new dataframe
-wtfmr1_matrix_avg$genoAPAsession <- as.factor(paste(wtfmr1_matrix_avg$genoAPA, wtfmr1_matrix_avg$session, sep="_")) #create genoAPAsession column
-wtfmr1_matrix_avg <- wtfmr1_matrix_avg[-c(1:2,4:6,8,50)] #delete all non-numeric columns
+names(wtfmr1_matrix_avg)
+wtfmr1_matrix_avg <- wtfmr1_matrix_avg[-c(1:5,7:8,10)] #delete TotalTime and non-numeric columns EXCEPT genoAPAsession
 
 wtfmr1_matrix_avg <- wtfmr1_matrix_avg %>% 
   group_by(genoAPAsession) %>%
   dplyr::summarise_each(funs(mean))
 wtfmr1_matrix_avg <- as.data.frame(wtfmr1_matrix_avg)
-rownames(wtfmr1_matrix_avg) <- wtfmr1_matrix_avg$genoAPAsession     # set $genoAPAsession as rownames
+rownames(wtfmr1_matrix_avg) <- wtfmr1_matrix_avg$genoAPAsession  # set $genoAPAsession as rownames
 wtfmr1_matrix_avg[1] <- NULL
+head(wtfmr1_matrix_avg)
 
 ## next, compute a correlation matrix and melt
 wtfmr1_matrix_avg_cormat <- round(cor(wtfmr1_matrix_avg),2) # compute correlations
 wtfmr1_matrix_avg_cormatlong <- melt(wtfmr1_matrix_avg_cormat) # melt
-head(wtfmr1_matrix_avg_cormat)
+head(wtfmr1_matrix_avg_cormatlong)
 
 ## heatmap clustered!!! # Saved as 1-heatmap-group
-ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -394,7 +396,6 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) +
                                    size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
-
 
 ### Heatmap plot 3 : beahvior group aves grouped by gropu?----
 ## scale columns
