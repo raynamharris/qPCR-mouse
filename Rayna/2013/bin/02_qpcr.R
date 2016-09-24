@@ -1,5 +1,11 @@
 # Part 2: Reading and analyzing qPCR data
 
+## libraries
+library(dplyr) # for renaming columns
+library(plyr) # for renaming factors
+library(MCMC.qpcr) # for qpcr analysis
+library(reshape2) # for melting data
+
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
 qpcr <- read.csv("02_qpcrdata.csv", header = TRUE, na.strings = "NA", stringsAsFactors = FALSE)
@@ -13,30 +19,29 @@ qpcr$ind <- as.factor(qpcr$ind)
 qpcr$time <- as.factor(qpcr$time)
 qpcr$region <- as.factor(qpcr$region)
 qpcr$APA <- as.factor(qpcr$APA)
-qpcr$strained <- as.factor(qpcr$strained)
+qpcr$strain <- as.factor(qpcr$strain)
+qpcr$X <- NULL
 str(qpcr)
 summary(qpcr)
 head(qpcr)
 
 ## rename some columsn and factors
-
-# install.packages("dplyr") #note, this function masked when plyr installed. have to restart to rerun command
-library(dplyr)
-qpcr <- rename(qpcr, genotype = strained) 
-
-library(plyr)
+qpcr <- dplyr::rename(qpcr, genotype = strain) 
 qpcr$genotype <- revalue(qpcr$genotype, c("fmr1" = "FMR1-KO")) 
 qpcr$genotype <- revalue(qpcr$genotype, c("wt" = "WT"))
 head(qpcr)
 
+## create new columns to join factors
 qpcr$region.genotype <- as.factor(paste(qpcr$region, qpcr$genotype, sep="_"))
-qpcr <- qpcr[c(1:7,20,8:19)]
-head(qpcr)
+qpcr$genoAPA <- as.factor(paste(qpcr$genotype,qpcr$APA, sep="_"))
+qpcr$genoAPAregion <- as.factor(paste(qpcr$genoAPA,qpcr$region, sep="_"))
+names(qpcr)
+
+## reorder the dataframe
+qpcr <- qpcr[c(1:6,19:21,7:18)]
+names(qpcr)
 
 ## calculating gene efficiencies & rename genes ----
-#install.packages("MCMC.qpcr")
-library(MCMC.qpcr)
-
 dilutions <- read.csv("02_dilutions_CA1CA3.csv", header = TRUE)
 head(dilutions)
 
@@ -50,10 +55,11 @@ dilutions <- droplevels(dilutions)
 PrimEff(dilutions) -> eff
 
 ## Create "all but homecage" dataframe, anlayze with cq2counts function and naive model ----
-nohomecage <- filter(qpcr, APA != "homecage")
+nohomecage <- dplyr::filter(qpcr, APA != "home")
 nohomecage <- droplevels(nohomecage)
+str(nohomecage)
 
-dd_nohomecage <- cq2counts(data=nohomecage, genecols=c(9:20), condcols=c(1:8), effic=eff)
+dd_nohomecage <- cq2counts(data=nohomecage, genecols=c(10:21), condcols=c(1:9), effic=eff)
 head(dd_nohomecage)
 
 naive_dd_nohomecage <- mcmc.qpcr(
@@ -91,10 +97,10 @@ dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
   facet_wrap(~gene)
 
 ## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
-nohomeCA1 <- filter(qpcr, APA != "homecage", region != "CA3")
+nohomeCA1 <- filter(qpcr, APA != "home", region != "CA3")
 nohomeCA1 <- droplevels(nohomeCA1)
 
-ddnohomeCA1 <- cq2counts(data=nohomeCA1, genecols=c(9:20), condcols=c(1:8), effic=eff)
+ddnohomeCA1 <- cq2counts(data=nohomeCA1, genecols=c(10:21), condcols=c(1:9), effic=eff)
 head(ddnohome)
 
 naive_nohomeCA1 <- mcmc.qpcr(
@@ -110,7 +116,7 @@ FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
 FMR1KO <- droplevels(FMR1KO)
 str(FMR1KO)
 
-dd_FMR1KO <- cq2counts(data=FMR1KO, genecols=c(9:20), condcols=c(1:8), effic=eff)
+dd_FMR1KO <- cq2counts(data=FMR1KO, genecols=c(10:21), condcols=c(1:9), effic=eff)
 head(dd_FMR1KO)
 
 naive_FMR1 <- mcmc.qpcr(
@@ -126,10 +132,11 @@ nd_FMR1 <- getNormalizedData(naive_FMR1,data=dd_FMR1KO) #export results
 cbind(nd_FMR1$conditions, nd_FMR1$normData) -> nd_FMR1
 
 # melt the data and rename column to 
-library(reshape2)
-nd_FMR1 <- melt(nd_FMR1, id.vars = c("ind", "time", "region", "APA", "genotype", "year", "region.genotype"))
-names(nd_FMR1)[8] <- "gene"
+nd_FMR1 <- melt(nd_FMR1, id.vars = c("ind", "time", "region", "APA", "genotype", "region.genotype", "genoAPA", "genoAPAregion"))
+names(nd_FMR1)
 
+# rename and relevel the genes
+nd_FMR1 <- dplyr::rename(nd_FMR1, gene = variable) 
 nd_FMR1$gene <- factor(nd_FMR1$gene, levels = c("cam2kd", "creb", "dlg4", "fmr1", "fos", "gria", "grim", "grin", "nsf", "pkmz", "rpl19", "rRNA18S"))
 head(nd_FMR1)
 
@@ -142,7 +149,7 @@ ggplot(dd_FMR1KO, aes(x=genotype, y=count)) +
 WT <- filter(qpcr, genotype == "WT", region == "CA3")
 WT <- droplevels(WT)
 
-ddwt <- cq2counts(data=WT, genecols=c(9:20), condcols=c(1:8), effic=eff)
+ddwt <- cq2counts(data=WT, genecols=c(10:21), condcols=c(1:9), effic=eff)
 
 naive_wt <- mcmc.qpcr(
   data=ddwt,
@@ -154,13 +161,14 @@ HPDsummary(naive_wt, ddwt, relative=TRUE)
 #get the normalize dataframes (using getNormalizedData funct.) and combine them into one 
 nd_naive_wt <- getNormalizedData(naive_wt,data=ddwt) #export results
 cbind(nd_naive_wt$conditions, nd_naive_wt$normData) -> nd_naive_wt
+names(nd_naive_wt)
 
 # melt the data and rename column to 
-library(reshape2)
 nd_naive_wt <- melt(nd_naive_wt, 
-                    id.vars = c("ind", "time", "region", "APA", "genotype", "year", "region.genotype")
+                    id.vars = c("ind", "time", "region", "APA", "genotype", "region.genotype", "genoAPA", "genoAPAregion")
 )
-names(nd_naive_wt)[8] <- "gene"
+# rename and relevel the genes
+nd_naive_wt <- dplyr::rename(nd_naive_wt, gene = variable) 
 
 nd_naive_wt$gene <- factor(nd_naive_wt$gene, 
                            levels = c("cam2kd", "creb", "dlg4", "fmr1", 
@@ -181,17 +189,17 @@ CA1_year <- qpcr[c(1:11)] %>%
 CA1_year <- droplevels(CA1_year)
 str(CA1_year)
 
-ddCA1year <- cq2counts(data=CA1_year, genecols=c(9:11), condcols=c(1:8), effic=eff)
+#ddCA1year <- cq2counts(data=CA1_year, genecols=c(9:11), condcols=c(1:8), effic=eff)
 
-naive_ddCA1year <- mcmc.qpcr(
-  data=ddCA1year,
-  fixed="year+APA+APA:year",random="sample",
-  pr=T,pl=T)
-diagnostic.mcmc(model=naive_ddCA1year, col="grey50", cex=0.8)
-HPDsummary(naive_ddCA1year, ddCA1year)
+#naive_ddCA1year <- mcmc.qpcr(
+#  data=ddCA1year,
+#  fixed="year+APA+APA:year",random="sample",
+#  pr=T,pl=T)
+#diagnostic.mcmc(model=naive_ddCA1year, col="grey50", cex=0.8)
+#HPDsummary(naive_ddCA1year, ddCA1year)
 
 ## Suset 3 gene data then anlyzewith cq2counts function and naive model ----
-CA1_3genes <- qpcr[c(1:11)] %>% filter( APA != "homecage")
+CA1_3genes <- qpcr[c(1:11)] %>% filter( APA != "home")
 CA1_3genes <- droplevels(CA1_3genes)
 str(CA1_3genes)
 
