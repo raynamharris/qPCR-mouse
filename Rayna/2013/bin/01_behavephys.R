@@ -407,7 +407,7 @@ wtfmr1_matrix_avg_scaled_long <- melt(wtfmr1_matrix_avg_scaled, id=c("genoAPAses
 head(wtfmr1_matrix_avg_scaled_long)
 
 ## heatmap NOT clustered!!! # Saved as 1-beahvheatmap
-ggplot(data = wtfmr1_matrix_avg_scaled_long, aes(x=genoAPAsession, y=variable, fill=value)) + 
+ggplot(data = wtfmr1_matrix_avg_scaled_long, aes(x=variable, y=genoAPAsession, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, space = "Lab") +
