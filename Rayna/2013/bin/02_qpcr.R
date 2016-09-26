@@ -115,48 +115,6 @@ HPDsummary(naive_CA1nohomecage, ddCA1nohomecage) -> summaryCA1nohomecage
 trellisByGene(summaryCA1nohomecage,xFactor="region.genotype",groupFactor="APA")+xlab("group")
 
 
-
-## correlations matrices using ddCA1nohomecage_mean
-
-ddCA1nohomecage_mean <- ddCA1nohomecage
-head(ddCA1nohomecage_mean)
-ddCA1nohomecage_mean$RegionGene <- as.factor(paste(ddCA1nohomecage_mean$region, ddCA1nohomecage_mean$gene, sep="_"))
-head(ddCA1nohomecage_mean)
-ddCA1nohomecage_mean <- select(ddCA1nohomecage_mean, count, ind, RegionGene)
-ddCA1nohomecage_mean <- dcast(ddCA1nohomecage_mean, ind~RegionGene, value.var = "count", fun.aggregate = mean) #widen
-head(ddCA1nohomecage_mean)
-ddCA1nohomecage_mean <- select(ddCA1nohomecage_mean, ind, CA1_grim, CA1_pkmz, CA1_rpl19)
-
-rownames(ddCA1nohomecage_mean) <- ddCA1nohomecage_mean$ind  # set $genoAPA as rownames
-names(ddCA1nohomecage_mean)
-ddCA1nohomecage_mean <- ddCA1nohomecage_mean[-c(1)] #remove ind column
-head(ddCA1nohomecage_mean)
-
-## scatter plots
-ggplot(ddCA1nohomecage_mean, aes(x = CA1_grim, y = CA1_rpl19)) + 
-  geom_point()
-ggplot(ddCA1nohomecage_mean, aes(x = CA3_rpl19, y = CA3_rRNA18S)) + 
-  geom_point()
-
-## next, compute a correlation matrix and melt
-ddCA1nohomecage_mean_cormat <- round(cor(ddCA1nohomecage_mean),2) # compute correlations
-ddCA1nohomecage_mean_cormatlong <- melt(ddCA1nohomecage_mean_cormat) # melt
-head(ddCA1nohomecage_mean_cormatlong)
-
-## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
-ggplot(data = ddCA1nohomecage_mean_cormatlong, aes(x=X1, y=X2, fill=value)) + 
-  geom_tile(color = "white")+
-  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
-                       midpoint = 0, limit = c(-1,1), space = "Lab", 
-                       name="Pearson\nCorrelation") +
-  theme_minimal()+ # minimal theme
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                   size = 10, hjust = 1)) +
-  scale_x_discrete(name="") +
-  scale_y_discrete(name="") +
-  geom_text(aes(X1, X2, label = value), color = "black", size = 4) 
-
-
 ## Subset FMR1 data then anlyze with cq2counts function and naive model ----
 FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
 FMR1KO <- droplevels(FMR1KO)
