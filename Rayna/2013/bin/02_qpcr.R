@@ -98,27 +98,53 @@ dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
 
-## correlations matrices using dd_nohomecage
 
-# Group averages
-dd_nohomecage_avg <- dd_nohomecage
-dd_nohomecage_avg$regionGene <- as.factor(paste(dd_nohomecage_avg$region, dd_nohomecage_avg$gene, sep="_")) # create new column for RegionGene 
-names(dd_nohomecage_avg)
-dd_nohomecage_avg <- dd_nohomecage_avg[-c(2:9,11)] #delete all but count and genoAPA and regionGene
-dd_nohomecage_avg <- dcast(dd_nohomecage_avg, genoAPA~regionGene, value.var = "count", fun.aggregate = mean) #widen
-head(dd_nohomecage_avg)
-rownames(dd_nohomecage_avg) <- dd_nohomecage_avg$genoAPA  # set $genoAPA as rownames
-names(dd_nohomecage_avg)
-dd_nohomecage_avg <- dd_nohomecage_avg[-c(1,14:25)] #colum 1 and all CA3 samples
-head(dd_nohomecage_avg)
+## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
+CA1nohomecage <- filter(qpcr, APA != "home", region != "CA3")
+CA1nohomecage <- droplevels(CA1nohomecage)
+
+ddCA1nohomecage <- cq2counts(data=CA1nohomecage, genecols=c(10:21), condcols=c(1:9), effic=eff)
+head(ddCA1nohomecage)
+
+naive_CA1nohomecage <- mcmc.qpcr(
+  data=ddCA1nohomecage,
+  fixed="APA+region.genotype+APA:region.genotype",
+  pr=T,pl=T, singular.ok=TRUE)
+diagnostic.mcmc(model=naive_CA1nohomecage, col="grey50", cex=0.8)
+HPDsummary(naive_CA1nohomecage, ddCA1nohomecage) -> summaryCA1nohomecage
+trellisByGene(summaryCA1nohomecage,xFactor="region.genotype",groupFactor="APA")+xlab("group")
+
+
+
+## correlations matrices using ddCA1nohomecage_mean
+
+ddCA1nohomecage_mean <- ddCA1nohomecage
+head(ddCA1nohomecage_mean)
+ddCA1nohomecage_mean$RegionGene <- as.factor(paste(ddCA1nohomecage_mean$region, ddCA1nohomecage_mean$gene, sep="_"))
+head(ddCA1nohomecage_mean)
+ddCA1nohomecage_mean <- select(ddCA1nohomecage_mean, count, ind, RegionGene)
+ddCA1nohomecage_mean <- dcast(ddCA1nohomecage_mean, ind~RegionGene, value.var = "count", fun.aggregate = mean) #widen
+head(ddCA1nohomecage_mean)
+ddCA1nohomecage_mean <- select(ddCA1nohomecage_mean, ind, CA1_grim, CA1_pkmz, CA1_rpl19)
+
+rownames(ddCA1nohomecage_mean) <- ddCA1nohomecage_mean$ind  # set $genoAPA as rownames
+names(ddCA1nohomecage_mean)
+ddCA1nohomecage_mean <- ddCA1nohomecage_mean[-c(1)] #remove ind column
+head(ddCA1nohomecage_mean)
+
+## scatter plots
+ggplot(ddCA1nohomecage_mean, aes(x = CA1_grim, y = CA1_pkmz)) + 
+  geom_point()
+ggplot(ddCA1nohomecage_mean, aes(x = CA3_rpl19, y = CA3_rRNA18S)) + 
+  geom_point()
 
 ## next, compute a correlation matrix and melt
-dd_nohomecage_avg_cormat <- round(cor(dd_nohomecage_avg),2) # compute correlations
-dd_nohomecage_avg_cormatlong <- melt(dd_nohomecage_avg_cormat) # melt
-head(dd_nohomecage_avg_cormatlong)
+ddCA1nohomecage_mean_cormat <- round(cor(ddCA1nohomecage_mean),2) # compute correlations
+ddCA1nohomecage_mean_cormatlong <- melt(ddCA1nohomecage_mean_cormat) # melt
+head(ddCA1nohomecage_mean_cormatlong)
 
 ## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
-ggplot(data = dd_nohomecage_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+ggplot(data = ddCA1nohomecage_mean_cormatlong, aes(x=X1, y=X2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -127,38 +153,9 @@ ggplot(data = dd_nohomecage_avg_cormatlong, aes(x=X1, y=X2, fill=value)) +
   theme(axis.text.x = element_text(angle = 45, vjust = 1, 
                                    size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
-  scale_y_discrete(name="") 
+  scale_y_discrete(name="") +
+  geom_text(aes(X1, X2, label = value), color = "black", size = 4) 
 
-
-# then using individual measures
-dd_nohomecage_ind <- dd_nohomecage
-dd_nohomecage_ind$RegionGeneInd <- as.factor(paste(dd_nohomecage_ind$region, dd_nohomecage_ind$gene, dd_nohomecage_ind$ind, sep="_"))
-head(dd_nohomecage_matrix)
-
-
-
-
-
-
-
-
-
-
-
-## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
-nohomeCA1 <- filter(qpcr, APA != "home", region != "CA3")
-nohomeCA1 <- droplevels(nohomeCA1)
-
-ddnohomeCA1 <- cq2counts(data=nohomeCA1, genecols=c(10:21), condcols=c(1:9), effic=eff)
-head(ddnohome)
-
-naive_nohomeCA1 <- mcmc.qpcr(
-  data=ddnohomeCA1,
-  fixed="APA+region.genotype+APA:region.genotype",
-  pr=T,pl=T, singular.ok=TRUE)
-diagnostic.mcmc(model=naive_nohomeCA1, col="grey50", cex=0.8)
-HPDsummary(naive_nohomeCA1, ddnohomeCA1) -> summarynohomeCA1
-trellisByGene(summarynohomeCA1,xFactor="region.genotype",groupFactor="APA")+xlab("group")
 
 ## Subset FMR1 data then anlyze with cq2counts function and naive model ----
 FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
