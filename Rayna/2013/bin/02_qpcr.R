@@ -133,7 +133,7 @@ ddCA1nohomecage_mean <- ddCA1nohomecage_mean[-c(1)] #remove ind column
 head(ddCA1nohomecage_mean)
 
 ## scatter plots
-ggplot(ddCA1nohomecage_mean, aes(x = CA1_grim, y = CA1_pkmz)) + 
+ggplot(ddCA1nohomecage_mean, aes(x = CA1_grim, y = CA1_rpl19)) + 
   geom_point()
 ggplot(ddCA1nohomecage_mean, aes(x = CA3_rpl19, y = CA3_rRNA18S)) + 
   geom_point()
