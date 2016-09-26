@@ -5,6 +5,7 @@ library(dplyr) # for renaming columns
 library(plyr) # for renaming factors
 library(MCMC.qpcr) # for qpcr analysis
 library(reshape2) # for melting data
+library(reshape) #for making data wide
 
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
@@ -71,6 +72,7 @@ HPDsummary(naive_dd_nohomecage, dd_nohomecage) -> summarynohomecage
 trellisByGene(summarynohomecage,xFactor="region.genotype",groupFactor="APA", nrow=4)+xlab(NULL) 
 #saved as 12genes-3x4.png
 
+# some ggplots of nohomecage data
 dd_nohomecage %>% 
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
@@ -95,6 +97,53 @@ dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
+
+## correlations matrices using dd_nohomecage
+
+# Group averages
+dd_nohomecage_avg <- dd_nohomecage
+dd_nohomecage_avg$regionGene <- as.factor(paste(dd_nohomecage_avg$region, dd_nohomecage_avg$gene, sep="_")) # create new column for RegionGene 
+names(dd_nohomecage_avg)
+dd_nohomecage_avg <- dd_nohomecage_avg[-c(2:9,11)] #delete all but count and genoAPA and regionGene
+dd_nohomecage_avg <- dcast(dd_nohomecage_avg, genoAPA~regionGene, value.var = "count", fun.aggregate = mean) #widen
+head(dd_nohomecage_avg)
+rownames(dd_nohomecage_avg) <- dd_nohomecage_avg$genoAPA  # set $genoAPA as rownames
+names(dd_nohomecage_avg)
+dd_nohomecage_avg <- dd_nohomecage_avg[-c(1,14:25)] #colum 1 and all CA3 samples
+head(dd_nohomecage_avg)
+
+## next, compute a correlation matrix and melt
+dd_nohomecage_avg_cormat <- round(cor(dd_nohomecage_avg),2) # compute correlations
+dd_nohomecage_avg_cormatlong <- melt(dd_nohomecage_avg_cormat) # melt
+head(dd_nohomecage_avg_cormatlong)
+
+## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
+ggplot(data = dd_nohomecage_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+  geom_tile(color = "white")+
+  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
+                       midpoint = 0, limit = c(-1,1), space = "Lab", 
+                       name="Pearson\nCorrelation") +
+  theme_minimal()+ # minimal theme
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
+                                   size = 10, hjust = 1)) +
+  scale_x_discrete(name="") +
+  scale_y_discrete(name="") 
+
+
+# then using individual measures
+dd_nohomecage_ind <- dd_nohomecage
+dd_nohomecage_ind$RegionGeneInd <- as.factor(paste(dd_nohomecage_ind$region, dd_nohomecage_ind$gene, dd_nohomecage_ind$ind, sep="_"))
+head(dd_nohomecage_matrix)
+
+
+
+
+
+
+
+
+
+
 
 ## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
 nohomeCA1 <- filter(qpcr, APA != "home", region != "CA3")
