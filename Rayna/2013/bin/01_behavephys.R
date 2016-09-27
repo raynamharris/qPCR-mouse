@@ -382,6 +382,7 @@ head(wtfmr1_matrix_avg)
 
 ## next, compute a correlation matrix and melt
 wtfmr1_matrix_avg_cormat <- round(cor(wtfmr1_matrix_avg),2) # compute correlations
+head(wtfmr1_matrix_avg_cormat)
 wtfmr1_matrix_avg_cormatlong <- melt(wtfmr1_matrix_avg_cormat) # melt
 head(wtfmr1_matrix_avg_cormatlong)
 
