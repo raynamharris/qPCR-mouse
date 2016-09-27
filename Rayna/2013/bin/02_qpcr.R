@@ -8,6 +8,8 @@ library(reshape2) # for melting data
 library(reshape) #for making data wide
 library(cowplot) #for multiple plots
 
+library(gplots) # for heatmap.2
+
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
 qpcr <- read.csv("02_qpcrdata.csv", header = TRUE, na.strings = "NA", stringsAsFactors = FALSE)
@@ -99,7 +101,7 @@ dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
 
-## some scatter plots
+## some scatter plots ----
 head(dd_nohomecage)
 dd_nohomecage_wide <- dcast(dd_nohomecage, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
 head(dd_nohomecage_wide)
@@ -110,6 +112,9 @@ ggplot(dd_nohomecage_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) 
   scale_x_log10() + scale_y_log10() +   
   geom_smooth(method=lm)
 
+## Correlations!!! ----
+## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
+
 ## making a matrix to plot many correlations
 dd_nohomecage_wide_matrix <- dd_nohomecage_wide
 dd_nohomecage_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecage_wide_matrix$genoAPA,dd_nohomecage_wide_matrix$region, dd_nohomecage_wide_matrix$ind, sep="_"))
@@ -118,12 +123,108 @@ names(dd_nohomecage_wide_matrix)
 dd_nohomecage_wide_matrix <- dd_nohomecage_wide_matrix[-c(1:4,17)] 
 dd_nohomecage_wide_matrix <- as.matrix(dd_nohomecage_wide_matrix)
 head(dd_nohomecage_wide_matrix)
+dd_nohomecage_wide_matrix <- na.omit(dd_nohomecage_wide_matrix)
+head(dd_nohomecage_wide_matrix)
+tail(dd_nohomecage_wide_matrix)
 
 library(corrplot)
-dd_nohomecage_wide_matrix_cor <- cor(dd_nohomecage_wide_matrix)
+dd_nohomecage_wide_matrix_cor <- round(cor(dd_nohomecage_wide_matrix),2) 
 head(dd_nohomecage_wide_matrix_cor)
 corrplot(dd_nohomecage_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
 
+## fancy ass correlation matrix
+library(PerformanceAnalytics)
+chart.Correlation(dd_nohomecage_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
+
+## saved as 2-heatmap-CA1CA3.png
+heatmap.2(dd_nohomecage_wide_matrix_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none", 
+          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black")
+# See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
+
+
+
+
+library(igraph)
+cor_mat<-dd_nohomecage_wide_matrix_cor
+diag(cor_mat)<-0
+graph<-graph.adjacency(cor_mat,weighted=TRUE,mode="upper", weighted = TRUE)
+E(graph)[ weight>0.9 ]$color <- "tan4" 
+E(graph)[ weight>0.8 & weight < 0.899 ]$color <- "tan2" 
+#E(graph)[ weight>0.7 & weight < 0.799 ]$color <- "blue" 
+#E(graph)[ weight>0.6 & weight < 0.699 ]$color <- "red" 
+#E(graph)[ weight>0.5 & weight < 0.599 ]$color <- "purple" 
+#E(graph)[ weight>0.4 & weight < 0.499 ]$color <- "orange" 
+#E(graph)[ weight < -0.9 ]$color <- "red" 
+#E(graph)[ weight< -0.8 & weight > -0.899 ]$color <- "orange" 
+plot(graph)
+
+
+
+## CA1 specific heatmap
+head(dd_nohomecage_wide)
+CA1onlymatrix <- dd_nohomecage_wide %>% 
+  filter(region == "CA1")
+names(CA1onlymatrix)
+CA1onlymatrix$genoAPAregionInd <- as.factor(paste(CA1onlymatrix$genoAPA,CA1onlymatrix$region, CA1onlymatrix$ind, sep="_"))
+rownames(CA1onlymatrix) <- CA1onlymatrix$genoAPAregionInd  # set $genoAPAsession as rownames
+names(CA1onlymatrix)
+CA1onlymatrix <- CA1onlymatrix[-c(1:4,17)] 
+CA1onlymatrix <- as.matrix(CA1onlymatrix)
+head(CA1onlymatrix)
+CA1onlymatrix <- na.omit(CA1onlymatrix)
+head(CA1onlymatrix)
+tail(CA1onlymatrix)
+
+CA1onlymatrix_cor <- round(cor(CA1onlymatrix),2) 
+head(CA1onlymatrix_cor)
+corrplot(CA1onlymatrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+
+heatmap.2(CA1onlymatrix_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none", 
+          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
+          main = "CA1") 
+
+chart.Correlation(CA1onlymatrix_cor, histogram=TRUE, pch=19, method = "spearman")
+
+
+## CA3 specific heatmap
+head(dd_nohomecage_wide)
+CA3onlymatrix <- dd_nohomecage_wide %>% 
+  filter(region == "CA3")
+names(CA3onlymatrix)
+CA3onlymatrix$genoAPAregionInd <- as.factor(paste(CA3onlymatrix$genoAPA,CA3onlymatrix$region, CA3onlymatrix$ind, sep="_"))
+rownames(CA3onlymatrix) <- CA3onlymatrix$genoAPAregionInd  # set $genoAPAsession as rownames
+names(CA3onlymatrix)
+CA3onlymatrix <- CA3onlymatrix[-c(1:4,17)] 
+CA3onlymatrix <- as.matrix(CA3onlymatrix)
+head(CA3onlymatrix)
+CA3onlymatrix <- na.omit(CA3onlymatrix)
+head(CA3onlymatrix)
+tail(CA3onlymatrix)
+
+CA3onlymatrix_cor <- round(cor(CA3onlymatrix),2) 
+head(CA3onlymatrix_cor)
+corrplot(CA3onlymatrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+
+heatmap.2(CA3onlymatrix_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none", 
+          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
+          main = "CA3") 
+
+heatmap.2(CA3onlymatrix_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none", 
+          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
+          main = "CA3") 
+
+
+chart.Correlation(CA3onlymatrix_cor, histogram=FALSE, pch=19, method = "spearman")
+
+head(CA3onlymatrix_cor)
 
 
 
