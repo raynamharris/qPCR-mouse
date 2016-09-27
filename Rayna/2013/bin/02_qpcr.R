@@ -6,6 +6,7 @@ library(plyr) # for renaming factors
 library(MCMC.qpcr) # for qpcr analysis
 library(reshape2) # for melting data
 library(reshape) #for making data wide
+library(cowplot) #for multiple plots
 
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
@@ -97,6 +98,36 @@ dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
+
+## some scatter plots
+head(dd_nohomecage)
+dd_nohomecage_wide <- dcast(dd_nohomecage, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
+head(dd_nohomecage_wide)
+
+## ploting one correlation at a time
+ggplot(dd_nohomecage_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm)
+
+## making a matrix to plot many correlations
+dd_nohomecage_wide_matrix <- dd_nohomecage_wide
+dd_nohomecage_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecage_wide_matrix$genoAPA,dd_nohomecage_wide_matrix$region, dd_nohomecage_wide_matrix$ind, sep="_"))
+rownames(dd_nohomecage_wide_matrix) <- dd_nohomecage_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
+names(dd_nohomecage_wide_matrix)
+dd_nohomecage_wide_matrix <- dd_nohomecage_wide_matrix[-c(1:4,17)] 
+dd_nohomecage_wide_matrix <- as.matrix(dd_nohomecage_wide_matrix)
+head(dd_nohomecage_wide_matrix)
+
+library(corrplot)
+dd_nohomecage_wide_matrix_cor <- cor(dd_nohomecage_wide_matrix)
+head(dd_nohomecage_wide_matrix_cor)
+corrplot(dd_nohomecage_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+
+
+
+
+
 
 
 ## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
