@@ -1,14 +1,15 @@
 # Part 2: Reading and analyzing qPCR data
 
-## libraries
+## load libraries ----
 library(dplyr) # for renaming columns
 library(plyr) # for renaming factors
 library(MCMC.qpcr) # for qpcr analysis
 library(reshape2) # for melting data
 library(reshape) #for making data wide
 library(cowplot) #for multiple plots
-
 library(gplots) # for heatmap.2
+library(corrplot) # simple corrplot with size-circles
+library(PerformanceAnalytics) # fancy ass correlation plot
 
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
@@ -76,32 +77,18 @@ trellisByGene(summarynohomecage,xFactor="region.genotype",groupFactor="APA", nro
 #saved as 12genes-3x4.png
 
 # some ggplots of nohomecage data
-dd_nohomecage %>% 
+dd_nohomecage %>%  ## for all data
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene, scales = "free_y")
 
-dd_nohomecage %>% filter(gene %in% c("rpl19", "grim", "pkmz")) %>%
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene, scales = "free_y")
-
-dd_nohomecage %>% filter(gene %in% c("rpl19", "rRNA18S", "cam2kd")) %>%
+dd_nohomecage %>%  ## for a subset of the data
+  filter(gene %in% c("fmr1", "fos", "nsf", "pkmz", "creb", "dlg4")) %>%
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
 
-dd_nohomecage %>% filter(gene %in% c("fmr1", "fos", "nsf", "pkmz", "creb", "dlg4")) %>%
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene)
-
-dd_nohomecage %>% filter(gene %in% c("gria", "grim", "grin")) %>%
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene)
-
-## some scatter plots ----
+## Correlations!!! ----
 head(dd_nohomecage)
 dd_nohomecage_wide <- dcast(dd_nohomecage, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
 head(dd_nohomecage_wide)
@@ -112,9 +99,7 @@ ggplot(dd_nohomecage_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) 
   scale_x_log10() + scale_y_log10() +   
   geom_smooth(method=lm)
 
-## Correlations!!! ----
 ## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
-
 ## making a matrix to plot many correlations
 dd_nohomecage_wide_matrix <- dd_nohomecage_wide
 dd_nohomecage_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecage_wide_matrix$genoAPA,dd_nohomecage_wide_matrix$region, dd_nohomecage_wide_matrix$ind, sep="_"))
@@ -130,6 +115,7 @@ tail(dd_nohomecage_wide_matrix)
 library(corrplot)
 dd_nohomecage_wide_matrix_cor <- round(cor(dd_nohomecage_wide_matrix),2) 
 head(dd_nohomecage_wide_matrix_cor)
+dev.off()
 corrplot(dd_nohomecage_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
 
 ## fancy ass correlation matrix
@@ -137,14 +123,12 @@ library(PerformanceAnalytics)
 chart.Correlation(dd_nohomecage_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
 
 ## saved as 2-heatmap-CA1CA3.png
+col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
 heatmap.2(dd_nohomecage_wide_matrix_cor, col=col, 
           density.info="none", trace="none", dendrogram=c("row"), 
           symm=F,symkey=T,symbreaks=T, scale="none", 
           cellnote = dd_nohomecage_wide_matrix_cor, notecol="black")
 # See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
-
-
-
 
 library(igraph)
 cor_mat<-dd_nohomecage_wide_matrix_cor
@@ -152,14 +136,7 @@ diag(cor_mat)<-0
 graph<-graph.adjacency(cor_mat,weighted=TRUE,mode="upper", weighted = TRUE)
 E(graph)[ weight>0.9 ]$color <- "tan4" 
 E(graph)[ weight>0.8 & weight < 0.899 ]$color <- "tan2" 
-#E(graph)[ weight>0.7 & weight < 0.799 ]$color <- "blue" 
-#E(graph)[ weight>0.6 & weight < 0.699 ]$color <- "red" 
-#E(graph)[ weight>0.5 & weight < 0.599 ]$color <- "purple" 
-#E(graph)[ weight>0.4 & weight < 0.499 ]$color <- "orange" 
-#E(graph)[ weight < -0.9 ]$color <- "red" 
-#E(graph)[ weight< -0.8 & weight > -0.899 ]$color <- "orange" 
 plot(graph)
-
 
 
 ## CA1 specific heatmap
@@ -215,19 +192,7 @@ heatmap.2(CA3onlymatrix_cor, col=col,
           cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
           main = "CA3") 
 
-heatmap.2(CA3onlymatrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
-          main = "CA3") 
-
-
 chart.Correlation(CA3onlymatrix_cor, histogram=FALSE, pch=19, method = "spearman")
-
-head(CA3onlymatrix_cor)
-
-
-
 
 
 
@@ -317,29 +282,13 @@ ggplot(nd_naive_wt, aes(x=region.genotype, y=value)) +
   geom_boxplot(aes(fill=APA)) + 
   facet_wrap(~gene)
 
-## subset WT-CA1-only then analyze data with cq2counts function and naive model ----
-CA1_year <- qpcr[c(1:11)] %>% 
-  filter(APA != "homecage") %>% 
-  filter(genotype != "FMR1-KO") %>% 
-  filter(region == "CA1") 
-CA1_year <- droplevels(CA1_year)
-str(CA1_year)
-
-#ddCA1year <- cq2counts(data=CA1_year, genecols=c(9:11), condcols=c(1:8), effic=eff)
-
-#naive_ddCA1year <- mcmc.qpcr(
-#  data=ddCA1year,
-#  fixed="year+APA+APA:year",random="sample",
-#  pr=T,pl=T)
-#diagnostic.mcmc(model=naive_ddCA1year, col="grey50", cex=0.8)
-#HPDsummary(naive_ddCA1year, ddCA1year)
 
 ## Suset 3 gene data then anlyzewith cq2counts function and naive model ----
-CA1_3genes <- qpcr[c(1:11)] %>% filter( APA != "home")
+CA1_3genes <- qpcr[c(1:12)] %>% filter( APA != "home")
 CA1_3genes <- droplevels(CA1_3genes)
 str(CA1_3genes)
 
-dd3genes <- cq2counts(data=CA1_3genes, genecols=c(9:11), condcols=c(1:8), effic=eff)
+dd3genes <- cq2counts(data=CA1_3genes, genecols=c(10:12), condcols=c(1:9), effic=eff)
 
 naive_3genes <- mcmc.qpcr(
   data=dd3genes,
@@ -372,3 +321,44 @@ dd3genes %>% filter(gene != "rpl19") %>%
   ggplot(aes(x=region.genotype, y=count)) + 
   geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
   facet_wrap(~gene)
+
+## correlations 3 genes
+dd3genes_wide <- dcast(dd3genes, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
+head(dd3genes_wide)
+
+## ploting one correlation at a time
+ggplot(dd3genes_wide, aes(x = pkmz, y = grim, colour = region.genotype)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm)
+
+## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
+## making a matrix to plot many correlations
+dd3genes_wide_matrix <- dd3genes_wide
+dd3genes_wide_matrix$genoAPAregionInd <- as.factor(paste(dd3genes_wide_matrix$genoAPA,dd3genes_wide_matrix$region, dd3genes_wide_matrix$ind, sep="_"))
+rownames(dd3genes_wide_matrix) <- dd3genes_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
+names(dd3genes_wide_matrix)
+dd3genes_wide_matrix <- dd3genes_wide_matrix[-c(1:4)] 
+dd3genes_wide_matrix <- as.matrix(dd3genes_wide_matrix)
+head(dd3genes_wide_matrix)
+dd3genes_wide_matrix <- na.omit(dd3genes_wide_matrix)
+head(dd3genes_wide_matrix)
+tail(dd3genes_wide_matrix)
+
+
+dd3genes_wide_matrix_cor <- round(cor(dd3genes_wide_matrix),2) 
+head(dd3genes_wide_matrix_cor)
+dev.off()
+corrplot(dd3genes_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+
+## fancy ass correlation matrix
+chart.Correlation(dd3genes_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
+
+## saved as 2-heatmap-CA1CA3.png
+col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
+heatmap.2(dd3genes_wide_matrix_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none", 
+          cellnote = dd3genes_wide_matrix_cor, notecol="black")
+# See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
+
