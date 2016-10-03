@@ -263,7 +263,6 @@ heatmap.2(CA3onlymatrix_cor, col=col,
 chart.Correlation(CA3onlymatrix_cor, histogram=FALSE, pch=19, method = "spearman")
 
 
-
 ## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
 CA1nohomecage <- filter(qpcr, APA != "home", region != "CA3")
 CA1nohomecage <- droplevels(CA1nohomecage)

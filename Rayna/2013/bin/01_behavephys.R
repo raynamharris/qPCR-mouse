@@ -344,7 +344,7 @@ summary_long %>%
 wtfmr1_matrix <- wtfmr1    #create new dataframe
 rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
 names(wtfmr1_matrix)
-wtfmr1_matrix <- wtfmr1_matrix[-c(1:8,10)] #delete all non-numeric columns and TotalTime
+wtfmr1_matrix <- wtfmr1_matrix[-c(1:8,51:52)] #delete all non-numeric columns and TotalTime
 head(wtfmr1_matrix)
 str(wtfmr1_matrix)
 
@@ -354,7 +354,7 @@ wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
 head(wtfmrt_cormatlong)
 
 ## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
-ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
+ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -365,12 +365,19 @@ ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
+col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
+heatmap.2(wtfmrt_cormat, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none")
+          #cellnote = wtfmrt_cormat, notecol="black")
+
+
 ### Correlation plot 2 : data averaged first by group ----
 
 ## create matrix with genoAPAsession average values
 wtfmr1_matrix_avg <- wtfmr1    #create new dataframe
 names(wtfmr1_matrix_avg)
-wtfmr1_matrix_avg <- wtfmr1_matrix_avg[-c(1:5,7:8,10)] #delete TotalTime and non-numeric columns EXCEPT genoAPAsession
+wtfmr1_matrix_avg <- wtfmr1_matrix_avg[-c(1:5,7:8,51:52)] #delete TotalTime and non-numeric columns EXCEPT genoAPAsession
 
 wtfmr1_matrix_avg <- wtfmr1_matrix_avg %>% 
   group_by(genoAPAsession) %>%
@@ -387,7 +394,7 @@ wtfmr1_matrix_avg_cormatlong <- melt(wtfmr1_matrix_avg_cormat) # melt
 head(wtfmr1_matrix_avg_cormatlong)
 
 ## heatmap clustered!!! # Saved as 1-heatmap-group
-ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
+ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -398,71 +405,9 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
-### Heatmap plot 3 : beahvior group aves grouped by group ----
-## scale columns
-head(wtfmr1_matrix_avg)
-
-#dendogram data
-x <- as.matrix(scale(wtfmr1_matrix_avg))
-head(x)
-dd.col <- as.dendrogram(hclust(dist(x)))
-dd.row <- as.dendrogram(hclust(dist(t(x))))
-dx <- dendro_data(dd.row)
-dy <- dendro_data(dd.col)
-
-# helper function for creating dendograms
-ggdend <- function(df) {
-  ggplot() +
-    geom_segment(data = df, aes(x=x, y=y, xend=xend, yend=yend)) +
-    labs(x = "", y = "") + theme_minimal() +
-    theme(axis.text = element_blank(), axis.ticks = element_blank(),
-          panel.grid = element_blank())
-}
-
-# x/y dendograms
-ggdend(dx$segments) + coord_flip()
-ggdend(dy$segments) 
-
-# heatmap
-col.ord <- order.dendrogram(dd.col)
-row.ord <- order.dendrogram(dd.row)
-xx <- scale(wtfmr1_matrix_avg)[col.ord, row.ord]
-xx_names <- attr(xx, "dimnames")
-df <- as.data.frame(xx)
-colnames(df) <- xx_names[[2]]
-df$genoAPAsession <- xx_names[[1]]
-df$genoAPAsession <- with(df, factor(genoAPAsession, levels=genoAPAsession, ordered=TRUE))
-mdf <- reshape2::melt(df, id.vars="genoAPAsession")
-
-ggplot(mdf, aes(x = genoAPAsession, y = variable)) + geom_tile(aes(fill = value)) +
-  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white") +
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                   size = 10, hjust = 1)) +
-  scale_x_discrete(name="") +
-  scale_y_discrete(name="")
-
-## correlation heatmap of of summary data ----
-summary_matrix <- summary
-summary_matrix$genoAPAsessionInd <- as.factor(paste(summary_matrix$genoAPA, summary_matrix$session, summary_matrix$ind, sep="_")) #create genoAPAsessionInd column
-rownames(summary_matrix) <- summary_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
-summary_matrix <- summary_matrix[-c(1:4,16:18)] #delete all non-numeric columns
-head(summary_matrix)
-
-summary_matrix_cormat <- round(cor(summary_matrix),2) # compute correlations
-summary_matrix_cormatlong <- melt(summary_matrix_cormat, na.rm = TRUE) # melt
-head(summary_matrix_cormatlong)
-
-## heatmap clustered!!! # Saved as 1-heatmap-group
-ggplot(data = summary_matrix_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
-  geom_tile(color = "white")+
-  scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
-                       midpoint = 0, limit = c(-1,1), space = "Lab", 
-                       name="Pearson\nCorrelation") +
-  theme_minimal()+ # minimal theme
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, 
-                                   size = 10, hjust = 1)) +
-  scale_x_discrete(name="") +
-  scale_y_discrete(name="") 
+heatmap.2(wtfmr1_matrix_avg_cormat, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none")
 
 
 ### Not used but useful single plots ----
