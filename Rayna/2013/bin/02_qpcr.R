@@ -34,6 +34,8 @@ head(qpcr)
 qpcr <- dplyr::rename(qpcr, genotype = strain) 
 qpcr$genotype <- revalue(qpcr$genotype, c("fmr1" = "FMR1-KO")) 
 qpcr$genotype <- revalue(qpcr$genotype, c("wt" = "WT"))
+names(qpcr)[10] <- "prkcz"
+
 
 ## rename "WT AB" to "FMR1-KO AB"
 head(qpcr, 12)
@@ -59,143 +61,76 @@ dilutions$gene <- revalue(dilutions$gene, c("dlg4.conc" = "dlg4"))
 dilutions$gene <- revalue(dilutions$gene, c("grim.conc" = "grim"))
 dilutions$gene <- revalue(dilutions$gene, c("fmr1.conc" = "fmr1"))
 dilutions$gene <- revalue(dilutions$gene, c("rRNA18s" = "rRNA18S"))
+dilutions$gene <- revalue(dilutions$gene, c("pkmz" = "prkcz"))
+
 dilutions <- droplevels(dilutions)
 
 PrimEff(dilutions) -> eff
 
-## Create "all but homecage" dataframe, anlayze with cq2counts function and naive model ----
-nohomecage <- dplyr::filter(qpcr, APA != "home")
-nohomecage <- droplevels(nohomecage)
-str(nohomecage)
-
-dd_nohomecage <- cq2counts(data=nohomecage, genecols=c(10:21), condcols=c(1:9), effic=eff)
-head(dd_nohomecage)
-
-naive_dd_nohomecage <- mcmc.qpcr(
-  data=dd_nohomecage,
-  fixed="APA+region.genotype+APA:region.genotype",
-  pr=T,pl=T, singular.ok=TRUE)
-diagnostic.mcmc(model=naive_dd_nohomecage, col="grey50", cex=0.8)
-HPDsummary(naive_dd_nohomecage, dd_nohomecage) -> summarynohomecage
-trellisByGene(summarynohomecage,xFactor="region.genotype",groupFactor="APA", nrow=4)+xlab(NULL) 
-#saved as 12genes-3x4.png
-
-# some ggplots of nohomecage data
-dd_nohomecage %>%  ## for all data
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene, scales = "free_y")
-
-dd_nohomecage %>%  ## for a subset of the data
-  filter(gene %in% c("fmr1", "fos", "nsf", "pkmz", "creb", "dlg4")) %>%
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene)
-
-## Correlations!!! ----
-head(dd_nohomecage)
-dd_nohomecage_wide <- dcast(dd_nohomecage, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
-head(dd_nohomecage_wide)
-
-## ploting one correlation at a time
-ggplot(dd_nohomecage_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) + 
-  geom_point() +
-  scale_x_log10() + scale_y_log10() +   
-  geom_smooth(method=lm)
-
-## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
-## making a matrix to plot many correlations
-dd_nohomecage_wide_matrix <- dd_nohomecage_wide
-dd_nohomecage_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecage_wide_matrix$genoAPA,dd_nohomecage_wide_matrix$region, dd_nohomecage_wide_matrix$ind, sep="_"))
-rownames(dd_nohomecage_wide_matrix) <- dd_nohomecage_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
-names(dd_nohomecage_wide_matrix)
-dd_nohomecage_wide_matrix <- dd_nohomecage_wide_matrix[-c(1:4,17)] 
-dd_nohomecage_wide_matrix <- as.matrix(dd_nohomecage_wide_matrix)
-head(dd_nohomecage_wide_matrix)
-dd_nohomecage_wide_matrix <- na.omit(dd_nohomecage_wide_matrix)
-head(dd_nohomecage_wide_matrix)
-tail(dd_nohomecage_wide_matrix)
-
-dd_nohomecage_wide_matrix_cor <- round(cor(dd_nohomecage_wide_matrix),2) 
-head(dd_nohomecage_wide_matrix_cor)
-dev.off()
-corrplot(dd_nohomecage_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
-
-chart.Correlation(dd_nohomecage_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
-
-## saved as 2-heatmap-CA1CA3.png
-col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(dd_nohomecage_wide_matrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black")
-# See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
-
-
-
-
-
-## Create "no homecage no CA1WT" dataframe, anlayze with cq2counts function and naive model ----
+## Create "no homecage no WT" dataframe, anlayze with cq2counts function and naive model ----
 head(qpcr)
-nohomecagenoca1wt <- dplyr::filter(qpcr, APA != "home", region.genotype != "CA1_WT")
-nohomecagenoca1wt <- droplevels(nohomecagenoca1wt)
-str(nohomecagenoca1wt)
+nohomecage_nowt <- dplyr::filter(qpcr, APA != "home", genotype != "WT")
+nohomecage_nowt <- droplevels(nohomecage_nowt)
+str(nohomecage_nowt)
 
-dd_nohomecagenoca1wt <- cq2counts(data=nohomecagenoca1wt, genecols=c(10:21), condcols=c(1:9), effic=eff)
-head(dd_nohomecagenoca1wt)
+dd_nohomecage_nowt <- cq2counts(data=nohomecage_nowt, genecols=c(10:21), condcols=c(1:9), effic=eff)
+head(dd_nohomecage_nowt)
 
-naive_dd_nohomecagenoca1wt <- mcmc.qpcr(
-  data=dd_nohomecagenoca1wt,
-  fixed="APA+region.genotype+APA:region.genotype",
+naive_dd_nohomecage_nowt <- mcmc.qpcr(
+  data=dd_nohomecage_nowt,
+  fixed="APA",
   pr=T,pl=T, singular.ok=TRUE)
-diagnostic.mcmc(model=naive_dd_nohomecagenoca1wt, col="grey50", cex=0.8)
-HPDsummary(naive_dd_nohomecagenoca1wt, dd_nohomecagenoca1wt) -> summarynohomecagenoca1wt
-trellisByGene(summarynohomecagenoca1wt,xFactor="region.genotype",groupFactor="APA", nrow=4)+xlab(NULL) 
-#saved as 12genes-3x4.png
+diagnostic.mcmc(model=naive_dd_nohomecage_nowt, col="grey50", cex=0.8)
+HPDsummary(naive_dd_nohomecage_nowt, dd_nohomecage_nowt) -> summarynohomecage_nowt
 
-# some ggplots of nohomecagenoca1wt data
-dd_nohomecagenoca1wt %>%  ## for all data
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene, scales = "free_y")
+# saved as 2-FMR1CA1qpcrdata.png
+FMFR1Palette <- c('grey50','darkorange')
+dd_nohomecage_nowt %>%  
+  ggplot(aes(x=APA, y=count)) + 
+  geom_boxplot(aes(fill=APA)) +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
+  facet_wrap(~gene, scales = "free_y") +
+  scale_x_discrete(name="") +
+  theme(legend.position="none", 
+        strip.text = element_text(face = "italic")) + 
+  scale_fill_manual(values = FMFR1Palette)
 
 ## Correlations!!! ----
-head(dd_nohomecagenoca1wt)
-dd_nohomecagenoca1wt_wide <- dcast(dd_nohomecagenoca1wt, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
-head(dd_nohomecagenoca1wt_wide)
+head(dd_nohomecage_nowt)
+dd_nohomecage_nowt_wide <- dcast(dd_nohomecage_nowt, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
+head(dd_nohomecage_nowt_wide)
 
 ## ploting one correlation at a time
-ggplot(dd_nohomecagenoca1wt_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) + 
+ggplot(dd_nohomecage_nowt_wide, aes(x = cam2kd, y = creb, colour = region.genotype)) + 
   geom_point() +
   scale_x_log10() + scale_y_log10() +   
   geom_smooth(method=lm)
 
 ## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
 ## making a matrix to plot many correlations
-dd_nohomecagenoca1wt_wide_matrix <- dd_nohomecagenoca1wt_wide
-dd_nohomecagenoca1wt_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecagenoca1wt_wide_matrix$genoAPA,dd_nohomecagenoca1wt_wide_matrix$region, dd_nohomecagenoca1wt_wide_matrix$ind, sep="_"))
-rownames(dd_nohomecagenoca1wt_wide_matrix) <- dd_nohomecagenoca1wt_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
-names(dd_nohomecagenoca1wt_wide_matrix)
-dd_nohomecagenoca1wt_wide_matrix <- dd_nohomecagenoca1wt_wide_matrix[-c(1:4,17)] 
-dd_nohomecagenoca1wt_wide_matrix <- as.matrix(dd_nohomecagenoca1wt_wide_matrix)
-head(dd_nohomecagenoca1wt_wide_matrix)
-dd_nohomecagenoca1wt_wide_matrix <- na.omit(dd_nohomecagenoca1wt_wide_matrix)
-head(dd_nohomecagenoca1wt_wide_matrix)
-tail(dd_nohomecagenoca1wt_wide_matrix)
+dd_nohomecage_nowt_wide_matrix <- dd_nohomecage_nowt_wide
+dd_nohomecage_nowt_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_nohomecage_nowt_wide_matrix$genoAPA,dd_nohomecage_nowt_wide_matrix$region, dd_nohomecage_nowt_wide_matrix$ind, sep="_"))
+rownames(dd_nohomecage_nowt_wide_matrix) <- dd_nohomecage_nowt_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
+names(dd_nohomecage_nowt_wide_matrix)
+dd_nohomecage_nowt_wide_matrix <- dd_nohomecage_nowt_wide_matrix[-c(1:4,17)] 
+dd_nohomecage_nowt_wide_matrix <- as.matrix(dd_nohomecage_nowt_wide_matrix)
+head(dd_nohomecage_nowt_wide_matrix)
+dd_nohomecage_nowt_wide_matrix <- na.omit(dd_nohomecage_nowt_wide_matrix)
+head(dd_nohomecage_nowt_wide_matrix)
+tail(dd_nohomecage_nowt_wide_matrix)
 
-dd_nohomecagenoca1wt_wide_matrix_cor <- round(cor(dd_nohomecagenoca1wt_wide_matrix),2) 
-head(dd_nohomecagenoca1wt_wide_matrix_cor)
+dd_nohomecage_nowt_wide_matrix_cor <- round(cor(dd_nohomecage_nowt_wide_matrix),2) 
+head(dd_nohomecage_nowt_wide_matrix_cor)
 dev.off()
-corrplot(dd_nohomecagenoca1wt_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+corrplot(dd_nohomecage_nowt_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
 
-chart.Correlation(dd_nohomecagenoca1wt_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
+chart.Correlation(dd_nohomecage_nowt_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
 
 ## saved as 2-heatmap-CA1CA3.png
 col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(dd_nohomecagenoca1wt_wide_matrix_cor, col=col, 
+heatmap.2(dd_nohomecage_nowt_wide_matrix_cor, col=col, 
           density.info="none", trace="none", dendrogram=c("row"), 
           symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_nohomecagenoca1wt_wide_matrix_cor, notecol="black")
+          cellnote = dd_nohomecage_nowt_wide_matrix_cor, notecol="black")
 # See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
 
 
@@ -433,3 +368,6 @@ heatmap.2(dd3genes_wide_matrix_cor, col=col,
           cellnote = dd3genes_wide_matrix_cor, notecol="black")
 # See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
 
+
+
+### useful plot code not used ----
