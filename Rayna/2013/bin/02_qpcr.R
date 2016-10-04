@@ -222,7 +222,7 @@ str(dds)
 FentonPalette2 <- c('black','red','grey50','darkorange')
 dds %>%  
   ggplot(aes(x=genoAPA, y=count, fill= genoAPA)) + 
-  geom_boxplot() +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
+  geom_violin() +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
   facet_wrap(~gene, scales = "free_y") +
   scale_x_discrete(name="") +
   theme(legend.position="bottom", 
@@ -235,13 +235,13 @@ dds %>%
 
 
 ## Suset 3 gene data then anlyzewith cq2counts function and naive model ----
-head(qpcr)
-3genes <- qpcr[c(1:12)] %>% 
-  filter(APA != "home")
-CA1_3genes <- droplevels(CA1_3genes)
-str(CA1_3genes)
+names(qpcr)
+qpcr$APA
+threegenes <- qpcr[c(1:12)] %>% filter(APA != "home")
+threegenes <- droplevels(threegenes)
+str(threegenes)
 
-dd3genes <- cq2counts(data=CA1_3genes, genecols=c(10:12), condcols=c(1:9), effic=eff)
+dd3genes <- cq2counts(data=threegenes, genecols=c(10:12), condcols=c(1:9), effic=eff)
 
 naive_3genes <- mcmc.qpcr(
   data=dd3genes,
@@ -249,72 +249,45 @@ naive_3genes <- mcmc.qpcr(
   pr=T,pl=T, singular.ok=TRUE,  geneSpecRes=FALSE)
 diagnostic.mcmc(model=naive_3genes, col="grey50", cex=0.8)
 HPDsummary(naive_3genes, dd3genes) -> sumary3genes
-trellisByGene(sumary3genes,xFactor="region.genotype",groupFactor="APA", nrow=3)+xlab(NULL)
-#saved as 3genes-1x3.png
+summary(naive_3genes)
 
-#get the normalize dataframes (using getNormalizedData funct.) and combine them into one 
-nd_naive_3genes <- getNormalizedData(naive_3genes,data=dd3genes) #export results
-cbind(nd_naive_3genes$conditions, nd_naive_3genes$normData) -> nd_naive_3genes
-
-# melt the data and rename column to 
-library(reshape2)
-nd_naive_3genes <- melt(nd_naive_3genes, 
-                        id.vars = c("ind", "time", "region", "APA", "genotype", "year", "region.genotype")
-                        )
-names(nd_naive_3genes)[8] <- "gene"
-head(nd_naive_3genes)
-str(nd_naive_3genes)
-
-library(ggplot2)
-ggplot(dd3genes, aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene, scales = "free_y")
-
-dd3genes %>% filter(gene != "rpl19") %>% 
-  ggplot(aes(x=region.genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) +  scale_y_log10() +
-  facet_wrap(~gene)
-
-## correlations 3 genes
-dd3genes_wide <- dcast(dd3genes, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
-head(dd3genes_wide)
-
-## ploting one correlation at a time
-ggplot(dd3genes_wide, aes(x = pkmz, y = grim, colour = region.genotype)) + 
-  geom_point() +
-  scale_x_log10() + scale_y_log10() +   
-  geom_smooth(method=lm)
-
-## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
-## making a matrix to plot many correlations
-dd3genes_wide_matrix <- dd3genes_wide
-dd3genes_wide_matrix$genoAPAregionInd <- as.factor(paste(dd3genes_wide_matrix$genoAPA,dd3genes_wide_matrix$region, dd3genes_wide_matrix$ind, sep="_"))
-rownames(dd3genes_wide_matrix) <- dd3genes_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
-names(dd3genes_wide_matrix)
-dd3genes_wide_matrix <- dd3genes_wide_matrix[-c(1:4)] 
-dd3genes_wide_matrix <- as.matrix(dd3genes_wide_matrix)
-head(dd3genes_wide_matrix)
-dd3genes_wide_matrix <- na.omit(dd3genes_wide_matrix)
-head(dd3genes_wide_matrix)
-tail(dd3genes_wide_matrix)
+#line plot saved as 3genes-1x3.png
+trellisByGene(sumary3genes,xFactor="region.genotype",groupFactor="APA", nrow=3)+ xlab(NULL)
 
 
-dd3genes_wide_matrix_cor <- round(cor(dd3genes_wide_matrix),2) 
-head(dd3genes_wide_matrix_cor)
-dev.off()
-corrplot(dd3genes_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+## CA1 only 3 genes
+head(dd3genes)
+dd3genesCA1only <- dd3genes %>% 
+  filter(region == "CA1")
+dd3genesCA1only <- droplevels(dd3genesCA1only)
+str(dd3genesCA1only)
 
-## fancy ass correlation matrix
-chart.Correlation(dd3genes_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
+naive_3genesCA1 <- mcmc.qpcr(
+  data=dd3genesCA1only,
+  fixed="APA+genotype+APA:genotype",
+  pr=T,pl=T, singular.ok=TRUE,  geneSpecRes=FALSE)
+diagnostic.mcmc(model=naive_3genesCA1, col="grey50", cex=0.8)
+HPDsummary(naive_3genesCA1, dd3genesCA1only) -> sumary3genesCA1
+summary(naive_3genesCA1)
 
-## saved as 2-heatmap-CA1CA3.png
-col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(dd3genes_wide_matrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd3genes_wide_matrix_cor, notecol="black")
-# See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
+#line plot saved as 3genes-1x3.png
+trellisByGene(sumary3genesCA1,xFactor="APA",groupFactor="genotype", nrow=3)+ xlab(NULL)
+
+str(dd3genesCA1only)
+dd3genesCA1only$genoAPA <- factor(dd3genesCA1only$genoAPA, levels = c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"))
+
+##saved as 2-3genesCA1only.png
+dd3genesCA1only %>%  
+  ggplot(aes(x=genoAPA, y=count, fill= genoAPA)) + 
+  geom_violin() +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
+  facet_wrap(~gene, scales = "free_y") +
+  scale_x_discrete(name="") +
+  theme(legend.position="bottom", 
+        strip.text = element_text(face = "italic"),
+        axis.ticks = element_blank(), axis.text.x = element_blank()) + 
+  scale_fill_manual(values = FentonPalette2,
+                    breaks=c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"),
+                    labels=c("WT CA1 control", "WT CA1 trained", "FMR1-KO CA1 control", "FMR1-KO CA1 trained")) + 
+  guides(fill=guide_legend(title=NULL)) #removed legend title
 
 
-
-### useful plot code not used ----
