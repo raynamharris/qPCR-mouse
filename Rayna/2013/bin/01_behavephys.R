@@ -335,6 +335,7 @@ wtfmr1_long %>%
 ### Electrophysiology melting and graphing!!! ---- 
 
 ## first, melt the data
+head(summary)
 summary_long <- melt(summary, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
 summary_long$value <- as.numeric(summary_long$value)
 str(summary_long)
