@@ -34,6 +34,7 @@ head(qpcr)
 qpcr <- dplyr::rename(qpcr, genotype = strain) 
 qpcr$genotype <- revalue(qpcr$genotype, c("fmr1" = "FMR1-KO")) 
 qpcr$genotype <- revalue(qpcr$genotype, c("wt" = "WT"))
+qpcr$ind <- revalue(qpcr$ind, c("wt" = "WT"))
 head(qpcr)
 
 ## create new columns to join factors

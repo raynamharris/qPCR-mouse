@@ -437,7 +437,7 @@ ggplot(data = wtfmr1, aes(x = session, y = TimeToFirstEntrance, fill=genoAPA)) +
 ggplot(data = wtfmr1, aes(x = session, y = TimeToSecondEntrance, by=genoAPA, fill=genoAPA)) +
   geom_boxplot()
 ## line plots for every individual shown individually
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=PathToSecondEntrance, by=ind, color=genoAPA)) +
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, by=ind, color=genoAPA)) +
   geom_line() + facet_wrap( ~ ind)
 ## line plots for every individual shown by group
 ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, by=ind, color=genoAPA)) +

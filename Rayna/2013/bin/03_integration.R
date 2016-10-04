@@ -41,6 +41,7 @@ integrative$variable <- as.factor(integrative$variable)
 head(integrative)
 integrative_wide <- dcast(integrative, grouping +genoAPA ~ variable, value.var= "value", fun.aggregate=mean)
 names(integrative_wide)
+head(integrative_wide)
 rownames(integrative_wide) <- integrative_wide$grouping  # set $gropuing as rownames
 integrative_wide_matrix <- integrative_wide[-c(1,2,62)] # remove grouping, genoAPA, and TotalTime
 integrative_wide_matrix <- as.matrix(integrative_wide_matrix)
