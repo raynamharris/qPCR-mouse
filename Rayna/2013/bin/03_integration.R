@@ -3,52 +3,74 @@
 # check col names of datasets or merge
 names(wtfmr1_long)
 names(dd_nohomecage)
+names(summary_long)
 
 # make grouping column that is genoAPAind
 wtfmr1_long$grouping <- as.factor(paste(wtfmr1_long$genoAPA,wtfmr1_long$ind, sep="_"))
 dd_nohomecage$grouping <- as.factor(paste(dd_nohomecage$genoAPA,dd_nohomecage$ind, sep="_"))
-
+summary_long$grouping <- as.factor(paste(summary_long$genoAPA,summary_long$ind, sep="_"))
 
 # start with qpcr data, slim to just grouping, value, and variable
-integtive <- dd_nohomecage %>%
+integrative <- dd_nohomecage %>%
   dplyr::rename(variable = gene, value=count) %>%
   dplyr::select(grouping, genoAPA, variable, value)
-names(integtive) 
-str(integtive)
+names(integrative) 
+str(integrative)
 
-# then with behav/ephys data, slim to just grouping, value, and variable
-wtfmr1_long_forintegtive <- wtfmr1_long %>%
+# then with behav data, slim to just grouping, value, and variable
+wtfmr1_long_forintegrative <- wtfmr1_long %>%
   dplyr::select(grouping, genoAPA, variable, value)
-names(wtfmr1_long_forintegtive)
-str(wtfmr1_long_forintegtive)
+names(wtfmr1_long_forintegrative)
+str(wtfmr1_long_forintegrative)
+
+
+## then with the summary data
+summary_long_forintegrative <- summary_long %>%
+  filter(grepl("Total|IO_Max", variable))%>% 
+  dplyr::select(grouping, genoAPA, variable, value)
+names(summary_long_forintegrative)
+str(summary_long_forintegrative)
+tail(summary_long_forintegrative)
 
 ## joing data, then rename factors
-integtive <-  dplyr::bind_rows(integtive, wtfmr1_long_forintegtive)
-str(integtive)
-integtive$variable <- as.factor(integtive$variable)
+integrative <-  dplyr::bind_rows(integrative, wtfmr1_long_forintegrative, summary_long_forintegrative)
+str(integrative)
+integrative$variable <- as.factor(integrative$variable)
 
 ## widen the data, make it a matrix, make it a cor matrix
-head(integtive)
-integtive_wide <- dcast(integtive, grouping +genoAPA ~ variable, value.var= "value", fun.aggregate=mean)
-names(integtive_wide)
-rownames(integtive_wide) <- integtive_wide$grouping  # set $gropuing as rownames
-integtive_wide_matrix <- integtive_wide[-c(1,2,58)] # remove grouping, genoAPA, and TotalTime
-integtive_wide_matrix <- as.matrix(integtive_wide_matrix)
-integtive_wide_matrix <- na.omit(integtive_wide_matrix)
-head(integtive_wide_matrix)
-integtive_wide_matrix_cor <- round(cor(integtive_wide_matrix),2) 
-head(integtive_wide_matrix_cor)
+head(integrative)
+integrative_wide <- dcast(integrative, grouping +genoAPA ~ variable, value.var= "value", fun.aggregate=mean)
+names(integrative_wide)
+rownames(integrative_wide) <- integrative_wide$grouping  # set $gropuing as rownames
+integrative_wide_matrix <- integrative_wide[-c(1,2,62)] # remove grouping, genoAPA, and TotalTime
+integrative_wide_matrix <- as.matrix(integrative_wide_matrix)
+integrative_wide_matrix <- na.omit(integrative_wide_matrix)
+head(integrative_wide_matrix)
+integrative_wide_matrix_cor <- round(cor(integrative_wide_matrix),2) 
+
+names(integrative_wide)
+integrative_wide_matrix_slim <- integrative_wide[-c(1:13,16:18,20,23:30,36:47,49,62)]
+integrative_wide_matrix_slim <- na.omit(integrative_wide_matrix_slim)
+integrative_wide_matrix_slim_cor <- round(cor(integrative_wide_matrix_slim),2) 
 
 ## plot the cor heat map
 col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(integtive_wide_matrix_cor, col=col, 
+heatmap.2(integrative_wide_matrix_cor, col=col, 
           density.info="none", trace="none", dendrogram=c("row"), 
           symm=F,symkey=T,symbreaks=T, scale="none")
-corrplot(integtive_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+dev.off()
+corrplot(integrative_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+
+
+corrplot(integrative_wide_matrix_slim_cor, type="lower", order="hclust", tl.col="black", tl.srt=45)
+heatmap.2(integrative_wide_matrix_slim_cor, col=col, 
+          density.info="none", trace="none", dendrogram=c("row"), 
+          symm=F,symkey=T,symbreaks=T, scale="none")
+
 
 png('3_integrative_corrplot.png')
 setwd("~/Github/qPCR-mouse/Rayna/2013/results")
-corrplot(integtive_wide_matrix_cor, type="upper",
+corrplot(integrative_wide_matrix_cor, type="upper",
          order="hclust", tl.col="black", tl.srt=45)
 setwd("~/Github/qPCR-mouse/Rayna/2013/bin")
 dev.off()
@@ -74,27 +96,27 @@ cor.mtest <- function(mat, conf.level = 0.60){
 }
 
 ## caluculate residguals
-res1 <- cor.mtest(integtive_wide_matrix,0.60)
+res1 <- cor.mtest(integrative_wide_matrix,0.60)
 ## specialized the insignificant value according to the significant level
-corrplot(integtive_wide_matrix_cor, type="upper",
+corrplot(integrative_wide_matrix_cor, type="upper",
          order="hclust", tl.col="black", tl.srt=45, tl.cex = 0.5,
          p.mat = res1[[1]], insig = "blank")
 
 
 ## ploting one correlation at a time ----
-head(integtive)
-integtive_wide <- dcast(integtive, grouping + genoAPA~ variable, value.var= "value", fun.aggregate=mean)
-head(integtive_wide)
-ggplot(integtive_wide, aes(x = pkmz, y = grim, colour = genoAPA)) + 
+head(integrative)
+integrative_wide <- dcast(integrative, grouping + genoAPA~ variable, value.var= "value", fun.aggregate=mean)
+head(integrative_wide)
+ggplot(integrative_wide, aes(x = pkmz, y = grim, colour = genoAPA)) + 
   geom_point() +
   scale_x_log10() + scale_y_log10() +   
   geom_smooth(method=lm)
 
 ## igraph ----
 library(igraph)
-head(integtive_wide_matrix_cor)
+head(integrative_wide_matrix_cor)
 
-cor_mat<-integtive_wide_matrix_cor 
+cor_mat<-integrative_wide_matrix_cor 
 diag(cor_mat)<-0
 graph<-graph.adjacency(cor_mat, weighted=TRUE, mode="upper") 
 E(graph)[ weight>0.9 ]$color <- "orangered4" 

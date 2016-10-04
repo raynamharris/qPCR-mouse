@@ -316,6 +316,22 @@ wtfmr1_long %>%
   theme_bw() + 
   theme(panel.grid.minor = element_blank(),legend.position = c(0.775, 0.125))
 
+### Favorite that show leanring diffs
+## saved as 1-behaviorplots
+wtfmr1_long %>% 
+  filter(grepl("pTimeTARG|PolarAveVal|PolarMinVal|MaxAvoidPath|PathToFirstEntrance|PathToSecondEntrance", variable))%>% 
+  ggplot(aes(as.numeric(x=session), y=value, color=genoAPA)) +
+  stat_smooth() + facet_wrap(~variable, scales = "free_y") +
+  scale_y_continuous(name="Value different for each variable") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+  scale_colour_manual(values=FentonPalette, name="Treatment Group",
+                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+  theme_bw() + 
+  theme(panel.grid.minor = element_blank())
+
+
 ### Electrophysiology melting and graphing!!! ---- 
 
 ## first, melt the data
@@ -325,6 +341,8 @@ str(summary_long)
 
 ## plot all the summary_long data!: saved as 1-SummaryValues
 summary_long %>%
+  filter(grepl("IO_Max|LTP_Baseline", variable))%>% 
+  filter(!grepl("LTP_Baseline_SD", variable))%>% 
   ggplot(aes(x=genoAPA, y=value, color=genoAPA)) +
   geom_boxplot() +  facet_wrap(~variable, scales = "free_y") +
   theme_bw() +
@@ -334,7 +352,6 @@ summary_long %>%
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank(),
-        legend.position = c(0.9, 0.15),
         axis.text.x = element_blank(), 
         axis.ticks = element_blank())
 
