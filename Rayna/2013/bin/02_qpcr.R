@@ -10,6 +10,8 @@ library(cowplot) #for multiple plots
 library(gplots) # for heatmap.2
 library(corrplot) # simple corrplot with size-circles
 library(PerformanceAnalytics) # fancy ass correlation plot
+library(Hmisc) # for correlation stats
+library(cowplot) # for multip pannel plots
 
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
@@ -82,6 +84,7 @@ naive_dd_FMR1 <- mcmc.qpcr(
   pr=T,pl=T, singular.ok=TRUE)
 diagnostic.mcmc(model=naive_dd_FMR1, col="grey50", cex=0.8)
 HPDsummary(naive_dd_FMR1, dd_FMR1) -> summaryFMR1
+summary(naive_dd_FMR1)
 
 # saved as 2-FMR1CA1qpcrdata.png
 FMFR1Palette <- c('grey50','darkorange')
@@ -95,51 +98,76 @@ dd_FMR1 %>%
   scale_fill_manual(values = FMFR1Palette)
 
 ## Correlations!!! ----
-head(dd_FMR1)
-dd_FMR1_wide <- dcast(dd_FMR1, ind + region.genotype + genoAPA + region ~ gene, value.var= "count", fun.aggregate=mean)
-head(dd_FMR1_wide)
 
-## ploting one correlation at a time
-ggplot(dd_FMR1_wide, aes(x = cam2kd, y = creb, colour = APA)) + 
-  geom_point() +
-  scale_x_log10() + scale_y_log10() +   
-  geom_smooth(method=lm)
+# first widen the data
+head(dd_FMR1) 
+dd_FMR1_wide <- dcast(dd_FMR1, ind + APA ~ gene, value.var= "count", fun.aggregate=mean)
 
-## See http://www.sthda.com/english/wiki/correlation-matrix-a-quick-start-guide-to-analyze-format-and-visualize-a-correlation-matrix-using-r-software for code
-## making a matrix to plot many correlations
-dd_FMR1_wide_matrix <- dd_FMR1_wide
-dd_FMR1_wide_matrix$genoAPAregionInd <- as.factor(paste(dd_FMR1_wide_matrix$genoAPA,dd_FMR1_wide_matrix$region, dd_FMR1_wide_matrix$ind, sep="_"))
-rownames(dd_FMR1_wide_matrix) <- dd_FMR1_wide_matrix$genoAPAregionInd  # set $genoAPAsession as rownames
+## then create a matrix of just gene expression data with NAs ommited
+dd_FMR1_wide_matrix <- dd_FMR1_wide # prepare for matrix
+dd_FMR1_wide_matrix$APAind <- as.factor(paste(dd_FMR1_wide_matrix$APA,dd_FMR1_wide_matrix$ind, sep="_"))
+rownames(dd_FMR1_wide_matrix) <- dd_FMR1_wide_matrix$APAind  # set $genoAPAsession as rownames
 names(dd_FMR1_wide_matrix)
-dd_FMR1_wide_matrix <- dd_FMR1_wide_matrix[-c(1:4,17)] 
+dd_FMR1_wide_matrix <- dd_FMR1_wide_matrix[-c(1:2,15)]  ## remove non-numeric columns
 dd_FMR1_wide_matrix <- as.matrix(dd_FMR1_wide_matrix)
-head(dd_FMR1_wide_matrix)
 dd_FMR1_wide_matrix <- na.omit(dd_FMR1_wide_matrix)
 head(dd_FMR1_wide_matrix)
-tail(dd_FMR1_wide_matrix)
 
+## then create a correlation matrix
 dd_FMR1_wide_matrix_cor <- round(cor(dd_FMR1_wide_matrix),2) 
-head(dd_FMR1_wide_matrix_cor)
+head(dd_FMR1_wide_matrix_cor,12)
+
+## plot the correlation matrix
+## saved as 2-FMR1qpcrcorrelationmatrix.png
 dev.off()
-corrplot(dd_FMR1_wide_matrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
+corrplot(dd_FMR1_wide_matrix_cor, type="lower", order="hclust", tl.col="black", tl.srt=45)
 
-chart.Correlation(dd_FMR1_wide_matrix_cor, histogram=FALSE, pch=19, method = "spearman")
+## ploting one correlation at a time by group
+a1 <-  ggplot(dd_FMR1_wide, aes(x = dlg4, y = fos, colour = APA)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) + 
+  scale_colour_manual(values = FMFR1Palette) +
+  theme(legend.position="none")
+b1 <- ggplot(dd_FMR1_wide, aes(x = prkcz, y = gria, colour = APA)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) + 
+  scale_colour_manual(values = FMFR1Palette) +
+  theme(legend.position="none")
+c1 <- ggplot(dd_FMR1_wide, aes(x = gria, y = grin, colour = APA)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) + 
+  scale_colour_manual(values = FMFR1Palette) +
+  theme(legend.position="none")
+d1 <- ggplot(dd_FMR1_wide, aes(x = cam2kd, y = nsf, colour = APA)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) + 
+  scale_colour_manual(values = FMFR1Palette) +
+  theme(legend.position="none")
 
-## saved as 2-heatmap-CA1CA3.png
-col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(dd_FMR1_wide_matrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_FMR1_wide_matrix_cor, notecol="black")
-# See https://github.com/rasbt/R_snippets/blob/master/heatmaps/h3_categorizing.R
+a2 <- ggplot(dd_FMR1_wide, aes(x = dlg4, y = fos)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) 
+b2 <- ggplot(dd_FMR1_wide, aes(x = gria, y = prkcz)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) + 
+  scale_colour_manual(values = FMFR1Palette)
+c2 <- ggplot(dd_FMR1_wide, aes(x = gria, y = grin)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) 
+d2 <- ggplot(dd_FMR1_wide, aes(x = cam2kd, y = nsf)) + 
+  geom_point() +
+  scale_x_log10() + scale_y_log10() +   
+  geom_smooth(method=lm) 
 
 
-
-
-
-
-
-
+plot_grid(a1, b1, c1, d1, a2, b2, c2, d2, nrow = 2)
 
 
 
