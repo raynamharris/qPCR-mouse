@@ -69,7 +69,7 @@ dilutions <- droplevels(dilutions)
 
 PrimEff(dilutions) -> eff
 
-## AAnalyze just FMR1 data
+## Analyze just FMR1 data ----
 head(qpcr)
 FMR1 <- dplyr::filter(qpcr, APA != "home", genotype != "WT")
 FMR1 <- droplevels(FMR1)
@@ -97,7 +97,7 @@ dd_FMR1 %>%
         strip.text = element_text(face = "italic")) + 
   scale_fill_manual(values = FMFR1Palette)
 
-## Correlations!!! ----
+## Correlations
 
 # first widen the data
 head(dd_FMR1) 
@@ -113,16 +113,16 @@ dd_FMR1_wide_matrix <- as.matrix(dd_FMR1_wide_matrix)
 dd_FMR1_wide_matrix <- na.omit(dd_FMR1_wide_matrix)
 head(dd_FMR1_wide_matrix)
 
-## then create a correlation matrix
+# then create a correlation matrix
 dd_FMR1_wide_matrix_cor <- round(cor(dd_FMR1_wide_matrix),2) 
 head(dd_FMR1_wide_matrix_cor,12)
 
-## plot the correlation matrix
+# plot the correlation matrix
 ## saved as 2-FMR1qpcrcorrelationmatrix.png
 dev.off()
 corrplot(dd_FMR1_wide_matrix_cor, type="lower", order="hclust", tl.col="black", tl.srt=45)
 
-## ploting one correlation at a time by group
+# ploting one correlation at a time by group
 a1 <-  ggplot(dd_FMR1_wide, aes(x = dlg4, y = fos, colour = APA)) + 
   geom_point() +
   scale_x_log10() + scale_y_log10() +   
@@ -166,159 +166,78 @@ d2 <- ggplot(dd_FMR1_wide, aes(x = cam2kd, y = nsf)) +
   scale_x_log10() + scale_y_log10() +   
   geom_smooth(method=lm) 
 
-
 plot_grid(a1, b1, c1, d1, a2, b2, c2, d2, nrow = 2)
 
 
+## Analyzing just the WT CA3 data ----
+head(qpcr)
+CA3only <- dplyr::filter(qpcr, region == "CA3")
+CA3only <- droplevels(CA3only)
+names(CA3only)
 
+dd_CA3only <- cq2counts(data=CA3only, genecols=c(10:21), condcols=c(1:9), effic=eff)
+head(dd_CA3only)
 
-
-
-## CA1 specific heatmap
-head(dd_nohomecage_wide)
-CA1onlymatrix <- dd_nohomecage_wide %>% 
-  filter(region == "CA1")
-names(CA1onlymatrix)
-CA1onlymatrix$genoAPAregionInd <- as.factor(paste(CA1onlymatrix$genoAPA,CA1onlymatrix$region, CA1onlymatrix$ind, sep="_"))
-rownames(CA1onlymatrix) <- CA1onlymatrix$genoAPAregionInd  # set $genoAPAsession as rownames
-names(CA1onlymatrix)
-CA1onlymatrix <- CA1onlymatrix[-c(1:4,17)] 
-CA1onlymatrix <- as.matrix(CA1onlymatrix)
-head(CA1onlymatrix)
-CA1onlymatrix <- na.omit(CA1onlymatrix)
-head(CA1onlymatrix)
-tail(CA1onlymatrix)
-
-CA1onlymatrix_cor <- round(cor(CA1onlymatrix),2) 
-head(CA1onlymatrix_cor)
-corrplot(CA1onlymatrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
-
-heatmap.2(CA1onlymatrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
-          main = "CA1") 
-
-chart.Correlation(CA1onlymatrix_cor, histogram=TRUE, pch=19, method = "spearman")
-
-
-## CA3 specific heatmap
-head(dd_nohomecage_wide)
-CA3onlymatrix <- dd_nohomecage_wide %>% 
-  filter(region == "CA3")
-names(CA3onlymatrix)
-CA3onlymatrix$genoAPAregionInd <- as.factor(paste(CA3onlymatrix$genoAPA,CA3onlymatrix$region, CA3onlymatrix$ind, sep="_"))
-rownames(CA3onlymatrix) <- CA3onlymatrix$genoAPAregionInd  # set $genoAPAsession as rownames
-names(CA3onlymatrix)
-CA3onlymatrix <- CA3onlymatrix[-c(1:4,17)] 
-CA3onlymatrix <- as.matrix(CA3onlymatrix)
-head(CA3onlymatrix)
-CA3onlymatrix <- na.omit(CA3onlymatrix)
-head(CA3onlymatrix)
-tail(CA3onlymatrix)
-
-CA3onlymatrix_cor <- round(cor(CA3onlymatrix),2) 
-head(CA3onlymatrix_cor)
-corrplot(CA3onlymatrix_cor, type="upper", order="hclust", tl.col="black", tl.srt=45)
-
-heatmap.2(CA3onlymatrix_cor, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none", 
-          cellnote = dd_nohomecage_wide_matrix_cor, notecol="black",
-          main = "CA3") 
-
-chart.Correlation(CA3onlymatrix_cor, histogram=FALSE, pch=19, method = "spearman")
-
-
-## Create "all CA1 but no homecage" dataframe, anlayze with cq2counts function and naive model ----
-CA1nohomecage <- filter(qpcr, APA != "home", region != "CA3")
-CA1nohomecage <- droplevels(CA1nohomecage)
-
-ddCA1nohomecage <- cq2counts(data=CA1nohomecage, genecols=c(10:21), condcols=c(1:9), effic=eff)
-head(ddCA1nohomecage)
-
-naive_CA1nohomecage <- mcmc.qpcr(
-  data=ddCA1nohomecage,
-  fixed="APA+region.genotype+APA:region.genotype",
-  pr=T,pl=T, singular.ok=TRUE)
-diagnostic.mcmc(model=naive_CA1nohomecage, col="grey50", cex=0.8)
-HPDsummary(naive_CA1nohomecage, ddCA1nohomecage) -> summaryCA1nohomecage
-trellisByGene(summaryCA1nohomecage,xFactor="region.genotype",groupFactor="APA")+xlab("group")
-
-
-## Subset FMR1 data then anlyze with cq2counts function and naive model ----
-FMR1KO <- filter(qpcr, genotype == "FMR1-KO")
-FMR1KO <- droplevels(FMR1KO)
-str(FMR1KO)
-
-dd_FMR1KO <- cq2counts(data=FMR1KO, genecols=c(10:21), condcols=c(1:9), effic=eff)
-head(dd_FMR1KO)
-
-naive_FMR1 <- mcmc.qpcr(
-  data=dd_FMR1KO,
+naive_dd_CA3only <- mcmc.qpcr(
+  data=dd_CA3only,
   fixed="APA",
-  pr=T,pl=T, geneSpecRes=FALSE
-  )
-diagnostic.mcmc(model=naive_FMR1, col="grey50", cex=0.8)
-HPDsummary(naive_FMR1, dd_FMR1KO) -> summaryFMR1  
+  pr=T,pl=T, singular.ok=TRUE)
+diagnostic.mcmc(model=naive_dd_CA3only, col="grey50", cex=0.8)
+HPDsummary(naive_dd_CA3only, dd_CA3only) -> summaryCA3
+summary(naive_dd_CA3only)
 
-#get the normalize dataframes (using getNormalizedData funct.) and combine them into one 
-nd_FMR1 <- getNormalizedData(naive_FMR1,data=dd_FMR1KO) #export results
-cbind(nd_FMR1$conditions, nd_FMR1$normData) -> nd_FMR1
+#saved as 2-WTCA3geneexpression.png
+WTPalette <- c('black','red')
+dd_CA3only %>%  
+  ggplot(aes(x=APA, y=count)) + 
+  geom_boxplot(aes(fill=APA)) +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
+  facet_wrap(~gene, scales = "free_y") +
+  scale_x_discrete(name="") +
+  theme(legend.position="none", 
+        strip.text = element_text(face = "italic")) + 
+  scale_fill_manual(values = WTPalette)
 
-# melt the data and rename column to 
-nd_FMR1 <- melt(nd_FMR1, id.vars = c("ind", "time", "region", "APA", "genotype", "region.genotype", "genoAPA", "genoAPAregion"))
-names(nd_FMR1)
 
-# rename and relevel the genes
-nd_FMR1 <- dplyr::rename(nd_FMR1, gene = variable) 
-nd_FMR1$gene <- factor(nd_FMR1$gene, levels = c("cam2kd", "creb", "dlg4", "fmr1", "fos", "gria", "grim", "grin", "nsf", "pkmz", "rpl19", "rRNA18S"))
-head(nd_FMR1)
 
-ggplot(dd_FMR1KO, aes(x=genotype, y=count)) + 
-  geom_boxplot(aes(fill=APA)) + 
-  scale_y_log10() +
-  facet_wrap(~gene)
+### merging the FMR1 CA1 and WT CA3 datasets
+names(dd_CA3only)
+names(dd_FMR1)
+dds <-  dplyr::bind_rows(dd_FMR1, dd_CA3only)
+str(dds)
+str(dd_FMR1)
 
-## Subset WT-CA3-only data with cq2counts function and naive model ----
-WT <- filter(qpcr, genotype == "WT", region == "CA3")
-WT <- droplevels(WT)
+dds$sample <- as.factor(dds$sample)
+dds$ind <- as.factor(dds$ind)
+dds$time <- as.factor(dds$time)
+dds$region <- as.factor(dds$region)
+dds$APA <- as.factor(dds$APA)
+dds$genotype <- as.factor(dds$genotype)
+dds$region.genotype <- as.factor(dds$region.genotype)
+dds$genoAPA <- as.factor(dds$genoAPA)
+dds$genoAPAregion <- as.factor(dds$genoAPAregion)
+dds$genoAPA <- factor(dds$genoAPA, levels = c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"))
+str(dds)
 
-ddwt <- cq2counts(data=WT, genecols=c(10:21), condcols=c(1:9), effic=eff)
-
-naive_wt <- mcmc.qpcr(
-  data=ddwt,
-  fixed="APA",random="sample",
-  pr=T,pl=T, geneSpecRes=FALSE)
-diagnostic.mcmc(model=soft, col="grey50", cex=0.8)
-HPDsummary(naive_wt, ddwt, relative=TRUE)
-
-#get the normalize dataframes (using getNormalizedData funct.) and combine them into one 
-nd_naive_wt <- getNormalizedData(naive_wt,data=ddwt) #export results
-cbind(nd_naive_wt$conditions, nd_naive_wt$normData) -> nd_naive_wt
-names(nd_naive_wt)
-
-# melt the data and rename column to 
-nd_naive_wt <- melt(nd_naive_wt, 
-                    id.vars = c("ind", "time", "region", "APA", "genotype", "region.genotype", "genoAPA", "genoAPAregion")
-)
-# rename and relevel the genes
-nd_naive_wt <- dplyr::rename(nd_naive_wt, gene = variable) 
-
-nd_naive_wt$gene <- factor(nd_naive_wt$gene, 
-                           levels = c("cam2kd", "creb", "dlg4", "fmr1", 
-                                      "fos", "gria", "grim", "grin",
-                                       "nsf", "pkmz", "rpl19", "rRNA18S")
-)
-head(nd_naive_wt)
-
-ggplot(nd_naive_wt, aes(x=region.genotype, y=value)) + 
-  geom_boxplot(aes(fill=APA)) + 
-  facet_wrap(~gene)
+## saved as 2-WTCA3_FMR1CA1data
+FentonPalette2 <- c('black','red','grey50','darkorange')
+dds %>%  
+  ggplot(aes(x=genoAPA, y=count, fill= genoAPA)) + 
+  geom_boxplot() +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
+  facet_wrap(~gene, scales = "free_y") +
+  scale_x_discrete(name="") +
+  theme(legend.position="bottom", 
+        strip.text = element_text(face = "italic"),
+        axis.ticks = element_blank(), axis.text.x = element_blank()) + 
+  scale_fill_manual(values = FentonPalette2,
+                    breaks=c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"),
+                    labels=c("WT CA3 control", "WT CA3 trained", "FMR1-KO CA1 control", "FMR1-KO CA1 trained")) + 
+  guides(fill=guide_legend(title=NULL)) #removed legend title
 
 
 ## Suset 3 gene data then anlyzewith cq2counts function and naive model ----
-CA1_3genes <- qpcr[c(1:12)] %>% filter( APA != "home")
+head(qpcr)
+3genes <- qpcr[c(1:12)] %>% 
+  filter(APA != "home")
 CA1_3genes <- droplevels(CA1_3genes)
 str(CA1_3genes)
 
