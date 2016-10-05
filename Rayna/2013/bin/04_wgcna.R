@@ -30,15 +30,17 @@ datTraits <- wtfmr1
 datTraits <- melt(datTraits, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
 head(datTraits)
 datTraits$sessionbeahvior <- as.factor(paste(datTraits$session, datTraits$variable, sep="_"))
-datTraits <- dcast(datTraits, ind + genotype+ APA ~ sessionbeahvior, value.var= "value")
+datTraits <- dcast(datTraits, ind + genotype + APA + genoAPA ~ sessionbeahvior, value.var= "value")
 rownames(datTraits) <- datTraits$ind     # set $genoAPAsessionInd as rownames
-datTraits <- datTraits[c(2:3)] #keep only trait columns 
+names(datTraits)
+datTraits <- datTraits[c(2:4)] #keep only trait columns 
 head(datTraits)
 str(datTraits)
 
 ## making it a numeric
 datTraits$genotype <- as.integer(factor(datTraits$genotype))
 datTraits$APA <- as.integer(factor(datTraits$APA))
+datTraits$genoAPA <- as.integer(factor(datTraits$genoAPA))
 str(datTraits)
 head(datTraits)
 
@@ -53,7 +55,7 @@ A=adjacency(t(datExpr0),type="signed")
 k=as.numeric(apply(A,2,sum))-1
 #-----Standardized connectivity
 Z.k=scale(k)
-thresholdZ.k=-2.5 
+thresholdZ.k=3 
 outlierColor=ifelse(Z.k<thresholdZ.k,"red","black")
 sampleTree = flashClust(as.dist(1-A), method = "average")
 #-----Convert traits to colors
@@ -63,17 +65,17 @@ dimnames(traitColors)[[2]]=paste(names(datTraits))
 datColors=data.frame(outlier=outlierColor,traitColors)
 
 #-----Plot the sample dendrogram
-quartz()
+#quartz()
 plotDendroAndColors(sampleTree,groupLabels=names(datColors),
                     colors=datColors,main="Sample dendrogram and trait heatmap")
 
 #-----Remove outlying samples 
-remove.samples= Z.k<thresholdZ.k | is.na(Z.k)
-datExpr0=datExpr0[!remove.samples,]
-datTraits=datTraits[!remove.samples,]
-A=adjacency(t(datExpr0),type="distance")
-k=as.numeric(apply(A,2,sum))-1
-Z.k=scale(k)
+#remove.samples= Z.k<thresholdZ.k | is.na(Z.k)
+#datExpr0=datExpr0[!remove.samples,]
+#datTraits=datTraits[!remove.samples,]
+#A=adjacency(t(datExpr0),type="distance")
+#k=as.numeric(apply(A,2,sum))-1
+#Z.k=scale(k)
 
 
 #######   #################    ################   #######    
@@ -95,9 +97,9 @@ sft <- pickSoftThreshold(
   networkType = "unsigned",
   moreNetworkConcepts = FALSE,
   verbose = 0, indent = 0)
+sft
 
-
-quartz()
+#quartz()
 par(mfrow= c(1,2))
 cex1=0.9
 plot(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2], xlab= "Soft Threshold (power)", ylab="Scale Free Topology Model Fit, signed", type= "n", main= paste("Scale independence"))
@@ -105,33 +107,34 @@ text(sft$fitIndices[,1], -sign(sft$fitIndices[,3])*sft$fitIndices[,2], labels=po
 abline(h=0.90, col="red")
 plot(sft$fitIndices[,1], sft$fitIndices[,5], xlab= "Soft Threshold (power)", ylab="Mean Connectivity", type="n", main = paste("Mean connectivity"))
 text(sft$fitIndices[,1], sft$fitIndices[,5], labels=powers, cex=cex1, col="red")
-
-softPower=24
+dev.off()
+#softPower=24
 
 #######   #################    ################   #######    
 #                    Construct network
 #######   #################    ################   #######     
 
-adjacency=adjacency(datExpr0, power=softPower, type="signed") 
+adjacency=adjacency(datExpr0, type="signed") 
 TOM= TOMsimilarity(adjacency, TOMType="signed")
 dissTOM= 1-TOM
 
 geneTree= flashClust(as.dist(dissTOM), method="average")
 
-quartz()
+#quartz()
+dev.off()
 plot(geneTree, xlab="", sub="", main= "Gene Clustering on TOM-based dissimilarity", labels= FALSE, hang=0.04)
 
 #######   #################    ################   #######    
 #                    Make modules
 #######   #################    ################   ####### 
 
-minModuleSize=30 
+minModuleSize=9 
 dynamicMods= cutreeDynamic(dendro= geneTree, distM= dissTOM, deepSplit=2, pamRespectsDendro= FALSE, minClusterSize= minModuleSize)
 table(dynamicMods)
 
 dynamicColors= labels2colors(dynamicMods)
 
-quartz()
+#quartz()
 plotDendroAndColors(geneTree, dynamicColors, "Dynamic Tree Cut", dendroLabels= FALSE, hang=0.03, addGuide= TRUE, guideHang= 0.05, main= "Gene dendrogram and module colors")
 
 #-----Merge modules whose expression profiles are very similar
@@ -142,16 +145,16 @@ MEDiss= 1-cor(MEs)
 #Cluster module eigengenes
 METree= flashClust(as.dist(MEDiss), method= "average")
 
-quartz()
+#quartz()
 plot(METree, main= "Clustering of module eigengenes", xlab= "", sub= "")
-MEDissThres= 0.42
+MEDissThres= 0.3
 abline(h=MEDissThres, col="red")
 merge= mergeCloseModules(datExpr0, dynamicColors, cutHeight= MEDissThres, verbose =3)
 
 mergedColors= merge$colors
 mergedMEs= merge$newMEs
 
-quartz()
+#quartz()
 plotDendroAndColors(geneTree, cbind(dynamicColors, mergedColors), c("Dynamic Tree Cut", "Merged dynamic"), dendroLabels= FALSE, hang=0.03, addGuide= TRUE, guideHang=0.05)
 
 
@@ -187,7 +190,7 @@ moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples);
 
 #---------------------Module-trait heatmap
 
-quartz()
+#quartz()
 textMatrix = paste(signif(moduleTraitCor, 2), "\n(",
                    signif(moduleTraitPvalue, 1), ")", sep = "");
 dim(textMatrix) = dim(moduleTraitCor)
@@ -209,9 +212,9 @@ labeledHeatmap(Matrix = moduleTraitCor,
 
 
 #---------------------Gene significance by Module membership scatterplots
-whichTrait="H" #Replace this with the trait of interest
+whichTrait="APA" #Replace this with the trait of interest
 
-quartz()
+#quartz()
 nGenes = ncol(datt);
 nSamples = nrow(datt);
 selTrait = as.data.frame(datTraits[,whichTrait]);
@@ -242,15 +245,16 @@ for(module in modNames[1:length(modNames)]){
                      ylab = paste("GS for", whichTrait),
                      col = module,mgp=c(2.3,1,0))
 }
+## saved as 4-MM-APA for APA modules
 ######--------------------end--------------------#######
 
 
 
 #---------------------Eigengene heatmap
-which.module="green" #replace with module of interest
+which.module="blue" #replace with module of interest
 datME=MEs
 datExpr=datt
-quartz()
+#quartz()
 ME=datME[, paste("ME",which.module, sep="")]
 par(mfrow=c(2,1), mar=c(0.3, 5.5, 3, 2))
 plotMat(t(scale(datExpr[,moduleColors==which.module ]) ),
@@ -262,113 +266,43 @@ barplot(ME, col=which.module, main="", names.arg=c(row.names(datt)), cex.names=0
 ######--------------------end--------------------#######
 
 
+#### output "gene" list ----
+## see https://github.com/ClaireMGreen/TDP-43_Code/blob/afb43cddb8ec1a940fbcfa106a1cc3cf77568b7e/WGCNA2.R
+
+#find out what the IDs are of the genes that are contained within a module. 
+
+blue <- as.data.frame(colnames(datExpr0)[moduleColors=='blue'])
+blue$module <- "blue"
+colnames(blue)[1] <- "sessionbeahvior"
+red <- as.data.frame(colnames(datExpr0)[moduleColors=='red'])
+red$module <- "red"
+colnames(red)[1] <- "sessionbeahvior"
+green <- as.data.frame(colnames(datExpr0)[moduleColors=='green'])
+green$module <- "green"
+colnames(green)[1] <- "sessionbeahvior"
+yellow <- as.data.frame(colnames(datExpr0)[moduleColors=='yellow'])
+yellow$module <- "yellow"
+colnames(yellow)[1] <- "sessionbeahvior"
+brown <- as.data.frame(colnames(datExpr0)[moduleColors=='brown'])
+brown$module <- "brown"
+colnames(brown)[1] <- "sessionbeahvior"
+turquoise <- as.data.frame(colnames(datExpr0)[moduleColors=='turquoise'])
+turquoise$module <- "turquoise"
+colnames(turquoise)[1] <- "sessionbeahvior"
 
 
 
-#######   #################    ################   #######    
-#             Gene expression within modules
-#######   #################    ################   ####### 
+MM <- dplyr::bind_rows(blue,red,yellow,green,brown, turquoise)
 
+MM$session <- ifelse(grepl("pretraining", MM$sessionbeahvior), "pretraining", 
+                         ifelse(grepl("training1", MM$sessionbeahvior), "training1",
+                                ifelse(grepl("training2", MM$sessionbeahvior), "training2",
+                                       ifelse(grepl("training3", MM$sessionbeahvior), "training3",
+                                              ifelse(grepl("retention", MM$sessionbeahvior), "retention", "NA")))))
+MM$session  ## check that all names good with no NAs                                 
+MM$session <- as.factor(MM$session)  
+MM$session <- factor(MM$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
 
+head(MM)
+MM_session <- dcast(MM, module ~ session, value.var = 'session')
 
-#---------------------Heatmap for top-kME in a module with gene names
-vsd=read.csv("~/Desktop/diseaseScript_Final/VSDandPVALS_disease.csv")
-names(vsd)
-
-a.vsd=vsd[c(2:25)] #Columns with vsd
-row.names(a.vsd)=vsd$X
-head(a.vsd)
-a.vsd=a.vsd[c(1:20,22:24)] #Remove wgcna outlier
-names(a.vsd)
-
-allkME =as.data.frame(signedKME(t(a.vsd), MEs))
-
-gg=read.table("~/Documents/genomes/ahya_annotations_may25_2014/ahya2digNvec_plus_iso2gene.tab", sep="\t")
-head(gg)
-library(pheatmap)
-
-whichModule="green"
-top=25
-
-modcol=paste("kME",whichModule,sep="")
-sorted=a.vsd[order(allkME[,modcol],decreasing=T),]
-hubs=sorted[1:top,]
-# attaching gene names
-gnames=c();counts=0
-for(i in 1:length(hubs[,1])) {
-  if (row.names(hubs)[i] %in% gg$V1) { 
-    counts=counts+1
-    gn=gg[gg$V1==row.names(hubs)[i],2]
-    if (gn %in% gnames) {
-      gn=paste(gn,counts,sep=".")
-    }
-    gnames=append(gnames,gn) 
-  } else { 
-    gnames=append(gnames,i)
-  }
-} 
-row.names(hubs)=gnames
-
-contrasting = colorRampPalette(rev(c("chocolate1","#FEE090","grey10", "cyan3","cyan")))(100)
-contrasting2 = colorRampPalette(rev(c("chocolate1","chocolate1","#FEE090","grey10", "cyan3","cyan")))(100)
-contrasting3 = colorRampPalette(rev(c("chocolate1","#FEE090","grey10", "cyan3","cyan","cyan")))(100)
-
-quartz()
-pheatmap(hubs,scale="row",col=contrasting,border_color=NA, main=paste(whichModule,"top",top,"kME",sep=""))
-######--------------------end--------------------#######
-
-
-#---------------------Fisher of Module vs Whole Dataset for GO Analysis
-datME=moduleEigengenes(datt,mergedColors)$eigengenes
-datKME=signedKME(datt, datME, outputColumnName="MM.")
-genes=names(datt)
-geneInfo0 = data.frame(gene=genes,moduleColor=moduleColors)
-color=data.frame(geneInfo0,datKME) #these are from your original WGCNA analysis 
-head(color)
-
-test=allkME
-#change test column to first empty column number
-for (i in row.names(test)) { 
-  gi=color[color$gene==i,]
-  if (length(gi[,1])>0){
-    test[i,13]<-gi$moduleColor    
-  }    
-}
-
-test$V13=as.factor(test$V13)
-test[,13]=as.factor(test[,13])
-
-#execute the above once, then repeat part below for each module
-cat=test
-col="turquoise" #change color here
-
-cat$kMEturquoise[cat$V13!=col]<-0 #also need to change column names for color you pick above
-cat$kMEturquoise[cat$V13==col]<-1 
-
-cat$kMEturquoise[cat$kMEturquoise!=1] <-0 ##work around for the gold problem...
-
-head(cat)
-table(cat$V13=="turquoise") #check to make sure this matches 1's in table below
-table(cat$kMEturquoise)
-
-names(cat)
-cat=cat[c(4)] #change to module column
-
-head(cat)
-
-write.csv(cat,file=paste(col,"_fisher.csv",sep=""),quote=F,row.names=T)
-#repeat for each module
-######--------------------end--------------------#######
-
-
-#---------------------VSD by module for heatmaps, PCA, etc
-head(vsd)
-
-col="turquoise"
-
-cands=names(datt[moduleColors==col])
-c.vsd=vsd[vsd$X %in% cands,]
-head(c.vsd)
-length(c.vsd[,1])
-write.csv(c.vsd,paste("vsd_",col,".csv",sep=""),quote=F, row.names=F)
-######--------------------end--------------------#######
