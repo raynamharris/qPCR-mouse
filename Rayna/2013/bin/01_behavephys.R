@@ -229,7 +229,8 @@ head(wtfmr1)
 names(wtfmr1)
 
 # reorders dataframe
-wtfmr1 <- wtfmr1[c(1:3,5,4,51:52,6:50)]  
+wtfmr1 <- wtfmr1[c(1:4,49:52,5:48)]  
+names(wtfmr1)
 
 ### melt the wtfmr1 df to make long for graphics
 wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
@@ -362,7 +363,7 @@ summary_long %>%
 wtfmr1_matrix <- wtfmr1    #create new dataframe
 rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
 names(wtfmr1_matrix)
-wtfmr1_matrix <- wtfmr1_matrix[-c(1:8,51:52)] #delete all non-numeric columns and TotalTime
+wtfmr1_matrix <- wtfmr1_matrix[-c(1:8,10)] #delete all non-numeric columns and TotalTime
 head(wtfmr1_matrix)
 str(wtfmr1_matrix)
 
