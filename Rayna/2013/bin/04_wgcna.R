@@ -16,6 +16,7 @@ datExpr0 <- wtfmr1
 datExpr0 <- melt(datExpr0, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
 head(datExpr0)
 datExpr0 <- filter(datExpr0, !grepl("p.miss|TotalTime", variable))
+#datExpr0 <- filter(datExpr0, !grepl("pretraining|training1", session))
 datExpr0$sessionbeahvior <- as.factor(paste(datExpr0$session, datExpr0$variable, sep="_"))
 datExpr0 <- dcast(datExpr0, ind + genotype+ APA ~ sessionbeahvior, value.var= "value")
 rownames(datExpr0) <- datExpr0$ind     # set $genoAPAsessionInd as rownames
@@ -128,7 +129,7 @@ plot(geneTree, xlab="", sub="", main= "Gene Clustering on TOM-based dissimilarit
 #                    Make modules
 #######   #################    ################   ####### 
 
-minModuleSize=9 
+minModuleSize=3
 dynamicMods= cutreeDynamic(dendro= geneTree, distM= dissTOM, deepSplit=2, pamRespectsDendro= FALSE, minClusterSize= minModuleSize)
 table(dynamicMods)
 
@@ -163,10 +164,6 @@ colorOrder= c("grey", standardColors(50))
 moduleLabels= match(moduleColors, colorOrder)-1
 MEs=mergedMEs
 
-#save(MEs, moduleLabels, moduleColors, geneTree, file= "SamplesAndColors_thresh24merge42_signed.RData")
-
-
-
 #######   #################    ################   #######    
 #                Relate modules to traits
 #######   #################    ################   ####### 
@@ -194,6 +191,7 @@ moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples);
 textMatrix = paste(signif(moduleTraitCor, 2), "\n(",
                    signif(moduleTraitPvalue, 1), ")", sep = "");
 dim(textMatrix) = dim(moduleTraitCor)
+dev.off()
 par(mar = c(6, 8.5, 3, 3));
 # Display the correlation values within a heatmap plot
 labeledHeatmap(Matrix = moduleTraitCor,
@@ -215,6 +213,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
 whichTrait="APA" #Replace this with the trait of interest
 
 #quartz()
+dev.off()
 nGenes = ncol(datt);
 nSamples = nrow(datt);
 selTrait = as.data.frame(datTraits[,whichTrait]);
@@ -228,13 +227,13 @@ geneTraitSignificance = as.data.frame(cor(datt, selTrait, use = "p"));
 GSPvalue = as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples));
 names(geneTraitSignificance) = paste("GS.", names(selTrait), sep="");
 names(GSPvalue) = paste("p.GS.", names(selTrait), sep="");
-par(mfrow=c(2,3))
+par(mfrow=c(2,2))
 counter=0
 for(module in modNames[1:length(modNames)]){
   counter=counter+1
   if (counter>6) {
-    quartz()
-    par(mfrow=c(2,3))
+    #quartz()
+    par(mfrow=c(2,2))
     counter=1
   }
   column = match(module, modNames);
@@ -255,14 +254,17 @@ which.module="blue" #replace with module of interest
 datME=MEs
 datExpr=datt
 #quartz()
+dev.off()
 ME=datME[, paste("ME",which.module, sep="")]
 par(mfrow=c(2,1), mar=c(0.3, 5.5, 3, 2))
 plotMat(t(scale(datExpr[,moduleColors==which.module ]) ),
         nrgcols=30,rlabels=F,rcols=which.module,
         main=which.module, cex.main=2)
 par(mar=c(5, 4.2, 0, 0.7))
-barplot(ME, col=which.module, main="", names.arg=c(row.names(datt)), cex.names=0.5, cex.main=2,
+barplot(ME, col=which.module, main="", names.arg=(datTraits$genoAPA), cex.names=0.5, cex.main=2,
         ylab="eigengene expression",xlab="sample")
+names(datt)
+names(datTraits)
 ######--------------------end--------------------#######
 
 
@@ -289,10 +291,12 @@ colnames(brown)[1] <- "sessionbeahvior"
 turquoise <- as.data.frame(colnames(datExpr0)[moduleColors=='turquoise'])
 turquoise$module <- "turquoise"
 colnames(turquoise)[1] <- "sessionbeahvior"
+black <- as.data.frame(colnames(datExpr0)[moduleColors=='black'])
+black$module <- "black"
+colnames(black)[1] <- "sessionbeahvior"
 
 
-
-MM <- dplyr::bind_rows(blue,red,yellow,green,brown, turquoise)
+MM <- dplyr::bind_rows(blue,green,turquoise)
 
 MM$session <- ifelse(grepl("pretraining", MM$sessionbeahvior), "pretraining", 
                          ifelse(grepl("training1", MM$sessionbeahvior), "training1",
@@ -305,4 +309,7 @@ MM$session <- factor(MM$session, levels = c("pretraining", "training1", "trainin
 
 head(MM)
 MM_session <- dcast(MM, module ~ session, value.var = 'session')
-
+head(MM_session)
+green
+turquoise
+blue
