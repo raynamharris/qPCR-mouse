@@ -12,26 +12,25 @@ allowWGCNAThreads()
 #                     Load data
 ########################################################    
 # Load behavior data, melt, remove some rows, make sesssionbehavior column, then widen ----
-datExpr0 <- wtfmr1 
-datExpr0 <- melt(datExpr0, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
-head(datExpr0)
-datExpr0 <- filter(datExpr0, !grepl("p.miss|TotalTime", variable))
-#datExpr0 <- filter(datExpr0, !grepl("pretraining|training1", session))
-datExpr0$sessionbeahvior <- as.factor(paste(datExpr0$session, datExpr0$variable, sep="_"))
-datExpr0 <- dcast(datExpr0, ind + genotype+ APA ~ sessionbeahvior, value.var= "value")
+datExpr0 <- all 
 rownames(datExpr0) <- datExpr0$ind     # set $genoAPAsessionInd as rownames
-datExpr0 <- datExpr0[-c(1:3)] #delete all non-numeric columns 
+datExpr0 <- datExpr0[-c(1:4)] #delete all non-numeric columns 
 head(datExpr0)
 
 gsg=goodSamplesGenes(datExpr0, verbose = 1)
 gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
+head(gsg)
 
-#-----Load trait data and make all the factor integers
-datTraits <- wtfmr1
-datTraits <- melt(datTraits, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
-head(datTraits)
-datTraits$sessionbeahvior <- as.factor(paste(datTraits$session, datTraits$variable, sep="_"))
-datTraits <- dcast(datTraits, ind + genotype + APA + genoAPA ~ sessionbeahvior, value.var= "value")
+## removing bad measures
+gsg
+datExpr0 <- datExpr0[-c(4:5,13:14)]
+gsg=goodSamplesGenes(datExpr0, verbose = 1)
+gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
+
+
+
+#-----Make a trait data frame
+datTraits <- all
 rownames(datTraits) <- datTraits$ind     # set $genoAPAsessionInd as rownames
 names(datTraits)
 datTraits <- datTraits[c(2:4)] #keep only trait columns 
@@ -129,7 +128,7 @@ plot(geneTree, xlab="", sub="", main= "Gene Clustering on TOM-based dissimilarit
 #                    Make modules
 #######   #################    ################   ####### 
 
-minModuleSize=3
+minModuleSize=9
 dynamicMods= cutreeDynamic(dendro= geneTree, distM= dissTOM, deepSplit=2, pamRespectsDendro= FALSE, minClusterSize= minModuleSize)
 table(dynamicMods)
 
@@ -148,7 +147,7 @@ METree= flashClust(as.dist(MEDiss), method= "average")
 
 #quartz()
 plot(METree, main= "Clustering of module eigengenes", xlab= "", sub= "")
-MEDissThres= 0.3
+MEDissThres= 0.4
 abline(h=MEDissThres, col="red")
 merge= mergeCloseModules(datExpr0, dynamicColors, cutHeight= MEDissThres, verbose =3)
 
@@ -205,6 +204,7 @@ labeledHeatmap(Matrix = moduleTraitCor,
                cex.text = 0.7,
                zlim = c(-1,1),
                main = paste("Module-trait relationships"))
+##saved as 4-Moduletrait-alldata.png
 ######--------------------end--------------------#######
 
 
@@ -232,7 +232,7 @@ counter=0
 for(module in modNames[1:length(modNames)]){
   counter=counter+1
   if (counter>6) {
-    #quartz()
+    quartz()
     par(mfrow=c(2,2))
     counter=1
   }
@@ -250,7 +250,7 @@ for(module in modNames[1:length(modNames)]){
 
 
 #---------------------Eigengene heatmap
-which.module="blue" #replace with module of interest
+which.module="pink" #replace with module of interest
 datME=MEs
 datExpr=datt
 #quartz()
@@ -263,8 +263,9 @@ plotMat(t(scale(datExpr[,moduleColors==which.module ]) ),
 par(mar=c(5, 4.2, 0, 0.7))
 barplot(ME, col=which.module, main="", names.arg=(datTraits$genoAPA), cex.names=0.5, cex.main=2,
         ylab="eigengene expression",xlab="sample")
-names(datt)
-names(datTraits)
+
+## saved as 4-pink-alldata or 4-brown-alldata
+
 ######--------------------end--------------------#######
 
 
@@ -295,8 +296,8 @@ black <- as.data.frame(colnames(datExpr0)[moduleColors=='black'])
 black$module <- "black"
 colnames(black)[1] <- "sessionbeahvior"
 
-
-MM <- dplyr::bind_rows(blue,green,turquoise)
+blue
+MM <- dplyr::bind_rows(blue,green,turquoise, brown,yellow,red)
 
 MM$session <- ifelse(grepl("pretraining", MM$sessionbeahvior), "pretraining", 
                          ifelse(grepl("training1", MM$sessionbeahvior), "training1",
@@ -308,8 +309,9 @@ MM$session <- as.factor(MM$session)
 MM$session <- factor(MM$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
 
 head(MM)
+tail(MM)
 MM_session <- dcast(MM, module ~ session, value.var = 'session')
 head(MM_session)
-green
-turquoise
-blue
+green[1]
+
+write.csv(MM_session, "MM_session_ALL.csv", row.names=FALSE)
