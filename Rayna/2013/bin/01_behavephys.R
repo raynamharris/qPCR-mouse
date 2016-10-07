@@ -242,8 +242,9 @@ str(wtfmr1_long)
 FentonPalette <- c('black','grey50','red','darkorange')
 
 ## basic format to behavior of 4 groups by session stat smooth
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, color=genoAPA)) + 
+ggplot(data=wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
   stat_smooth() + theme_bw() + scale_colour_manual(values=FentonPalette) + 
+  scale_y_continuous(name="Probability of being in the shock zone") + 
   scale_x_continuous(name =NULL, 
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
                               "3" = "Training 2", "4" = "Training 3", "5" = "Retention"))
@@ -320,7 +321,7 @@ wtfmr1_long %>%
 ### Favorite that show leanring diffs
 ## saved as 1-behaviorplots
 wtfmr1_long %>% 
-  filter(grepl("pTimeTARG|PolarAveVal|PolarMinVal|MaxAvoidPath|PathToFirstEntrance|PathToSecondEntrance", variable))%>% 
+  filter(grepl("pTimeTARG|PathToFirstEntrance|PathToSecondEntrance", variable))%>% 
   ggplot(aes(as.numeric(x=session), y=value, color=genoAPA)) +
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Value different for each variable") + 
