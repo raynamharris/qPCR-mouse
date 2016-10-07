@@ -16,6 +16,7 @@ datExpr0 <- all
 rownames(datExpr0) <- datExpr0$ind     # set $genoAPAsessionInd as rownames
 datExpr0 <- datExpr0[-c(1:4)] #delete all non-numeric columns 
 head(datExpr0)
+names(datExpr0)
 
 gsg=goodSamplesGenes(datExpr0, verbose = 1)
 gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
@@ -23,7 +24,7 @@ head(gsg)
 
 ## removing bad measures
 gsg
-datExpr0 <- datExpr0[-c(4:5,13:14)]
+datExpr0 <- datExpr0[-c(9:10)]  #removes LTP measures with excessive NAs
 gsg=goodSamplesGenes(datExpr0, verbose = 1)
 gsg$allOK #If the last statement returns TRUE, all genes have passed the cuts
 
@@ -209,52 +210,11 @@ labeledHeatmap(Matrix = moduleTraitCor,
 
 
 
-#---------------------Gene significance by Module membership scatterplots
-whichTrait="APA" #Replace this with the trait of interest
-
-#quartz()
-dev.off()
-nGenes = ncol(datt);
-nSamples = nrow(datt);
-selTrait = as.data.frame(datTraits[,whichTrait]);
-names(selTrait) = whichTrait
-modNames = substring(names(MEs), 3)
-geneModuleMembership = as.data.frame(signedKME(datt, MEs));
-MMPvalue = as.data.frame(corPvalueStudent(as.matrix(geneModuleMembership), nSamples));
-names(geneModuleMembership) = paste("MM", modNames, sep="");
-names(MMPvalue) = paste("p.MM", modNames, sep="");
-geneTraitSignificance = as.data.frame(cor(datt, selTrait, use = "p"));
-GSPvalue = as.data.frame(corPvalueStudent(as.matrix(geneTraitSignificance), nSamples));
-names(geneTraitSignificance) = paste("GS.", names(selTrait), sep="");
-names(GSPvalue) = paste("p.GS.", names(selTrait), sep="");
-par(mfrow=c(2,2))
-counter=0
-for(module in modNames[1:length(modNames)]){
-  counter=counter+1
-  if (counter>6) {
-    quartz()
-    par(mfrow=c(2,2))
-    counter=1
-  }
-  column = match(module, modNames);
-  moduleGenes = moduleColors==module;
-  verboseScatterplot(abs(geneModuleMembership[moduleGenes, column]),
-                     abs(geneTraitSignificance[moduleGenes, 1]),
-                     xlab = paste(module,"module membership"),
-                     ylab = paste("GS for", whichTrait),
-                     col = module,mgp=c(2.3,1,0))
-}
-## saved as 4-MM-APA for APA modules
-######--------------------end--------------------#######
-
-
-
 #---------------------Eigengene heatmap
-which.module="pink" #replace with module of interest
+which.module="red" #replace with module of interest
 datME=MEs
 datExpr=datt
 #quartz()
-dev.off()
 ME=datME[, paste("ME",which.module, sep="")]
 par(mfrow=c(2,1), mar=c(0.3, 5.5, 3, 2))
 plotMat(t(scale(datExpr[,moduleColors==which.module ]) ),
@@ -264,7 +224,7 @@ par(mar=c(5, 4.2, 0, 0.7))
 barplot(ME, col=which.module, main="", names.arg=(datTraits$genoAPA), cex.names=0.5, cex.main=2,
         ylab="eigengene expression",xlab="sample")
 
-## saved as 4-pink-alldata or 4-brown-alldata
+## saved as 4-<color>-alldata 
 
 ######--------------------end--------------------#######
 
@@ -296,22 +256,28 @@ black <- as.data.frame(colnames(datExpr0)[moduleColors=='black'])
 black$module <- "black"
 colnames(black)[1] <- "sessionbeahvior"
 
-blue
-MM <- dplyr::bind_rows(blue,green,turquoise, brown,yellow,red)
+## merged data frame 
+MM <- dplyr::bind_rows(blue,turquoise, brown,yellow,red, black)
 
+## new column to pull out major data structures
 MM$session <- ifelse(grepl("pretraining", MM$sessionbeahvior), "pretraining", 
                          ifelse(grepl("training1", MM$sessionbeahvior), "training1",
                                 ifelse(grepl("training2", MM$sessionbeahvior), "training2",
                                        ifelse(grepl("training3", MM$sessionbeahvior), "training3",
-                                              ifelse(grepl("retention", MM$sessionbeahvior), "retention", "NA")))))
+                                              ifelse(grepl("retention", MM$sessionbeahvior), "retention", 
+                                                     ifelse(grepl("rRNA18S|rpl19|prkcz|nsf|grin|gria|dlg4|cam2kd", MM$sessionbeahvior), "genes", 
+                                                            ifelse(grepl("IO_Max", MM$sessionbeahvior), "physiol",
+                                                                   ifelse(grepl("Total", MM$sessionbeahvior), "Totals",
+                                                                          ifelse(grepl("Last|Punishment|Retention", MM$sessionbeahvior), "retention","other")))))))))
 MM$session  ## check that all names good with no NAs                                 
 MM$session <- as.factor(MM$session)  
-MM$session <- factor(MM$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
-
-head(MM)
-tail(MM)
 MM_session <- dcast(MM, module ~ session, value.var = 'session')
 head(MM_session)
-green[1]
+blue
+turquoise
+brown
+yellow
+red
+black
 
-write.csv(MM_session, "MM_session_ALL.csv", row.names=FALSE)
+#write.csv(MM_session, "MM_session.csv" , row.names = F)
