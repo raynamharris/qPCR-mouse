@@ -237,6 +237,10 @@ wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "genoAPA", 
 wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
 str(wtfmr1_long)
 
+#write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
+#write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
+
+
 ### Beahvior ggplots!!! -----
 ## create the color palette
 FentonPalette <- c('black','grey50','red','darkorange')
