@@ -43,7 +43,10 @@ fmr1$ind <- gsub("fmr1", "FMR1 ", fmr1$ind) ## changes to FMR1
 fmr1$ind <- gsub("frm1", "FMR1 ", fmr1$ind) ## because one was typed wrong
 fmr1$ind <- gsub("wildtype", "BL ", fmr1$ind) ## that one wildtype sample name
 fmr1$ind <- gsub("_[ptr][[:print:]]*", "", fmr1$ind) ##deletes the rest of the filename
+fmr1 <- filter(fmr1, !grepl("wildtypeA", filename ))  ## remove the 1 wildtype ind
 fmr1$ind
+
+
 
 ## rename columns
 names(wt)[3] <- "TotalTime"
@@ -186,20 +189,22 @@ wtfmr1$session <- ifelse(grepl("pretraining|pretrain|Hab", wtfmr1$filename), "pr
                      ifelse(grepl("training1|Train1", wtfmr1$filename), "training1",
                             ifelse(grepl("training2|Train2", wtfmr1$filename), "training2",
                                    ifelse(grepl("training3|Train3", wtfmr1$filename), "training3",
-                                          ifelse(grepl("retention|reten|Retest", wtfmr1$filename), "retention", "NA")))))
+                                          ifelse(grepl("retention|reten", wtfmr1$filename), "retention", 
+                                                 ifelse(grepl("Retest", wtfmr1$filename), "retest", "NA"))))))
+
 wtfmr1$session  ## check that all names good with no NAs                                 
 wtfmr1$session <- as.factor(wtfmr1$session)  
-wtfmr1$session <- factor(wtfmr1$session, levels = c("pretraining", "training1", "training2", "training3", "retention"))
+wtfmr1$session <- factor(wtfmr1$session, levels = c("pretraining", "training1", "training2", "training3", "retention", "retest"))
 
 ### separate out the summary columns and clean up / wrangle ----
-summary <- filter(wtfmr1, session == "retention")
+summary <- filter(wtfmr1, session %in% c("retention", "retest"))
 summary <- summary[c(60:61,48,62,49:59,1)] #select and reorder columns, so animal first
 names(summary)
 str(summary)
 
 ## rename APA to match qpcr data
-summary$APA <- revalue(summary$APA, c("untrained" = "control")) 
-summary$APA <- factor(summary$APA, levels = c("control", "trained"))
+#summary$APA <- revalue(summary$APA, c("untrained" = "control"))  # using "untrained" is more informative than control
+summary$APA <- factor(summary$APA, levels = c("untrained", "trained"))
 summary$APA
 
 ## making a bunch of columns numeric
@@ -208,7 +213,7 @@ summary[, c(5:15)] <- sapply(summary[, c(5:15)], as.numeric)
 
 ## create genoAPA column
 summary$genoAPA <- summary$genoAPA <- as.factor(paste(summary$genotype,summary$APA, sep="_"))
-summary$genoAPA <- factor(summary$genoAPA, levels = c("WT_control", "FMR1-KO_control", "WT_trained", "FMR1-KO_trained"))
+summary$genoAPA <- factor(summary$genoAPA, levels = c("WT_untrained", "FMR1-KO_untrained", "WT_trained", "FMR1-KO_trained"))
 summary$genoAPA
 
 ### improve indiviual session dataframe ----
@@ -222,7 +227,7 @@ tail(wtfmr1)
 
 ## create columns for genotype*APA, genotype*APA*session, and genotype*APA*session*IND
 wtfmr1$genoAPA <- wtfmr1$genoAPA <- as.factor(paste(wtfmr1$genotype,wtfmr1$APA, sep="_"))
-wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_control", "FMR1-KO_control", "WT_trained", "FMR1-KO_trained"))
+wtfmr1$genoAPA <- factor(wtfmr1$genoAPA, levels = c("WT_untrained", "FMR1-KO_untrained", "WT_trained", "FMR1-KO_trained"))
 wtfmr1$genoAPAsession <- as.factor(paste(wtfmr1$genoAPA, wtfmr1$session, sep="_")) #create genoAPAsession column
 wtfmr1$genoAPAsessionInd <- as.factor(paste(wtfmr1$genoAPAsession, wtfmr1$ind, sep="_")) #create genoAPAsessionInd column
 head(wtfmr1)
@@ -236,6 +241,7 @@ names(wtfmr1)
 wtfmr1_long <- melt(wtfmr1, id=c("ind","genotype", "APA", "session", "genoAPA", "genoAPAsession", "genoAPAsessionInd", "filename"))
 wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
 str(wtfmr1_long)
+head(wtfmr1_long)
 
 #write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
 #write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
@@ -244,14 +250,41 @@ str(wtfmr1_long)
 ### Beahvior ggplots!!! -----
 ## create the color palette
 FentonPalette <- c('black','grey50','red','darkorange')
+WTPalette <- c('black','red')
+FMR1Palette <- c('grey50','darkorange')
 
-## basic format to behavior of 4 groups by session stat smooth
-ggplot(data=wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
+## basic format to behavior of groups by session stat smooth
+
+## this plot is no longer legit because of the retention/retest problem
+ggplot(wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
   stat_smooth() + theme_bw() + scale_colour_manual(values=FentonPalette) + 
   scale_y_continuous(name="Probability of being in the shock zone") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention"))
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retention", "6" = "Retest")) 
+
+
+filter(wtfmr1, genotype == "WT") %>%
+  droplevels() %>%
+  ggplot(aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
+  stat_smooth() + theme_bw() + scale_colour_manual(values=WTPalette) + 
+  scale_y_continuous(name="Probability of being in the shock zone") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retest"))
+
+filter(wtfmr1, genotype != "WT") %>%
+  droplevels() %>%
+  ggplot(aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
+  stat_smooth() + theme_bw() + scale_colour_manual(values=FMR1Palette) + 
+  scale_y_continuous(name="Probability of being in the shock zone") + 
+  scale_x_continuous(name =NULL, 
+                     labels=c("1" = "Pretraining", "2" = "Training 1", 
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retention"))
 
 ## Plots of time in seconds: saved as 1_TimeMeasures
 wtfmr1_long %>% 
@@ -261,10 +294,12 @@ wtfmr1_long %>%
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Time (s)") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group",
-                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
+                      labels=c("WT Untrained", "FMR1-KO Untrained", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank(), legend.position = c(0.85, 0.25))
 
@@ -274,8 +309,10 @@ wtfmr1_long %>% filter(grepl("pTime", variable)) %>%
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Probability") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group",
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
@@ -287,8 +324,10 @@ wtfmr1_long %>% filter(grepl("Path", variable)) %>%
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Distance (m)") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", 
+                              "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group",
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
@@ -301,8 +340,9 @@ wtfmr1_long %>%
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Speed (cm/s)") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group",
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
@@ -330,8 +370,9 @@ wtfmr1_long %>%
   stat_smooth() + facet_wrap(~variable, scales = "free_y") +
   scale_y_continuous(name="Value different for each variable") + 
   scale_x_continuous(name =NULL, 
+                     breaks = c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group",
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
@@ -378,7 +419,7 @@ wtfmrt_cormatlong <- melt(wtfmrt_cormat) # melt
 head(wtfmrt_cormatlong)
 
 ## heatmap NOT clustered!!! # Saved as 1-beahvheatmap-ind
-ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -388,12 +429,6 @@ ggplot(data = wtfmrt_cormatlong, aes(x=X1, y=X2, fill=value)) +
                                    size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
-
-col <- colorRampPalette(c("turquoise4", "white", "tan4"))(n = 299)
-heatmap.2(wtfmrt_cormat, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none")
-          #cellnote = wtfmrt_cormat, notecol="black")
 
 
 ### Correlation plot 2 : data averaged first by group ----
@@ -418,7 +453,7 @@ wtfmr1_matrix_avg_cormatlong <- melt(wtfmr1_matrix_avg_cormat) # melt
 head(wtfmr1_matrix_avg_cormatlong)
 
 ## heatmap clustered!!! # Saved as 1-heatmap-group
-ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) + 
+ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) + 
   geom_tile(color = "white")+
   scale_fill_gradient2(low = "turquoise4", high = "tan4", mid = "white", 
                        midpoint = 0, limit = c(-1,1), space = "Lab", 
@@ -428,11 +463,6 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=X1, y=X2, fill=value)) +
                                    size = 10, hjust = 1)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
-
-heatmap.2(wtfmr1_matrix_avg_cormat, col=col, 
-          density.info="none", trace="none", dendrogram=c("row"), 
-          symm=F,symkey=T,symbreaks=T, scale="none")
-
 
 ### Not used but useful single plots ----
 
@@ -457,8 +487,9 @@ ggplot(data=wtfmr1, aes(as.numeric(x=session), y=TimeToSecondEntrance, color=gen
   stat_smooth() + # plots line with confidence interval
   scale_y_continuous(name="Time to 2nd Entrance (s)") + # renames x axis
   scale_x_continuous(name =NULL, #removed y axis label
+                     breaks=c(1, 2, 3, 4, 5, 6),
                      labels=c("1" = "Pretraining", "2" = "Training 1",  # renmaes x axis labeles
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
+                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention", "6" = "Retest")) +
   scale_colour_manual(values=FentonPalette, name="Treatment Group", # says use color palete, rename legend
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) + 
   theme_bw() # removes grey background
