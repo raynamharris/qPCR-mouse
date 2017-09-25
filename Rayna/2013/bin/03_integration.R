@@ -53,15 +53,94 @@ qpcrcountslong
   
 ############# merge all and widen!! -----
 
-all <- dplyr::bind_rows(behavior, phy, qpcrcountslong)
-head(all)
-str(all)
+all <- dplyr::bind_rows(phy, qpcrcountslong)
 all$ind <- as.factor(all$ind)
 all$measure <- as.factor(all$measure)
+all$APA <- as.factor(all$APA)
+all$APA <- revalue(all$APA, c("control" = "untrained")) 
 all$genoAPA <- as.factor(paste(all$genotype, all$APA, sep="_"))
 all <- dplyr::select(all, ind, genotype, APA, genoAPA, measure, value)
-head(all)
-all <- dcast(all, ind + genotype + APA +genoAPA ~ measure, value.var= "value")
+all <- dcast(all, ind + genotype + APA + genoAPA ~ measure, value.var= "value")
+str(all)
 
-head(all)
-names(all)
+ggplot(all, aes(x=grin, y=IO_Max, color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) + 
+  geom_smooth(method = lm)
+
+ggplot(all, aes(x=log10(TotalPunishment), y=log10(IO_Max), color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm)
+
+ggplot(all, aes(x=log10(TotalPunishment), y=log10(gria), color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm)
+
+
+ggplot(all, aes(x=log10(TotalPunishment), y=log10(grin), color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm)
+
+ggplot(all, aes(x=log10(TotalPunishment), y=log10(prkcz), color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm)
+
+all %>%
+  filter(APA == "trained") %>%
+ggplot(aes(x=log10(IO_Max), y=log10(grin), color=genoAPA)) +
+  geom_point(size = 8) +
+  scale_color_manual(values=colorvalgenoAPA) 
+  geom_smooth(method = lm, alpha = 0.2)
+
+correlation <- all %>%
+  #filter(APA == "trained") %>%
+  ggplot(aes(x=log10(grin), y=log10(gria), color=genoAPA)) +
+  geom_point(size = 2) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm, alpha = 0.2) +
+  theme_cowplot(font_size = 8, line_size = 0.25) +
+  theme(legend.position="none",
+        axis.title = element_blank()) 
+correlation
+
+pdf(file="../figures/3-correlation1.pdf", width=1.5, height=2)
+plot(correlation)
+dev.off()
+
+correlation <- all %>%
+  #filter(APA == "trained") %>%
+  ggplot(aes(x=log10(grin), y=log10(IO_Max), color=genoAPA)) +
+  geom_point(size = 2) +
+  scale_color_manual(values=colorvalgenoAPA) +
+  geom_smooth(method = lm, alpha = 0.2) +
+  theme_cowplot(font_size = 8, line_size = 0.25) +
+  theme(legend.position="none",
+        axis.title = element_blank()) 
+  
+correlation
+
+pdf(file="../figures/3-correlation2.pdf", width=1.5, height=2)
+plot(correlation)
+dev.off()
+```
+
+
+```{r correlationmatrix}
+## then create a matrix of just gene expression data with NAs ommited
+allmatrix <- all # prepare for matrix
+allmatrix$genoAPAind <- as.factor(paste(allmatrix$genoAPA,allmatrix$ind, sep="_"))
+rownames(allmatrix) <- allmatrix$genoAPAind  # set $genoAPAsession as rownames
+names(allmatrix)
+allmatrix <- allmatrix[-c(1:6,10,11,13,14,15,17,19,20,21,24)]  ## remove non-numeric columns
+allmatrix <- log10(allmatrix + 1) #log transform all data
+allmatrix <- as.matrix(allmatrix)
+str(allmatrix)
+allmatrix <- na.omit(allmatrix)
+allmatrix_cor <- round(cor(allmatrix),2)  # then create a correlation matrix
+
+corrplot(allmatrix_cor, type="lower", tl.col="black", tl.srt=45)
+```

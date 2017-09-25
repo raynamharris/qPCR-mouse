@@ -1,3 +1,14 @@
+---
+title: "Behavior and Electrophysiology Data Analysis"
+author: "Rayna M Harris"
+date: "January 14, 2017"
+output:
+  md_document:
+    variant: markdown_github
+---
+
+
+```{r setup}
 # Part 1: Reading and analyzing beahvior and physiology data
 
 ## load libraries -----
@@ -8,12 +19,30 @@ library(reshape2) #@ for melting dataframe
 library(ggdendro) ## for dendrograms!!
 library(cowplot) ## for easy modification to themes
 
+knitr::opts_chunk$set(fig.path = '../results/')
+```
+
+```{r figureoptions}
+
+## color palettes
+FentonPalette <- c('black','grey50','red','darkorange')
+WTPalette <- c('black','red')
+FMR1Palette <- c('grey50','darkorange')
+colorvalAPA11 <-  c("WT" = "#bf5700", "FMR1-KO" = "#54278f", "FMR1-KO_trained" = "#ca0020","WT_trained" = "#ca0020",  "FMR1-KO_untrained" = "#404040","WT_untrained" = "#404040" )
+colorvalgenoAPA <-  c("FMR1-KO_trained" = "#54278f","WT_trained" = "#bf5700",  "FMR1-KO_untrained" = "#9e9ac8","WT_untrained" = "#fe9929" ) 
+colorvalgenoAPAfill <- c( "#fe9929" , "#bf5700",  "#9e9ac8", "#54278f")
+
+## jitter points
+dodge <- position_dodge(.3)
+```
+
+```{r data wrangle}
+
 ## wrangle the raw wt and fmr1 dataframes ----
 
 ## read the data 
-setwd("~/Github/qPCR-mouse/Rayna/2013/data")
-wt <- read.csv("01_WTbehavephys.csv", header=TRUE, stringsAsFactors = FALSE, na.strings = c("", "ND", "N/A"))
-fmr1 <- read.csv("01_FMR1behavephys.csv", header=TRUE, stringsAsFactors = FALSE, na.strings = c("", "ND", "N/A"))
+wt <- read.csv("../data/01_WTbehavephys.csv", header=TRUE, stringsAsFactors = FALSE, na.strings = c("", "ND", "N/A"))
+fmr1 <- read.csv("../data/01_FMR1behavephys.csv", header=TRUE, stringsAsFactors = FALSE, na.strings = c("", "ND", "N/A"))
 
 ## fixing columns both fmr1 and wt are as equivilent as possible
 wt$filename <- as.character(paste(wt$filename, wt$X, sep="_")) ## mgerge 2 columns 
@@ -217,6 +246,14 @@ summary$genoAPA <- summary$genoAPA <- as.factor(paste(summary$genotype,summary$A
 summary$genoAPA <- factor(summary$genoAPA, levels = c("WT_untrained", "FMR1-KO_untrained", "WT_trained", "FMR1-KO_trained"))
 summary$genoAPA
 
+head(summary)
+summary_long <- melt(summary, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
+summary_long$value <- as.numeric(summary_long$value)
+str(summary_long)
+levels(summary_long$genoAPA)
+levels(summary_long$genoAPA) <- c("WT_untrained" ,"WT_trained"  , "FMR1-KO_untrained","FMR1-KO_trained" )
+
+
 ### improve indiviual session dataframe ----
 str(wtfmr1)
 wtfmr1 <- wtfmr1[c(60:61,62,1:45)]  # removes summary columns
@@ -244,22 +281,16 @@ wtfmr1_long$value <- as.numeric(wtfmr1_long$value)
 str(wtfmr1_long)
 head(wtfmr1_long)
 
+
 #write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
 #write.csv(wtfrm1, "wtfmr1_forMaddy.csv", row.names = F)
+```
 
 
-### Beahvior ggplots!!! -----
-## create the color palette
-FentonPalette <- c('black','grey50','red','darkorange')
-WTPalette <- c('black','red')
-FMR1Palette <- c('grey50','darkorange')
-colorvalAPA11 <-  c("WT" = "#bf5700", "FMR1-KO" = "#54278f", "FMR1-KO_trained" = "#ca0020","WT_trained" = "#ca0020",  "FMR1-KO_untrained" = "#404040","WT_untrained" = "#404040" )
-colorvalgenoAPA <-  c("FMR1-KO_trained" = "#54278f","WT_trained" = "#bf5700",  "FMR1-KO_untrained" = "#9e9ac8","WT_untrained" = "#fe9929" )
-
- 
-dodge <- position_dodge(.3)
 
 
+
+```{r}
 ## this plot is no longer legit because of the retention/retest problem
 ggplot(wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
   stat_smooth() + theme_bw() + scale_colour_manual(values=FentonPalette) + 
@@ -270,7 +301,9 @@ ggplot(wtfmr1, aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) +
                               "3" = "Training 2", "4" = "Training 3", 
                               "5" = "Retention", "6" = "Retest")) 
 
+```
 
+```{r}
 filter(wtfmr1, genotype == "WT") %>%
   droplevels() %>%
   ggplot(aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
@@ -280,7 +313,9 @@ filter(wtfmr1, genotype == "WT") %>%
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
                               "3" = "Training 2", "4" = "Training 3", 
                               "5" = "Retest"))
+```
 
+```{r}
 filter(wtfmr1, genotype != "WT") %>%
   droplevels() %>%
   ggplot(aes(as.numeric(x=session), y=pTimeTARG, color=genoAPA)) + 
@@ -290,7 +325,9 @@ filter(wtfmr1, genotype != "WT") %>%
                      labels=c("1" = "Pretraining", "2" = "Training 1", 
                               "3" = "Training 2", "4" = "Training 3", 
                               "5" = "Retention"))
+```
 
+```{r}
 ## Plots of time in seconds: saved as 1_TimeMeasures
 wtfmr1_long %>% 
   filter(grepl("Time", variable)) %>% 
@@ -307,7 +344,9 @@ wtfmr1_long %>%
                       labels=c("WT Untrained", "FMR1-KO Untrained", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank(), legend.position = c(0.85, 0.25))
+```
 
+```{r}
 ## Plots of pTime (probability): saved as 1_TimeProbability
 wtfmr1_long %>% filter(grepl("pTime", variable)) %>% 
   ggplot(aes(as.numeric(x=session), y=value, color=genoAPA)) +
@@ -322,7 +361,9 @@ wtfmr1_long %>% filter(grepl("pTime", variable)) %>%
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank())
+```
 
+```{r}
 ## Plots of path (distance): saved as 1_Path
 wtfmr1_long %>% filter(grepl("Path", variable)) %>% 
   ggplot(aes(as.numeric(x=session), y=value, color=genoAPA)) +
@@ -337,7 +378,9 @@ wtfmr1_long %>% filter(grepl("Path", variable)) %>%
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank(), legend.position = c(0.85, 0.25))
+```
 
+```{r}
 ## Plots of speed: saved as 1_Speed
 wtfmr1_long %>% 
   filter(grepl("Speed|speed", variable))%>% 
@@ -352,21 +395,10 @@ wtfmr1_long %>%
                       labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
   theme_bw() + 
   theme(panel.grid.minor = element_blank())
+```
 
-## Other Plots of speed: Rayleight, Polar, Annular Stuff : Saved as 1-Other
-wtfmr1_long %>% 
-  filter(grepl("Rayleigh|Polar|Annular", variable)) %>% 
-  ggplot(aes(as.numeric(x=session), y=value, color=genoAPA)) +
-  stat_smooth() + facet_wrap(~variable, scales = "free_y") +
-  scale_y_continuous(name=NULL) + 
-  scale_x_continuous(name =NULL, 
-                     labels=c("1" = "Pretraining", "2" = "Training 1", 
-                              "3" = "Training 2", "4" = "Training 3", "5" = "Retention")) +
-  scale_colour_manual(values=FentonPalette, name="Treatment Group",
-                      labels=c("WT Control", "FMR1-KO Control", "WT Trained", "FMR1-KO Trainined")) +
-  theme_bw() + 
-  theme(panel.grid.minor = element_blank(),legend.position = c(0.775, 0.125))
 
+```{r}
 ### Favorite that show leanring diffs
 ## saved as 1-behaviorplots
 wtfmr1_long %>% 
@@ -385,12 +417,9 @@ wtfmr1_long %>%
 
 
 ### Electrophysiology melting and graphing!!! ---- 
+```
 
-## first, melt the data
-head(summary)
-summary_long <- melt(summary, id=c("ind","genotype", "APA", "session", "filename", "genoAPA"))
-summary_long$value <- as.numeric(summary_long$value)
-str(summary_long)
+```{r}
 
 ## plot all the summary_long data!: saved as 1-SummaryValues
 summary_long %>%
@@ -408,8 +437,49 @@ summary_long %>%
         axis.text.x = element_blank(), 
         axis.ticks = element_blank())
 
-### Correlation plot 1 : all data for individuals ----
+```
 
+
+
+```{r 2-iomax}
+
+## plot all the summary_long data!: saved as 1-SummaryValues
+iomax <- summary_long %>%
+  filter(grepl("IO_Max", variable))%>% 
+  ggplot(aes(x=genoAPA, y=value, fill=genoAPA)) +
+  geom_boxplot() +  
+  theme_bw() +
+  scale_fill_manual(values=colorvalgenoAPAfill)  +
+ theme_cowplot(font_size = 8, line_size = 0.25) +
+  scale_y_continuous(name="IO_Max")  +
+  facet_wrap(~variable) +
+  theme(legend.position = "none", axis.text.x = element_blank())
+iomax 
+
+
+iomax <- summary_long %>%
+  filter(grepl("IO_Max", variable))%>% 
+  ggplot(aes(x=genoAPA, y=value, fill=genoAPA)) +
+  geom_violin() +  
+  theme_bw() +
+  scale_x_discrete(name="")  + 
+  scale_fill_manual(values=colorvalgenoAPAfill)  +
+ theme_cowplot(font_size = 8, line_size = 0.25) +
+  scale_y_continuous(name="IO_Max")  +
+  facet_wrap(~variable) +
+  theme(legend.position = "none", axis.text.x = element_blank())
+iomax 
+
+pdf(file="../figures/2-iomax.pdf", width=1.5, height=2.25)
+plot(iomax)
+dev.off()
+
+```
+
+
+
+```{r}
+### Correlation plot 1 : all data for individuals ----
 ## first, make the data a matrix with genoAPAsessionInd as the row names
 wtfmr1_matrix <- wtfmr1    #create new dataframe
 rownames(wtfmr1_matrix) <- wtfmr1_matrix$genoAPAsessionInd     # set $genoAPAsessionInd as rownames
@@ -435,7 +505,9 @@ ggplot(data = wtfmrt_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
+```
 
+```{r}
 ### Correlation plot 2 : data averaged first by group ----
 
 ## create matrix with genoAPAsession average values
@@ -469,7 +541,9 @@ ggplot(data = wtfmr1_matrix_avg_cormatlong, aes(x=Var1, y=Var2, fill=value)) +
   scale_x_discrete(name="") +
   scale_y_discrete(name="") 
 
+```
 
+```{r}
 
 ### Not used but useful single plots ----
 
@@ -506,16 +580,17 @@ summary(lm1)
 xtabs(data=wtfmr1, ~genoAPA+session)
 anova(lm1)
 
+```
 
-
+```{r 1-numentrances}
 ### now with different behavior plot
 wtfmr1Num <- wtfmr1
-wtfmr1Num$sessionNum <- ifelse(grepl("pretraining", wtfmr1$session), "1", 
-                                     ifelse(grepl("training1", wtfmr1$session), "2",
-                                            ifelse(grepl("training2", wtfmr1$session), "3",
-                                                   ifelse(grepl("training3", wtfmr1$session), "4", 
-                                                          ifelse(grepl("retention", wtfmr1$session), "5", 
-                                                                 ifelse(grepl("retest", wtfmr1$session), "5", NA))))))
+wtfmr1Num$sessionNum <- ifelse(grepl("pretraining", wtfmr1Num$session), "1", 
+                                     ifelse(grepl("training1", wtfmr1Num$session), "2",
+                                            ifelse(grepl("training2", wtfmr1Num$session), "3",
+                                                   ifelse(grepl("training3", wtfmr1Num$session), "4", 
+                                                          ifelse(grepl("retention", wtfmr1Num$session), "5", 
+                                                                 ifelse(grepl("retest", wtfmr1Num$session), "5", NA))))))
 wtfmr1Num$sessionNum <- as.numeric(as.character(wtfmr1Num$sessionNum))
 wtfmr1NumSummary <- dplyr::summarise(group_by(wtfmr1Num, genotype, APA, genoAPA, sessionNum), m = mean(Entrances), se = sd(Entrances)/sqrt(length(Entrances)), len = length(Entrances))
 wtfmr1NumSummary <- as.data.frame(wtfmr1NumSummary)
@@ -542,8 +617,8 @@ numentrances <- wtfmr1NumSummary %>%
   theme(legend.position = "none")
 numentrances
 
-pdf(file="../results/1-numentrances.pdf", width=2, height=2.25)
+pdf(file="../figures/1-numentrances.pdf", width=2, height=2.25)
 plot(numentrances)
 dev.off()
 
-
+```

@@ -13,6 +13,9 @@ library(PerformanceAnalytics) # fancy ass correlation plot
 library(Hmisc) # for correlation stats
 library(cowplot) # for multip pannel plots
 
+colorvalgenoAPAcontrol <-  c("FMR1-KO_trained" = "#54278f","WT_trained" = "#bf5700",  "FMR1-KO_control" = "#9e9ac8","WT_control" = "#fe9929" )
+
+
 ## wrangle the gene expression qpcr data ----
 setwd("~/Github/qPCR-mouse/Rayna/2013/data")
 qpcr <- read.csv("02_qpcrdata.csv", header = TRUE, na.strings = "NA", stringsAsFactors = FALSE)
@@ -277,17 +280,20 @@ str(dd3genesCA1only)
 dd3genesCA1only$genoAPA <- factor(dd3genesCA1only$genoAPA, levels = c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"))
 
 ##saved as 2-3genesCA1only.png
-dd3genesCA1only %>%  
+threeCA1genes <- dd3genesCA1only %>%  
   ggplot(aes(x=genoAPA, y=count, fill= genoAPA)) + 
   geom_violin() +  scale_y_log10(name="Gene Expression (Log10 Counts)") +
   facet_wrap(~gene, scales = "free_y") +
-  scale_x_discrete(name="") +
-  theme(legend.position="bottom", 
-        strip.text = element_text(face = "italic"),
-        axis.ticks = element_blank(), axis.text.x = element_blank()) + 
-  scale_fill_manual(values = FentonPalette2,
+  scale_x_discrete(name="")  + 
+  scale_fill_manual(values = colorvalgenoAPAcontrol,
                     breaks=c("WT_control", "WT_trained", "FMR1-KO_control", "FMR1-KO_trained"),
-                    labels=c("WT CA1 control", "WT CA1 trained", "FMR1-KO CA1 control", "FMR1-KO CA1 trained")) + 
-  guides(fill=guide_legend(title=NULL)) #removed legend title
+                    labels=c(" ", " ", " ", " ")) + 
+  theme_cowplot(font_size = 8, line_size = 0.25) +
+  theme(legend.position = "none", axis.text.x = element_blank())
+threeCA1genes
+
+pdf(file="../results/2-threeCA1genes.pdf", width=4, height=2.25)
+plot(threeCA1genes)
+dev.off()
 
 
