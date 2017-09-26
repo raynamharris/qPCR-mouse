@@ -622,3 +622,11 @@ plot(numentrances)
 dev.off()
 
 ```
+
+```{r stats}
+
+aov9 <- aov(m ~ APA2, data=wtfmr1NumSummary)
+summary(aov9) # p =  0.018
+TukeyHSD(aov9, which = "APA") # p = 0.0939973 for conflict-consistent 
+
+```
