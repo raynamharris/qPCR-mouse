@@ -1,7 +1,5 @@
 # 2013 qPCR project
 
-
-
 I tried to organize this directory in the order of operations
 
 1. behavior ephys
@@ -19,7 +17,14 @@ So, the files within organized the bin, data, and results directories all start 
 - 02_qPCRdata.xlsx: the excell version of the qpcr data sheet
 - 03_behavephysqpcr_WTonly_old.csv: an old analyses that I still have
 
-
 ## bin
 01_behavephys.R
 02_qpcr.R 
+
+
+## figures
+
+<img src="./figures/qpcr-01.png" width="1000" />
+
+
+
